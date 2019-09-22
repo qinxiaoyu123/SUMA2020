@@ -1,1 +1,1 @@
-# uobm-gOWL
+# parallel-gOWL
