@@ -14,7 +14,7 @@ public class DicTestRun {
     public static void main(String[] args) throws Exception {
 //        final String rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
 //        final String ub = "http://swat.cse.lehigh.edu/onto/univ-bench.owl#";
-
+        String rdf = "http://semantics.crl.ibm.com/univ-bench-dl.owl";
 //        String pathTBox = "data/pellet.owl";
         String pathTBox = "data/univ-bench-dl.owl";
 
@@ -32,6 +32,7 @@ public class DicTestRun {
         //output.writeRuleFile("data/outRule.txt");
         //单线程推理
         long startTime3 = System.currentTimeMillis();
+        DicSerialReason reasonInstance = new DicSerialReason(rdf);
         DicSerialReason.reason();
         //SerialReason.writeFile("data/out.txt");
         long startTime4=System.currentTimeMillis();

@@ -16,7 +16,7 @@ public class DicOwlMap {
 //    public static Map<String, String> getInverseProperty(){ return InverseProperty; }
 //    public static Map<String, Integer> getTransitiveProperty(){ return TransitiveProperty; }
     public static void addDicOwlMap(int type, int pro) {
-        if(type==2019) {
+        if(type==2019 || type==2017|| type==2016) {
             //TransitiveObjectProperty 2019
             DicOwlBean dicOwlBean = new DicOwlBean();
             dicOwlBean.setType(type);

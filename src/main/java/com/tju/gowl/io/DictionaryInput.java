@@ -169,7 +169,16 @@ public class DictionaryInput {
             else if(axiom instanceof OWLSymmetricObjectPropertyAxiom){
                 String property = ((OWLSymmetricObjectPropertyAxiom) axiom).getProperty().toString();
                 type = axiom.typeIndex();
-                System.out.println("OWLSymmetricObjectPropertyAxiom"+type);
+//                System.out.println("OWLSymmetricObjectPropertyAxiom"+type);
+                int pro = Dictionary.encodeRdf(property,"Tbox");
+                DicOwlMap.addDicOwlMap(type, pro);
+            }
+            //TODO 检查是否所有类型规则都add到ruleMap
+            else if(axiom instanceof OWLInverseFunctionalObjectPropertyAxiom){
+//                OWLInverseFunctionalObjectPropertyAxiom2016
+                String property = ((OWLInverseFunctionalObjectPropertyAxiom) axiom).getProperty().toString();
+                type = axiom.typeIndex();
+                System.out.println("OWLInverseFunctionalObjectPropertyAxiom"+type);
                 int pro = Dictionary.encodeRdf(property,"Tbox");
                 DicOwlMap.addDicOwlMap(type, pro);
             }
@@ -478,7 +487,7 @@ public class DictionaryInput {
 //        System.out.println(key);
         //Output.writeFile("data/dic100");
 
-        DictionaryInput.readTBox("data/uobm.owl");
+        DictionaryInput.readTBox("data/univ-bench-dl.owl");
 //        Map<Integer, Integer> ee = EquivalentPropertyMap.getEquivalentPropertyMap();
 //        System.out.println(ee);
 //        Map<Integer, Integer> aa = InversePropertyMap.getInverseMap();

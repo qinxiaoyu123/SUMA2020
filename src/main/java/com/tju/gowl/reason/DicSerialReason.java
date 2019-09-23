@@ -1,6 +1,8 @@
 package com.tju.gowl.reason;
 
+import com.hp.hpl.jena.ontology.InverseFunctionalProperty;
 import com.tju.gowl.bean.*;
+import com.tju.gowl.dictionary.Dictionary;
 import com.tju.gowl.io.Input;
 
 import java.io.IOException;
@@ -12,8 +14,19 @@ import java.util.Map;
 public class DicSerialReason {
     private static int anonymous = -2;
     private static int typeEncode = 0;
+    private static StringBuffer sameAsString = new StringBuffer("sameAs");
+    private static int sameAsInt = 0;
     private static int someValue = 1;
     private static boolean someValueFlag = false;
+
+    public DicSerialReason(String rdf) {
+        StringBuffer ss = new StringBuffer("<");
+        String sameAsLongString = ss.append(rdf).append("#").append(sameAsString).append(">").toString();
+        sameAsInt = Dictionary.encodeRdf(sameAsLongString);
+        //添加 sameAs 到规则表 ，便于后续匹配， 类型设定为4
+        DicOwlMap.addDicOwlMap(4, sameAsInt);
+    }
+
     public static void reason(){
         int loopCount = 1;
         //遍历数据
@@ -103,6 +116,12 @@ public class DicSerialReason {
                                 else if(type == 2017){//SymmetricObjectProperty
                                     symmetricObjectPropertyReason(Isp, Iop, Rs, Rp, Ro);
                                 }
+                                else if(type == 2016){//InverseFunctionalObjectProperty
+                                    inverseFunctionalObjectPropertyReason(Isp, Iop, Rs, Rp, Ro);
+                                }
+                                else if(type == 4){//sameAs
+                                    sameAsPropertyReason(Isp, Iop, Rs, Rp, Ro);
+                                }
 
                             }
                         }
@@ -143,6 +162,28 @@ public class DicSerialReason {
         System.out.println("total data size"+totalData.size());
 
 
+    }
+
+    private static void sameAsPropertyReason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro) {
+
+    }
+
+    private static void inverseFunctionalObjectPropertyReason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro) {
+        Map<String, Integer> inverseFunProMap = FunctionalPropertyMap.getInverseFunPropertyMap();
+        StringBuffer ss = new StringBuffer(rp);
+        String key = ss.append('*').append(ro).toString();
+        if(inverseFunProMap.containsKey(key)){
+            int tmp = inverseFunProMap.get(key);
+            if(tmp != rs){
+                DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, sameAsInt, tmp);
+            }
+            else{
+                System.out.println("重复数据 reason 172行");
+            }
+        }
+        else{
+            inverseFunProMap.put(key, rs);
+        }
     }
 
     private static void symmetricObjectPropertyReason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro) {
