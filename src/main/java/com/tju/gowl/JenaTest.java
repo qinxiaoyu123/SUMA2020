@@ -37,12 +37,12 @@ public class JenaTest {
             ResultSet results = qe.execSelect();
 
             //输出查询结果
-//            System.out.println("遍历结果集依次输出结果：");
+            System.out.println("遍历结果集依次输出结果：");
             int resultsCount = 0;
             while(results.hasNext()){
                 QuerySolution next = results.next();
-//                RDFNode resource = next.get("?X");
-//                System.out.println(resource.toString());
+                RDFNode resource = next.get("?x");
+                System.out.println(resource.toString()+" "+next.get("?y").toString());
                 resultsCount ++;
             }
 
@@ -60,9 +60,10 @@ public class JenaTest {
 
     public static void main(String[] args) throws Exception {
         String dataPath = "data/newThing_oubm1.nt";
+//        String dataPath = "data/uobm1.nt";
 //        String dataPath = "data/new_lubm10.nt";
 //        String queryPath = "data/standard_and_gap.sparql";
-        String queryPath = "data/standard.sparql";
+        String queryPath = "data/test.sparql";
         String answerPath = null;
         jenaQuery(dataPath, queryPath, answerPath);
     }

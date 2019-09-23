@@ -16,7 +16,7 @@ public class DicTestRun {
 //        final String ub = "http://swat.cse.lehigh.edu/onto/univ-bench.owl#";
 
 //        String pathTBox = "data/pellet.owl";
-        String pathTBox = "data/uobm.owl";
+        String pathTBox = "data/univ-bench-dl.owl";
 
         String pathABox = "data/uobm1.nt";
         //规则预处理
