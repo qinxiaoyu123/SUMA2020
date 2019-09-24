@@ -154,7 +154,7 @@ public class DictionaryInput {
                 OWLSubCLassProcessor(axiom);
             }
             else if(axiom instanceof OWLEquivalentClassesAxiom){
-                 System.out.println(axiom.toString());
+//                 System.out.println(axiom.toString());
                  EquivalentClassProcessor((OWLEquivalentClassesAxiom) axiom, 0);
             }
             else if(axiom instanceof OWLSubObjectPropertyOfAxiom){
@@ -178,7 +178,14 @@ public class DictionaryInput {
 //                OWLInverseFunctionalObjectPropertyAxiom2016
                 String property = ((OWLInverseFunctionalObjectPropertyAxiom) axiom).getProperty().toString();
                 type = axiom.typeIndex();
-                System.out.println("OWLInverseFunctionalObjectPropertyAxiom"+type);
+//                System.out.println("OWLInverseFunctionalObjectPropertyAxiom"+type);
+                int pro = Dictionary.encodeRdf(property,"Tbox");
+                DicOwlMap.addDicOwlMap(type, pro);
+            }
+            else if(axiom instanceof OWLFunctionalObjectPropertyAxiom){
+//                OWLFunctionalObjectPropertyAxiom2015
+                String property = ((OWLFunctionalObjectPropertyAxiom) axiom).getProperty().toString();
+                type = axiom.typeIndex();
                 int pro = Dictionary.encodeRdf(property,"Tbox");
                 DicOwlMap.addDicOwlMap(type, pro);
             }
@@ -455,6 +462,7 @@ public class DictionaryInput {
                     second = Dictionary.encodeRdf(firstProperty,"Tbox");
                 }
                 EquivalentPropertyMap.setEquivalentProperty(first, second);
+                EquivalentPropertyMap.setEquivalentPropertyDecode(second, first);
             }
             if(axiom instanceof OWLDisjointClassesAxiom){
                 String ax = axiom.toString();

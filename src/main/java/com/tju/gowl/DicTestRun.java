@@ -10,6 +10,9 @@ import com.tju.gowl.reason.DicSerialReason;
 import com.tju.gowl.reason.SerialReason;
 
 import java.util.Map;
+
+import static com.tju.gowl.JenaTest.jenaQuery;
+
 public class DicTestRun {
     public static void main(String[] args) throws Exception {
 //        final String rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
@@ -41,5 +44,7 @@ public class DicTestRun {
 //        DictionaryOutput.outWriteDicDataMap("data/new.nt");
         //inverse write
         DictionaryOutput.outWriteDicDataMap("data/new_uobm1.nt",1);
+        test.rewriteThing();
+        jenaQuery("data/newThing_oubm1.nt", "data/test.sparql", null);
     }
 }

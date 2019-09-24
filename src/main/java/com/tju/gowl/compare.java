@@ -13,7 +13,7 @@ public class compare {
 
     public static void main(String[] args) throws Exception {
         String pathABox1="C:\\Users\\1122\\Desktop\\pellet_q6_results.txt";
-        String pathABox2="data/results";
+        String pathABox2="F:\\first paper\\experiments\\pagodatest\\result.nt";
         readPelletData(pathABox1);
         readgOWLData(pathABox2);
         System.out.println(data_gOWL.size());

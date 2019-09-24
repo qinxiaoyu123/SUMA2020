@@ -5,6 +5,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class EquivalentPropertyMap {
     private static final Map<Integer, Integer> EquivalentPropertyMap = new ConcurrentHashMap<>();
+    private static final Map<Integer, Integer> EquivalentPropertyMapDecode = new ConcurrentHashMap<>();
+
+    public static Map<Integer, Integer> getEquivalentPropertyMapDecode() {
+        return EquivalentPropertyMapDecode;
+    }
+
     public static Map<Integer, Integer> getEquivalentPropertyMap(){ return EquivalentPropertyMap; }
 
     public static int getEquivalentProperty(int first) {
@@ -15,6 +21,10 @@ public class EquivalentPropertyMap {
         else{
             return -1;
         }
+    }
+
+    public static void setEquivalentPropertyDecode(int second, int first) {
+        EquivalentPropertyMapDecode.put(second,first);
     }
 
     @Override

@@ -71,8 +71,8 @@ public class DictionaryOutput {
         int count = 0;
         Map<Integer, DicRdfDataBean> totalData = DicRdfDataMap.getDicDataMap();
         Map<Integer, String> decode = Dictionary.getDecode();
-        Map<Integer, Integer> inverseMap = InversePropertyMap.getInverseMap1();
-        Map<Integer, Integer> EquivalentMap = EquivalentPropertyMap.getEquivalentPropertyMap();
+        Map<Integer, Integer> inverseMapDecode = InversePropertyMap.getInverseMapDecode();
+        Map<Integer, Integer> EquivalentMapDecode = EquivalentPropertyMap.getEquivalentPropertyMapDecode();
 //        System.out.println(inverseMap);
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathAboxNew),"GBK"));
         out.write("<unknown:namespace> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .");
@@ -108,14 +108,14 @@ public class DictionaryOutput {
                 Ro = decode.get(ro);
             }
 //            out.write(entry.getKey()+" "+Rs+" "+Rp+" "+Ro+" ."+entry.getValue().getNsp()+" "+entry.getValue().getNp()+" "+entry.getValue().getNpo());
-            if(inverseMap.containsKey(rp)){
-                String Rp1 = decode.get(inverseMap.get(rp));
+            if(inverseMapDecode.containsKey(rp)){
+                String Rp1 = decode.get(inverseMapDecode.get(rp));
 //                System.out.println(Ro+" "+Rp1+" "+Rs+" .");
                 out.write(Ro+" "+Rp1+" "+Rs+" .");
                 count++;
             }
-            if(EquivalentMap.containsKey(rp)){
-                String Rp1 = decode.get(EquivalentMap.get(rp));
+            if(EquivalentMapDecode.containsKey(rp)){
+                String Rp1 = decode.get(EquivalentMapDecode.get(rp));
 //                System.out.println(Ro+" "+Rp1+" "+Rs+" .");
                 out.write(Rs+" "+Rp1+" "+Ro+" .");
                 count++;

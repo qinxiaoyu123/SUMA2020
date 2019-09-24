@@ -1,8 +1,9 @@
 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX benchmark: <http://semantics.crl.ibm.com/univ-bench-dl.owl#>
-SELECT ?x ?y
+SELECT ?x
 WHERE {
-<http://www.Department16.University0.edu/FullProfessor8> ?x ?y .
+ ?x rdf:type benchmark:SportsLover .
+
 }
 

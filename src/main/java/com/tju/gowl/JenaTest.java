@@ -3,14 +3,21 @@ package com.tju.gowl;
 import com.hp.hpl.jena.query.*;
 import com.hp.hpl.jena.rdf.model.*;
 import com.hp.hpl.jena.sparql.engine.QueryIterator;
+import com.tju.gowl.bean.DicOwlBean;
 import com.tju.gowl.bean.OwlRuleMap;
 import com.tju.gowl.bean.RdfDataBean;
 import com.tju.gowl.bean.RdfDataMap;
+import com.tju.gowl.dictionary.Dictionary;
 import com.tju.gowl.io.Input;
 import com.tju.gowl.io.Output;
+import com.tju.gowl.reason.DicSerialReason;
 import com.tju.gowl.reason.SerialReason;
 
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +29,7 @@ public class JenaTest {
         Model model = ModelFactory.createMemModelMaker().createDefaultModel();
         //extended data
         model.read(dataPath);
+        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("result.nt"),"GBK"));
         long startTime1;
         long startTime2;
         List<String> queryList = query.getQueryList();
@@ -42,8 +50,28 @@ public class JenaTest {
             while(results.hasNext()){
                 QuerySolution next = results.next();
                 RDFNode resource = next.get("?x");
-                System.out.println(resource.toString()+" "+next.get("?y").toString());
-                resultsCount ++;
+                StringBuffer ss = new StringBuffer("<");
+                String ss1 = ss.append(resource.toString().trim()).append(">").toString();
+                int tmp = Dictionary.getEncode().get(ss1);
+                int tmpIndex = DicSerialReason.findEquivPoolIndex(tmp);
+                if(tmpIndex == 0){
+//                    System.out.println(resource.toString());
+                    out.write(resource.toString());//写入文件
+                    out.newLine();
+
+                    resultsCount ++;
+                }
+                else{
+                    Iterator<Integer> ii = DicSerialReason.equiPool.get(tmpIndex-1).iterator();
+                    while(ii.hasNext()){
+                        Integer iii = ii.next();
+                        resultsCount ++;
+                        out.write(Dictionary.getDecode().get(iii));//写入文件
+                        out.newLine();
+//                        System.out.println(Dictionary.getDecode().get(iii));
+                    }
+                }
+
             }
 
             // ResultSetFormatter.out(System.out, results, query);
@@ -54,7 +82,8 @@ public class JenaTest {
             System.out.println("resultsCount"+resultsCount);
 
         }
-
+        out.flush();
+        out.close();
     }
 
 
@@ -62,8 +91,8 @@ public class JenaTest {
         String dataPath = "data/newThing_oubm1.nt";
 //        String dataPath = "data/uobm1.nt";
 //        String dataPath = "data/new_lubm10.nt";
-//        String queryPath = "data/standard_and_gap.sparql";
-        String queryPath = "data/test.sparql";
+        String queryPath = "data/standard_and_gap.sparql";
+//        String queryPath = "data/test.sparql";
         String answerPath = null;
         jenaQuery(dataPath, queryPath, answerPath);
     }

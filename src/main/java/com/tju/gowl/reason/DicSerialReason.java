@@ -6,10 +6,8 @@ import com.tju.gowl.dictionary.Dictionary;
 import com.tju.gowl.io.Input;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class DicSerialReason {
     private static int anonymous = -2;
@@ -18,7 +16,8 @@ public class DicSerialReason {
     private static int sameAsInt = 0;
     private static int someValue = 1;
     private static boolean someValueFlag = false;
-
+    public static List<HashSet<Integer>> equiPool = new ArrayList<>();
+    static Map<Integer, Integer> equiMapping = new ConcurrentHashMap<>();
     public DicSerialReason(String rdf) {
         StringBuffer ss = new StringBuffer("<");
         String sameAsLongString = ss.append(rdf).append("#").append(sameAsString).append(">").toString();
@@ -119,9 +118,12 @@ public class DicSerialReason {
                                 else if(type == 2016){//InverseFunctionalObjectProperty
                                     inverseFunctionalObjectPropertyReason(Isp, Iop, Rs, Rp, Ro);
                                 }
-                                else if(type == 4){//sameAs
-                                    sameAsPropertyReason(Isp, Iop, Rs, Rp, Ro);
+                                else if(type == 2015){//FunctionalObjectProperty
+                                    functionalObjectPropertyReason(Isp, Iop, Rs, Rp, Ro);
                                 }
+//                                else if(type == 4){//sameAs
+//                                    sameAsPropertyReason(Isp, Iop, Rs, Rp, Ro);
+//                                }
 
                             }
                         }
@@ -160,8 +162,69 @@ public class DicSerialReason {
             loopCount++;
         }
         System.out.println("total data size"+totalData.size());
+        outEquiPool();
+        outEquiMapping();
 
+    }
 
+    private static void functionalObjectPropertyReason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro) {
+        int rsEquiv = findEquivPoolIndex(rs);
+        if(rsEquiv == 0){//没有相等individual
+            loopRsRpFindRo(rs, rp, ro);
+        }
+        else{
+            HashSet<Integer> set = equiPool.get(rsEquiv - 1);
+            Iterator<Integer> it = set.iterator();
+            while (it.hasNext()) {
+                Integer tmp = it.next();
+                loopRsRpFindRo(tmp, rp, ro);
+            }
+        }
+    }
+
+    private static void loopRsRpFindRo(int rs, int rp, int ro) {
+        int firstTripleIsp = IndexMap.getFirstIndexSpFromMap(rs, rp);
+        if(firstTripleIsp == -1){ return; }
+
+        DicRdfDataBean dicDataBeanIterator;
+        int indexNew = firstTripleIsp;
+        do{
+            dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
+            indexNew = dicDataBeanIterator.getNsp();
+            int roTmp = dicDataBeanIterator.getRo();
+            if(ro != roTmp) {
+                comEquiPool(ro, roTmp);
+            }
+        }while(indexNew != -1);
+    }
+
+    private static void outEquiMapping() {
+        Map<Integer, String> decodeMap = Dictionary.getDecode();
+        Iterator<Map.Entry<Integer, Integer>> ii = equiMapping.entrySet().iterator();
+        while( ii.hasNext()){
+            Map.Entry<Integer, Integer> iii = ii.next();
+            System.out.println(decodeMap.get(iii.getKey())+" "+iii.getValue());
+
+        }
+    }
+
+    private static void outEquiPool() {
+        Map<Integer, String> decodeMap = Dictionary.getDecode();
+        int count11 = 0;
+        Iterator<HashSet<Integer>> ii = equiPool.iterator();
+        while(ii.hasNext()){
+            count11++;
+            System.out.println(count11);
+            HashSet<Integer> iii = ii.next();
+            Iterator<Integer> iiii = iii.iterator();
+            while(iiii.hasNext()){
+                Integer iiiii = iiii.next();
+
+                System.out.println(decodeMap.get(iiiii));
+
+            }
+
+        }
     }
 
     private static void sameAsPropertyReason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro) {
@@ -169,20 +232,95 @@ public class DicSerialReason {
     }
 
     private static void inverseFunctionalObjectPropertyReason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro) {
-        Map<String, Integer> inverseFunProMap = FunctionalPropertyMap.getInverseFunPropertyMap();
-        StringBuffer ss = new StringBuffer(rp);
-        String key = ss.append('*').append(ro).toString();
-        if(inverseFunProMap.containsKey(key)){
-            int tmp = inverseFunProMap.get(key);
-            if(tmp != rs){
-                DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, sameAsInt, tmp);
-            }
-            else{
-                System.out.println("重复数据 reason 172行");
-            }
+//        Map<String, Integer> inverseFunProMap = FunctionalPropertyMap.getInverseFunPropertyMap();
+//        int rsEquiv = findEquivPoolIndex(rs);
+        int roEquiv = findEquivPoolIndex(ro);
+        if(roEquiv == 0){//没有相等individual
+            loopRpRoFindRs(rs, rp, ro);
         }
         else{
-            inverseFunProMap.put(key, rs);
+            HashSet<Integer> set = equiPool.get(roEquiv - 1);
+            Iterator<Integer> it = set.iterator();
+            while (it.hasNext()) {
+                Integer tmp = it.next();
+                loopRpRoFindRs(rs, rp, tmp);
+            }
+        }
+
+    }
+
+    private static void loopRpRoFindRs(int rs, int rp, int ro) {
+        int firstTripleIop = IndexMap.getFirstIndexOpFromMap(rp, ro);
+        if(firstTripleIop == -1){ return; }
+
+        DicRdfDataBean dicDataBeanIterator;
+        int indexNew = firstTripleIop;
+        do{
+            dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
+            indexNew = dicDataBeanIterator.getNop();
+            int rsTmp = dicDataBeanIterator.getRs();
+            if(rs != rsTmp) {
+                comEquiPool(rs, rsTmp);
+            }
+        }while(indexNew != -1);
+    }
+
+    private static void comEquiPool(int rs, int rsTmp) {
+        int rsEquiv = findEquivPoolIndex(rs);
+        int rsTmpEquiv = findEquivPoolIndex(rsTmp);
+        if(rsTmpEquiv ==0 && rsEquiv == 0){
+            HashSet<Integer> newPool = new HashSet<>();
+            newPool.add(rs);
+            newPool.add(rsTmp);
+            equiPool.add(newPool);
+            //避免0冲突，存的是index of pool +1
+            equiMapping.put(rs,equiPool.size());
+            equiMapping.put(rsTmp,equiPool.size());
+        }
+        else if(rsTmpEquiv !=0 && rsEquiv != 0){
+            if(rsTmpEquiv != rsEquiv){
+                //池子合并
+                int minn;
+                int maxx;
+                if(rsTmpEquiv < rsEquiv){
+                    minn = rsTmpEquiv;
+                    maxx = rsEquiv;
+                }
+                else{
+                    maxx = rsTmpEquiv;
+                    minn = rsEquiv;
+                }
+                //池子maxx装进池子minn
+                HashSet<Integer> temp2Pool = equiPool.get(maxx - 1);
+                HashSet<Integer> temp1Pool = equiPool.get(minn - 1);
+                Iterator<Integer> it = temp2Pool.iterator();
+                while (it.hasNext()) {
+                    Integer tmp = it.next();
+                    temp1Pool.add(tmp);
+                    equiMapping.put(tmp,minn);
+                }
+                temp2Pool.clear();
+            }
+        }
+        else if(rsTmpEquiv == 0){
+            HashSet<Integer> tempPool = equiPool.get(rsEquiv - 1);
+            tempPool.add(rsTmp);
+            equiMapping.put(rsTmp,rsEquiv);
+        }
+        else if(rsEquiv == 0){
+            HashSet<Integer> tempPool = equiPool.get(rsTmpEquiv - 1);
+            tempPool.add(rs);
+            equiMapping.put(rs,rsTmpEquiv);
+        }
+    }
+
+    public static int findEquivPoolIndex(int rs) {
+        if(equiMapping.containsKey(rs)){
+            return equiMapping.get(rs);
+        }
+        else{
+            equiMapping.put(rs,0);
+            return 0;
         }
     }
 
