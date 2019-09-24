@@ -29,7 +29,7 @@ public class JenaTest {
         Model model = ModelFactory.createMemModelMaker().createDefaultModel();
         //extended data
         model.read(dataPath);
-        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("result.nt"),"GBK"));
+        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("data/resultnew.nt"),"GBK"));
         long startTime1;
         long startTime2;
         List<String> queryList = query.getQueryList();
@@ -88,11 +88,11 @@ public class JenaTest {
 
 
     public static void main(String[] args) throws Exception {
-        String dataPath = "data/newThing_oubm1.nt";
-//        String dataPath = "data/uobm1.nt";
+//        String dataPath = "data/newThing_oubm1.nt";
+        String dataPath = "data/uobm1.nt";
 //        String dataPath = "data/new_lubm10.nt";
-        String queryPath = "data/standard_and_gap.sparql";
-//        String queryPath = "data/test.sparql";
+//        String queryPath = "data/standard_and_gap.sparql";
+        String queryPath = "data/test.sparql";
         String answerPath = null;
         jenaQuery(dataPath, queryPath, answerPath);
     }

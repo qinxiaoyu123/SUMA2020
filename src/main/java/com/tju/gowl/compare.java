@@ -12,8 +12,8 @@ public class compare {
     static HashSet<String> data_pellet = new HashSet<>();
 
     public static void main(String[] args) throws Exception {
-        String pathABox1="C:\\Users\\1122\\Desktop\\pellet_q6_results.txt";
-        String pathABox2="F:\\first paper\\experiments\\pagodatest\\result.nt";
+        String pathABox1="F:\\first paper\\experiments\\pellet-1.3\\uobm\\aaa\\resultnew.nt";
+        String pathABox2="data/resultnew.nt";
         readPelletData(pathABox1);
         readgOWLData(pathABox2);
         System.out.println(data_gOWL.size());
