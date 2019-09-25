@@ -23,8 +23,11 @@ import java.util.List;
 import java.util.Map;
 
 public class JenaTest {
+    static HashSet<String> resultsSet = new HashSet<>();
     public static void jenaQuery(String dataPath, String queryPath, String answerPath) throws IOException {
         //query
+        Map<String, Integer> encodeMap = Dictionary.getEncode();
+        Map<Integer, String> decodeMap = Dictionary.getDecode();
         query.readQuery(queryPath);
         Model model = ModelFactory.createMemModelMaker().createDefaultModel();
         //extended data
@@ -36,6 +39,7 @@ public class JenaTest {
         Iterator<String> QueryIterator = queryList.iterator();
         int count = 0;
         while(QueryIterator.hasNext()){
+
             String queryString = QueryIterator.next();
             startTime1 = System.currentTimeMillis();
             Query query = QueryFactory.create(queryString);
@@ -43,34 +47,57 @@ public class JenaTest {
             startTime2 = System.currentTimeMillis();
 
             ResultSet results = qe.execSelect();
-
+            resultsSet.clear();
             //输出查询结果
             System.out.println("遍历结果集依次输出结果：");
             int resultsCount = 0;
             while(results.hasNext()){
                 QuerySolution next = results.next();
                 RDFNode resource = next.get("?x");
+                if(next.get("?y")!=null){
+                    System.out.println(next.get("?x").toString()+" "+next.get("?y").toString());
+                }
                 StringBuffer ss = new StringBuffer("<");
                 String ss1 = ss.append(resource.toString().trim()).append(">").toString();
-                int tmp = Dictionary.getEncode().get(ss1);
-                int tmpIndex = DicSerialReason.findEquivPoolIndex(tmp);
-                if(tmpIndex == 0){
+                if(encodeMap.containsKey(ss1)){
+                    int tmp = encodeMap.get(ss1);
+                    int tmpIndex = DicSerialReason.findEquivPoolIndex(tmp);
+                    if(tmpIndex == 0){
 //                    System.out.println(resource.toString());
-                    out.write(resource.toString());//写入文件
-                    out.newLine();
+                        if(!resultsSet.contains(resource.toString())){
+                            resultsSet.add(resource.toString());
+                            out.write(resource.toString());//写入文件
+                            out.newLine();
+                            resultsCount ++;
+                        }
 
-                    resultsCount ++;
-                }
-                else{
-                    Iterator<Integer> ii = DicSerialReason.equiPool.get(tmpIndex-1).iterator();
-                    while(ii.hasNext()){
-                        Integer iii = ii.next();
-                        resultsCount ++;
-                        out.write(Dictionary.getDecode().get(iii));//写入文件
-                        out.newLine();
-//                        System.out.println(Dictionary.getDecode().get(iii));
+                    }
+                    else{
+                        Iterator<Integer> ii = DicSerialReason.equiPool.get(tmpIndex-1).iterator();
+                        System.out.println(resource.toString());
+                        while(ii.hasNext()){
+                            Integer iii = ii.next();
+                            String sss =  decodeMap.get(iii);
+                            String sss1 = sss.substring(1,sss.length()-1);
+                            if(!resultsSet.contains(sss1)){
+                                resultsSet.add(sss1);
+                                out.write(sss1);//写入文件
+                                out.newLine();
+                                resultsCount ++;
+                            }
+                        }
                     }
                 }
+                else{
+                    if(!resultsSet.contains(resource.toString())){
+                        resultsSet.add(resource.toString());
+                        out.write(resource.toString());//写入文件
+                        out.newLine();
+                        resultsCount ++;
+                    }
+
+                }
+
 
             }
 
@@ -80,6 +107,7 @@ public class JenaTest {
             System.out.println("q"+" "+count);
             System.out.println("queryTime"+(startTime2-startTime1));
             System.out.println("resultsCount"+resultsCount);
+            System.out.println("resultsCount"+resultsSet.size());
 
         }
         out.flush();

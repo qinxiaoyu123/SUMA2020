@@ -50,6 +50,9 @@ public class compare {
                 ss.append(list.get(1)).append("/").append(list.get(2));
                 String ss1 = ss.toString().trim();
 //                System.out.println(ss1);
+                if(data_gOWL.contains(ss1)){
+                    System.out.println("重复： "+ss1);
+                }
                 data_gOWL.add(ss1);
                 ss.setLength(0);
 

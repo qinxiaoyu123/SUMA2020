@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 
 public class DictionaryInput {
 //include 指定尖括号 0包含 1不包含
-
+    public static List<Integer> classAssertion = new ArrayList<>();
 
     public static void readABox(String pathABox, String rdf, String ub, int include){
         Dictionary dd = new Dictionary();
@@ -117,14 +117,28 @@ public class DictionaryInput {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         System.out.println("初始数据数目"+index);
+        addClassAssertion(DicTotalData,index);
 //        System.out.println("encode"+encode.size());
 //        System.out.println(encode);
 //
 //        System.out.println(DicTotalData);
 //        System.out.println(IndexIsp);
 //        System.out.println(IndexIpo);
+    }
+
+    private static void addClassAssertion(Map<Integer, DicRdfDataBean> dicTotalData, int index) {
+        int tmpCount = index;
+        Map<Integer, List<IndexBean>> isp= IndexMap.getIsp();
+        Map<Integer, List<IndexBean>> iop= IndexMap.getIop();
+        Iterator<Integer> iter = classAssertion.iterator();
+        while(iter.hasNext()){
+            int tmp1 = iter.next();
+            int tmp2 = iter.next();
+            DicRdfDataMap.addSourceRdfDataBean(tmpCount, tmp1, 0, tmp2);
+            tmpCount++;
+        }
+        System.out.println("count after adding ClassAssertion: "+tmpCount);
     }
 
     public static void readTBox(String pathTBox) throws OWLOntologyCreationException, IOException {
@@ -188,6 +202,17 @@ public class DictionaryInput {
                 type = axiom.typeIndex();
                 int pro = Dictionary.encodeRdf(property,"Tbox");
                 DicOwlMap.addDicOwlMap(type, pro);
+            }
+            else if(axiom instanceof OWLClassAssertionAxiom){
+//                OWLClassAssertionAxiom2005
+                String class1 = ((OWLClassAssertionAxiom) axiom).getClassExpression().toString();
+                String individual = ((OWLClassAssertionAxiom) axiom).getIndividual().toString();
+//                type = axiom.typeIndex();
+                int classInt = Dictionary.encodeRdf(class1,"Tbox");
+                int individualInt = Dictionary.encodeRdf(individual,"Tbox");
+                classAssertion.add(individualInt);
+                classAssertion.add(classInt);
+//                DicOwlMap.addDicOwlMap(type, pro);
             }
             else if(!(axiom instanceof OWLLogicalAxiom)){
 //                System.out.println("非逻辑公理"+axiom.toString());
@@ -421,7 +446,7 @@ public class DictionaryInput {
             classAllValues = Dictionary.encodeRdf(fillter.toString(),"Tbox");
         }
         int type = ax.typeIndex();
-        System.out.println(type);
+//        System.out.println(type);
         Map<Integer, Integer> inverseMap = InversePropertyMap.getInverseMap();
         if(inverseMap.containsKey(propertyInt)){
             DicOwlMap.addDicOwlMap(-type, class1, inverseMap.get(propertyInt), classAllValues);

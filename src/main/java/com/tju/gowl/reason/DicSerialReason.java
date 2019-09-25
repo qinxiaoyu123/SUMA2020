@@ -142,6 +142,7 @@ public class DicSerialReason {
                 totalData.putAll(iteratorMap);
                 stashMap.clear();
                 iteratorMap.clear();
+//                addEquivIndividual(totalData);
                 break;
             }
             if(someValue>=14){
@@ -151,6 +152,7 @@ public class DicSerialReason {
                 totalData.putAll(iteratorMap);
                 stashMap.clear();
                 iteratorMap.clear();
+//                addEquivIndividual(totalData);
                 break;
             }
             totalData.putAll(iteratorMap);
@@ -166,6 +168,17 @@ public class DicSerialReason {
         outEquiMapping();
 
     }
+
+//    private static void addEquivIndividual(Map<Integer, DicRdfDataBean> totalData) {
+//        Iterator<HashSet<Integer>> iterPool = equiPool.iterator();
+//        while(iterPool.hasNext()){
+//            HashSet<Integer> tmpPool = iterPool.next();
+//            Iterator<Integer> tmp1 = tmpPool.iterator();
+//            while(tmp1.hasNext()){
+//                int tmp = tmp1.next();
+//            }
+//        }
+//    }
 
     private static void functionalObjectPropertyReason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro) {
         int rsEquiv = findEquivPoolIndex(rs);

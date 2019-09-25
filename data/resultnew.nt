@@ -1,0 +1,17 @@
+http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+http://semantics.crl.ibm.com/univ-bench-dl.owl#like
+http://semantics.crl.ibm.com/univ-bench-dl.owl#telephone
+http://semantics.crl.ibm.com/univ-bench-dl.owl#isMemberOf
+http://semantics.crl.ibm.com/univ-bench-dl.owl#lastName
+http://semantics.crl.ibm.com/univ-bench-dl.owl#teacherOf
+http://semantics.crl.ibm.com/univ-bench-dl.owl#love
+http://semantics.crl.ibm.com/univ-bench-dl.owl#isFriendOf
+http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom
+http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout
+http://semantics.crl.ibm.com/univ-bench-dl.owl#researchInterest
+http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom
+http://semantics.crl.ibm.com/univ-bench-dl.owl#firstName
+http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDegreeFrom
+http://semantics.crl.ibm.com/univ-bench-dl.owl#worksFor
+http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom
+http://semantics.crl.ibm.com/univ-bench-dl.owl#emailAddress

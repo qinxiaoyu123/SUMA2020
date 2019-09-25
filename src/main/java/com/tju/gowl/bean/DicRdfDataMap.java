@@ -78,6 +78,19 @@ public class DicRdfDataMap {
         dicStashMap.put(index, dicDataBean);
     }
 
+    public static void addSourceRdfDataBean(int index, int rs, int rp, int ro) {
+        DicRdfDataBean dicDataBean = new DicRdfDataBean();
+        dicDataBean.setRs(rs);
+        dicDataBean.setRp(rp);
+        dicDataBean.setRo(ro);
+        int nsp = IndexMap.getFirstIndexSpFromMap(rs, rp, index);
+        dicDataBean.setNsp(nsp, index);
+        int nop = IndexMap.getFirstIndexOpFromMap(rp, ro, index);
+        dicDataBean.setNop(nop, index);
+        dicDataBean.setNp(-1);
+        dicDataMap.put(index, dicDataBean);
+    }
+
     public static void addNewRdfDataBean(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> ipo, int rs, int rp, int ro, int nsp) {
         int index = dicDataMap.size()+dicIteratorMap.size()+dicStashMap.size();
         DicRdfDataBean dicDataBean = new DicRdfDataBean();
