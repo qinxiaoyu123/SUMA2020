@@ -3,6 +3,7 @@ package com.tju.gowl;
 import com.tju.gowl.bean.InversePropertyMap;
 import com.tju.gowl.bean.RdfDataBean;
 import com.tju.gowl.bean.RdfDataMap;
+import com.tju.gowl.dictionary.Dictionary;
 import com.tju.gowl.io.DictionaryInput;
 import com.tju.gowl.io.DictionaryOutput;
 import com.tju.gowl.io.Input;
@@ -12,6 +13,7 @@ import com.tju.gowl.reason.SerialReason;
 import java.util.Map;
 
 import static com.tju.gowl.JenaTest.jenaQuery;
+import static com.tju.gowl.JenaTest.jenaQuerySimple;
 
 public class DicTestRun {
     public static void main(String[] args) throws Exception {
@@ -22,6 +24,8 @@ public class DicTestRun {
         String pathTBox = "data/univ-bench-dl.owl";
 
         String pathABox = "data/uobm1.nt";
+        //type owl:Thing 编码
+        Dictionary dd = new Dictionary();
         //规则预处理
         DictionaryInput.readTBox(pathTBox);
 //        InversePropertyMap.rewriteInverseRule();
@@ -32,7 +36,7 @@ public class DicTestRun {
         System.out.println("reason time"+(startTime2-startTime1));
 
         DictionaryOutput output=new DictionaryOutput();
-        //output.writeRuleFile("data/outRule.txt");
+        output.outWriteDicOwlMap("data/outRule.txt");
         //单线程推理
         long startTime3 = System.currentTimeMillis();
         DicSerialReason reasonInstance = new DicSerialReason(rdf);
@@ -40,11 +44,11 @@ public class DicTestRun {
         //SerialReason.writeFile("data/out.txt");
         long startTime4=System.currentTimeMillis();
         System.out.println("reason time"+(startTime4-startTime3));
-//        DictionaryOutput.encodeMap("data/encode.nt");
+        DictionaryOutput.encodeMap("data/encode.nt");
 //        DictionaryOutput.outWriteDicDataMap("data/new.nt");
         //inverse write
         DictionaryOutput.outWriteDicDataMap("data/new_uobm1.nt",1);
         test.rewriteThing();
-        jenaQuery("data/newThing_oubm1.nt", "data/test.sparql", null);
+        jenaQuerySimple("data/newThing_oubm1.nt", "data/test.sparql", null);
     }
 }

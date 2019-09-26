@@ -1,11 +1,8 @@
 package com.tju.gowl.reason;
 
-import com.hp.hpl.jena.ontology.InverseFunctionalProperty;
 import com.tju.gowl.bean.*;
 import com.tju.gowl.dictionary.Dictionary;
-import com.tju.gowl.io.Input;
 
-import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -121,9 +118,9 @@ public class DicSerialReason {
                                 else if(type == 2015){//FunctionalObjectProperty
                                     functionalObjectPropertyReason(Isp, Iop, Rs, Rp, Ro);
                                 }
-//                                else if(type == 4){//sameAs
-//                                    sameAsPropertyReason(Isp, Iop, Rs, Rp, Ro);
-//                                }
+                                else if(type == 5){//sameAs
+                                    sameAsPropertyReason(Isp, Iop, Rs, Rp, Ro);
+                                }
 
                             }
                         }
@@ -142,7 +139,9 @@ public class DicSerialReason {
                 totalData.putAll(iteratorMap);
                 stashMap.clear();
                 iteratorMap.clear();
-//                addEquivIndividual(totalData);
+                System.out.println("total data size"+totalData.size());
+                addEquivIndividual(totalData);
+                System.out.println("after equiv data size"+totalData.size());
                 break;
             }
             if(someValue>=14){
@@ -152,7 +151,10 @@ public class DicSerialReason {
                 totalData.putAll(iteratorMap);
                 stashMap.clear();
                 iteratorMap.clear();
-//                addEquivIndividual(totalData);
+                System.out.println("total data size"+totalData.size());
+                addEquivIndividual(totalData);
+                System.out.println("after equiv data size"+totalData.size());
+
                 break;
             }
             totalData.putAll(iteratorMap);
@@ -163,25 +165,121 @@ public class DicSerialReason {
 //            System.out.println(stashMap);
             loopCount++;
         }
-        System.out.println("total data size"+totalData.size());
+
         outEquiPool();
         outEquiMapping();
 
     }
 
-//    private static void addEquivIndividual(Map<Integer, DicRdfDataBean> totalData) {
-//        Iterator<HashSet<Integer>> iterPool = equiPool.iterator();
-//        while(iterPool.hasNext()){
-//            HashSet<Integer> tmpPool = iterPool.next();
-//            Iterator<Integer> tmp1 = tmpPool.iterator();
-//            while(tmp1.hasNext()){
-//                int tmp = tmp1.next();
-//            }
-//        }
-//    }
+    private static void addEquivIndividual(Map<Integer, DicRdfDataBean> totalData) {
+        Iterator<HashSet<Integer>> iterPool = equiPool.iterator();
+        Map<Integer, List<IndexBean>> isp = IndexMap.getIsp();
+        Map<Integer, List<IndexBean>> iop = IndexMap.getIop();
+        while(iterPool.hasNext()){
+            HashSet<Integer> tmpPool = iterPool.next();
+            Iterator<Integer> tmp1 = tmpPool.iterator();
+            while(tmp1.hasNext()){
+                int tmp = tmp1.next();
+                addEquivRsTriple(totalData, isp, tmpPool, tmp);
+                addEquivRoTriple(totalData, iop, tmpPool, tmp);
+            }
+        }
+    }
+
+    private static void addEquivRoTriple(Map<Integer, DicRdfDataBean> totalData, Map<Integer, List<IndexBean>> iop, HashSet<Integer> tmpPool, int tmp) {
+        Map<Integer, List<IndexBean>> isp = IndexMap.getIsp();
+        List<Integer> rsRpTriples = findAllTriplesFromRo(totalData, iop, tmp);
+        Iterator<Integer> tmp2 = tmpPool.iterator();
+        while(tmp2.hasNext()){
+            int tmp22 = tmp2.next();
+            if(tmp22 != tmp){
+                Iterator<Integer> rsRpList = rsRpTriples.iterator();
+                while(rsRpList.hasNext()){
+                    int rs = rsRpList.next();
+                    int rp = rsRpList.next();
+                    if(!DicRdfDataMap.checkDuplicate(rs, rp, tmp22, isp)) {
+                        DicRdfDataMap.addSourceRdfDataBean(totalData.size(), rs, rp, tmp22);
+
+                    }
+                }
+            }
+
+        }
+    }
+
+    private static List<Integer> findAllTriplesFromRo(Map<Integer, DicRdfDataBean> totalData, Map<Integer, List<IndexBean>> iop, int tmp) {
+        List<Integer> rsRpTriples = new ArrayList<>();
+        if(iop.containsKey(tmp)){
+            List<IndexBean> indexBean = iop.get(tmp);
+            Iterator<IndexBean> iterIndexBean = indexBean.iterator();
+            while(iterIndexBean.hasNext()){
+                //rs rp 第一条数据
+                IndexBean tt = iterIndexBean.next();
+                int firstTripleIop = tt.getIndex();
+                int rp = tt.getResource();
+                DicRdfDataBean dicDataBeanIterator;
+                int indexNew = firstTripleIop;
+                do{
+                    dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
+                    indexNew = dicDataBeanIterator.getNop();
+                    int roTmp = dicDataBeanIterator.getRs();
+                    rsRpTriples.add(roTmp);
+                    rsRpTriples.add(rp);
+                }while(indexNew != -1);
+            }
+        }
+        return rsRpTriples;
+    }
+
+    private static void addEquivRsTriple(Map<Integer, DicRdfDataBean> totalData, Map<Integer, List<IndexBean>> isp, HashSet<Integer> tmpPool, int tmp) {
+        List<Integer> rpRoTriples = findAllTriplesFromRs(totalData, isp, tmp);
+        Iterator<Integer> tmp2 = tmpPool.iterator();
+        while(tmp2.hasNext()){
+            int tmp22 = tmp2.next();
+            if(tmp22 != tmp){
+                Iterator<Integer> rpRoList = rpRoTriples.iterator();
+                while(rpRoList.hasNext()){
+                    int rp = rpRoList.next();
+                    int ro = rpRoList.next();
+                    if(!DicRdfDataMap.checkDuplicate(tmp22, rp, ro, isp)) {
+                        DicRdfDataMap.addSourceRdfDataBean(totalData.size(), tmp22, rp, ro);
+
+                    }
+                }
+            }
+
+        }
+    }
+
+    private static List<Integer> findAllTriplesFromRs(Map<Integer, DicRdfDataBean> totalData, Map<Integer, List<IndexBean>> isp, int tmp) {
+        List<Integer> rpRoTriples = new ArrayList<>();
+        if(isp.containsKey(tmp)){
+            List<IndexBean> indexBean = isp.get(tmp);
+            Iterator<IndexBean> iterIndexBean = indexBean.iterator();
+            while(iterIndexBean.hasNext()){
+                //rs rp 第一条数据
+                IndexBean tt = iterIndexBean.next();
+                int firstTripleIsp = tt.getIndex();
+                int rp = tt.getResource();
+                DicRdfDataBean dicDataBeanIterator;
+                int indexNew = firstTripleIsp;
+                do{
+                    dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
+                    indexNew = dicDataBeanIterator.getNsp();
+                    int roTmp = dicDataBeanIterator.getRo();
+                    rpRoTriples.add(rp);
+                    rpRoTriples.add(roTmp);
+                }while(indexNew != -1);
+            }
+        }
+        return rpRoTriples;
+    }
 
     private static void functionalObjectPropertyReason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro) {
         int rsEquiv = findEquivPoolIndex(rs);
+        System.out.println(Dictionary.getDecode().get(rs));
+        System.out.println(Dictionary.getDecode().get(rp));
+        System.out.println(Dictionary.getDecode().get(ro));
         if(rsEquiv == 0){//没有相等individual
             loopRsRpFindRo(rs, rp, ro);
         }

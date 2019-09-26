@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Dictionary {
-    private static Integer indexEncode = 1;
+    private static Integer indexEncode = 2;
     private static final Map<String, Integer> Encode=new ConcurrentHashMap<>();
     //TODO 换成array
     private static final Map<Integer, String> Decode=new ConcurrentHashMap<>();
@@ -32,6 +32,8 @@ public class Dictionary {
 
         Encode.put("<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>",0);
         Decode.put(0,"<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>");
+        Encode.put("owl:Thing",1);
+        Decode.put(1,"owl:Thing");
     }
     public static int encodeRdf(String ss) {
         int ssIndex;
@@ -48,6 +50,9 @@ public class Dictionary {
     }
 
     public static int encodeRdf(String ss, String tbox) {
+//        if(ss.contains(" ")){
+//            System.out.println("kongge"+ss);
+//        }
         int ssIndex;
         if(!Encode.containsKey(ss)){
             Encode.put(ss, indexEncode);

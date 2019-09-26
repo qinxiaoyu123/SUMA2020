@@ -21,7 +21,7 @@ public class DictionaryInput {
     public static List<Integer> classAssertion = new ArrayList<>();
 
     public static void readABox(String pathABox, String rdf, String ub, int include){
-        Dictionary dd = new Dictionary();
+
         Map<Integer, DicRdfDataBean> DicTotalData= DicRdfDataMap.getDicDataMap();
         Map<String, Integer> encode= Dictionary.getEncode();
         //Map<Integer, String> decode= Dictionary.getDecode();
@@ -214,6 +214,17 @@ public class DictionaryInput {
                 classAssertion.add(classInt);
 //                DicOwlMap.addDicOwlMap(type, pro);
             }
+//            else if(axiom instanceof OWLDeclarationAxiom){
+////                OWLClassAssertionAxiom2005
+//                if(axiom.toString().contains("Class")){
+//                    String class1 = ((OWLDeclarationAxiom) axiom).getEntity().toString();
+//                    int classInt = Dictionary.encodeRdf(class1,"Tbox");
+//                    int classInt2 = Dictionary.encodeRdf("owl:Thing","Tbox");
+//                    DicOwlMap.addDicOwlMap(2002, classInt, classInt2);
+//                }
+//
+////                DicOwlMap.addDicOwlMap(type, pro);
+//            }
             else if(!(axiom instanceof OWLLogicalAxiom)){
 //                System.out.println("非逻辑公理"+axiom.toString());
             }
@@ -321,7 +332,14 @@ public class DictionaryInput {
                 class1 = Dictionary.encodeRdf(ax.toString(),"Tbox");
             }
         }
-
+        if(class1 == 0) {
+            System.out.println("class1-error");
+        }
+        if(!DicOwlMap.EquiDicRuleMap.containsKey(class1)){
+            DicOwlMap.EquiDicRuleMap.put(class1, new ArrayList<>());
+        }else{
+            System.out.println("class11-error");
+        }
         iterator = axiom.getOperandsAsList().iterator();
         while(iterator.hasNext()){
             OWLClassExpression ax = iterator.next();
@@ -358,7 +376,9 @@ public class DictionaryInput {
         String property = ((OWLObjectMinCardinality) ax).getProperty().toString();
         int propertyInt = Dictionary.encodeRdf(property,"Tbox");
         String class2 = ((OWLObjectMinCardinality) ax).getFiller().toString();
+        System.out.println("class2"+class2);
         int class2Int = Dictionary.encodeRdf(class2,"Tbox");
+        System.out.println("class2Int"+class2Int);
         //>=1 == ObjectSomeValuesFrom
         if(cardinality == 1){
            OWLObjectSomeValuesFromProcessor(class1, propertyInt, class2Int);
@@ -366,6 +386,10 @@ public class DictionaryInput {
         else if(cardinality >1){
 //            3008
 //            System.out.println("MinCardinality"+ax.typeIndex());
+            //min 3008
+            //TODO class2Int == 0 OWL：THing
+            DicOwlMap.addEquiDicRuleMap(class1,3008, cardinality, propertyInt, class2Int);
+            DicOwlMap.addRuleMap(class1,3008, propertyInt);
             DicOwlMap.addDicOwlMap(ax.typeIndex(), class1, cardinality, propertyInt, class2Int);
 
         }
@@ -374,7 +398,10 @@ public class DictionaryInput {
     }
 
     private static void OWLObjectSomeValuesFromProcessor(int class1, int propertyInt, int class2Int) {
+        DicOwlMap.addEquiDicRuleMap(class1,3005, propertyInt, class2Int);
+        DicOwlMap.addRuleMap(class1,3005, propertyInt);
         DicOwlMap.addDicOwlMap(3005, class1, propertyInt, class2Int);
+//        DicOwlMap.addDicOwlMap(2001, class1, class3, propertyInt, class2Int);
     }
 
     private static void OWLObjectSomeValuesFromProcessor(OWLClassExpression ax, int class1, int class2) {
@@ -383,7 +410,10 @@ public class DictionaryInput {
         int propertyInt = Dictionary.encodeRdf(property,"Tbox");
         int fillterInt = Dictionary.encodeRdf(fillter,"Tbox");
         DicOwlMap.addDicOwlMap(3005, class1, propertyInt, fillterInt);
-        DicOwlMap.addDicOwlMap(2001, class1, class2, propertyInt, fillterInt);
+        DicOwlMap.addEquiDicRuleMap(class1,3005, propertyInt, fillterInt);
+        DicOwlMap.addRuleMap(class1,3005, propertyInt);
+//        DicOwlMap.addDicOwlMap(2001, class1, class2, propertyInt, fillterInt););
+
     }
 
     private static void OWLObjectIntersectionOfProcessor(OWLClassExpression axiom, int class1) {
@@ -397,6 +427,8 @@ public class DictionaryInput {
                 OWLSubCLassProcessor(class1,class2);
             }
         }
+        DicOwlMap.addEquiDicRuleMap(class1,2002,class2);
+        DicOwlMap.addRuleMap(class1,2002,class2);
         iterator = ((OWLObjectIntersectionOf)axiom).getOperandsAsList().iterator();
         while(iterator.hasNext()) {
             OWLClassExpression ax = iterator.next();
@@ -413,8 +445,11 @@ public class DictionaryInput {
 
     }
 
+
+
     private static void OWLSubCLassProcessor(int class1, int class2) {
         DicOwlMap.addDicOwlMap(2002, class1, class2);
+
     }
 
     private static void OWLObjectAllValuesFromProcessor(OWLClassExpression ax, int class1) {
@@ -450,9 +485,15 @@ public class DictionaryInput {
         Map<Integer, Integer> inverseMap = InversePropertyMap.getInverseMap();
         if(inverseMap.containsKey(propertyInt)){
             DicOwlMap.addDicOwlMap(-type, class1, inverseMap.get(propertyInt), classAllValues);
+            System.out.println("class1"+class1);
+            DicOwlMap.addEquiDicRuleMap(class1,-type, inverseMap.get(propertyInt), classAllValues);
+            DicOwlMap.addRuleMap(class1,-type, propertyInt);
         }
         else{
             DicOwlMap.addDicOwlMap(type, class1, propertyInt, classAllValues);
+            DicOwlMap.addEquiDicRuleMap(class1,type, propertyInt, classAllValues);
+            DicOwlMap.addRuleMap(class1,type, propertyInt);
+
         }
 
     }
@@ -511,7 +552,7 @@ public class DictionaryInput {
 
 
     public static void main(String[] args) throws IOException, OWLOntologyCreationException {
-
+        Dictionary dd = new Dictionary();
 //      readABox("data/testequiv.nt", "n","n",1);
 //        StringBuffer ssbuff = new StringBuffer("*0");
 //        int i = 101;
@@ -521,6 +562,11 @@ public class DictionaryInput {
         //Output.writeFile("data/dic100");
 
         DictionaryInput.readTBox("data/univ-bench-dl.owl");
+        DictionaryOutput.outWriteEquiDicOwlMap("data/equiv.nt");
+        DictionaryOutput.outWriteDicOwlMap("data/outRule1.txt");
+        System.out.println(DicOwlMap.EquiDicRuleMap);
+        System.out.println(DicOwlMap.EquiDicRuleMap.size());
+
 //        Map<Integer, Integer> ee = EquivalentPropertyMap.getEquivalentPropertyMap();
 //        System.out.println(ee);
 //        Map<Integer, Integer> aa = InversePropertyMap.getInverseMap();

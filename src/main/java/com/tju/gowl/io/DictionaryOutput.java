@@ -7,6 +7,7 @@ import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,33 @@ public class DictionaryOutput {
         for(Map.Entry<String, List<DicOwlBean>> entry : totalRule.entrySet()){
             out.write(entry.getKey());//写入文件
             out.write(" "+entry.getValue().toString());
+            out.newLine();
+        }
+        out.flush();
+        out.close();
+    }
+
+    public static void outWriteEquiDicOwlMap(String pathTboxNew) throws IOException {
+        Map<Integer, String> decode = Dictionary.getDecode();
+        Map<Integer, List<DicOwlBean>> totalRule = DicOwlMap.EquiDicRuleMap;
+        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathTboxNew),"GBK"));
+        for(Map.Entry<Integer, List<DicOwlBean>> entry : totalRule.entrySet()){
+            out.write(entry.getKey()+" ");
+            out.write(decode.get(entry.getKey()));//写入文件
+            out.newLine();
+            Iterator<DicOwlBean> ii = entry.getValue().iterator();
+            while(ii.hasNext()){
+                DicOwlBean iii = ii.next();
+                out.write(iii.getType()+" ");
+                out.newLine();
+                Iterator<Integer> iiii = iii.getRuleHead().iterator();
+                while(iiii.hasNext()){
+                    Integer iiiii = iiii.next();
+                    out.write(iiiii+" ");
+                    out.write(decode.get(iiiii));
+                    out.newLine();
+                }
+            }
             out.newLine();
         }
         out.flush();

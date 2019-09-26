@@ -113,16 +113,70 @@ public class JenaTest {
         out.flush();
         out.close();
     }
+    public static void jenaQuerySimple(String dataPath, String queryPath, String answerPath) throws IOException {
+        //query
+        Map<String, Integer> encodeMap = Dictionary.getEncode();
+        Map<Integer, String> decodeMap = Dictionary.getDecode();
+        query.readQuery(queryPath);
+        Model model = ModelFactory.createMemModelMaker().createDefaultModel();
+        //extended data
+        model.read(dataPath);
+        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("data/resultnew.nt"),"GBK"));
+        long startTime1;
+        long startTime2;
+        List<String> queryList = query.getQueryList();
+        Iterator<String> QueryIterator = queryList.iterator();
+        int count = 0;
+        while(QueryIterator.hasNext()){
 
+            String queryString = QueryIterator.next();
+            startTime1 = System.currentTimeMillis();
+            Query query = QueryFactory.create(queryString);
+            QueryExecution qe = QueryExecutionFactory.create(query, model);
+            startTime2 = System.currentTimeMillis();
+
+            ResultSet results = qe.execSelect();
+
+            //输出查询结果
+            System.out.println("遍历结果集依次输出结果：");
+            int resultsCount = 0;
+            while(results.hasNext()){
+                QuerySolution next = results.next();
+                RDFNode resource = next.get("?x");
+                if(next.get("?y")!=null){
+                    RDFNode resource1 = next.get("?y");
+                    out.write(resource.toString()+" "+resource1.toString());
+                    out.newLine();
+                    resultsCount ++;
+                }
+                else{
+                    out.write(resource.toString());//写入文件
+                    out.newLine();
+                    resultsCount ++;
+                }
+
+            }
+
+            // ResultSetFormatter.out(System.out, results, query);
+            qe.close();
+            count++;
+            System.out.println("q"+" "+count);
+            System.out.println("queryTime"+(startTime2-startTime1));
+            System.out.println("resultsCount"+resultsCount);
+
+        }
+        out.flush();
+        out.close();
+    }
 
     public static void main(String[] args) throws Exception {
-//        String dataPath = "data/newThing_oubm1.nt";
-        String dataPath = "data/uobm1.nt";
+        String dataPath = "data/newThing_oubm1.nt";
+//        String dataPath = "data/uobm1.nt";
 //        String dataPath = "data/new_lubm10.nt";
 //        String queryPath = "data/standard_and_gap.sparql";
         String queryPath = "data/test.sparql";
         String answerPath = null;
-        jenaQuery(dataPath, queryPath, answerPath);
+        jenaQuerySimple(dataPath, queryPath, answerPath);
     }
 
 
