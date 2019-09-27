@@ -187,7 +187,7 @@ public class DicOwlMap {
 
     }
 
-    private static void addDicOwlMap(DicOwlBean dicOwlBean, String key) {
+    public static void addDicOwlMap(DicOwlBean dicOwlBean, String key) {
         if (DicRuleMap.containsKey(key)) {
             List<DicOwlBean> lists = DicRuleMap.get(key);
             Iterator<DicOwlBean> iterator1 = lists.iterator();
@@ -206,30 +206,30 @@ public class DicOwlMap {
     }
 
 
-    public static void addRuleMap(int class1, int type, int class2) {
-        if(type == 2002){
-            DicOwlBean dicOwlBean = new DicOwlBean();
-            dicOwlBean.setType(10);//equi
-            dicOwlBean.setRuleHead(class1);
-            StringBuffer ssbuff = new StringBuffer("*0");
-            String key = ssbuff.append(class2).toString();
-            addDicOwlMap(dicOwlBean, key);
-        }
-        else if(type == 3005||type == 3008){
-            DicOwlBean dicOwlBean = new DicOwlBean();
-            dicOwlBean.setType(10);//equi
-            dicOwlBean.setRuleHead(class1);
-            StringBuffer ssbuff = new StringBuffer("*");
-            String key = ssbuff.append(class2).append("*").toString();
-            addDicOwlMap(dicOwlBean, key);
-        }
-        else{
-            DicOwlBean dicOwlBean = new DicOwlBean();
-            dicOwlBean.setType(10);//equi
-            dicOwlBean.setRuleHead(class1);
-            StringBuffer ssbuff = new StringBuffer("*");
-            String key = ssbuff.append(class2).append("*").toString();
-            addDicOwlMap(dicOwlBean, key);
-        }
-    }
+//    public static void addRuleMap(int class1, int type, int class2) {
+//        if(type == 2002){
+//            DicOwlBean dicOwlBean = new DicOwlBean();
+//            dicOwlBean.setType(10);//equi
+//            dicOwlBean.setRuleHead(class1);
+//            StringBuffer ssbuff = new StringBuffer("*0");
+//            String key = ssbuff.append(class2).toString();
+//            addDicOwlMap(dicOwlBean, key);
+//        }
+//        else if(type == 3005||type == 3008){
+//            DicOwlBean dicOwlBean = new DicOwlBean();
+//            dicOwlBean.setType(10);//equi
+//            dicOwlBean.setRuleHead(class1);
+//            StringBuffer ssbuff = new StringBuffer("*");
+//            String key = ssbuff.append(class2).append("*").toString();
+//            addDicOwlMap(dicOwlBean, key);
+//        }
+//        else{
+//            DicOwlBean dicOwlBean = new DicOwlBean();
+//            dicOwlBean.setType(10);//equi
+//            dicOwlBean.setRuleHead(class1);
+//            StringBuffer ssbuff = new StringBuffer("*");
+//            String key = ssbuff.append(class2).append("*").toString();
+//            addDicOwlMap(dicOwlBean, key);
+//        }
+//    }
 }

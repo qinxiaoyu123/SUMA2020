@@ -1,7 +1,6 @@
 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://semantics.crl.ibm.com/univ-bench-dl.owl#Man
 http://semantics.crl.ibm.com/univ-bench-dl.owl#like http://semantics.crl.ibm.com/univ-bench-dl.owl#Soccer
 http://semantics.crl.ibm.com/univ-bench-dl.owl#telephone xxx-xxx-xxxx
-http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://semantics.crl.ibm.com/univ-bench-dl.owl#SportsLover
 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallLover
 http://semantics.crl.ibm.com/univ-bench-dl.owl#isFriendOf http://www.Department0.University0.edu/FullProfessor0
 http://semantics.crl.ibm.com/univ-bench-dl.owl#isMemberOf http://www.Department0.University0.edu
@@ -9,11 +8,13 @@ http://semantics.crl.ibm.com/univ-bench-dl.owl#lastName FullProfessor7.second
 http://semantics.crl.ibm.com/univ-bench-dl.owl#teacherOf http://www.Department0.University0.edu/GraduateCourse15
 http://semantics.crl.ibm.com/univ-bench-dl.owl#teacherOf http://www.Department0.University0.edu/Course13
 http://semantics.crl.ibm.com/univ-bench-dl.owl#love http://semantics.crl.ibm.com/univ-bench-dl.owl#Soccer
+http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://semantics.crl.ibm.com/univ-bench-dl.owl#PeopleWithManyHobbies
 http://semantics.crl.ibm.com/univ-bench-dl.owl#isFriendOf http://www.Department0.University0.edu/GraduateStudent15
 http://semantics.crl.ibm.com/univ-bench-dl.owl#isFriendOf http://www.Department0.University0.edu/SameIndividual0
 http://semantics.crl.ibm.com/univ-bench-dl.owl#isFriendOf http://www.Department0.University0.edu/AssociateProfessor1
 http://semantics.crl.ibm.com/univ-bench-dl.owl#isFriendOf http://www.Department18.University0.edu/Lecturer3
 http://semantics.crl.ibm.com/univ-bench-dl.owl#isFriendOf http://www.Department0.University0.edu/FullProfessor5
+http://semantics.crl.ibm.com/univ-bench-dl.owl#like -873
 http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom http://www.University1.edu
 http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout http://semantics.crl.ibm.com/univ-bench-dl.owl#Kickboxing
 http://semantics.crl.ibm.com/univ-bench-dl.owl#isFriendOf http://www.Department0.University0.edu/AssociateProfessor7
@@ -26,13 +27,13 @@ http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://semantics.crl.ibm.com/uni
 http://semantics.crl.ibm.com/univ-bench-dl.owl#like http://semantics.crl.ibm.com/univ-bench-dl.owl#Pop_Music
 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://semantics.crl.ibm.com/univ-bench-dl.owl#Employee
 http://semantics.crl.ibm.com/univ-bench-dl.owl#firstName FullProfessor7.first
-http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://semantics.crl.ibm.com/univ-bench-dl.owl#SportsFan
 http://semantics.crl.ibm.com/univ-bench-dl.owl#isFriendOf http://www.Department6.University0.edu/AssociateProfessor6
 http://semantics.crl.ibm.com/univ-bench-dl.owl#love http://semantics.crl.ibm.com/univ-bench-dl.owl#Tennis
 http://semantics.crl.ibm.com/univ-bench-dl.owl#teacherOf http://www.Department0.University0.edu/Course12
 http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDegreeFrom http://www.University4.edu
 http://semantics.crl.ibm.com/univ-bench-dl.owl#worksFor http://www.Department0.University0.edu
 http://semantics.crl.ibm.com/univ-bench-dl.owl#like http://semantics.crl.ibm.com/univ-bench-dl.owl#Kickboxing
+http://semantics.crl.ibm.com/univ-bench-dl.owl#love -873
 http://semantics.crl.ibm.com/univ-bench-dl.owl#like http://semantics.crl.ibm.com/univ-bench-dl.owl#Tennis
 http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom http://www.University4.edu
 http://semantics.crl.ibm.com/univ-bench-dl.owl#isFriendOf http://www.Department0.University0.edu/Chair0
@@ -40,8 +41,6 @@ http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDegreeFrom http://www.Universi
 http://semantics.crl.ibm.com/univ-bench-dl.owl#love http://semantics.crl.ibm.com/univ-bench-dl.owl#AmericanFootball
 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://semantics.crl.ibm.com/univ-bench-dl.owl#Professor
 http://semantics.crl.ibm.com/univ-bench-dl.owl#emailAddress FullProfessor7@Department0.University0.edu/FullProfessor7
-http://semantics.crl.ibm.com/univ-bench-dl.owl#like -1347
 http://semantics.crl.ibm.com/univ-bench-dl.owl#isFriendOf http://www.Department13.University0.edu/FullProfessor0
-http://semantics.crl.ibm.com/univ-bench-dl.owl#love -1347
 http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://semantics.crl.ibm.com/univ-bench-dl.owl#Faculty
 http://semantics.crl.ibm.com/univ-bench-dl.owl#like http://semantics.crl.ibm.com/univ-bench-dl.owl#AmericanFootball

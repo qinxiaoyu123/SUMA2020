@@ -2,6 +2,7 @@ package com.tju.gowl.io;
 
 import com.tju.gowl.bean.*;
 import com.tju.gowl.dictionary.Dictionary;
+import com.tju.gowl.reason.EquiClassRuleRewrite;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 
@@ -389,7 +390,7 @@ public class DictionaryInput {
             //min 3008
             //TODO class2Int == 0 OWL：THing
             DicOwlMap.addEquiDicRuleMap(class1,3008, cardinality, propertyInt, class2Int);
-            DicOwlMap.addRuleMap(class1,3008, propertyInt);
+//            DicOwlMap.addRuleMap(class1,3008, propertyInt);
             DicOwlMap.addDicOwlMap(ax.typeIndex(), class1, cardinality, propertyInt, class2Int);
 
         }
@@ -399,7 +400,7 @@ public class DictionaryInput {
 
     private static void OWLObjectSomeValuesFromProcessor(int class1, int propertyInt, int class2Int) {
         DicOwlMap.addEquiDicRuleMap(class1,3005, propertyInt, class2Int);
-        DicOwlMap.addRuleMap(class1,3005, propertyInt);
+//        DicOwlMap.addRuleMap(class1,3005, propertyInt);
         DicOwlMap.addDicOwlMap(3005, class1, propertyInt, class2Int);
 //        DicOwlMap.addDicOwlMap(2001, class1, class3, propertyInt, class2Int);
     }
@@ -411,7 +412,7 @@ public class DictionaryInput {
         int fillterInt = Dictionary.encodeRdf(fillter,"Tbox");
         DicOwlMap.addDicOwlMap(3005, class1, propertyInt, fillterInt);
         DicOwlMap.addEquiDicRuleMap(class1,3005, propertyInt, fillterInt);
-        DicOwlMap.addRuleMap(class1,3005, propertyInt);
+//        DicOwlMap.addRuleMap(class1,3005, propertyInt);
 //        DicOwlMap.addDicOwlMap(2001, class1, class2, propertyInt, fillterInt););
 
     }
@@ -428,7 +429,7 @@ public class DictionaryInput {
             }
         }
         DicOwlMap.addEquiDicRuleMap(class1,2002,class2);
-        DicOwlMap.addRuleMap(class1,2002,class2);
+//        DicOwlMap.addRuleMap(class1,2002,class2);
         iterator = ((OWLObjectIntersectionOf)axiom).getOperandsAsList().iterator();
         while(iterator.hasNext()) {
             OWLClassExpression ax = iterator.next();
@@ -487,12 +488,12 @@ public class DictionaryInput {
             DicOwlMap.addDicOwlMap(-type, class1, inverseMap.get(propertyInt), classAllValues);
             System.out.println("class1"+class1);
             DicOwlMap.addEquiDicRuleMap(class1,-type, inverseMap.get(propertyInt), classAllValues);
-            DicOwlMap.addRuleMap(class1,-type, propertyInt);
+//            DicOwlMap.addRuleMap(class1,-type, propertyInt);
         }
         else{
             DicOwlMap.addDicOwlMap(type, class1, propertyInt, classAllValues);
             DicOwlMap.addEquiDicRuleMap(class1,type, propertyInt, classAllValues);
-            DicOwlMap.addRuleMap(class1,type, propertyInt);
+//            DicOwlMap.addRuleMap(class1,type, propertyInt);
 
         }
 
@@ -566,6 +567,7 @@ public class DictionaryInput {
         DictionaryOutput.outWriteDicOwlMap("data/outRule1.txt");
         System.out.println(DicOwlMap.EquiDicRuleMap);
         System.out.println(DicOwlMap.EquiDicRuleMap.size());
+        EquiClassRuleRewrite.rewrite();
 
 //        Map<Integer, Integer> ee = EquivalentPropertyMap.getEquivalentPropertyMap();
 //        System.out.println(ee);

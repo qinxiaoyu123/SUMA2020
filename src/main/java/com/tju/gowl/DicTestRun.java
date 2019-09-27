@@ -8,6 +8,7 @@ import com.tju.gowl.io.DictionaryInput;
 import com.tju.gowl.io.DictionaryOutput;
 import com.tju.gowl.io.Input;
 import com.tju.gowl.reason.DicSerialReason;
+import com.tju.gowl.reason.EquiClassRuleRewrite;
 import com.tju.gowl.reason.SerialReason;
 
 import java.util.Map;
@@ -28,6 +29,7 @@ public class DicTestRun {
         Dictionary dd = new Dictionary();
         //规则预处理
         DictionaryInput.readTBox(pathTBox);
+        EquiClassRuleRewrite.rewrite();
 //        InversePropertyMap.rewriteInverseRule();
         //数据预处理
         long startTime1 = System.currentTimeMillis();
