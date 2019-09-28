@@ -40,7 +40,33 @@ public class EquiClassRuleRewrite {
             }
             else if(owlBeanList.size() == 2){
                 if(owlBeanList.get(0).getType() == 2002 && owlBeanList.get(1).getType() == 3005){
-                    System.out.println("2size："+Dictionary.getDecode().get(class1));
+//                    System.out.println("2size："+Dictionary.getDecode().get(class1));
+                    int class2 = owlBeanList.get(0).getRuleHead().get(0);
+                    int property = owlBeanList.get(1).getRuleHead().get(0);
+                    int class3 = owlBeanList.get(1).getRuleHead().get(1);
+                    addEquiClassSomeValue(class1, class2, property, class3);
+
+                }
+                else if(owlBeanList.get(0).getType() == 2002 && owlBeanList.get(1).getType() == 3006){//NonScienceStudent
+//                    System.out.println("20023006size："+Dictionary.getDecode().get(class1));
+                    int class2 = owlBeanList.get(0).getRuleHead().get(0);
+                    int property = owlBeanList.get(0).getRuleHead().get(0);
+                    int class3 = owlBeanList.get(0).getRuleHead().get(1);
+                    addEquiNonScienceStudent(class1,class2, property,class3);
+                }
+                else if(owlBeanList.get(0).getType() == 3006 && owlBeanList.get(1).getType() == 3005){//GraduateStudent
+//                    System.out.println("30063005size："+Dictionary.getDecode().get(class1));
+
+                    int property = owlBeanList.get(0).getRuleHead().get(0);
+                    int class3 = owlBeanList.get(0).getRuleHead().get(1);
+                    addEquiGraduateStudent(class1,property,class3);
+//                    int class4 = owlBeanList.get(1).getRuleHead().get(1);
+//                    System.out.println("30063005size："+Dictionary.getDecode().get(property));
+//                    System.out.println("30063005size："+Dictionary.getDecode().get(class3));
+//                    System.out.println("30063005size："+Dictionary.getDecode().get(class4));
+                }
+                else{
+                    System.out.println("未处理等价类");
                 }
             }
             else if(owlBeanList.size() == 3){
@@ -66,6 +92,75 @@ public class EquiClassRuleRewrite {
 //
 //            }
         }
+    }
+
+    private static void addEquiNonScienceStudent(int class1, int class2, int r, int class3) {
+        DicOwlBean dicOwlBean = new DicOwlBean();
+        dicOwlBean.setType(20);//class2
+        dicOwlBean.setRuleHead(class1,class2,r,class3);
+        StringBuffer ssbuff = new StringBuffer("*0");
+        String key = ssbuff.append(class2).toString();
+        DicOwlMap.addDicOwlMap(dicOwlBean, key);
+
+        DicOwlBean dicOwlBean1 = new DicOwlBean();
+        dicOwlBean1.setType(21);//r
+        dicOwlBean1.setRuleHead(class1,class2,r,class3);
+        StringBuffer ssbuff1 = new StringBuffer("*");
+        String key1 = ssbuff1.append(r).append("*").toString();
+        DicOwlMap.addDicOwlMap(dicOwlBean1, key1);
+        if(class3 == 1){//owl:Thing
+            System.out.println("class3==1: "+Dictionary.getDecode().get(class1));
+            return;
+        }
+        DicOwlBean dicOwlBean2 = new DicOwlBean();
+        dicOwlBean2.setType(22);//class3
+        dicOwlBean2.setRuleHead(class1,class2,r,class3);
+        StringBuffer ssbuff2 = new StringBuffer("*0");
+        String key2 = ssbuff2.append(class3).toString();
+        DicOwlMap.addDicOwlMap(dicOwlBean2, key2);
+    }
+
+    private static void addEquiGraduateStudent(int class1, int property, int class3) {
+        DicOwlBean dicOwlBean = new DicOwlBean();
+        dicOwlBean.setType(18);//class2
+        dicOwlBean.setRuleHead(class1,property,class3);
+        StringBuffer ssbuff = new StringBuffer("*");
+        String key = ssbuff.append(property).append("*").toString();
+        DicOwlMap.addDicOwlMap(dicOwlBean, key);
+
+        DicOwlBean dicOwlBean2 = new DicOwlBean();
+        dicOwlBean2.setType(19);//class3
+        dicOwlBean2.setRuleHead(class1,property,class3);
+        StringBuffer ssbuff2 = new StringBuffer("*0");
+        String key2 = ssbuff2.append(class3).toString();
+        DicOwlMap.addDicOwlMap(dicOwlBean2, key2);
+    }
+
+    private static void addEquiClassSomeValue(int class1, int class2, int r, int class3) {
+        DicOwlBean dicOwlBean = new DicOwlBean();
+        dicOwlBean.setType(0);//class2
+        dicOwlBean.setRuleHead(class1,class2,r,class3);
+        StringBuffer ssbuff = new StringBuffer("*0");
+        String key = ssbuff.append(class2).toString();
+        DicOwlMap.addDicOwlMap(dicOwlBean, key);
+
+        DicOwlBean dicOwlBean1 = new DicOwlBean();
+        dicOwlBean1.setType(1);//r
+        dicOwlBean1.setRuleHead(class1,class2,r,class3);
+        StringBuffer ssbuff1 = new StringBuffer("*");
+        String key1 = ssbuff1.append(r).append("*").toString();
+        DicOwlMap.addDicOwlMap(dicOwlBean1, key1);
+        if(class3 == 1){//owl:Thing
+            System.out.println("class3==1: "+Dictionary.getDecode().get(class1));
+            return;
+        }
+        DicOwlBean dicOwlBean2 = new DicOwlBean();
+        dicOwlBean2.setType(2);//class3
+        dicOwlBean2.setRuleHead(class1,class2,r,class3);
+        StringBuffer ssbuff2 = new StringBuffer("*0");
+        String key2 = ssbuff2.append(class3).toString();
+        DicOwlMap.addDicOwlMap(dicOwlBean2, key2);
+
     }
 
     private static void addWomanCollege(int class1, int class2, int property, int class3, int class4) {

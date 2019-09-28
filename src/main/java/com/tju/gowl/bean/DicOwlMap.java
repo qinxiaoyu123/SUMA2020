@@ -151,32 +151,7 @@ public class DicOwlMap {
 
     }
     public static void addDicOwlMap(int type, int class1, int class2, int r, int class3) {
-        if(type == 2001){
-            DicOwlBean dicOwlBean = new DicOwlBean();
-            dicOwlBean.setType(0);//class2
-            dicOwlBean.setRuleHead(class1,class2,r,class3);
-            StringBuffer ssbuff = new StringBuffer("*0");
-            String key = ssbuff.append(class2).toString();
-
-            addDicOwlMap(dicOwlBean, key);
-
-            DicOwlBean dicOwlBean1 = new DicOwlBean();
-            dicOwlBean1.setType(1);//r
-            dicOwlBean1.setRuleHead(class1,class2,r,class3);
-            StringBuffer ssbuff1 = new StringBuffer("*");
-            String key1 = ssbuff1.append(r).append("*").toString();
-
-            addDicOwlMap(dicOwlBean1, key1);
-
-            DicOwlBean dicOwlBean2 = new DicOwlBean();
-            dicOwlBean2.setType(2);//class3
-            dicOwlBean2.setRuleHead(class1,class2,r,class3);
-            StringBuffer ssbuff2 = new StringBuffer("*0");
-            String key2 = ssbuff2.append(class3).toString();
-
-            addDicOwlMap(dicOwlBean2, key2);
-        }
-        else if(type == 3008){//minCardinality  class1, cardinality, propertyInt, class2Int
+         if(type == 3008){//minCardinality  class1, cardinality, propertyInt, class2Int
             DicOwlBean dicOwlBean = new DicOwlBean();
             dicOwlBean.setType(3008);//class2
             dicOwlBean.setRuleHead(class2,r,class3);
