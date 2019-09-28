@@ -50,8 +50,8 @@ public class EquiClassRuleRewrite {
                 else if(owlBeanList.get(0).getType() == 2002 && owlBeanList.get(1).getType() == 3006){//NonScienceStudent
 //                    System.out.println("20023006size："+Dictionary.getDecode().get(class1));
                     int class2 = owlBeanList.get(0).getRuleHead().get(0);
-                    int property = owlBeanList.get(0).getRuleHead().get(0);
-                    int class3 = owlBeanList.get(0).getRuleHead().get(1);
+                    int property = owlBeanList.get(1).getRuleHead().get(0);
+                    int class3 = owlBeanList.get(1).getRuleHead().get(1);
                     addEquiNonScienceStudent(class1,class2, property,class3);
                 }
                 else if(owlBeanList.get(0).getType() == 3006 && owlBeanList.get(1).getType() == 3005){//GraduateStudent

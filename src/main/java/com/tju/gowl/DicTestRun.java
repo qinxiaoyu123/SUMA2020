@@ -46,10 +46,12 @@ public class DicTestRun {
         //SerialReason.writeFile("data/out.txt");
         long startTime4=System.currentTimeMillis();
         System.out.println("reason time"+(startTime4-startTime3));
+        DictionaryOutput.outWriteSameAs("data/sameAs.nt");
         DictionaryOutput.encodeMap("data/encode.nt");
 //        DictionaryOutput.outWriteDicDataMap("data/new.nt");
         //inverse write
         DictionaryOutput.outWriteDicDataMap("data/new_uobm1.nt",1);
+        //owl:Thing <owl:Thing> jena 解析
         test.rewriteThing();
         jenaQuerySimple("data/newThing_oubm1.nt", "data/test.sparql", null);
     }

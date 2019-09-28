@@ -12,10 +12,41 @@ public class compare1 {
     static HashSet<String> data_pellet = new HashSet<>();
 
     public static void main(String[] args) throws Exception {
-        String pathABox1="F:\\first paper\\experiments\\pagodatest\\result.nt";
+//        runX();
+        runXY();
+    }
+
+    private static void runXY() throws IOException {
+        String pathABox1="D:\\daima\\pagodatest\\uobm\\result1.nt";
         String pathABox2="data/resultnew.nt";
         readPelletData(pathABox1);
         readgOWLData(pathABox2);
+        System.out.println(data_gOWL.size());
+        System.out.println(data_pellet.size());
+
+//        data_pellet.removeAll(data_gOWL);
+//        Iterator<String> iter = data_pellet.iterator();
+//        while (iter.hasNext()){
+//            System.out.println(iter.next());
+//        }
+////        System.out.println(data_pellet);
+//        System.out.println(data_pellet.size());
+
+        data_gOWL.removeAll(data_pellet);
+        Iterator<String> iter = data_gOWL.iterator();
+        while (iter.hasNext()){
+            System.out.println(iter.next());
+        }
+//        System.out.println(data_pellet);
+        System.out.println(data_gOWL.size());
+
+    }
+
+    private static void runX() throws IOException {
+        String pathABox1="D:\\daima\\pagodatest\\uobm\\result.nt";
+        String pathABox2="data/resultnew.nt";
+        readPelletDataSimple(pathABox1);
+        readgOWLDataSimple(pathABox2);
         System.out.println(data_gOWL.size());
         System.out.println(data_pellet.size());
         data_pellet.removeAll(data_gOWL);
@@ -27,6 +58,41 @@ public class compare1 {
         System.out.println(data_pellet.size());
     }
 
+    private static void readgOWLDataSimple(String pathABox2) throws IOException {
+        Path fpath= Paths.get(pathABox2);
+        BufferedReader bfr= Files.newBufferedReader(fpath);
+        String line;
+        StringBuffer ss = new StringBuffer();
+        while((line=bfr.readLine())!=null) {
+            String ss1 = ss.append('<').append(line.trim()).append(">").toString();
+//                System.out.println(ss1);
+            if(data_gOWL.contains(ss1)){
+                System.out.println("gowl重复： "+ss1);
+            }
+            data_gOWL.add(ss1);
+//                System.out.println("gowl： "+ss1);
+            ss.setLength(0);
+
+
+        }
+    }
+
+    private static void readPelletDataSimple(String pathABox) throws IOException {
+        Path fpath= Paths.get(pathABox);
+        BufferedReader bfr= Files.newBufferedReader(fpath);
+
+        String line;
+
+        StringBuffer ss = new StringBuffer();
+        while((line=bfr.readLine())!=null) {
+            String ss1 = line.trim();
+            if(data_pellet.contains(ss1)){
+                System.out.println("pagoda重复： "+ss1);
+            }
+            data_pellet.add(ss1);
+            ss.setLength(0);
+        }
+    }
     private static void readgOWLData(String pathABox2) throws IOException {
         Path fpath= Paths.get(pathABox2);
         BufferedReader bfr= Files.newBufferedReader(fpath);

@@ -2,11 +2,14 @@ package com.tju.gowl.io;
 
 import com.tju.gowl.bean.*;
 import com.tju.gowl.dictionary.Dictionary;
+import com.tju.gowl.reason.DicSerialReason;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +26,27 @@ public class DictionaryOutput {
         out.flush();
         out.close();
     }
-
+    public static void outWriteSameAs(String path) throws IOException {
+        Map<Integer, String> decode = Dictionary.getDecode();
+        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path),"GBK"));
+        List<HashSet<Integer>> poolEqui = DicSerialReason.equiPool;
+        Iterator<HashSet<Integer>> poolIter = poolEqui.iterator();
+        int count = 0;
+        while(poolIter.hasNext()){
+            count++;
+            out.write("EquiPool "+count);
+            out.newLine();
+            HashSet<Integer> poolTmp = poolIter.next();
+            Iterator<Integer> poolTmpIter = poolTmp.iterator();
+            while(poolTmpIter.hasNext()){
+                Integer ii = poolTmpIter.next();
+                out.write(decode.get(ii));//写入文件
+                out.newLine();
+            }
+        }
+        out.flush();
+        out.close();
+    }
     public static void outWriteEquiDicOwlMap(String pathTboxNew) throws IOException {
         Map<Integer, String> decode = Dictionary.getDecode();
         Map<Integer, List<DicOwlBean>> totalRule = DicOwlMap.EquiDicRuleMap;

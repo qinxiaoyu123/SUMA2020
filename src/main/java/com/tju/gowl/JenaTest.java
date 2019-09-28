@@ -175,6 +175,8 @@ public class JenaTest {
 //        String dataPath = "data/new_lubm10.nt";
 //        String queryPath = "data/standard_and_gap.sparql";
         String queryPath = "data/test.sparql";
+//        String answerPath = "data/answer.sparql";
+//        String queryPath = "data/standard.sparql";
         String answerPath = null;
         jenaQuerySimple(dataPath, queryPath, answerPath);
     }
