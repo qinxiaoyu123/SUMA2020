@@ -3,6 +3,7 @@ package com.tju.gowl.reason;
 import com.tju.gowl.bean.*;
 import com.tju.gowl.dictionary.Dictionary;
 
+import java.io.*;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -15,7 +16,22 @@ public class DicSerialReason {
     private static boolean someValueFlag = false;
     public static List<HashSet<Integer>> equiPool = new ArrayList<>();
     static Map<Integer, Integer> equiMapping = new ConcurrentHashMap<>();
-    public DicSerialReason(String rdf) {
+    static Map<Integer, Integer> equiRepresentation = new ConcurrentHashMap<>();
+
+
+    private static BufferedWriter out;
+
+    static {
+        try {
+            out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("testManyHobbies.nt"),"GBK"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public DicSerialReason(String rdf) throws UnsupportedEncodingException, FileNotFoundException {
         StringBuffer ss = new StringBuffer("<");
         String sameAsLongString = ss.append(rdf).append("#").append(sameAsString).append(">").toString();
         sameAsInt = Dictionary.encodeRdf(sameAsLongString);
@@ -23,7 +39,7 @@ public class DicSerialReason {
         DicOwlMap.addDicOwlMap(4, sameAsInt);
     }
 
-    public static void reason(){
+    public static void reason() throws IOException {
         int loopCount = 1;
         //遍历数据
         Map<Integer, DicRdfDataBean> totalData = DicRdfDataMap.getDicDataMap();
@@ -58,7 +74,12 @@ public class DicSerialReason {
                     int Rs = rdfData.getRs();
                     int Rp = rdfData.getRp();
                     int Ro = rdfData.getRo();
-
+                    boolean rsBool =  boolSameAs(Rs);
+                    boolean rpBool =  boolSameAs(Rp);
+                    boolean roBool =  boolSameAs(Ro);
+                    if(!(rsBool && rpBool && roBool)){
+                        continue;
+                    }
                     convertDataToRuleKey(ruleKey, Rs, Rp, Ro);
 
                     ruleKey.forEach(str -> {
@@ -125,7 +146,11 @@ public class DicSerialReason {
                                     type11Reason(Isp, Iop, Rs, Rp, Ro, head);
                                 }
                                 else if(type == 12){
-                                    type12Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                    try {
+                                        type12Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
                                 else if(type == 14){
                                     type14Reason(Isp, Iop, Rs, Rp, Ro, head);
@@ -200,7 +225,17 @@ public class DicSerialReason {
 
         outEquiPool();
         outEquiMapping();
+        out.flush();
+        out.close();
+    }
 
+    private static boolean boolSameAs(int rs) {
+        if(equiRepresentation.containsKey(rs)){
+            if(equiRepresentation.get(rs)!= rs){
+                return false;
+            }
+        }
+        return true;
     }
 
     private static void type22Reason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro, List<Integer> head) {
@@ -380,7 +415,7 @@ public class DicSerialReason {
     }
 
 
-    private static void type12Reason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro1, List<Integer> head) {
+    private static void type12Reason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro1, List<Integer> head) throws IOException {
         int class1 = head.get(0);
         int count =head.get(1);
         int property = head.get(2);
@@ -396,6 +431,20 @@ public class DicSerialReason {
             indexNew = dicDataBeanIterator.getNsp();
             int ro = dicDataBeanIterator.getRo();
             if(class2 == 1){//TODO owl:Thing 情况
+                out.write("test"+Dictionary.getDecode().get(class1));
+                out.newLine();
+                out.write("test"+Dictionary.getDecode().get(rs));
+                out.newLine();
+                out.write("test"+Dictionary.getDecode().get(rp));
+                out.newLine();
+                if(Dictionary.getDecode().containsKey(ro)){
+                    out.write("test"+Dictionary.getDecode().get(ro));
+                    out.newLine();
+                }
+                else{
+                    out.write("test"+ro);
+                    out.newLine();
+                }
                 count1++;
             }
             else{
@@ -698,6 +747,106 @@ public class DicSerialReason {
             tempPool.add(rs);
             equiMapping.put(rs,rsTmpEquiv);
         }
+        //xinjia
+        //TODO 该放哪里
+        reFreshEquiRepre(rs);
+        reFreshEquiRepre(rsTmp);
+    }
+
+    private static void reFreshEquiRepre(int rs) {
+        int poolIndex = equiMapping.get(rs)-1;
+        HashSet<Integer> poolTmp = equiPool.get(poolIndex);
+        int minNew = getMin(poolTmp);
+        Iterator<Integer> samAsIter = poolTmp.iterator();
+        while(samAsIter.hasNext()){
+            int ii = samAsIter.next();
+            if(equiRepresentation.containsKey(ii)){
+                int tmp = equiRepresentation.get(ii);
+                if(minNew != ii && minNew != tmp){
+                    replaceWithMinIsp(ii, minNew);
+                    replaceWithMinIop(ii, minNew);
+                }
+                else {
+                    continue;
+                }
+            }
+            else{
+                if(minNew == ii){
+                    equiRepresentation.put(ii, ii);
+                }
+                else{
+                    equiRepresentation.put(ii, minNew);
+                    replaceWithMinIsp(ii, minNew);
+                    replaceWithMinIop(ii, minNew);
+                }
+            }
+        }
+    }
+
+    private static void replaceWithMinIop(int ii, int minNew) {
+        Map<Integer, List<IndexBean>> isp = IndexMap.getIsp();
+        Map<Integer, List<IndexBean>> iop = IndexMap.getIop();
+        List<IndexBean> indexBeanList = iop.get(ii);
+        Iterator<IndexBean> indexBeanListIter = indexBeanList.iterator();
+        while(indexBeanListIter.hasNext()){
+            IndexBean beanTmp = indexBeanListIter.next();
+            int rpTmp = beanTmp.getResource();
+            int indexTmp = beanTmp.getIndex();
+            int firstTripleIop = indexTmp;
+            if(firstTripleIop == -1){ return; }
+            DicRdfDataBean dicDataBeanIterator;
+            int indexNew = firstTripleIop;
+            do{
+                dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
+                indexNew = dicDataBeanIterator.getNop();
+                int rs1 = dicDataBeanIterator.getRs();
+                if(!DicRdfDataMap.checkDuplicate(rs1, rpTmp, minNew, isp)) {
+                    //rs rp ro1
+                    DicRdfDataMap.addNewRdfDataBean(isp, iop, rs1, rpTmp, minNew);
+                }
+            }while(indexNew != -1);
+        }
+    }
+
+    private static void replaceWithMinIsp(int ii, int minNew) {
+        Map<Integer, List<IndexBean>> isp = IndexMap.getIsp();
+        Map<Integer, List<IndexBean>> iop = IndexMap.getIop();
+
+        List<IndexBean> indexBeanList = isp.get(ii);
+        Iterator<IndexBean> indexBeanListIter = indexBeanList.iterator();
+        while(indexBeanListIter.hasNext()){
+            IndexBean beanTmp = indexBeanListIter.next();
+            int rpTmp = beanTmp.getResource();
+            int indexTmp = beanTmp.getIndex();
+            int firstTripleIsp = indexTmp;
+            if(firstTripleIsp == -1){ return; }
+            DicRdfDataBean dicDataBeanIterator;
+            int indexNew = firstTripleIsp;
+            do{
+                dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
+                indexNew = dicDataBeanIterator.getNsp();
+                int ro1 = dicDataBeanIterator.getRo();
+                if(!DicRdfDataMap.checkDuplicate(minNew, rpTmp, ro1, isp)) {
+                    //rs rp ro1
+                    DicRdfDataMap.addNewRdfDataBean(isp, iop, minNew, rpTmp, ro1);
+                }
+            }while(indexNew != -1);
+        }
+    }
+
+
+
+    private static int getMin(HashSet<Integer> poolTmp) {
+        Iterator<Integer> i = poolTmp.iterator();
+        int min=0;
+        int ii;
+        while(i.hasNext()){
+            ii = i.next();
+            if(ii <= min){
+                 min = ii;
+            }
+        }
+        return min;
     }
 
     public static int findEquivPoolIndex(int rs) {
