@@ -78,6 +78,9 @@ public class DicSerialReason {
                     boolean rpBool =  boolSameAs(Rp);
                     boolean roBool =  boolSameAs(Ro);
                     if(!(rsBool && rpBool && roBool)){
+                        System.out.println("跳过"+Dictionary.getDecode().get(Rs));
+                        System.out.println("跳过"+Dictionary.getDecode().get(Rp));
+                        System.out.println("跳过"+Dictionary.getDecode().get(Ro));
                         continue;
                     }
                     convertDataToRuleKey(ruleKey, Rs, Rp, Ro);
@@ -749,8 +752,9 @@ public class DicSerialReason {
         }
         //xinjia
         //TODO 该放哪里
+        //rs 和 rsTmp是一个池子
         reFreshEquiRepre(rs);
-        reFreshEquiRepre(rsTmp);
+//        reFreshEquiRepre(rsTmp);
     }
 
     private static void reFreshEquiRepre(int rs) {
@@ -786,6 +790,9 @@ public class DicSerialReason {
     private static void replaceWithMinIop(int ii, int minNew) {
         Map<Integer, List<IndexBean>> isp = IndexMap.getIsp();
         Map<Integer, List<IndexBean>> iop = IndexMap.getIop();
+        System.out.println(Dictionary.getDecode().get(ii));
+        System.out.println(Dictionary.getDecode().get(minNew));
+        if(!iop.containsKey(ii)) return;
         List<IndexBean> indexBeanList = iop.get(ii);
         Iterator<IndexBean> indexBeanListIter = indexBeanList.iterator();
         while(indexBeanListIter.hasNext()){
@@ -811,7 +818,7 @@ public class DicSerialReason {
     private static void replaceWithMinIsp(int ii, int minNew) {
         Map<Integer, List<IndexBean>> isp = IndexMap.getIsp();
         Map<Integer, List<IndexBean>> iop = IndexMap.getIop();
-
+        if(!isp.containsKey(ii)) return;
         List<IndexBean> indexBeanList = isp.get(ii);
         Iterator<IndexBean> indexBeanListIter = indexBeanList.iterator();
         while(indexBeanListIter.hasNext()){
@@ -838,7 +845,7 @@ public class DicSerialReason {
 
     private static int getMin(HashSet<Integer> poolTmp) {
         Iterator<Integer> i = poolTmp.iterator();
-        int min=0;
+        int min = Integer.MAX_VALUE;
         int ii;
         while(i.hasNext()){
             ii = i.next();

@@ -13,37 +13,40 @@ public class compare1 {
 
     public static void main(String[] args) throws Exception {
 //        runX();
-        runXY();
+//////        runXY();
+//        readgOWLData("data/resultnew1.nt");
+        readgOWLDataSimple("data/resultnew1.nt");
+        System.out.println(data_gOWL.size());
     }
 
     private static void runXY() throws IOException {
-        String pathABox1="D:\\daima\\pagodatest\\uobm\\result1.nt";
+        String pathABox1="D:\\daima\\pagodatest\\uobm\\result9.nt";
         String pathABox2="data/resultnew.nt";
         readPelletData(pathABox1);
         readgOWLData(pathABox2);
         System.out.println(data_gOWL.size());
         System.out.println(data_pellet.size());
 
-//        data_pellet.removeAll(data_gOWL);
-//        Iterator<String> iter = data_pellet.iterator();
-//        while (iter.hasNext()){
-//            System.out.println(iter.next());
-//        }
-////        System.out.println(data_pellet);
-//        System.out.println(data_pellet.size());
-
-        data_gOWL.removeAll(data_pellet);
-        Iterator<String> iter = data_gOWL.iterator();
+        data_pellet.removeAll(data_gOWL);
+        Iterator<String> iter = data_pellet.iterator();
         while (iter.hasNext()){
             System.out.println(iter.next());
         }
 //        System.out.println(data_pellet);
-        System.out.println(data_gOWL.size());
+        System.out.println(data_pellet.size());
+
+//        data_gOWL.removeAll(data_pellet);
+//        Iterator<String> iter = data_gOWL.iterator();
+//        while (iter.hasNext()){
+//            System.out.println(iter.next());
+//        }
+////        System.out.println(data_pellet);
+//        System.out.println(data_gOWL.size());
 
     }
 
     private static void runX() throws IOException {
-        String pathABox1="D:\\daima\\pagodatest\\uobm\\result.nt";
+        String pathABox1="D:\\daima\\pagodatest\\uobm\\result9.nt";
         String pathABox2="data/resultnew.nt";
         readPelletDataSimple(pathABox1);
         readgOWLDataSimple(pathABox2);

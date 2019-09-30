@@ -121,14 +121,14 @@ public class JenaTest {
         Model model = ModelFactory.createMemModelMaker().createDefaultModel();
         //extended data
         model.read(dataPath);
-        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("data/resultnew.nt"),"GBK"));
+        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("data/resultnew1.nt"),"GBK"));
         long startTime1;
         long startTime2;
         List<String> queryList = query.getQueryList();
         Iterator<String> QueryIterator = queryList.iterator();
         int count = 0;
         while(QueryIterator.hasNext()){
-
+            resultsSet.clear();
             String queryString = QueryIterator.next();
             startTime1 = System.currentTimeMillis();
             Query query = QueryFactory.create(queryString);
@@ -138,19 +138,38 @@ public class JenaTest {
             ResultSet results = qe.execSelect();
 
             //输出查询结果
-            System.out.println("遍历结果集依次输出结果：");
+//            System.out.println("遍历结果集依次输出结果：");
+            StringBuffer ss = new StringBuffer();
             int resultsCount = 0;
             while(results.hasNext()){
                 QuerySolution next = results.next();
                 RDFNode resource = next.get("?x");
                 if(next.get("?y")!=null){
                     RDFNode resource1 = next.get("?y");
-                    out.write(resource.toString()+" "+resource1.toString());
-                    out.newLine();
-                    resultsCount ++;
+                    if(next.get("?z")!=null){
+                        RDFNode resource2 = next.get("?z");
+                        ss.setLength(0);
+                        ss.append(resource.toString()).append(" ").append(resource1.toString()).append(" ").append(resource2.toString());
+                        out.write(ss.toString());
+                        resultsSet.add(ss.toString());
+                        out.newLine();
+                        resultsCount ++;
+                    }
+                    else{
+                        ss.setLength(0);
+                        ss.append(resource.toString()).append(" ").append(resource1.toString());
+                        out.write(ss.toString());
+                        resultsSet.add(ss.toString());
+                        out.newLine();
+                        resultsCount ++;
+                    }
+
                 }
                 else{
-                    out.write(resource.toString());//写入文件
+                    ss.setLength(0);
+                    ss.append(resource.toString());
+                    out.write(ss.toString());
+                    resultsSet.add(ss.toString());
                     out.newLine();
                     resultsCount ++;
                 }
@@ -163,6 +182,7 @@ public class JenaTest {
             System.out.println("q"+" "+count);
             System.out.println("queryTime"+(startTime2-startTime1));
             System.out.println("resultsCount"+resultsCount);
+            System.out.println("resultsCount"+resultsSet.size());
 
         }
         out.flush();
