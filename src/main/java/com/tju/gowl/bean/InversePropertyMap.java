@@ -4,6 +4,7 @@ import com.tju.gowl.dictionary.Dictionary;
 import org.semanticweb.owlapi.model.*;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -13,8 +14,9 @@ public class InversePropertyMap {
     static int inverseCount = 0;
 //    private static final Map<Integer, InversePropertyBean> InversePropertyMap = new ConcurrentHashMap<>();
 //    private static final Map<String, Integer> PropertyMap = new ConcurrentHashMap<>();
-    private static final Map<Integer, Integer> InverseMap = new ConcurrentHashMap<>();
-    private static final Map<Integer, Integer> InverseMapDecode = new ConcurrentHashMap<>();
+    public static final Map<Integer, Integer> InverseMap = new ConcurrentHashMap<>();
+    public static final Map<Integer, Integer> InverseMapDecode = new ConcurrentHashMap<>();
+    public static final List<Integer> InverseProperty = new ArrayList<>();
 
 
 //    public static Map<Integer, InversePropertyBean> getInversePropertyMap(){ return InversePropertyMap; }

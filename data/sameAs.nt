@@ -8,17 +8,17 @@ EquiPool 3
 <http://www.Department16.University0.edu/FullProfessor5>
 <http://www.Department16.University0.edu/Chair16>
 EquiPool 4
-<http://www.Department16.University0.edu/FullProfessor8>
 <http://www.Department16.University0.edu/SameIndividual1>
+<http://www.Department16.University0.edu/FullProfessor8>
 EquiPool 5
-<http://www.Department16.University0.edu/SameIndividual0>
 <http://www.Department16.University0.edu/AssociateProfessor10>
+<http://www.Department16.University0.edu/SameIndividual0>
 EquiPool 6
 <http://www.Department3.University0.edu/Chair3>
 <http://www.Department3.University0.edu/FullProfessor5>
 EquiPool 7
-<http://www.Department3.University0.edu/SameIndividual3>
 <http://www.Department3.University0.edu/FullProfessor6>
+<http://www.Department3.University0.edu/SameIndividual3>
 EquiPool 8
 <http://www.Department3.University0.edu/FullProfessor9>
 <http://www.Department3.University0.edu/SameIndividual0>
@@ -95,8 +95,8 @@ EquiPool 31
 <http://www.Department11.University0.edu/FullProfessor3>
 <http://www.Department11.University0.edu/SameIndividual0>
 EquiPool 32
-<http://www.Department11.University0.edu/SameIndividual1>
 <http://www.Department11.University0.edu/AssistantProfessor1>
+<http://www.Department11.University0.edu/SameIndividual1>
 EquiPool 33
 <http://www.Department11.University0.edu/SameIndividual2>
 <http://www.Department11.University0.edu/Lecturer4>

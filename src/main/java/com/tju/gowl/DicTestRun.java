@@ -5,6 +5,7 @@ import com.tju.gowl.bean.RdfDataBean;
 import com.tju.gowl.bean.RdfDataMap;
 import com.tju.gowl.dictionary.Dictionary;
 import com.tju.gowl.io.DictionaryInput;
+import com.tju.gowl.io.DictionaryInputNew;
 import com.tju.gowl.io.DictionaryOutput;
 import com.tju.gowl.io.Input;
 import com.tju.gowl.reason.DicSerialReason;
@@ -28,14 +29,15 @@ public class DicTestRun {
         //type owl:Thing 编码
         Dictionary dd = new Dictionary();
         //规则预处理
-        DictionaryInput.readTBox(pathTBox);
+//        DictionaryInput.readTBox(pathTBox);
+        DictionaryInputNew.readTBox(pathTBox);
         EquiClassRuleRewrite.rewrite();
 //        InversePropertyMap.rewriteInverseRule();
         //数据预处理
         long startTime1 = System.currentTimeMillis();
         DictionaryInput.readABox(pathABox, "n","n",1);
         long startTime2 = System.currentTimeMillis();
-        System.out.println("reason time"+(startTime2-startTime1));
+        System.out.println("reading time"+(startTime2-startTime1));
 
         DictionaryOutput output=new DictionaryOutput();
         output.outWriteDicOwlMap("data/outRule.txt");

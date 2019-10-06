@@ -1,5 +1,6 @@
 package com.tju.gowl.io;
 
+import com.tju.gowl.axiomProcessor.Processor;
 import com.tju.gowl.bean.*;
 import com.tju.gowl.dictionary.Dictionary;
 import com.tju.gowl.reason.EquiClassRuleRewrite;
@@ -19,6 +20,12 @@ import java.util.regex.Pattern;
 
 public class DictionaryInput {
 //include 指定尖括号 0包含 1不包含
+     /*   ObjectPropertyDomain 2022
+                            ObjectPropertyRange 2023
+                            ObjectSomeValuesFrom 3005
+                            SubClassOf 2002
+                            SubObjectPropertyOf 2013
+                            SymmetricObjectProperty 2017 */
     public static List<Integer> classAssertion = new ArrayList<>();
 
     public static void readABox(String pathABox, String rdf, String ub, int include){
@@ -133,6 +140,7 @@ public class DictionaryInput {
         Map<Integer, List<IndexBean>> isp= IndexMap.getIsp();
         Map<Integer, List<IndexBean>> iop= IndexMap.getIop();
         Iterator<Integer> iter = classAssertion.iterator();
+        System.out.println("classAssertion"+classAssertion.size());
         while(iter.hasNext()){
             int tmp1 = iter.next();
             int tmp2 = iter.next();
@@ -206,6 +214,7 @@ public class DictionaryInput {
             }
             else if(axiom instanceof OWLClassAssertionAxiom){
 //                OWLClassAssertionAxiom2005
+                System.out.println("OWLClassAssertionAxiom"+axiom.typeIndex());
                 String class1 = ((OWLClassAssertionAxiom) axiom).getClassExpression().toString();
                 String individual = ((OWLClassAssertionAxiom) axiom).getIndividual().toString();
 //                type = axiom.typeIndex();
@@ -214,6 +223,15 @@ public class DictionaryInput {
                 classAssertion.add(individualInt);
                 classAssertion.add(classInt);
 //                DicOwlMap.addDicOwlMap(type, pro);
+            }
+            else if(axiom instanceof OWLInverseObjectPropertiesAxiom){
+//                System.out.println("OWLInverseObjectPropertiesAxiom"+axiom.typeIndex());
+            }
+            else if(axiom instanceof OWLEquivalentObjectPropertiesAxiom){
+//                System.out.println("OWLEquivalentObjectPropertiesAxiom"+axiom.typeIndex());
+            }
+            else if(axiom instanceof OWLDisjointClassesAxiom){
+                System.out.println("OWLDisjointClassesAxiom"+axiom.typeIndex());
             }
 //            else if(axiom instanceof OWLDeclarationAxiom){
 ////                OWLClassAssertionAxiom2005
@@ -321,6 +339,7 @@ public class DictionaryInput {
     }
 
     private static void EquivalentClassProcessor(OWLEquivalentClassesAxiom axiom, int i) {
+        System.out.println("EquivalentClassProcessor"+axiom.typeIndex());
         if(axiom.toString().contains("ObjectComplementOf")){
             axiom = (OWLEquivalentClassesAxiom) axiom.getNNF();
         }
@@ -428,7 +447,9 @@ public class DictionaryInput {
                 OWLSubCLassProcessor(class1,class2);
             }
         }
-        DicOwlMap.addEquiDicRuleMap(class1,2002,class2);
+        if(class2 != 0){
+            DicOwlMap.addEquiSubClassOfRuleMap(class1, Processor.SubClassOf,class2);
+        }
 //        DicOwlMap.addRuleMap(class1,2002,class2);
         iterator = ((OWLObjectIntersectionOf)axiom).getOperandsAsList().iterator();
         while(iterator.hasNext()) {

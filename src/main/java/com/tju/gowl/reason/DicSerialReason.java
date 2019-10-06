@@ -78,9 +78,9 @@ public class DicSerialReason {
                     boolean rpBool =  boolSameAs(Rp);
                     boolean roBool =  boolSameAs(Ro);
                     if(!(rsBool && rpBool && roBool)){
-                        System.out.println("跳过"+Dictionary.getDecode().get(Rs));
-                        System.out.println("跳过"+Dictionary.getDecode().get(Rp));
-                        System.out.println("跳过"+Dictionary.getDecode().get(Ro));
+//                        System.out.println("跳过"+Dictionary.getDecode().get(Rs));
+//                        System.out.println("跳过"+Dictionary.getDecode().get(Rp));
+//                        System.out.println("跳过"+Dictionary.getDecode().get(Ro));
                         continue;
                     }
                     convertDataToRuleKey(ruleKey, Rs, Rp, Ro);
@@ -226,8 +226,8 @@ public class DicSerialReason {
             loopCount++;
         }
 
-        outEquiPool();
-        outEquiMapping();
+//        outEquiPool();
+//        outEquiMapping();
         out.flush();
         out.close();
     }
@@ -604,9 +604,9 @@ public class DicSerialReason {
 
     private static void functionalObjectPropertyReason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro) {
         int rsEquiv = findEquivPoolIndex(rs);
-        System.out.println(Dictionary.getDecode().get(rs));
-        System.out.println(Dictionary.getDecode().get(rp));
-        System.out.println(Dictionary.getDecode().get(ro));
+//        System.out.println(Dictionary.getDecode().get(rs));
+//        System.out.println(Dictionary.getDecode().get(rp));
+//        System.out.println(Dictionary.getDecode().get(ro));
         if(rsEquiv == 0){//没有相等individual
             loopRsRpFindRo(rs, rp, ro);
         }
@@ -790,8 +790,8 @@ public class DicSerialReason {
     private static void replaceWithMinIop(int ii, int minNew) {
         Map<Integer, List<IndexBean>> isp = IndexMap.getIsp();
         Map<Integer, List<IndexBean>> iop = IndexMap.getIop();
-        System.out.println(Dictionary.getDecode().get(ii));
-        System.out.println(Dictionary.getDecode().get(minNew));
+//        System.out.println(Dictionary.getDecode().get(ii));
+//        System.out.println(Dictionary.getDecode().get(minNew));
         if(!iop.containsKey(ii)) return;
         List<IndexBean> indexBeanList = iop.get(ii);
         Iterator<IndexBean> indexBeanListIter = indexBeanList.iterator();

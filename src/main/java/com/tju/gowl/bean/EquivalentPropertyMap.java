@@ -1,11 +1,14 @@
 package com.tju.gowl.bean;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class EquivalentPropertyMap {
-    private static final Map<Integer, Integer> EquivalentPropertyMap = new ConcurrentHashMap<>();
-    private static final Map<Integer, Integer> EquivalentPropertyMapDecode = new ConcurrentHashMap<>();
+    public static final Map<Integer, Integer> EquivalentPropertyMap = new ConcurrentHashMap<>();
+    public static final Map<Integer, Integer> EquivalentPropertyMapDecode = new ConcurrentHashMap<>();
+    public static final List<Integer> EquivalentPropertyList = new ArrayList<>();
 
     public static Map<Integer, Integer> getEquivalentPropertyMapDecode() {
         return EquivalentPropertyMapDecode;
