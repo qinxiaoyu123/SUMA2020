@@ -6,6 +6,7 @@ import com.tju.gowl.bean.EquivalentPropertyMap;
 import com.tju.gowl.bean.InversePropertyMap;
 import com.tju.gowl.dictionary.Dictionary;
 import com.tju.gowl.io.DictionaryInput;
+import com.tju.gowl.io.DictionaryInputNew;
 import com.tju.gowl.rank.unDirectedGraph;
 import org.semanticweb.owlapi.model.*;
 
@@ -18,7 +19,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Processor {
-//    public static List<Integer> classAssertion = new ArrayList<>();
+    public static List<Integer> classAssertion = new ArrayList<>();
     public static final int ObjectPropertyRange = 2023;
     public static final int ObjectPropertyDomain = 2022;
     public static final int SubClassOf = 2002;
@@ -56,8 +57,8 @@ public class Processor {
         String individual = axiom.getIndividual().toString();
         int classInt = Dictionary.encodeRdf(class1);
         int individualInt = Dictionary.encodeRdf(individual);
-        DictionaryInput.classAssertion.add(individualInt);
-        DictionaryInput.classAssertion.add(classInt);
+        classAssertion.add(individualInt);
+        classAssertion.add(classInt);
     }
 
     public static void FunctionalPropertyProcessor(OWLAxiom axiom, int ip) {

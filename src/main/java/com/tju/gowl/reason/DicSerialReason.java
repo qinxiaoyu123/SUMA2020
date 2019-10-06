@@ -31,13 +31,6 @@ public class DicSerialReason {
         }
     }
 
-    public DicSerialReason(String rdf) throws UnsupportedEncodingException, FileNotFoundException {
-        StringBuffer ss = new StringBuffer("<");
-        String sameAsLongString = ss.append(rdf).append("#").append(sameAsString).append(">").toString();
-        sameAsInt = Dictionary.encodeRdf(sameAsLongString);
-        //添加 sameAs 到规则表 ，便于后续匹配， 类型设定为4
-        DicOwlMap.addDicOwlMap(4, sameAsInt);
-    }
 
     public static void reason() throws IOException {
         int loopCount = 1;
@@ -78,9 +71,6 @@ public class DicSerialReason {
                     boolean rpBool =  boolSameAs(Rp);
                     boolean roBool =  boolSameAs(Ro);
                     if(!(rsBool && rpBool && roBool)){
-//                        System.out.println("跳过"+Dictionary.getDecode().get(Rs));
-//                        System.out.println("跳过"+Dictionary.getDecode().get(Rp));
-//                        System.out.println("跳过"+Dictionary.getDecode().get(Ro));
                         continue;
                     }
                     convertDataToRuleKey(ruleKey, Rs, Rp, Ro);
@@ -97,91 +87,95 @@ public class DicSerialReason {
                             SubClassOf 2002
                             SubObjectPropertyOf 2013
                             SymmetricObjectProperty 2017 */
-                                if (type == 2013) {//SubObjectPropertyOf 2013
-                                    subPropertyReason(totalData, iteratorMap, stashMap, Isp, Iop, Rs, head, Ro);
+                                switch (type){
+                                    case 2013://SubObjectPropertyOf 2013
+                                        subPropertyReason(totalData, iteratorMap, stashMap, Isp, Iop, Rs, head, Ro);
+                                        break;
+                                    case 2022://ObjectPropertyDomain 2022
+                                        basicReason(totalData, iteratorMap, stashMap, Isp, Iop, Rs, typeEncode, head);
+                                        break;
+                                    case 2023://ObjectPropertyRange 2023
+                                        basicReason(totalData, iteratorMap, stashMap, Isp, Iop, Ro, typeEncode, head);
+                                        break;
+                                    case 2002://SubClassOf 2002
+                                        basicReason(totalData, iteratorMap, stashMap, Isp, Iop, Rs, typeEncode, head);
+                                        break;
+                                    case 3005:
+                                        objectSomeValuesFromReason(totalData, iteratorMap, stashMap, Isp, Iop, Rs, head);
+                                        break;
+                                    case 0:
+                                        equivalentClass2Reason(Isp, Iop, Rs, head);
+                                        break;
+                                    case 1:
+                                        equivalentRoleReason(Isp, Iop, Rs, Ro, head);
+                                        break;
+                                    case 2:
+                                        equivalentClass3Reason(Isp, Iop, Rs, head);
+                                        break;
+                                    case 2019:
+                                        transitiveReason(Isp, Iop, Rs, Rp, Ro);
+                                        break;
+                                    case 3006:
+                                        objectAllValuesFromReason(Isp, Iop, Rs, head);
+                                        break;
+                                    case 3008:
+                                        objectMinCardinalityReason(totalData, iteratorMap, stashMap, Isp, Iop, Rs, head);
+                                        break;
+                                    case -3006://ObjectAllValuesFrom
+                                        objectAllValuesInverseFromReason(Isp, Iop, Rs, head);
+                                        break;
+                                    case 2017:
+                                        symmetricObjectPropertyReason(Isp, Iop, Rs, Rp, Ro);
+                                        break;
+                                    case 2016:
+                                        inverseFunctionalObjectPropertyReason(Isp, Iop, Rs, Rp, Ro);
+                                        break;
+                                    case 2015:
+                                        functionalObjectPropertyReason(Isp, Iop, Rs, Rp, Ro);
+                                        break;
+                                    case 10:
+                                        type10Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        break;
+                                    case 11:
+                                        type11Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        break;
+                                    case 12:
+                                        try {
+                                            type12Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                        break;
+                                    case 14:
+                                        type14Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        break;
+                                    case 15:
+                                        type15Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        break;
+                                    case 16:
+                                        type16Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        break;
+                                    case 17:
+                                        type16Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        break;
+                                    case 18:
+                                        type18Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        break;
+                                    case 19:
+                                        type19Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        break;
+                                    case 20:
+                                        type20Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        break;
+                                    case 21:
+                                        type21Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        break;
+                                    case 22:
+                                        type22Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        break;
+
                                 }
-                                else if(type == 2022){//ObjectPropertyDomain 2022
-                                    basicReason(totalData, iteratorMap, stashMap, Isp, Iop, Rs, typeEncode, head);
-                                }
-                                else if(type == 2023){//ObjectPropertyRange 2023
-                                    basicReason(totalData, iteratorMap, stashMap, Isp, Iop, Ro, typeEncode, head);
-                                }
-                                else if(type == 2002){//SubClassOf 2002
-                                    basicReason(totalData, iteratorMap, stashMap, Isp, Iop, Rs, typeEncode, head);
-                                }
-                                else if(type == 3005){//ObjectSomeValuesFrom 3005
-                                    objectSomeValuesFromReason(totalData, iteratorMap, stashMap, Isp, Iop, Rs, head);
-                                }
-                                else if(type == 0){//class 2 0
-                                    equivalentClass2Reason(Isp, Iop, Rs, head);
-                                }
-                                else if(type == 1){//r 1
-                                    equivalentRoleReason(Isp, Iop, Rs, Ro, head);
-                                }
-                                else if(type == 2){//class3 2
-                                    equivalentClass3Reason(Isp, Iop, Rs, head);
-                                }
-                                else if(type == 2019){//Transitive2019
-                                    transitiveReason(Isp, Iop, Rs, Rp, Ro);
-                                }
-                                else if(type == 3006){//ObjectAllValuesFrom 3006
-                                    objectAllValuesFromReason(Isp, Iop, Rs, head);
-                                }
-                                else if(type == 3008){//ObjectMinCardinality
-                                    objectMinCardinalityReason(totalData, iteratorMap, stashMap, Isp, Iop, Rs, head);
-                                }
-                                else if(type == -3006){//ObjectAllValuesFrom
-                                    objectAllValuesInverseFromReason(Isp, Iop, Rs, head);
-                                }
-                                else if(type == 2017){//SymmetricObjectProperty
-                                    symmetricObjectPropertyReason(Isp, Iop, Rs, Rp, Ro);
-                                }
-                                else if(type == 2016){//InverseFunctionalObjectProperty
-                                    inverseFunctionalObjectPropertyReason(Isp, Iop, Rs, Rp, Ro);
-                                }
-                                else if(type == 2015){//FunctionalObjectProperty
-                                    functionalObjectPropertyReason(Isp, Iop, Rs, Rp, Ro);
-                                }
-                                else if(type == 10){
-                                    type10Reason(Isp, Iop, Rs, Rp, Ro, head);
-                                }
-                                else if(type == 11){
-                                    type11Reason(Isp, Iop, Rs, Rp, Ro, head);
-                                }
-                                else if(type == 12){
-                                    try {
-                                        type12Reason(Isp, Iop, Rs, Rp, Ro, head);
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                                else if(type == 14){
-                                    type14Reason(Isp, Iop, Rs, Rp, Ro, head);
-                                }
-                                else if(type == 15){
-                                    type15Reason(Isp, Iop, Rs, Rp, Ro, head);
-                                }
-                                else if(type == 16){
-                                    type16Reason(Isp, Iop, Rs, Rp, Ro, head);
-                                }
-                                else if(type == 17){
-                                    type16Reason(Isp, Iop, Rs, Rp, Ro, head);
-                                }
-                                else if(type == 18){
-                                    type18Reason(Isp, Iop, Rs, Rp, Ro, head);
-                                }
-                                else if(type == 19){
-                                    type19Reason(Isp, Iop, Rs, Rp, Ro, head);
-                                }
-                                else if(type == 20){
-                                    type20Reason(Isp, Iop, Rs, Rp, Ro, head);
-                                }
-                                else if(type == 21){
-                                    type21Reason(Isp, Iop, Rs, Rp, Ro, head);
-                                }
-                                else if(type == 22){
-                                    type22Reason(Isp, Iop, Rs, Rp, Ro, head);
-                                }
+
                             }
                         }
                         else {

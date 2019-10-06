@@ -20,11 +20,14 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.tju.gowl.axiomProcessor.Processor.classAssertion;
+
+
 public class DictionaryInputNew {
 //include 指定尖括号 0包含 1不包含
-    public static List<Integer> classAssertion = new ArrayList<>();
+//    public static List<Integer> classAssertion = new ArrayList<>();
 
-    public static void readABox(String pathABox, String rdf, String ub, int include){
+    public static void readABox(String pathABox){
 
         Path fpath= Paths.get(pathABox);
         int index=0;
@@ -75,12 +78,7 @@ public class DictionaryInputNew {
         }
         System.out.println("初始数据数目"+index);
         addClassAssertion(index);
-//        System.out.println("encode"+encode.size());
-//        System.out.println(encode);
-//
-//        System.out.println(DicTotalData);
-//        System.out.println(IndexIsp);
-//        System.out.println(IndexIpo);
+
     }
 
     private static void addClassAssertion(int index) {
@@ -95,7 +93,7 @@ public class DictionaryInputNew {
         System.out.println("count after adding ClassAssertion: "+tmpCount);
     }
 
-    public static void readTBox(String pathTBox) throws OWLOntologyCreationException, IOException {
+    public static void readTBox(String pathTBox) throws OWLOntologyCreationException {
         File testFile = new File(pathTBox);
         OWLOntologyManager m = OWLManager.createOWLOntologyManager();
         OWLOntology univBench = m.loadOntologyFromOntologyDocument(testFile);
@@ -111,6 +109,7 @@ public class DictionaryInputNew {
         //round3 根据属性重要度，添加公理，等价属性，逆属性替换
         ip = 1;
         axiomProcessor(univBench, ip);
+        EquiClassRuleRewrite.rewrite();
     }
 
     private static void setInversePropertyMap() {

@@ -18,6 +18,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.tju.gowl.axiomProcessor.Processor.classAssertion;
+
 public class DictionaryInput {
 //include 指定尖括号 0包含 1不包含
      /*   ObjectPropertyDomain 2022
@@ -26,7 +28,7 @@ public class DictionaryInput {
                             SubClassOf 2002
                             SubObjectPropertyOf 2013
                             SymmetricObjectProperty 2017 */
-    public static List<Integer> classAssertion = new ArrayList<>();
+//    public static List<Integer> classAssertion = new ArrayList<>();
 
     public static void readABox(String pathABox, String rdf, String ub, int include){
 
