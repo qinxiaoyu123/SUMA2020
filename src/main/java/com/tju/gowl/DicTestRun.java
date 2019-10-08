@@ -27,10 +27,7 @@ public class DicTestRun {
 //        DictionaryInput.readTBox(pathTBox);
         DictionaryInputNew.readTBox(pathTBox);
         //数据预处理
-        long startTime1 = System.currentTimeMillis();
-        DictionaryInputNew.readABox(pathABox);
-        long startTime2 = System.currentTimeMillis();
-        System.out.println("reading time"+(startTime2-startTime1));
+        preDealData(pathABox);
 
         DictionaryOutput.outWriteDicOwlMap("data/outRule.txt");
         //单线程推理
@@ -46,4 +43,13 @@ public class DicTestRun {
         RewriteThing.rewriteThing();
         jenaQuerySimple("data/newThing_oubm1.nt", "data/test.sparql", null);
     }
+
+    private static void preDealData(String pathABox) {
+        long startTime1 = System.currentTimeMillis();
+        DictionaryInputNew.readABox(pathABox);
+        long startTime2 = System.currentTimeMillis();
+        System.out.println("reading time"+(startTime2-startTime1));
+    }
+
+
 }

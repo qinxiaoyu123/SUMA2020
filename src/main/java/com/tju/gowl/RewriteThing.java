@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class RewriteThing {
-    static void rewriteThing() throws IOException {
+    public static void rewriteThing() throws IOException {
         String pathABox="data/new_uobm1.nt";
         Path fpath= Paths.get(pathABox);
         BufferedReader bfr= Files.newBufferedReader(fpath);

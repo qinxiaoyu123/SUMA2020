@@ -18,6 +18,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.util.regex.Pattern.*;
+
 public class Processor {
     public static List<Integer> classAssertion = new ArrayList<>();
     public static final int ObjectPropertyRange = 2023;
@@ -51,7 +53,9 @@ public class Processor {
     }} ;
     public static void OWLClassAssertionProcessor(OWLClassAssertionAxiom axiom, int ip) {
         //                OWLClassAssertionAxiom2005
-        if(ip == 0) return;
+        if(ip == 0){
+            return;
+        }
 //        System.out.println("OWLClassAssertionProcessor "+ip);
         String class1 = axiom.getClassExpression().toString();
         String individual = axiom.getIndividual().toString();
@@ -152,7 +156,9 @@ public class Processor {
             OWLObjectSomeValuesFromProcessor(SuperClass, sub, ip);
         }
         else if(SuperClass instanceof OWLClass){
-            if (ip == 0) return;
+            if (ip == 0) {
+                return;
+            }
             String superClass = SuperClass.toString();
             int sup = Dictionary.encodeRdf(superClass);
             DicOwlMap.addDicOwlSubCLassMap(type,sub,sup);
@@ -176,7 +182,9 @@ public class Processor {
 
     }
     public static void ObjectPropertyDomainProcessor(OWLAxiom axiom, int ip) {
-        if(ip == 0) return;
+        if(ip == 0) {
+            return;
+        }
         int type = axiom.typeIndex();
         String property = ((OWLObjectPropertyDomainAxiom) axiom).getProperty().toString();
         String domain = ((OWLObjectPropertyDomainAxiom) axiom).getDomain().toString();
@@ -187,7 +195,9 @@ public class Processor {
     }
 
     public static void ObjectPropertyRangeProcessor(OWLAxiom axiom, int ip) {
-        if(ip == 0) return;
+        if(ip == 0) {
+            return;
+        }
         int type = axiom.typeIndex();
         String property = ((OWLObjectPropertyRangeAxiom) axiom).getProperty().toString();
         String range = ((OWLObjectPropertyRangeAxiom) axiom).getRange().toString();
@@ -233,9 +243,11 @@ public class Processor {
     }
 
     public static void OWLInversePropertyProcessor(OWLAxiom axiom, int ip) {
-        if(ip == 1) return;
+        if(ip == 1){
+            return;
+        }
         String ax = axiom.toString();
-        Pattern p = Pattern.compile("\\<(.*?)\\>");//正则表达式，取=和|之间的字符串，不包括=和|
+        Pattern p = compile("\\<(.*?)\\>");//正则表达式，取=和|之间的字符串，不包括=和|
         Matcher mm = p.matcher(ax);
         List<String> list=new ArrayList<>();
         while(mm.find()) {
@@ -256,9 +268,11 @@ public class Processor {
     }
 
     public static void OWLEquivalentPropertyProcessor(OWLAxiom axiom, int ip) {
-        if(ip == 1) return;
+        if(ip == 1) {
+            return;
+        }
         String ax = axiom.toString();
-        Pattern p = Pattern.compile("\\<(.*?)\\>");//正则表达式，取=和|之间的字符串，不包括=和|
+        Pattern p = compile("\\<(.*?)\\>");//正则表达式，取=和|之间的字符串，不包括=和|
         Matcher mm = p.matcher(ax);
         List<String> list=new ArrayList<>();
         while(mm.find()) {
@@ -278,9 +292,11 @@ public class Processor {
     }
 
     public static void OWLDisjointClassesProcessor(OWLAxiom axiom, int ip) {
-        if(ip == 1) return;
+        if(ip == 1){
+            return;
+        }
         String ax = axiom.toString();
-        Pattern p = Pattern.compile("\\<(.*?)\\>");//正则表达式，取=和|之间的字符串，不包括=和|
+        Pattern p = compile("\\<(.*?)\\>");//正则表达式，取=和|之间的字符串，不包括=和|
         Matcher mm = p.matcher(ax);
         List<String> list=new ArrayList<>();
         while(mm.find()) {
