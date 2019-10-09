@@ -34,7 +34,9 @@ public class RewriteThing {
                 String ss1 = iterorList.next();
                 if (ss1.contains("owl:Thing")) {
                     ss.append("<").append(ss1).append(">");
-                } else ss.append(ss1);
+                } else {
+                    ss.append(ss1);
+                }
                 flag = true;
             }
             out.write(ss.toString());
