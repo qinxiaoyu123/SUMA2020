@@ -428,20 +428,20 @@ public class DicSerialReason {
             indexNew = dicDataBeanIterator.getNsp();
             int ro = dicDataBeanIterator.getRo();
             if(class2 == 1){//TODO owl:Thing 情况
-                out.write("test"+Dictionary.getDecode().get(class1));
-                out.newLine();
-                out.write("test"+Dictionary.getDecode().get(rs));
-                out.newLine();
-                out.write("test"+Dictionary.getDecode().get(rp));
-                out.newLine();
-                if(Dictionary.getDecode().containsKey(ro)){
-                    out.write("test"+Dictionary.getDecode().get(ro));
-                    out.newLine();
-                }
-                else{
-                    out.write("test"+ro);
-                    out.newLine();
-                }
+//                out.write("test"+Dictionary.getDecode().get(class1));
+//                out.newLine();
+//                out.write("test"+Dictionary.getDecode().get(rs));
+//                out.newLine();
+//                out.write("test"+Dictionary.getDecode().get(rp));
+//                out.newLine();
+//                if(Dictionary.getDecode().containsKey(ro)){
+//                    out.write("test"+Dictionary.getDecode().get(ro));
+//                    out.newLine();
+//                }
+//                else{
+//                    out.write("test"+ro);
+//                    out.newLine();
+//                }
                 count1++;
             }
             else{
@@ -631,17 +631,17 @@ public class DicSerialReason {
     }
 
     private static void outEquiMapping() {
-        Map<Integer, String> decodeMap = Dictionary.getDecode();
+        List<String> encodeList = Dictionary.getEncodeList();
         Iterator<Map.Entry<Integer, Integer>> ii = equiMapping.entrySet().iterator();
         while( ii.hasNext()){
             Map.Entry<Integer, Integer> iii = ii.next();
-            System.out.println(decodeMap.get(iii.getKey())+" "+iii.getValue());
+            System.out.println(encodeList.get(iii.getKey())+" "+iii.getValue());
 
         }
     }
 
     private static void outEquiPool() {
-        Map<Integer, String> decodeMap = Dictionary.getDecode();
+        List<String> encodeList = Dictionary.getEncodeList();
         int count11 = 0;
         Iterator<HashSet<Integer>> ii = equiPool.iterator();
         while(ii.hasNext()){
@@ -652,7 +652,7 @@ public class DicSerialReason {
             while(iiii.hasNext()){
                 Integer iiiii = iiii.next();
 
-                System.out.println(decodeMap.get(iiiii));
+                System.out.println(encodeList.get(iiiii));
 
             }
 

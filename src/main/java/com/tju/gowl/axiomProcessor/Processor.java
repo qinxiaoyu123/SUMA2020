@@ -5,8 +5,6 @@ import com.tju.gowl.bean.DisjointClassesMap;
 import com.tju.gowl.bean.EquivalentPropertyMap;
 import com.tju.gowl.bean.InversePropertyMap;
 import com.tju.gowl.dictionary.Dictionary;
-import com.tju.gowl.io.DictionaryInput;
-import com.tju.gowl.io.DictionaryInputNew;
 import com.tju.gowl.rank.unDirectedGraph;
 import org.semanticweb.owlapi.model.*;
 
@@ -59,8 +57,8 @@ public class Processor {
 //        System.out.println("OWLClassAssertionProcessor "+ip);
         String class1 = axiom.getClassExpression().toString();
         String individual = axiom.getIndividual().toString();
-        int classInt = Dictionary.encodeRdf(class1);
-        int individualInt = Dictionary.encodeRdf(individual);
+        int classInt = Dictionary.encodeRdfList(class1);
+        int individualInt = Dictionary.encodeRdfList(individual);
         classAssertion.add(individualInt);
         classAssertion.add(classInt);
     }
@@ -69,7 +67,7 @@ public class Processor {
         //OWLFunctionalObjectPropertyAxiom2015
         int type = axiom.typeIndex();
         String property = ((OWLFunctionalObjectPropertyAxiom) axiom).getProperty().toString();
-        int pro = Dictionary.encodeRdf(property);
+        int pro = Dictionary.encodeRdfList(property);
         if(ip == 0){
             graph.addVertex(pro);
         }
@@ -82,7 +80,7 @@ public class Processor {
 //        OWLInverseFunctionalObjectPropertyAxiom2016
         int type = axiom.typeIndex();
         String property = ((OWLInverseFunctionalObjectPropertyAxiom) axiom).getProperty().toString();
-        int pro = Dictionary.encodeRdf(property);
+        int pro = Dictionary.encodeRdfList(property);
         if(ip == 0){
             graph.addVertex(pro);
         }
@@ -94,7 +92,7 @@ public class Processor {
     public static void OWLSymmetricObjectPropertyProcessor(OWLAxiom axiom, int ip) {
         int type = axiom.typeIndex();
         String property = ((OWLSymmetricObjectPropertyAxiom) axiom).getProperty().toString();
-        int pro = Dictionary.encodeRdf(property);
+        int pro = Dictionary.encodeRdfList(property);
         if(ip == 0){
             graph.addVertex(pro);
         }
@@ -106,7 +104,7 @@ public class Processor {
     public static void OWLTransitiveObjectPropertyProcessor(OWLAxiom axiom, int ip) {
         int type = axiom.typeIndex();
         String property = ((OWLTransitiveObjectPropertyAxiom) axiom).getProperty().toString();
-        int pro = Dictionary.encodeRdf(property);
+        int pro = Dictionary.encodeRdfList(property);
         if(ip == 0){
             graph.addVertex(pro);
         }
@@ -120,8 +118,8 @@ public class Processor {
         int type = axiom.typeIndex();
         String SubProperty = ((OWLSubObjectPropertyOfAxiom) axiom).getSubProperty().toString();
         String SuperProperty = ((OWLSubObjectPropertyOfAxiom) axiom).getSuperProperty().toString();
-        int sub = Dictionary.encodeRdf(SubProperty);
-        int sup = Dictionary.encodeRdf(SuperProperty);
+        int sub = Dictionary.encodeRdfList(SubProperty);
+        int sup = Dictionary.encodeRdfList(SuperProperty);
 //        Map<Integer, Integer> inverseMap = InversePropertyMap.getInverseMap();
         if(ip == 0){
             graph.addVertex(sub);
@@ -150,7 +148,7 @@ public class Processor {
     public static void OWLSubCLassProcessor(OWLAxiom axiom, int ip) {
         int type = axiom.typeIndex();
         String subclass = ((OWLSubClassOfAxiom) axiom).getSubClass().toString();
-        int sub = Dictionary.encodeRdf(subclass);
+        int sub = Dictionary.encodeRdfList(subclass);
         OWLClassExpression SuperClass = ((OWLSubClassOfAxiom) axiom).getSuperClass();
         if(SuperClass instanceof OWLObjectSomeValuesFrom){
             OWLObjectSomeValuesFromProcessor(SuperClass, sub, ip);
@@ -160,7 +158,7 @@ public class Processor {
                 return;
             }
             String superClass = SuperClass.toString();
-            int sup = Dictionary.encodeRdf(superClass);
+            int sup = Dictionary.encodeRdfList(superClass);
             DicOwlMap.addDicOwlSubCLassMap(type,sub,sup);
 
         }
@@ -171,13 +169,13 @@ public class Processor {
 
     public static void OWLObjectSomeValuesFromProcessor(OWLClassExpression ax, int class1, int ip) {
         String property = ((OWLObjectSomeValuesFrom) ax).getProperty().toString();
-        int propertyInt = Dictionary.encodeRdf(property);
+        int propertyInt = Dictionary.encodeRdfList(property);
         if(ip == 0){
             graph.addVertex(propertyInt);
             return;
         }
         String fillter = ((OWLObjectSomeValuesFrom) ax).getFiller().toString();
-        int fillterInt = Dictionary.encodeRdf(fillter);
+        int fillterInt = Dictionary.encodeRdfList(fillter);
         DicOwlMap.addDicOwlObjectSomeValuesMap(ObjectSomeValuesFrom, class1, propertyInt, fillterInt);
 
     }
@@ -188,8 +186,8 @@ public class Processor {
         int type = axiom.typeIndex();
         String property = ((OWLObjectPropertyDomainAxiom) axiom).getProperty().toString();
         String domain = ((OWLObjectPropertyDomainAxiom) axiom).getDomain().toString();
-        int pro = Dictionary.encodeRdf(property);
-        int dom = Dictionary.encodeRdf(domain);
+        int pro = Dictionary.encodeRdfList(property);
+        int dom = Dictionary.encodeRdfList(domain);
         DicOwlMap.addDicOwlPropertyDomainMap(type, pro, dom);
 
     }
@@ -201,8 +199,8 @@ public class Processor {
         int type = axiom.typeIndex();
         String property = ((OWLObjectPropertyRangeAxiom) axiom).getProperty().toString();
         String range = ((OWLObjectPropertyRangeAxiom) axiom).getRange().toString();
-        int pro = Dictionary.encodeRdf(property);
-        int ran = Dictionary.encodeRdf(range);
+        int pro = Dictionary.encodeRdfList(property);
+        int ran = Dictionary.encodeRdfList(range);
         DicOwlMap.addDicOwlPropertyRangeMap(type, pro, ran);
 
     }
@@ -217,7 +215,7 @@ public class Processor {
         while(iterator.hasNext()){
             OWLClassExpression ax = iterator.next();
             if(ax instanceof OWLClass){
-                class1 = Dictionary.encodeRdf(ax.toString());
+                class1 = Dictionary.encodeRdfList(ax.toString());
             }
         }
         if(ip == 1){
@@ -256,8 +254,8 @@ public class Processor {
         }
         String firstProperty = list.get(0);
         String secondProperty = list.get(1);
-        int pro = Dictionary.encodeRdf(firstProperty);
-        int ran = Dictionary.encodeRdf(secondProperty);
+        int pro = Dictionary.encodeRdfList(firstProperty);
+        int ran = Dictionary.encodeRdfList(secondProperty);
 
         InversePropertyMap.InverseProperty.add(pro);
         InversePropertyMap.InverseProperty.add(ran);
@@ -281,8 +279,8 @@ public class Processor {
         }
         String firstProperty = list.get(0);
         String secondProperty = list.get(1);
-        int pro = Dictionary.encodeRdf(firstProperty);
-        int ran = Dictionary.encodeRdf(secondProperty);
+        int pro = Dictionary.encodeRdfList(firstProperty);
+        int ran = Dictionary.encodeRdfList(secondProperty);
 
         EquivalentPropertyMap.EquivalentPropertyList.add(pro);
         EquivalentPropertyMap.EquivalentPropertyList.add(ran);
@@ -305,8 +303,8 @@ public class Processor {
         }
         String firstProperty = list.get(0);
         String secondProperty = list.get(1);
-        int first = Dictionary.encodeRdf(firstProperty);
-        int second = Dictionary.encodeRdf(secondProperty);
+        int first = Dictionary.encodeRdfList(firstProperty);
+        int second = Dictionary.encodeRdfList(secondProperty);
         DisjointClassesMap.setDisjointClassesMap(first,second);
         DisjointClassesMap.setDisjointClassesMap(second,first);
     }

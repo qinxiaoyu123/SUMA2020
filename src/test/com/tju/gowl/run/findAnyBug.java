@@ -106,4 +106,14 @@ public class findAnyBug {
         out.flush();
         out.close();
     }
+
+    @Test
+    public void test_hashcode(){
+        string ss1 = "<http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMember>";
+        string ss2 = "<http://semantics.crl.ibm.com/univ-bench-dl.owl#hasStudent>";
+        string ss3 = "<http://semantics.crl.ibm.com/univ-bench-dl.owl#hasAlumnus>";
+        System.out.println(ss1.hashcode());
+        System.out.println(ss2.hashcode());
+        System.out.println(ss3.hashcode());
+    }
 }

@@ -1,12 +1,9 @@
 package com.tju.gowl;
 
-import com.tju.gowl.bean.InversePropertyMap;
 import com.tju.gowl.dictionary.Dictionary;
-import com.tju.gowl.io.DictionaryInput;
 import com.tju.gowl.io.DictionaryInputNew;
 import com.tju.gowl.io.DictionaryOutput;
 import com.tju.gowl.reason.DicSerialReason;
-import com.tju.gowl.reason.EquiClassRuleRewrite;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
 import java.io.IOException;
@@ -38,7 +35,7 @@ public class DicTestRun {
 
         DictionaryOutput.outWriteSameAs("data/sameAs.nt");
         DictionaryOutput.encodeMap("data/encode.nt");
-        DictionaryOutput.outWriteDicDataMap("data/new_uobm1.nt",1);
+        DictionaryOutput.outWriteDicDataMap("data/new_uobm1.nt");
         //owl:Thing <owl:Thing> jena 解析
         RewriteThing.rewriteThing();
         jenaQuerySimple("data/newThing_oubm1.nt", "data/test.sparql", null);

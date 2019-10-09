@@ -3,7 +3,6 @@ package com.tju.gowl.io;
 import com.tju.gowl.bean.*;
 import com.tju.gowl.dictionary.Dictionary;
 import com.tju.gowl.reason.DicSerialReason;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
@@ -27,7 +26,8 @@ public class DictionaryOutput {
         out.close();
     }
     public static void outWriteSameAs(String path) throws IOException {
-        Map<Integer, String> decode = Dictionary.getDecode();
+        List<String> encodeList = Dictionary.getEncodeList();
+
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path),"GBK"));
         List<HashSet<Integer>> poolEqui = DicSerialReason.equiPool;
         Iterator<HashSet<Integer>> poolIter = poolEqui.iterator();
@@ -40,7 +40,7 @@ public class DictionaryOutput {
             Iterator<Integer> poolTmpIter = poolTmp.iterator();
             while(poolTmpIter.hasNext()){
                 Integer ii = poolTmpIter.next();
-                out.write(decode.get(ii));//写入文件
+                out.write(encodeList.get(ii));//写入文件
                 out.newLine();
             }
         }
@@ -48,12 +48,14 @@ public class DictionaryOutput {
         out.close();
     }
     public static void outWriteEquiDicOwlMap(String pathTboxNew) throws IOException {
-        Map<Integer, String> decode = Dictionary.getDecode();
+
+        List<String> encodeList = Dictionary.getEncodeList();
+
         Map<Integer, List<DicOwlBean>> totalRule = DicOwlMap.EquiDicRuleMap;
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathTboxNew),"GBK"));
         for(Map.Entry<Integer, List<DicOwlBean>> entry : totalRule.entrySet()){
             out.write(entry.getKey()+" ");
-            out.write(decode.get(entry.getKey()));//写入文件
+            out.write(encodeList.get(entry.getKey()));//写入文件
             out.newLine();
             Iterator<DicOwlBean> ii = entry.getValue().iterator();
             while(ii.hasNext()){
@@ -64,7 +66,7 @@ public class DictionaryOutput {
                 while(iiii.hasNext()){
                     Integer iiiii = iiii.next();
                     out.write(iiiii+" ");
-                    out.write(decode.get(iiiii));
+                    out.write(encodeList.get(iiiii));
                     out.newLine();
                 }
             }
@@ -74,54 +76,12 @@ public class DictionaryOutput {
         out.close();
     }
 
-    public static void outWriteDicDataMap(String pathAboxNew) throws IOException {
-        Map<Integer, DicRdfDataBean> totalData = DicRdfDataMap.getDicDataMap();
-        Map<Integer, String> decode = Dictionary.getDecode();
-        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathAboxNew),"GBK"));
-        out.write("<unknown:namespace> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .");
-        out.newLine();
-        out.write("<unknown:namespace> <http://www.w3.org/2002/07/owl#imports> <http://swat.cse.lehigh.edu/onto/univ-bench.owl> .");
-        out.newLine();
-        for(Map.Entry<Integer, DicRdfDataBean> entry : totalData.entrySet()){
-//            out.write(entry.getKey());//写入文件
-            int rs = entry.getValue().getRs();
-            String Rs;
-            if(rs<0){
-                Rs = "<"+String.valueOf(rs)+">";
-            }
-            else{
-                Rs = decode.get(rs);
-            }
 
-            int rp = entry.getValue().getRp();
-            String Rp;
-            if(rp<0){
-                Rp = "<"+String.valueOf(rp)+">";
-            }
-            else{
-                Rp = decode.get(rp);
-            }
-
-            int ro = entry.getValue().getRo();
-            String Ro;
-            if(ro<0){
-                Ro = "<"+String.valueOf(ro)+">";
-            }
-            else{
-                Ro = decode.get(ro);
-            }
-//            out.write(entry.getKey()+" "+Rs+" "+Rp+" "+Ro+" ."+entry.getValue().getNsp()+" "+entry.getValue().getNp()+" "+entry.getValue().getNpo());
-            out.write(Rs+" "+Rp+" "+Ro+" .");
-            out.newLine();
-        }
-        out.flush();
-        out.close();
-    }
     //逆属性进行写
-    public static void outWriteDicDataMap(String pathAboxNew, int flag) throws IOException {
+    public static void outWriteDicDataMap(String pathAboxNew) throws IOException {
         int count = 0;
         Map<Integer, DicRdfDataBean> totalData = DicRdfDataMap.getDicDataMap();
-        Map<Integer, String> decode = Dictionary.getDecode();
+        List<String> encodeList = Dictionary.getEncodeList();
         Map<Integer, Integer> inverseMapDecode = InversePropertyMap.getInverseMapDecode();
         Map<Integer, Integer> EquivalentMapDecode = EquivalentPropertyMap.getEquivalentPropertyMapDecode();
 //        System.out.println(inverseMap);
@@ -138,7 +98,7 @@ public class DictionaryOutput {
                 Rs = "<"+String.valueOf(rs)+">";
             }
             else{
-                Rs = decode.get(rs);
+                Rs = encodeList.get(rs);
             }
 
             int rp = entry.getValue().getRp();
@@ -147,7 +107,7 @@ public class DictionaryOutput {
                 Rp = "<"+String.valueOf(rp)+">";
             }
             else{
-                Rp = decode.get(rp);
+                Rp = encodeList.get(rp);
             }
 
             int ro = entry.getValue().getRo();
@@ -156,17 +116,17 @@ public class DictionaryOutput {
                 Ro = "<"+String.valueOf(ro)+">";
             }
             else{
-                Ro = decode.get(ro);
+                Ro = encodeList.get(ro);
             }
 //            out.write(entry.getKey()+" "+Rs+" "+Rp+" "+Ro+" ."+entry.getValue().getNsp()+" "+entry.getValue().getNp()+" "+entry.getValue().getNpo());
             if(inverseMapDecode.containsKey(rp)){
-                String Rp1 = decode.get(inverseMapDecode.get(rp));
+                String Rp1 = encodeList.get(inverseMapDecode.get(rp));
 //                System.out.println(Ro+" "+Rp1+" "+Rs+" .");
                 out.write(Ro+" "+Rp1+" "+Rs+" .");
                 count++;
             }
             if(EquivalentMapDecode.containsKey(rp)){
-                String Rp1 = decode.get(EquivalentMapDecode.get(rp));
+                String Rp1 = encodeList.get(EquivalentMapDecode.get(rp));
 //                System.out.println(Ro+" "+Rp1+" "+Rs+" .");
                 out.write(Rs+" "+Rp1+" "+Ro+" .");
                 count++;
@@ -181,11 +141,14 @@ public class DictionaryOutput {
     }
 
     public static void encodeMap(String pathEncode) throws IOException {
-        Map<String, Integer> encode = Dictionary.getEncode();
+//        Map<String, Integer> encode = Dictionary.getEncode();
+        List<String> encodeList = Dictionary.getEncodeList();
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathEncode),"GBK"));
-        for(Map.Entry<String, Integer> entry : encode.entrySet()){
-            out.write(entry.getKey());//写入文件
-            out.write(" "+entry.getValue().toString());
+        int index = 0;
+        for(String ss:encodeList){
+            out.write(ss);
+            out.write(" "+index);
+            index++;
             out.newLine();
         }
         out.flush();

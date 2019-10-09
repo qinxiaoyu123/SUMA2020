@@ -96,8 +96,8 @@ public class InversePropertyMap {
 //            if(count1 >= count2){
 //                System.out.println(propertyInverse);
 //                System.out.println(entry.getKey());
-//                encode1 = Dictionary.encodeRdf(propertyInverse,"tbox");
-//                encode2 = Dictionary.encodeRdf(entry.getKey(),"tbox");
+//                encode1 = Dictionary.encodeRdfList(propertyInverse,"tbox");
+//                encode2 = Dictionary.encodeRdfList(entry.getKey(),"tbox");
 //                InverseMap.put(encode2, encode1);
 //            }
 //        }
@@ -114,8 +114,8 @@ public class InversePropertyMap {
         Iterator<Map.Entry<String, String>> entries = InverseStringMap.entrySet().iterator();
         while(entries.hasNext()){
             Map.Entry<String, String> entry = entries.next();
-            encode1 = Dictionary.encodeRdf(entry.getKey(),"tbox");
-            encode2 = Dictionary.encodeRdf(entry.getValue(),"tbox");
+            encode1 = Dictionary.encodeRdfList(entry.getKey());
+            encode2 = Dictionary.encodeRdfList(entry.getValue());
             InverseMap.put(encode1, encode2);
             InverseMapDecode.put(encode2, encode1);
         }
