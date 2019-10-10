@@ -53,7 +53,7 @@ public class DictionaryInputNew {
             }
 
 //                    List<String> list = Arrays.stream(line.split(" ")).collect(Collectors.toList());
-            DicRdfDataBean rdfDataBean = new DicRdfDataBean();
+//            DicRdfDataBean rdfDataBean = new DicRdfDataBean();
             String Rs = list.get(0);
             String Rp = list.get(1);
             String Ro = list.get(2);

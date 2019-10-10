@@ -1,8 +1,7 @@
 package com.tju.gowl.dictionary;
 
-import com.hp.hpl.jena.rdf.model.RDFNode;
-import com.tju.gowl.bean.RdfDataBean;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -10,9 +9,9 @@ public class Dictionary {
     private static Integer indexEncode = 2;
     private static final Map<String, Integer> Encode=new ConcurrentHashMap<>();
     //TODO 换成array
-    private static final Map<Integer, String> Decode=new ConcurrentHashMap<>();
+    private static final List<String> Decode=new ArrayList<>();
     public static Map<String, Integer> getEncode(){ return Encode; }
-    public static Map<Integer, String> getDecode(){ return Decode; }
+    public static List<String> getDecode(){ return Decode; }
 
 //    private static Integer indexNsp = 0;
 //    private static final Map<String, Integer> EncodeNsp=new ConcurrentHashMap<>();
@@ -31,15 +30,15 @@ public class Dictionary {
     public Dictionary() {
 
         Encode.put("<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>",0);
-        Decode.put(0,"<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>");
+        Decode.add("<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>");
         Encode.put("owl:Thing",1);
-        Decode.put(1,"owl:Thing");
+        Decode.add("owl:Thing");
     }
     public static int encodeRdf(String ss) {
         int ssIndex;
         if(!Encode.containsKey(ss)){
             Encode.put(ss, indexEncode);
-            Decode.put(indexEncode, ss);
+            Decode.add(ss);
             ssIndex = indexEncode;
             indexEncode ++;
         }
@@ -56,7 +55,7 @@ public class Dictionary {
         int ssIndex;
         if(!Encode.containsKey(ss)){
             Encode.put(ss, indexEncode);
-            Decode.put(indexEncode, ss);
+            Decode.add(indexEncode, ss);
             ssIndex = indexEncode;
             indexEncode ++;
 //            System.out.println("only appear at TBox"+ss);

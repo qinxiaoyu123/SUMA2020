@@ -19,19 +19,6 @@ public class DicSerialReason {
     static Map<Integer, Integer> equiRepresentation = new ConcurrentHashMap<>();
 
 
-    private static BufferedWriter out;
-
-    static {
-        try {
-            out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("testManyHobbies.nt"),"GBK"));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-
     public static void reason() throws IOException {
         int loopCount = 1;
         //遍历数据
@@ -222,8 +209,7 @@ public class DicSerialReason {
 
 //        outEquiPool();
 //        outEquiMapping();
-        out.flush();
-        out.close();
+
     }
 
     private static boolean boolSameAs(int rs) {
@@ -428,20 +414,6 @@ public class DicSerialReason {
             indexNew = dicDataBeanIterator.getNsp();
             int ro = dicDataBeanIterator.getRo();
             if(class2 == 1){//TODO owl:Thing 情况
-                out.write("test"+Dictionary.getDecode().get(class1));
-                out.newLine();
-                out.write("test"+Dictionary.getDecode().get(rs));
-                out.newLine();
-                out.write("test"+Dictionary.getDecode().get(rp));
-                out.newLine();
-                if(Dictionary.getDecode().containsKey(ro)){
-                    out.write("test"+Dictionary.getDecode().get(ro));
-                    out.newLine();
-                }
-                else{
-                    out.write("test"+ro);
-                    out.newLine();
-                }
                 count1++;
             }
             else{
@@ -631,7 +603,7 @@ public class DicSerialReason {
     }
 
     private static void outEquiMapping() {
-        Map<Integer, String> decodeMap = Dictionary.getDecode();
+        List<String> decodeMap = Dictionary.getDecode();
         Iterator<Map.Entry<Integer, Integer>> ii = equiMapping.entrySet().iterator();
         while( ii.hasNext()){
             Map.Entry<Integer, Integer> iii = ii.next();
@@ -641,7 +613,7 @@ public class DicSerialReason {
     }
 
     private static void outEquiPool() {
-        Map<Integer, String> decodeMap = Dictionary.getDecode();
+        List<String> decodeMap = Dictionary.getDecode();
         int count11 = 0;
         Iterator<HashSet<Integer>> ii = equiPool.iterator();
         while(ii.hasNext()){

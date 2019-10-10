@@ -5,8 +5,6 @@ import com.tju.gowl.bean.DisjointClassesMap;
 import com.tju.gowl.bean.EquivalentPropertyMap;
 import com.tju.gowl.bean.InversePropertyMap;
 import com.tju.gowl.dictionary.Dictionary;
-import com.tju.gowl.io.DictionaryInput;
-import com.tju.gowl.io.DictionaryInputNew;
 import com.tju.gowl.rank.unDirectedGraph;
 import org.semanticweb.owlapi.model.*;
 

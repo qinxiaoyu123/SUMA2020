@@ -1,12 +1,9 @@
 package com.tju.gowl;
 
-import com.tju.gowl.bean.InversePropertyMap;
 import com.tju.gowl.dictionary.Dictionary;
-import com.tju.gowl.io.DictionaryInput;
 import com.tju.gowl.io.DictionaryInputNew;
 import com.tju.gowl.io.DictionaryOutput;
 import com.tju.gowl.reason.DicSerialReason;
-import com.tju.gowl.reason.EquiClassRuleRewrite;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
 import java.io.IOException;
@@ -18,6 +15,9 @@ public class DicTestRun {
         String pathTBox = "data/univ-bench-dl.owl";
         String pathABox = "data/uobm1.nt";
         materialization(pathTBox, pathABox);
+        while(true){
+
+        }
     }
 
     public static void materialization(String pathTBox, String pathABox) throws OWLOntologyCreationException, IOException {
@@ -35,7 +35,7 @@ public class DicTestRun {
         DicSerialReason.reason();
         long startTime4=System.currentTimeMillis();
         System.out.println("reason time"+(startTime4-startTime3));
-
+        System.out.println("size of dictionary"+Dictionary.getEncode().size());
         DictionaryOutput.outWriteSameAs("data/sameAs.nt");
         DictionaryOutput.encodeMap("data/encode.nt");
         DictionaryOutput.outWriteDicDataMap("data/new_uobm1.nt",1);

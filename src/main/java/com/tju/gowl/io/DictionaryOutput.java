@@ -27,7 +27,7 @@ public class DictionaryOutput {
         out.close();
     }
     public static void outWriteSameAs(String path) throws IOException {
-        Map<Integer, String> decode = Dictionary.getDecode();
+        List<String> decodeMap = Dictionary.getDecode();
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path),"GBK"));
         List<HashSet<Integer>> poolEqui = DicSerialReason.equiPool;
         Iterator<HashSet<Integer>> poolIter = poolEqui.iterator();
@@ -40,7 +40,7 @@ public class DictionaryOutput {
             Iterator<Integer> poolTmpIter = poolTmp.iterator();
             while(poolTmpIter.hasNext()){
                 Integer ii = poolTmpIter.next();
-                out.write(decode.get(ii));//写入文件
+                out.write(decodeMap.get(ii));//写入文件
                 out.newLine();
             }
         }
@@ -48,12 +48,12 @@ public class DictionaryOutput {
         out.close();
     }
     public static void outWriteEquiDicOwlMap(String pathTboxNew) throws IOException {
-        Map<Integer, String> decode = Dictionary.getDecode();
+        List<String> decodeMap = Dictionary.getDecode();
         Map<Integer, List<DicOwlBean>> totalRule = DicOwlMap.EquiDicRuleMap;
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathTboxNew),"GBK"));
         for(Map.Entry<Integer, List<DicOwlBean>> entry : totalRule.entrySet()){
             out.write(entry.getKey()+" ");
-            out.write(decode.get(entry.getKey()));//写入文件
+            out.write(decodeMap.get(entry.getKey()));//写入文件
             out.newLine();
             Iterator<DicOwlBean> ii = entry.getValue().iterator();
             while(ii.hasNext()){
@@ -64,7 +64,7 @@ public class DictionaryOutput {
                 while(iiii.hasNext()){
                     Integer iiiii = iiii.next();
                     out.write(iiiii+" ");
-                    out.write(decode.get(iiiii));
+                    out.write(decodeMap.get(iiiii));
                     out.newLine();
                 }
             }
@@ -76,7 +76,7 @@ public class DictionaryOutput {
 
     public static void outWriteDicDataMap(String pathAboxNew) throws IOException {
         Map<Integer, DicRdfDataBean> totalData = DicRdfDataMap.getDicDataMap();
-        Map<Integer, String> decode = Dictionary.getDecode();
+        List<String> decodeMap = Dictionary.getDecode();
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathAboxNew),"GBK"));
         out.write("<unknown:namespace> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .");
         out.newLine();
@@ -90,7 +90,7 @@ public class DictionaryOutput {
                 Rs = "<"+String.valueOf(rs)+">";
             }
             else{
-                Rs = decode.get(rs);
+                Rs = decodeMap.get(rs);
             }
 
             int rp = entry.getValue().getRp();
@@ -99,7 +99,7 @@ public class DictionaryOutput {
                 Rp = "<"+String.valueOf(rp)+">";
             }
             else{
-                Rp = decode.get(rp);
+                Rp = decodeMap.get(rp);
             }
 
             int ro = entry.getValue().getRo();
@@ -108,7 +108,7 @@ public class DictionaryOutput {
                 Ro = "<"+String.valueOf(ro)+">";
             }
             else{
-                Ro = decode.get(ro);
+                Ro = decodeMap.get(ro);
             }
 //            out.write(entry.getKey()+" "+Rs+" "+Rp+" "+Ro+" ."+entry.getValue().getNsp()+" "+entry.getValue().getNp()+" "+entry.getValue().getNpo());
             out.write(Rs+" "+Rp+" "+Ro+" .");
@@ -121,7 +121,7 @@ public class DictionaryOutput {
     public static void outWriteDicDataMap(String pathAboxNew, int flag) throws IOException {
         int count = 0;
         Map<Integer, DicRdfDataBean> totalData = DicRdfDataMap.getDicDataMap();
-        Map<Integer, String> decode = Dictionary.getDecode();
+        List<String> decodeMap = Dictionary.getDecode();
         Map<Integer, Integer> inverseMapDecode = InversePropertyMap.getInverseMapDecode();
         Map<Integer, Integer> EquivalentMapDecode = EquivalentPropertyMap.getEquivalentPropertyMapDecode();
 //        System.out.println(inverseMap);
@@ -138,7 +138,7 @@ public class DictionaryOutput {
                 Rs = "<"+String.valueOf(rs)+">";
             }
             else{
-                Rs = decode.get(rs);
+                Rs = decodeMap.get(rs);
             }
 
             int rp = entry.getValue().getRp();
@@ -147,7 +147,7 @@ public class DictionaryOutput {
                 Rp = "<"+String.valueOf(rp)+">";
             }
             else{
-                Rp = decode.get(rp);
+                Rp = decodeMap.get(rp);
             }
 
             int ro = entry.getValue().getRo();
@@ -156,17 +156,17 @@ public class DictionaryOutput {
                 Ro = "<"+String.valueOf(ro)+">";
             }
             else{
-                Ro = decode.get(ro);
+                Ro = decodeMap.get(ro);
             }
 //            out.write(entry.getKey()+" "+Rs+" "+Rp+" "+Ro+" ."+entry.getValue().getNsp()+" "+entry.getValue().getNp()+" "+entry.getValue().getNpo());
             if(inverseMapDecode.containsKey(rp)){
-                String Rp1 = decode.get(inverseMapDecode.get(rp));
+                String Rp1 = decodeMap.get(inverseMapDecode.get(rp));
 //                System.out.println(Ro+" "+Rp1+" "+Rs+" .");
                 out.write(Ro+" "+Rp1+" "+Rs+" .");
                 count++;
             }
             if(EquivalentMapDecode.containsKey(rp)){
-                String Rp1 = decode.get(EquivalentMapDecode.get(rp));
+                String Rp1 = decodeMap.get(EquivalentMapDecode.get(rp));
 //                System.out.println(Ro+" "+Rp1+" "+Rs+" .");
                 out.write(Rs+" "+Rp1+" "+Ro+" .");
                 count++;
