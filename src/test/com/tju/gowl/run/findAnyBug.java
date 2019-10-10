@@ -109,11 +109,11 @@ public class findAnyBug {
 
     @Test
     public void test_hashcode(){
-        string ss1 = "<http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMember>";
-        string ss2 = "<http://semantics.crl.ibm.com/univ-bench-dl.owl#hasStudent>";
-        string ss3 = "<http://semantics.crl.ibm.com/univ-bench-dl.owl#hasAlumnus>";
-        System.out.println(ss1.hashcode());
-        System.out.println(ss2.hashcode());
-        System.out.println(ss3.hashcode());
+        String ss1 = "<http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMember>";
+        String ss2 = "<http://semantics.crl.ibm.com/univ-bench-dl.owl#hasStudent>";
+        String ss3 = "<http://semantics.crl.ibm.com/univ-bench-dl.owl#hasAlumnus>";
+        System.out.println(ss1.hashCode());
+        System.out.println(ss2.hashCode());
+        System.out.println(ss3.hashCode());
     }
 }
