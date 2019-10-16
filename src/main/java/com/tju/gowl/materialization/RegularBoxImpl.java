@@ -13,7 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RegularBox {
+public class RegularBoxImpl {
     public static void readTBox(String pathTBox) throws OWLOntologyCreationException {
         File testFile = new File(pathTBox);
         OWLOntologyManager m = OWLManager.createOWLOntologyManager();
