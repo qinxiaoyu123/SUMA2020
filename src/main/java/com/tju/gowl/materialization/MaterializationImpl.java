@@ -36,7 +36,8 @@ public class MaterializationImpl {
         OutputDictionary.outWriteDicDataMap("data/new_uobm1.nt",1);
 
         //owl:Thing <owl:Thing> jena 解析
-        RewriteThing.rewriteThing();
+        RewriteThing.rewriteThing("data/new_uobm1.nt", "data/newThing_oubm1.nt");
         jenaQuerySimple("data/newThing_oubm1.nt", "data/test.sparql", null);
     }
+
 }

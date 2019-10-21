@@ -4,6 +4,7 @@ import com.tju.gowl.axiomProcessor.Processor;
 import com.tju.gowl.bean.*;
 import com.tju.gowl.dictionary.Dictionary;
 import com.tju.gowl.rank.unDirectedGraph;
+import com.tju.gowl.reason.DicSerialReason;
 import com.tju.gowl.reason.EquiClassRuleRewrite;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
@@ -16,6 +17,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static com.tju.gowl.axiomProcessor.Processor.classAssertion;
 
@@ -32,7 +34,36 @@ public class DictionaryInputNew {
             BufferedReader bfr = Files.newBufferedReader(fpath);
             String line;
             while ((line = bfr.readLine()) != null) {
-                index = getIndex(index, line);
+                if (!line.contains("\\") && !line.contains("unknown:namespace")) {
+                    List<String> list = Arrays.stream(line.split(" ")).collect(Collectors.toList());
+                    String Rs = list.get(0);
+                    String Rp = list.get(1);
+                    String Ro = list.get(2);
+                    int rs = Dictionary.encodeRdf(Rs);
+                    int rp = Dictionary.encodeRdf(Rp);
+                    int ro = Dictionary.encodeRdf(Ro);
+
+//                  逆角色，等价角色进行替换
+                    if (EquivalentPropertyMap.EquivalentPropertyMap.containsKey(rp)) {
+                        rp = EquivalentPropertyMap.EquivalentPropertyMap.get(rp);
+                    }
+
+                    if (InversePropertyMap.InverseMap.containsKey(rp)) {
+                        rp = InversePropertyMap.InverseMap.get(rp);
+                        int tmp = rs;
+                        rs = ro;
+                        ro = tmp;
+                    }
+                    DicRdfDataMap.addSourceRdfDataBean(index, rs, rp, ro);
+
+                    index++;
+                    if (index % 100000 == 0) {
+                        System.out.println("finish read " + index + " data");
+                    }
+
+                } else {
+//                    System.out.println(line);
+                }
             }
             bfr.close();
         } catch (IOException e) {
@@ -43,54 +74,13 @@ public class DictionaryInputNew {
 
     }
 
-    public static int getIndex(int index, String line) {
-        //TODO 不识别标志
-        if (!line.contains("\\") && !line.contains("unknown:namespace")) {
-            StringTokenizer st = new StringTokenizer(line, " ");
-            List<String> list = new ArrayList<>(3);
-            while (st.hasMoreElements()) {
-                list.add(st.nextToken());
-            }
-
-//                    List<String> list = Arrays.stream(line.split(" ")).collect(Collectors.toList());
-//            DicRdfDataBean rdfDataBean = new DicRdfDataBean();
-            String Rs = list.get(0);
-            String Rp = list.get(1);
-            String Ro = list.get(2);
-            int rs = Dictionary.encodeRdf(Rs);
-            int rp = Dictionary.encodeRdf(Rp);
-            int ro = Dictionary.encodeRdf(Ro);
-
-//                  逆角色，等价角色进行替换
-            if (EquivalentPropertyMap.EquivalentPropertyMap.containsKey(rp)) {
-                rp = EquivalentPropertyMap.EquivalentPropertyMap.get(rp);
-            }
-            if (InversePropertyMap.InverseMap.containsKey(rp)) {
-                rp = InversePropertyMap.InverseMap.get(rp);
-                int tmp = rs;
-                rs = ro;
-                ro = tmp;
-            }
-            DicRdfDataMap.addSourceRdfDataBean(index, rs, rp, ro);
-
-            index++;
-            if (index % 100000 == 0) {
-                System.out.println("finish read " + index + " data");
-            }
-
-        } else {
-//                    System.out.println(line);
-        }
-        return index;
-    }
-
     private static void addClassAssertion(int index) {
         int tmpCount = index;
         Iterator<Integer> iter = classAssertion.iterator();
         while (iter.hasNext()) {
             int tmp1 = iter.next();
             int tmp2 = iter.next();
-            DicRdfDataMap.addSourceRdfDataBean(tmpCount, tmp1, 0, tmp2);
+            DicRdfDataMap.addSourceRdfDataBean(tmpCount, tmp1, DicSerialReason.typeEncode, tmp2);
             tmpCount++;
         }
         System.out.println("count after adding ClassAssertion: " + tmpCount);

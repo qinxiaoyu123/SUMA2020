@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class DicSerialReason {
     private static int anonymous = -2;
-    private static int typeEncode = 0;
+    public static final int typeEncode = 0;
     private static int someValue = 1;
     private static int index = 0;
     private static boolean someValueFlag = false;
@@ -983,14 +983,14 @@ public class DicSerialReason {
         if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1)){
             return;
         }
-        boolean flag1 = DicRdfDataMap.checkExistBeforeIndex(rs, typeEncode, class2, index);
+        boolean flag1 = DicRdfDataMap.checkDuplicate(rs, typeEncode, class2);
         if(flag1){
             if(class3 == 1){
                 DicRdfDataMap.addStashRdfDataBean(rs, typeEncode, class1);
                 return;
             }
             else{
-                boolean flag2 = DicRdfDataMap.checkExistBeforeIndex(ro, typeEncode, class3, index);
+                boolean flag2 = DicRdfDataMap.checkDuplicate(ro, typeEncode, class3);
                 if(flag2){
                     DicRdfDataMap.addStashRdfDataBean(rs, typeEncode, class1);
                 }
@@ -1011,10 +1011,6 @@ public class DicSerialReason {
         if(firstTripleIsp == -1){
             return;
         }
-        //avoid repeat
-        if(firstTripleIsp > index){
-            return;
-        }
         if(class3 == 1){//owl:Thing
             DicRdfDataMap.addStashRdfDataBean(rs, typeEncode, class1);
             return;
@@ -1030,7 +1026,7 @@ public class DicSerialReason {
                 DicRdfDataMap.addStashRdfDataBean(rs, typeEncode, class1);
                 return;
             }
-        }while(indexNew != -1 && indexNew <= index);
+        }while(indexNew != -1 );
 
     }
 

@@ -8,6 +8,7 @@ import com.tju.gowl.concurrent.IndexPair;
 import com.tju.gowl.dictionary.Dictionary;
 import com.tju.gowl.io.DictionaryInputNew;
 import com.tju.gowl.io.DictionaryOutput;
+import com.tju.gowl.materialization.MaterializationImpl;
 import com.tju.gowl.reason.DicSerialReason;
 import org.junit.jupiter.api.Test;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
@@ -32,12 +33,14 @@ class DicTestRunTest {
 
     @Test
     void materialization_UOBM() throws OWLOntologyCreationException, IOException {
-        String pathTBox = "data/univ-bench-dl.owl";
-        String pathABox = "data/uobm1.nt";
-        boolean isQueryByJena = true;
-        String pathNewABox = "data/uobm1_new.nt";
-        String queryPath = "data/test.sparql";
-        materialization(pathTBox,pathABox, pathNewABox, isQueryByJena, queryPath);
+        MaterializationImpl materializationImpl = new MaterializationImpl();
+        materializationImpl.materialAll();
+//        String pathTBox = "data/univ-bench-dl.owl";
+//        String pathABox = "data/uobm1.nt";
+//        boolean isQueryByJena = true;
+//        String pathNewABox = "data/uobm1_new.nt";
+//        String queryPath = "data/test.sparql";
+//        materialization(pathTBox,pathABox, pathNewABox, isQueryByJena, queryPath);
     }
 
     @Test

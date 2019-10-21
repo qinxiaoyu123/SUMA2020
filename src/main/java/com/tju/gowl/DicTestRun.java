@@ -40,7 +40,9 @@ public class DicTestRun {
         DictionaryOutput.outWriteDicDataMap(pathNewABox);
         //owl:Thing <owl:Thing> jena 解析
         queryByJena(pathNewABox, queryByJena, queryPath);
+        while(true){
 
+        }
     }
 
     private static void queryByJena(String pathNewABox, boolean queryByJena, String queryPath) throws IOException {

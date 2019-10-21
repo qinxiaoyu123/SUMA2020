@@ -1,10 +1,15 @@
 package com.tju.gowl.bean;
 
+import javafx.util.Pair;
+
+import java.nio.Buffer;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class IndexMap {
     private static final Map<Integer, List<IndexBean>> Isp = new ConcurrentHashMap<>();
+    private static final Map<String, IndexBeanString>IspString = new ConcurrentHashMap<>();
+    private static final Map<String, IndexBeanString>IopString = new ConcurrentHashMap<>();
     private static final Map<Integer, List<IndexBean>> Iop = new ConcurrentHashMap<>();
 
     public static Map<Integer, List<IndexBean>> getIsp() {
@@ -48,6 +53,32 @@ public class IndexMap {
 
         }
         return -1;
+    }
+
+    public static int getFirstIndexSpFromMapString(int rs, int rp, int index) {
+        StringBuffer spBuffer = new StringBuffer(rs);
+        String sp = spBuffer.append("*").append(rp).toString();
+        if (IspString.containsKey(sp)) {//包含 rs
+            //添加到最大的index后，所以返回最大的
+            return IspString.get(sp).getLastTriple();
+
+        }
+        else {
+            IspString.put(sp, new IndexBeanString(index, index));
+            return -1;
+        }
+    }
+
+    public static int getFirstIndexOpFromMapString(int rp, int ro, int index) {
+        StringBuffer opBuffer = new StringBuffer(rp);
+        String op = opBuffer.append("*").append(ro).toString();
+        if (IopString.containsKey(op)) {//包含 rs
+            return IopString.get(op).getLastTriple();
+        }
+        else {
+            IopString.put(op, new IndexBeanString(index, index));
+            return -1;
+        }
     }
     public static int getFirstIndexOpFromMap(int rp, int ro, int index) {
         if (Iop.containsKey(ro)) {//包含 rs
@@ -100,6 +131,40 @@ public class IndexMap {
 
         }
         return -1;
+    }
+    public static int getFirstIndexSpFromMapString(int rs, int rp) {
+        StringBuffer spBuffer = new StringBuffer(rs);
+        String sp = spBuffer.append("*").append(rp).toString();
+        if(IspString.containsKey(sp)){
+            return IspString.get(sp).getFirstTriple();
+        }
+        else return -1;
+    }
+    public static int getLastIndexSpFromMapString(int rs, int rp) {
+        StringBuffer spBuffer = new StringBuffer(rs);
+        String sp = spBuffer.append("*").append(rp).toString();
+        if(IspString.containsKey(sp)){
+            return IspString.get(sp).getLastTriple();
+        }
+        else return -1;
+    }
+
+    public static int getFirstIndexOpFromMapString(int rp, int ro) {
+        StringBuffer spBuffer = new StringBuffer(rp);
+        String op = spBuffer.append("*").append(ro).toString();
+        if(IopString.containsKey(op)){
+            return IspString.get(op).getFirstTriple();
+        }
+        else return -1;
+    }
+
+    public static int getLastIndexOpFromMapString(int rp, int ro) {
+        StringBuffer spBuffer = new StringBuffer(rp);
+        String op = spBuffer.append("*").append(ro).toString();
+        if(IopString.containsKey(op)){
+            return IspString.get(op).getLastTriple();
+        }
+        else return -1;
     }
 
     public static int getFirstIndexOpFromMap(int rp, int ro) {
