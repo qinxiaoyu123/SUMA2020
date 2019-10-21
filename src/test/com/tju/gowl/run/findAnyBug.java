@@ -11,6 +11,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import static java.util.Objects.hash;
+
 public class findAnyBug {
     @Test
     void know_string_append_is_right(){
@@ -26,6 +28,29 @@ public class findAnyBug {
     }
 
     @Test
+    void know_string_append_is_right1(){
+        String value = "<http://www.Department1.University0.edu>";
+        byte[] aa = value.getBytes();
+        while (true){
+
+        }
+
+//        StringBuffer ss = new StringBuffer();
+//        StringTokenizer st = new StringTokenizer(valueNew, ".");
+//         List<String> list = new ArrayList<>(5);
+//         while (st.hasMoreElements()) {
+//             list.add(st.nextToken());
+//         }
+//         int i = 1;
+//
+//         while(list.get(i)!=null){
+//             ss.append(".").append(list.get(i));
+//             i++;
+//         }
+//         System.out.println(valueNew);
+    }
+
+    @Test
     public void output_bug_line_in_file() throws IOException {
         String pathABox="data/new_uobm1.nt";
         Path fpath= Paths.get(pathABox);
@@ -33,7 +58,7 @@ public class findAnyBug {
         String line;
         int index1 = 1;
         while((line=bfr.readLine())!=null) {
-            if(index1>=(260962)&&index1<=(260962+10)){
+            if(index1>=(4)&&index1<=(4+10)){
                 if(line.equals("")){
                     System.out.println("kong");
                 }

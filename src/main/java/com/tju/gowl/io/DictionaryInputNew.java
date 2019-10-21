@@ -57,9 +57,9 @@ public class DictionaryInputNew {
             String Rs = list.get(0);
             String Rp = list.get(1);
             String Ro = list.get(2);
-            int rs = Dictionary.encodeRdf(Rs);
-            int rp = Dictionary.encodeRdf(Rp);
-            int ro = Dictionary.encodeRdf(Ro);
+            int rs = Dictionary.readInHash(Rs);
+            int rp = Dictionary.readInHash(Rp);
+            int ro = Dictionary.readInHash(Ro);
 
 //                  逆角色，等价角色进行替换
             if (EquivalentPropertyMap.EquivalentPropertyMap.containsKey(rp)) {

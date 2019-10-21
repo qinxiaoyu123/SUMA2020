@@ -18,7 +18,7 @@ public class EquivalentClassProcessor {
             OWLClassExpression ax = iterator.next();
             if (ax instanceof OWLClass) {
                 if(ip ==1){
-                    class2 = Dictionary.encodeRdf(ax.toString());
+                    class2 = Dictionary.readInHash(ax.toString());
                     DicOwlMap.addDicOwlSubCLassMap(Processor.SubClassOf, class1, class2);
                     DicOwlMap.addEquiSubClassOfRuleMap(class1,Processor.SubClassOf,class2);
                 }
@@ -37,13 +37,13 @@ public class EquivalentClassProcessor {
     }
     public static void OWLObjectSomeValuesFromProcessor(OWLClassExpression ax, int class1, int ip) {
         String property = ((OWLObjectSomeValuesFrom) ax).getProperty().toString();
-        int propertyInt = Dictionary.encodeRdf(property);
+        int propertyInt = Dictionary.readInHash(property);
         if(ip == 0){
             Processor.graph.addVertex(propertyInt);
             return;
         }
         String fillter = ((OWLObjectSomeValuesFrom) ax).getFiller().toString();
-        int fillterInt = Dictionary.encodeRdf(fillter);
+        int fillterInt = Dictionary.readInHash(fillter);
         DicOwlMap.addDicOwlObjectSomeValuesMap(Processor.ObjectSomeValuesFrom, class1, propertyInt, fillterInt);
         DicOwlMap.addEquiDicSomeValuesMap(class1, Processor.ObjectSomeValuesFrom, propertyInt, fillterInt);
 
@@ -57,8 +57,8 @@ public class EquivalentClassProcessor {
             list.add(mm.group(0));
             //   System.out.println(mm.group(ip));//m.group(0)包括这两个字符
         }
-        int class2 = Dictionary.encodeRdf(list.get(0));
-        int class3 = Dictionary.encodeRdf(list.get(1));
+        int class2 = Dictionary.readInHash(list.get(0));
+        int class3 = Dictionary.readInHash(list.get(1));
 
         DicOwlMap.addDicOwlSubCLassMap(Processor.SubClassOf, class2, class1);
         DicOwlMap.addDicOwlSubCLassMap(Processor.SubClassOf, class3, class1);
@@ -66,14 +66,14 @@ public class EquivalentClassProcessor {
     }
     public static void OWLObjectMinCardinalityProcessor(OWLClassExpression ax, int class1, int ip) {
         String property = ((OWLObjectMinCardinality) ax).getProperty().toString();
-        int propertyInt = Dictionary.encodeRdf(property);
+        int propertyInt = Dictionary.readInHash(property);
         if(ip == 0){
             Processor.graph.addVertex(propertyInt);
             return;
         }
         int cardinality = ((OWLObjectMinCardinality)ax).getCardinality();
         String class2 = ((OWLObjectMinCardinality) ax).getFiller().toString();
-        int class2Int = Dictionary.encodeRdf(class2);
+        int class2Int = Dictionary.readInHash(class2);
 
         //>=1 == ObjectSomeValuesFrom
         if(cardinality == 1){
@@ -89,7 +89,7 @@ public class EquivalentClassProcessor {
     }
     public static void OWLObjectAllValuesFromProcessor(OWLClassExpression ax, int class1, int ip) {
         String property = ((OWLObjectAllValuesFrom)ax).getProperty().toString();
-        int propertyInt = Dictionary.encodeRdf(property);
+        int propertyInt = Dictionary.readInHash(property);
         if(ip == 0){
             Processor.graph.addVertex(propertyInt);
             return;
@@ -98,7 +98,7 @@ public class EquivalentClassProcessor {
         int classAllValues = 0;
         if(fillter instanceof OWLObjectComplementOf){
             String cc = ((OWLObjectComplementOf) fillter).getOperand().toString();
-            int ccInt = Dictionary.encodeRdf(cc);
+            int ccInt = Dictionary.readInHash(cc);
             int ccDisjoint = DisjointClassesMap.getDisjointClassesMap(ccInt);
             //TODO 这里把DisjointClassesMap看作补集，不严格，消除补
             if(ccDisjoint == -1){
@@ -109,14 +109,14 @@ public class EquivalentClassProcessor {
                 }
                 StringBuffer ss = new StringBuffer(list.get(0));
                 ss.append("#ComplementOf").append(list.get(1));
-                classAllValues = Dictionary.encodeRdf(ss.toString());
+                classAllValues = Dictionary.readInHash(ss.toString());
             }
             else{
                 classAllValues = ccDisjoint;
             }
         }
         else if(fillter instanceof OWLClass){
-            classAllValues = Dictionary.encodeRdf(fillter.toString());
+            classAllValues = Dictionary.readInHash(fillter.toString());
         }
         int type = ax.typeIndex();
         DicOwlMap.addDicOwlObjectAllValuesMap(type, class1, propertyInt, classAllValues);

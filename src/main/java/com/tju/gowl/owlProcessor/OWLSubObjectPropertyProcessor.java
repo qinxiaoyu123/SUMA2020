@@ -11,8 +11,7 @@ public class OWLSubObjectPropertyProcessor {
         type = axiom.typeIndex();
         String SubProperty = ((OWLSubObjectPropertyOfAxiom) axiom).getSubProperty().toString();
         String SuperProperty = ((OWLSubObjectPropertyOfAxiom) axiom).getSuperProperty().toString();
-        int sub = Dictionary.encodeRdf(SubProperty,"Tbox");
-        int sup = Dictionary.encodeRdf(SuperProperty,"Tbox");
-        DicOwlMap.addDicOwlMap(type, sub, sup);
+
+
     }
 }

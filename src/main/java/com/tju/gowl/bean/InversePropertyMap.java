@@ -103,24 +103,7 @@ public class InversePropertyMap {
 //        }
 //        System.out.println(InverseMap);
 //    }
-    public static void writeUOBMInverseMap(OWLOntology univBench) {
-        int encode1;
-        int encode2;
-        Map<String, String> InverseStringMap = new ConcurrentHashMap<>();
-        InverseStringMap.put("<http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMember>","<http://semantics.crl.ibm.com/univ-bench-dl.owl#isMemberOf>");
-        InverseStringMap.put("<http://semantics.crl.ibm.com/univ-bench-dl.owl#hasStudent>","<http://semantics.crl.ibm.com/univ-bench-dl.owl#isStudentOf>");
-        InverseStringMap.put("<http://semantics.crl.ibm.com/univ-bench-dl.owl#hasAlumnus>","<http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDegreeFrom>");
-        InverseStringMap.put("<http://semantics.crl.ibm.com/univ-bench-dl.owl#teacherOf>","<http://semantics.crl.ibm.com/univ-bench-dl.owl#isTaughtBy>");
-        Iterator<Map.Entry<String, String>> entries = InverseStringMap.entrySet().iterator();
-        while(entries.hasNext()){
-            Map.Entry<String, String> entry = entries.next();
-            encode1 = Dictionary.encodeRdf(entry.getKey(),"tbox");
-            encode2 = Dictionary.encodeRdf(entry.getValue(),"tbox");
-            InverseMap.put(encode1, encode2);
-            InverseMapDecode.put(encode2, encode1);
-        }
-//        System.out.println(InverseMap);
-    }
+
 
 //    public static void setInverseProperty(int first, int second) {
 //        if(!InversePropertyMap.containsKey(first)){

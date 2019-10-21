@@ -24,14 +24,14 @@ class DicTestRunTest {
     void materialization_LUBM() throws OWLOntologyCreationException, IOException {
         String pathTBox = "data/pellet.owl";
         String pathABox = "data/uobm1.nt";
-        materialization(pathTBox,pathABox);
+        materialization();
     }
 
     @Test
     void materialization_UOBM() throws OWLOntologyCreationException, IOException {
         String pathTBox = "data/univ-bench-dl.owl";
         String pathABox = "data/uobm1.nt";
-        materialization(pathTBox,pathABox);
+        materialization();
     }
 
     @Test
@@ -65,7 +65,7 @@ class DicTestRunTest {
 
         DictionaryOutput.outWriteSameAs("data/sameAs.nt");
         DictionaryOutput.encodeMap("data/encode.nt");
-        DictionaryOutput.outWriteDicDataMap("data/new_uobm1.nt",1);
+        DictionaryOutput.outWriteDicDataMap("data/new_uobm1.nt");
         //owl:Thing <owl:Thing> jena 解析
         RewriteThing.rewriteThing();
         jenaQuerySimple("data/newThing_oubm1.nt", "data/test.sparql", null);

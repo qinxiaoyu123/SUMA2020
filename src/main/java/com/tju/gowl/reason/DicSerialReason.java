@@ -13,6 +13,7 @@ public class DicSerialReason {
     private static StringBuffer sameAsString = new StringBuffer("sameAs");
     private static int sameAsInt = 0;
     private static int someValue = 1;
+    private static int index = 1;
     private static boolean someValueFlag = false;
     public static List<HashSet<Integer>> equiPool = new ArrayList<>();
     static Map<Integer, Integer> equiMapping = new ConcurrentHashMap<>();
@@ -47,6 +48,8 @@ public class DicSerialReason {
             try {
                 while (entries.hasNext()) {
                     Map.Entry<Integer, DicRdfDataBean> entry = entries.next();
+                    //TODO 1
+                    index = entry.getKey();
                     DicRdfDataBean rdfData = entry.getValue();
                     //TODO
                     List<String> ruleKey = new ArrayList<>();
@@ -1015,6 +1018,10 @@ public class DicSerialReason {
         if(firstTripleIsp == -1){
             return;
         }
+        //TODO 2
+        if(firstTripleIsp > index){
+            return;
+        }
         if(class3 == 1){//owl:Thing
             DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, typeEncode, class1);
             return;
@@ -1030,7 +1037,7 @@ public class DicSerialReason {
                 DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, typeEncode, class1);
                 return;
             }
-        }while(indexNew != -1);
+        }while(indexNew != -1 || indexNew <= index);
 
     }
 
