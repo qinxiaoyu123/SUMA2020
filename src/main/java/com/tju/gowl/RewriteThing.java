@@ -10,11 +10,12 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class RewriteThing {
-    public static void rewriteThing() throws IOException {
-        String pathABox="data/new_uobm1.nt";
+    public static void rewriteThing(String oldPath, String newPath) throws IOException {
+//        String pathABox="data/new_uobm1.nt";
+        String pathABox = oldPath;
         Path fpath= Paths.get(pathABox);
         BufferedReader bfr= Files.newBufferedReader(fpath);
-        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("data/newThing_oubm1.nt"),"GBK"));
+        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(newPath),"GBK"));
         String line;
         boolean flag = false;
         StringBuffer ss = new StringBuffer();

@@ -14,13 +14,15 @@ public class DicTestRun {
     public static void main(String[] args) throws Exception {
         String pathTBox = "data/univ-bench-dl.owl";
         String pathABox = "data/uobm1.nt";
-        materialization(pathTBox, pathABox);
-        while(true){
+        boolean isQueryByJena = true;
+        String pathNewABox = "data/uobm1_new.nt";
+        String queryPath = "data/test.sparql";
 
-        }
+        materialization(pathTBox, pathABox, pathNewABox, isQueryByJena, queryPath);
+
     }
 
-    public static void materialization(String pathTBox, String pathABox) throws OWLOntologyCreationException, IOException {
+    public static void materialization(String pathTBox, String pathABox, String pathNewABox, boolean queryByJena, String queryPath) throws OWLOntologyCreationException, IOException {
         //type owl:Thing 编码
         new Dictionary();
 //        规则预处理
@@ -29,26 +31,38 @@ public class DicTestRun {
         //数据预处理
         preDealData(pathABox);
 
-        DictionaryOutput.outWriteDicOwlMap("data/outRule.txt");
+//        DictionaryOutput.outWriteDicOwlMap("data/outRule.txt");
         //单线程推理
+        serialReason();
+//        System.out.println("size of dictionary"+Dictionary.getEncode().size());
+//        DictionaryOutput.outWriteSameAs("data/sameAs.nt");
+//        DictionaryOutput.encodeMap("data/encode.nt");
+        DictionaryOutput.outWriteDicDataMap(pathNewABox);
+        //owl:Thing <owl:Thing> jena 解析
+        queryByJena(pathNewABox, queryByJena, queryPath);
+
+    }
+
+    private static void queryByJena(String pathNewABox, boolean queryByJena, String queryPath) throws IOException {
+        if(queryByJena){
+            String path = "jenaData.nt";
+            RewriteThing.rewriteThing(pathNewABox, path);
+            jenaQuerySimple(path, queryPath, null);
+        }
+    }
+
+    private static void serialReason() throws IOException {
         long startTime3 = System.currentTimeMillis();
         DicSerialReason.reason();
         long startTime4=System.currentTimeMillis();
-        System.out.println("reason time"+(startTime4-startTime3));
-        System.out.println("size of dictionary"+Dictionary.getEncode().size());
-        DictionaryOutput.outWriteSameAs("data/sameAs.nt");
-        DictionaryOutput.encodeMap("data/encode.nt");
-        DictionaryOutput.outWriteDicDataMap("data/new_uobm1.nt",1);
-        //owl:Thing <owl:Thing> jena 解析
-        RewriteThing.rewriteThing();
-        jenaQuerySimple("data/newThing_oubm1.nt", "data/test.sparql", null);
+        System.out.println("Materialization time: "+(startTime4-startTime3));
     }
 
     private static void preDealData(String pathABox) {
         long startTime1 = System.currentTimeMillis();
         DictionaryInputNew.readABox(pathABox);
         long startTime2 = System.currentTimeMillis();
-        System.out.println("reading time"+(startTime2-startTime1));
+        System.out.println("Data preprocessing time: "+(startTime2-startTime1));
     }
 
 

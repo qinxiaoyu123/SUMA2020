@@ -35,6 +35,6 @@ public class ArgDicTestRun {
         DicSerialReason.reason();
         long startTime1=System.currentTimeMillis();
         System.out.println("reason time"+(startTime1-startTime));
-        DictionaryOutput.outWriteDicDataMap(pathdata,1);
+        DictionaryOutput.outWriteDicDataMap(pathdata);
     }
 }

@@ -101,12 +101,12 @@ public class DictionaryInputNew {
         OWLOntologyManager m = OWLManager.createOWLOntologyManager();
         OWLOntology univBench = m.loadOntologyFromOntologyDocument(testFile);
         int ip = 0;//添加属性图节点，边，权重更新, 不添加公理
-        //round1 初始化属性图（公理处理，添加属性图节点，边，权重更新）
+        //round1 初始化  属性图（公理处理，添加属性图节点，边，权重更新）
         axiomProcessor(univBench, ip);
         //round2 图节点排序（属性重要度排序）
         //TODO graph声明位置变更
         Processor.graph.depthFirstSearch();
-        //根据排序确定等价属性，逆属性替换表
+        //根据排序确定等价t属性，逆属性替换表
         setEquivalentPropertyMap();
         setInversePropertyMap();
         //round3 根据属性重要度，添加公理，等价属性，逆属性替换

@@ -10,9 +10,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DicSerialReason {
     private static int anonymous = -2;
     private static int typeEncode = 0;
-    private static StringBuffer sameAsString = new StringBuffer("sameAs");
-    private static int sameAsInt = 0;
     private static int someValue = 1;
+    private static int index = 0;
     private static boolean someValueFlag = false;
     public static List<HashSet<Integer>> equiPool = new ArrayList<>();
     static Map<Integer, Integer> equiMapping = new ConcurrentHashMap<>();
@@ -48,6 +47,7 @@ public class DicSerialReason {
                 while (entries.hasNext()) {
                     Map.Entry<Integer, DicRdfDataBean> entry = entries.next();
                     DicRdfDataBean rdfData = entry.getValue();
+                    index = entry.getKey();
                     //TODO
                     List<String> ruleKey = new ArrayList<>();
 
@@ -76,16 +76,16 @@ public class DicSerialReason {
                             SymmetricObjectProperty 2017 */
                                 switch (type){
                                     case 2013://SubObjectPropertyOf 2013
-                                        subPropertyReason(totalData, iteratorMap, stashMap, Isp, Iop, Rs, head, Ro);
+                                        subPropertyReason(Rs, head, Ro);
                                         break;
                                     case 2022://ObjectPropertyDomain 2022
-                                        basicReason(totalData, iteratorMap, stashMap, Isp, Iop, Rs, typeEncode, head);
+                                        basicReason(Rs, typeEncode, head);
                                         break;
                                     case 2023://ObjectPropertyRange 2023
-                                        basicReason(totalData, iteratorMap, stashMap, Isp, Iop, Ro, typeEncode, head);
+                                        basicReason(Ro, typeEncode, head);
                                         break;
                                     case 2002://SubClassOf 2002
-                                        basicReason(totalData, iteratorMap, stashMap, Isp, Iop, Rs, typeEncode, head);
+                                        basicReason(Rs, typeEncode, head);
                                         break;
                                     case 3005:
                                         objectSomeValuesFromReason(totalData, iteratorMap, stashMap, Isp, Iop, Rs, head);
@@ -235,10 +235,10 @@ public class DicSerialReason {
             indexNew = dicDataBeanIterator.getNop();
             int rsTmp = dicDataBeanIterator.getRs();
 
-            if(!DicRdfDataMap.checkDuplicate(rsTmp, typeEncode, class1, isp)) {
-                if(DicRdfDataMap.checkDuplicate(rsTmp, typeEncode, class2, isp)){
+            if(!DicRdfDataMap.checkDuplicate(rsTmp, typeEncode, class1)) {
+                if(DicRdfDataMap.checkDuplicate(rsTmp, typeEncode, class2)){
                     if(checkAllValue(rsTmp,property,class3,isp)){
-                        DicRdfDataMap.addNewRdfDataBean(isp, iop, rsTmp, typeEncode, class1);
+                        DicRdfDataMap.addNewRdfDataBean(rsTmp, typeEncode, class1);
                     }
                 }
             }
@@ -250,10 +250,10 @@ public class DicSerialReason {
         int class2 = head.get(1);
         int property = head.get(2);
         int class3 = head.get(3);
-        if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1, isp)) return;
-        if(!DicRdfDataMap.checkDuplicate(rs, typeEncode, class2, isp)) return;
+        if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1 ))return;
+        if(!DicRdfDataMap.checkDuplicate(rs, typeEncode, class2)) return;
         if(checkAllValue(rs,property,class3,isp)){
-            DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, typeEncode, class1);
+            DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
         }
     }
 
@@ -262,9 +262,9 @@ public class DicSerialReason {
         int class2 = head.get(1);
         int property = head.get(2);
         int class3 = head.get(3);
-        if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1, isp)) return;
+        if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1)) return;
         if(checkAllValue(rs,property,class3,isp)){
-            DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, typeEncode, class1);
+            DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
         }
     }
 
@@ -280,9 +280,9 @@ public class DicSerialReason {
             dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
             indexNew = dicDataBeanIterator.getNop();
             int rsTmp = dicDataBeanIterator.getRs();
-            if(!DicRdfDataMap.checkDuplicate(rsTmp, typeEncode, class1, isp)) {
+            if(!DicRdfDataMap.checkDuplicate(rsTmp, typeEncode, class1)) {
                 if(checkAllValue(rsTmp,property,class3,isp)){
-                    DicRdfDataMap.addNewRdfDataBean(isp, iop, rsTmp, typeEncode, class1);
+                    DicRdfDataMap.addNewRdfDataBean(rsTmp, typeEncode, class1);
                 }
             }
         }while(indexNew != -1);
@@ -292,9 +292,9 @@ public class DicSerialReason {
         int class1 = head.get(0);
         int property = head.get(1);
         int class3 = head.get(2);
-        if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1, isp)) return;
+        if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1)) return;
         if(checkAllValue(rs,property,class3,isp)){
-            DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, typeEncode, class1);
+            DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
         }
     }
 
@@ -315,11 +315,11 @@ public class DicSerialReason {
             indexNew = dicDataBeanIterator.getNop();
             int rsTmp = dicDataBeanIterator.getRs();
 
-            if(!DicRdfDataMap.checkDuplicate(rsTmp, typeEncode, class1, isp)) {
-                if(DicRdfDataMap.checkDuplicate(rsTmp, typeEncode, class2, isp)){
+            if(!DicRdfDataMap.checkDuplicate(rsTmp, typeEncode, class1)) {
+                if(DicRdfDataMap.checkDuplicate(rsTmp, typeEncode, class2)){
                     if(checkAllValue(rsTmp,property,class3,isp)){
                         if(checkAllValue(rsTmp,property,class4,isp)){
-                            DicRdfDataMap.addNewRdfDataBean(isp, iop, rsTmp, typeEncode, class1);
+                            DicRdfDataMap.addNewRdfDataBean(rsTmp, typeEncode, class1);
                         }
                     }
                 }
@@ -338,7 +338,7 @@ public class DicSerialReason {
             dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
             indexNew = dicDataBeanIterator.getNsp();
             int ro = dicDataBeanIterator.getRo();
-            if(!DicRdfDataMap.checkDuplicate(ro, typeEncode, class3, isp))
+            if(!DicRdfDataMap.checkDuplicate(ro, typeEncode, class3))
                 return false;
         }while(indexNew != -1);
         return true;
@@ -350,11 +350,11 @@ public class DicSerialReason {
         int property = head.get(2);
         int class3 = head.get(3);
         int class4= head.get(4);
-        if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1, isp)) return;
-        if(!DicRdfDataMap.checkDuplicate(rs, typeEncode, class2, isp)) return;
+        if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1)) return;
+        if(!DicRdfDataMap.checkDuplicate(rs, typeEncode, class2)) return;
         int firstTripleIsp = IndexMap.getFirstIndexSpFromMap(rs, property);
         if(firstTripleIsp == -1) {
-            DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, typeEncode, class1);
+            DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
             return;
         }
         DicRdfDataBean dicDataBeanIterator;
@@ -363,12 +363,12 @@ public class DicSerialReason {
             dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
             indexNew = dicDataBeanIterator.getNsp();
             int ro1 = dicDataBeanIterator.getRo();
-            if(!DicRdfDataMap.checkDuplicate(ro1, typeEncode, class3, isp))
+            if(!DicRdfDataMap.checkDuplicate(ro1, typeEncode, class3))
                 return;
-            if(!DicRdfDataMap.checkDuplicate(ro1, typeEncode, class4, isp))
+            if(!DicRdfDataMap.checkDuplicate(ro1, typeEncode, class4))
                 return;
         }while(indexNew != -1);
-        DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, typeEncode, class1);
+        DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
     }
 
     private static void type14Reason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro, List<Integer> head) {
@@ -377,10 +377,10 @@ public class DicSerialReason {
         int property = head.get(2);
         int class3 = head.get(3);
         int class4= head.get(4);
-        if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1, isp)) return;
+        if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1)) return;
         int firstTripleIsp = IndexMap.getFirstIndexSpFromMap(rs, property);
         if(firstTripleIsp == -1) {
-            DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, typeEncode, class1);
+            DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
             return;
         }
         DicRdfDataBean dicDataBeanIterator;
@@ -389,12 +389,12 @@ public class DicSerialReason {
             dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
             indexNew = dicDataBeanIterator.getNsp();
             int ro1 = dicDataBeanIterator.getRo();
-            if(!DicRdfDataMap.checkDuplicate(ro1, typeEncode, class3, isp))
+            if(!DicRdfDataMap.checkDuplicate(ro1, typeEncode, class3))
                 return;
-            if(!DicRdfDataMap.checkDuplicate(ro1, typeEncode, class4, isp))
+            if(!DicRdfDataMap.checkDuplicate(ro1, typeEncode, class4))
                 return;
         }while(indexNew != -1);
-        DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, typeEncode, class1);
+        DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
     }
 
 
@@ -404,7 +404,7 @@ public class DicSerialReason {
         int property = head.get(2);
         int class2 = head.get(3);
         int count1 = 0;
-        if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1, isp)) return;
+        if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1)) return;
         int firstTripleIsp = IndexMap.getFirstIndexSpFromMap(rs, rp);
         if(firstTripleIsp == -1) return;
         DicRdfDataBean dicDataBeanIterator;
@@ -417,14 +417,14 @@ public class DicSerialReason {
                 count1++;
             }
             else{
-                if(DicRdfDataMap.checkDuplicate(ro, typeEncode, class2, isp)){
+                if(DicRdfDataMap.checkDuplicate(ro, typeEncode, class2)){
                     count1++;
                 }
             }
 
         }while(indexNew != -1);
         if(count1 >= count){
-            DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, typeEncode, class1);
+            DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
         }
 
     }
@@ -441,8 +441,8 @@ public class DicSerialReason {
             dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
             indexNew = dicDataBeanIterator.getNop();
             int rs = dicDataBeanIterator.getRs();
-            if(!DicRdfDataMap.checkDuplicate(rs, typeEncode, class1, isp)) {
-                DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, typeEncode, class1);
+            if(!DicRdfDataMap.checkDuplicate(rs, typeEncode, class1)) {
+                DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
             }
         }while(indexNew != -1);
     }
@@ -451,13 +451,13 @@ public class DicSerialReason {
         int class1 = head.get(0);
         int property = head.get(1);
         int class2 = head.get(2);
-        if(DicRdfDataMap.checkDuplicate(rs, 0, class1, isp)) return;
+        if(DicRdfDataMap.checkDuplicate(rs, 0, class1)) return;
         if(class2 == 1){
-            DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, 0, class1);
+            DicRdfDataMap.addNewRdfDataBean(rs, 0, class1);
             return;
         }
-        if(DicRdfDataMap.checkDuplicate(ro, 0, class2, isp)){
-            DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, 0, class1);
+        if(DicRdfDataMap.checkDuplicate(ro, 0, class2)){
+            DicRdfDataMap.addNewRdfDataBean(rs, 0, class1);
         }
 
     }
@@ -490,7 +490,7 @@ public class DicSerialReason {
                 while(rsRpList.hasNext()){
                     int rs = rsRpList.next();
                     int rp = rsRpList.next();
-                    if(!DicRdfDataMap.checkDuplicate(rs, rp, tmp22, isp)) {
+                    if(!DicRdfDataMap.checkDuplicate(rs, rp, tmp22)) {
                         DicRdfDataMap.addSourceRdfDataBean(totalData.size(), rs, rp, tmp22);
 
                     }
@@ -534,7 +534,7 @@ public class DicSerialReason {
                 while(rpRoList.hasNext()){
                     int rp = rpRoList.next();
                     int ro = rpRoList.next();
-                    if(!DicRdfDataMap.checkDuplicate(tmp22, rp, ro, isp)) {
+                    if(!DicRdfDataMap.checkDuplicate(tmp22, rp, ro)) {
                         DicRdfDataMap.addSourceRdfDataBean(totalData.size(), tmp22, rp, ro);
 
                     }
@@ -773,9 +773,9 @@ public class DicSerialReason {
                 dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
                 indexNew = dicDataBeanIterator.getNop();
                 int rs1 = dicDataBeanIterator.getRs();
-                if(!DicRdfDataMap.checkDuplicate(rs1, rpTmp, minNew, isp)) {
+                if(!DicRdfDataMap.checkDuplicate(rs1, rpTmp, minNew)) {
                     //rs rp ro1
-                    DicRdfDataMap.addNewRdfDataBean(isp, iop, rs1, rpTmp, minNew);
+                    DicRdfDataMap.addNewRdfDataBean(rs1, rpTmp, minNew);
                 }
             }while(indexNew != -1);
         }
@@ -799,9 +799,9 @@ public class DicSerialReason {
                 dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
                 indexNew = dicDataBeanIterator.getNsp();
                 int ro1 = dicDataBeanIterator.getRo();
-                if(!DicRdfDataMap.checkDuplicate(minNew, rpTmp, ro1, isp)) {
+                if(!DicRdfDataMap.checkDuplicate(minNew, rpTmp, ro1)) {
                     //rs rp ro1
-                    DicRdfDataMap.addNewRdfDataBean(isp, iop, minNew, rpTmp, ro1);
+                    DicRdfDataMap.addNewRdfDataBean(minNew, rpTmp, ro1);
                 }
             }while(indexNew != -1);
         }
@@ -833,8 +833,8 @@ public class DicSerialReason {
     }
 
     private static void symmetricObjectPropertyReason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro) {
-        if(!DicRdfDataMap.checkDuplicate(ro, rp, rs, isp)) {
-            DicRdfDataMap.addNewRdfDataBean(isp, iop, ro, rp, rs);
+        if(!DicRdfDataMap.checkDuplicate(ro, rp, rs)) {
+            DicRdfDataMap.addNewRdfDataBean(ro, rp, rs);
         }
 
     }
@@ -850,9 +850,9 @@ public class DicSerialReason {
             dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
             indexNew = dicDataBeanIterator.getNop();
             int rs1 = dicDataBeanIterator.getRs();
-            if(!DicRdfDataMap.checkDuplicate(rs1, typeEncode, class2, isp)) {
+            if(!DicRdfDataMap.checkDuplicate(rs1, typeEncode, class2)) {
                 //rs rp ro1
-                DicRdfDataMap.addNewRdfDataBean(isp, iop, rs1, typeEncode, class2);
+                DicRdfDataMap.addNewRdfDataBean(rs1, typeEncode, class2);
             }
         }while(indexNew != -1);
     }
@@ -866,7 +866,7 @@ public class DicSerialReason {
             //add cardinality
             int i = 0;
             while(i<cardinality){
-                addSomeValueFrom(isp, iop, rs, rp, class2);
+                addSomeValueFrom(rs, rp, class2);
                 i++;
             }
         }
@@ -884,7 +884,7 @@ public class DicSerialReason {
                 }
                 else{
                     int ro1 = dicDataBeanIterator.getRo();
-                    if(DicRdfDataMap.checkDuplicate(ro1, typeEncode, class2, isp)) {
+                    if(DicRdfDataMap.checkDuplicate(ro1, typeEncode, class2)) {
                         //rs rp ro1
                         exist++;
                     }
@@ -894,31 +894,27 @@ public class DicSerialReason {
             int i = 0;
             if((cardinality-exist) <= 0){return ;}
             while(i<(cardinality-exist)){
-                addSomeValueFrom(isp, iop, rs, rp, class2);
+                addSomeValueFrom(rs, rp, class2);
                 i++;
             }
         }
     }
 
-    private static void addSomeValueFrom(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int class2, int firstTripleIsp) {
+    private static void addSomeValueFrom(int rs, int rp, int class2, int firstTripleIsp) {
         int ro = anonymous;
-        if (!someValueFlag && rs < 0) {
-            someValue++;
-            someValueFlag = true;
-        }
-        DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, rp, ro, firstTripleIsp);
+        DicRdfDataMap.addNewRdfDataBean(rs, rp, ro, firstTripleIsp);
         anonymous--;
-        DicRdfDataMap.addNewRdfDataBean(isp, iop, ro, typeEncode, class2);
+        DicRdfDataMap.addStashRdfDataBean(ro, typeEncode, class2);
     }
-    private static void addSomeValueFrom(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int class2) {
+    private static void addSomeValueFrom(int rs, int rp, int class2) {
         int ro = anonymous;
         if (!someValueFlag && rs < 0) {
             someValue++;
             someValueFlag = true;
         }
-        DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, rp, ro);
+        DicRdfDataMap.addNewRdfDataBean( rs, rp, ro);
         anonymous--;
-        DicRdfDataMap.addNewRdfDataBean(isp, iop, ro, typeEncode, class2);
+        DicRdfDataMap.addStashRdfDataBean(ro, typeEncode, class2);
     }
     private static void objectAllValuesFromReason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, List<Integer> head) {
         int rp = head.get(0);
@@ -931,9 +927,9 @@ public class DicSerialReason {
             dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
             indexNew = dicDataBeanIterator.getNsp();
             int ro1 = dicDataBeanIterator.getRo();
-            if(!DicRdfDataMap.checkDuplicate(ro1, typeEncode, class2, isp)) {
+            if(!DicRdfDataMap.checkDuplicate(ro1, typeEncode, class2)) {
                 //rs rp ro1
-                DicRdfDataMap.addNewRdfDataBean(isp, iop, ro1, typeEncode, class2);
+                DicRdfDataMap.addNewRdfDataBean(ro1, typeEncode, class2);
             }
         }while(indexNew != -1);
     }
@@ -947,9 +943,9 @@ public class DicSerialReason {
             dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
             indexNew = dicDataBeanIterator.getNsp();
             int ro1 = dicDataBeanIterator.getRo();
-            if(!DicRdfDataMap.checkDuplicate(rs, rp, ro1, isp)) {
+            if(!DicRdfDataMap.checkDuplicate(rs, rp, ro1)) {
                 //rs rp ro1
-                DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, rp, ro1);
+                DicRdfDataMap.addNewRdfDataBean(rs, rp, ro1);
             }
         }while(indexNew != -1);
 
@@ -969,10 +965,10 @@ public class DicSerialReason {
             dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
             indexNew = dicDataBeanIterator.getNop();
             int rs = dicDataBeanIterator.getRs();
-            if(!DicRdfDataMap.checkDuplicate(rs, typeEncode, class1, isp)) {
-                if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class2, isp)){
+            if(!DicRdfDataMap.checkDuplicate(rs, typeEncode, class1)) {
+                if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class2)){
                     //rs type class1
-                    DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, typeEncode, class1);
+                    DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
                 }
             }
         }while(indexNew != -1);
@@ -984,19 +980,19 @@ public class DicSerialReason {
         int class2 = head.get(1);
         int r = head.get(2);
         int class3 = head.get(3);
-        if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1, isp)){
+        if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1)){
             return;
         }
-        boolean flag1 = DicRdfDataMap.checkDuplicate(rs, typeEncode, class2, isp);
+        boolean flag1 = DicRdfDataMap.checkExistBeforeIndex(rs, typeEncode, class2, index);
         if(flag1){
             if(class3 == 1){
-                DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, typeEncode, class1);
+                DicRdfDataMap.addStashRdfDataBean(rs, typeEncode, class1);
                 return;
             }
             else{
-                boolean flag2 = DicRdfDataMap.checkDuplicate(ro, typeEncode, class3, isp);
+                boolean flag2 = DicRdfDataMap.checkExistBeforeIndex(ro, typeEncode, class3, index);
                 if(flag2){
-                    DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, typeEncode, class1);
+                    DicRdfDataMap.addStashRdfDataBean(rs, typeEncode, class1);
                 }
             }
         }
@@ -1008,15 +1004,19 @@ public class DicSerialReason {
         int class2 = head.get(1);
         int r = head.get(2);
         int class3 = head.get(3);
-        if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1, isp)){
+        if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1)){
             return;
         }
         int firstTripleIsp = IndexMap.getFirstIndexSpFromMap(rs, r);
         if(firstTripleIsp == -1){
             return;
         }
+        //avoid repeat
+        if(firstTripleIsp > index){
+            return;
+        }
         if(class3 == 1){//owl:Thing
-            DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, typeEncode, class1);
+            DicRdfDataMap.addStashRdfDataBean(rs, typeEncode, class1);
             return;
         }
         DicRdfDataBean dicDataBeanIterator;
@@ -1025,12 +1025,12 @@ public class DicSerialReason {
             dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
             indexNew = dicDataBeanIterator.getNsp();
             int ro = dicDataBeanIterator.getRo();
-            if(DicRdfDataMap.checkDuplicate(ro, typeEncode, class3, isp)){
+            if(DicRdfDataMap.checkDuplicate(ro, typeEncode, class3)){
                 //rs type class1
-                DicRdfDataMap.addNewRdfDataBean(isp, iop, rs, typeEncode, class1);
+                DicRdfDataMap.addStashRdfDataBean(rs, typeEncode, class1);
                 return;
             }
-        }while(indexNew != -1);
+        }while(indexNew != -1 && indexNew <= index);
 
     }
 
@@ -1049,68 +1049,29 @@ public class DicSerialReason {
                 dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
                 indexNew = dicDataBeanIterator.getNsp();
                 int ro = dicDataBeanIterator.getRo();
-                if(DicRdfDataMap.checkDuplicate(ro, typeEncode, class2, isp)){
+                if(DicRdfDataMap.checkDuplicate(ro, typeEncode, class2)){
                     return;
                 }
             }while(indexNew != -1);
         }
-        addSomeValueFrom(isp, iop, rs, rp, class2, firstTripleIsp);
+        addSomeValueFrom(rs, rp, class2, firstTripleIsp);
     }
 
-    private static void basicReason(Map<Integer, DicRdfDataBean> totalData, Map<Integer, DicRdfDataBean> iteratorMap, Map<Integer, DicRdfDataBean> stashMap, Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, List<Integer> head) {
+    private static void basicReason(int rs, int rp, List<Integer> head) {
         int ro = head.get(0);
-        int index = totalData.size()+iteratorMap.size()+stashMap.size();
-        int firstTripleIsp = IndexMap.getFirstIndexSpFromMap(rs, rp, index);
-        //System.out.println("firstTripleIsp"+index+firstTripleIsp);
-        int firstTripleIop = IndexMap.getFirstIndexOpFromMap(rp, ro, index);
-        DicRdfDataBean dicDataBean = new DicRdfDataBean();
-        dicDataBean.setRs(rs);
-        dicDataBean.setRp(rp);
-        dicDataBean.setRo(ro);
-        dicDataBean.setNp(-1);
-        if(firstTripleIsp == -1 || firstTripleIop == -1){
-            dicDataBean.setNsp(firstTripleIsp, index);
-            dicDataBean.setNop(firstTripleIop, index);
-            stashMap.put(index, dicDataBean);
-        } else{
-            if(DicRdfDataMap.checkDuplicate(firstTripleIsp, ro)){//true 已经存在，不插入
-                return;
-            }
-            else{//插入
-                //System.out.println("indexthis"+firstTripleIsp);
-                dicDataBean.setNsp(firstTripleIsp, index);
-                dicDataBean.setNop(firstTripleIop, index);
-                stashMap.put(index, dicDataBean);
-            }
+        if(DicRdfDataMap.checkDuplicate(rs, rp, ro)){
+            return;
         }
-
+        DicRdfDataMap.addStashRdfDataBean(rs, rp, ro);
     }
 
-    private static void subPropertyReason(Map<Integer, DicRdfDataBean> totalData, Map<Integer, DicRdfDataBean> iteratorMap, Map<Integer, DicRdfDataBean> stashMap, Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, List<Integer> head, int ro) {
+    private static void subPropertyReason(int rs, List<Integer> head, int ro) {
         int rp = head.get(0);
-        //TODO
-        int index = totalData.size()+iteratorMap.size()+stashMap.size();
-        int firstTripleIsp = IndexMap.getFirstIndexSpFromMap(rs, rp, index);
-        int firstTripleIop = IndexMap.getFirstIndexOpFromMap(rp, ro, index);
-        DicRdfDataBean dicDataBean = new DicRdfDataBean();
-        dicDataBean.setRs(rs);
-        dicDataBean.setRp(rp);
-        dicDataBean.setRo(ro);
-        dicDataBean.setNp(-1);
-        if(firstTripleIsp == -1 || firstTripleIop == -1){
-            dicDataBean.setNsp(firstTripleIsp, index);
-            dicDataBean.setNop(firstTripleIop, index);
-            stashMap.put(index, dicDataBean);
-        } else{
-            if(DicRdfDataMap.checkDuplicate(firstTripleIsp, ro)){//true 已经存在，不插入
-                return;
-            }
-            else{//插入
-                dicDataBean.setNsp(firstTripleIsp, index);
-                dicDataBean.setNop(firstTripleIop, index);
-                stashMap.put(index, dicDataBean);
-            }
+        //TODO check huan op 会不会更快
+        if(DicRdfDataMap.checkDuplicate(rs, rp, ro)){
+            return;
         }
+        DicRdfDataMap.addStashRdfDataBean(rs, rp, ro);
     }
 
 

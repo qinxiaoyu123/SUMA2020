@@ -40,14 +40,31 @@ public class DicRdfDataMap {
         return false;
     }
 //Isp = 1, Isp ; Isp = 0; Ipo
-    public static boolean checkDuplicate(int rs, int rp, int ro, Map<Integer, List<IndexBean>> isp) {
+    public static boolean checkDuplicate(int rs, int rp, int ro) {
         int firstIndex = IndexMap.getFirstIndexSpFromMap(rs,rp);
         if(firstIndex == -1){
             return false;
         }
         return checkDuplicate(firstIndex, ro);
     }
-
+    public static boolean checkExistBeforeIndex(int rs, int rp, int ro, int index) {
+        int firstIndex = IndexMap.getFirstIndexSpFromMap(rs,rp);
+        if(firstIndex == -1){
+            return false;
+        }
+        if(firstIndex > index){
+            return false;
+        }
+        DicRdfDataBean dataBean;
+        int indexNew = firstIndex;
+        do{
+            dataBean = getDataBean(indexNew);
+            indexNew = dataBean.getNsp();
+            int roIterator = dataBean.getRo();
+            if(ro == roIterator) return true;
+        }while(indexNew != -1 && indexNew <= index);
+        return false;
+    }
     public static DicRdfDataBean getDataBean(int index) {
         if(index < dicDataMap.size()){
             return dicDataMap.get(index);
@@ -64,7 +81,7 @@ public class DicRdfDataMap {
         }
     }
 
-    public static void addNewRdfDataBean(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> ipo, int rs, int rp, int ro) {
+    public static void addNewRdfDataBean(int rs, int rp, int ro) {
         int index = dicDataMap.size()+dicIteratorMap.size()+dicStashMap.size();
         DicRdfDataBean dicDataBean = new DicRdfDataBean();
         dicDataBean.setRs(rs);
@@ -77,7 +94,20 @@ public class DicRdfDataMap {
         dicDataBean.setNp(-1);
         dicStashMap.put(index, dicDataBean);
     }
+    public static void addStashRdfDataBean(int rs, int rp, int ro) {
+        int index = dicDataMap.size()+dicIteratorMap.size()+dicStashMap.size();
+        int firstTripleIsp = IndexMap.getFirstIndexSpFromMap(rs, rp, index);
+        int firstTripleIop = IndexMap.getFirstIndexOpFromMap(rp, ro, index);
+        DicRdfDataBean dicDataBean = new DicRdfDataBean();
+        dicDataBean.setRs(rs);
+        dicDataBean.setRp(rp);
+        dicDataBean.setRo(ro);
+        dicDataBean.setNp(-1);
 
+        dicDataBean.setNsp(firstTripleIsp, index);
+        dicDataBean.setNop(firstTripleIop, index);
+        dicStashMap.put(index, dicDataBean);
+    }
     public static void addSourceRdfDataBean(int index, int rs, int rp, int ro) {
         DicRdfDataBean dicDataBean = new DicRdfDataBean();
         dicDataBean.setRs(rs);
@@ -91,7 +121,7 @@ public class DicRdfDataMap {
         dicDataMap.put(index, dicDataBean);
     }
 
-    public static void addNewRdfDataBean(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> ipo, int rs, int rp, int ro, int nsp) {
+    public static void addNewRdfDataBean(int rs, int rp, int ro, int nsp) {
         int index = dicDataMap.size()+dicIteratorMap.size()+dicStashMap.size();
         DicRdfDataBean dicDataBean = new DicRdfDataBean();
         dicDataBean.setRs(rs);
@@ -103,6 +133,8 @@ public class DicRdfDataMap {
         dicDataBean.setNp(-1);
         dicStashMap.put(index, dicDataBean);
     }
+
+
 
 
 //    public static Map<Integer,Integer> getDicdataIndexIsp(){
