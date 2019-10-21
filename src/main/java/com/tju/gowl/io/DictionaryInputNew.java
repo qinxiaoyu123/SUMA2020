@@ -46,7 +46,7 @@ public class DictionaryInputNew {
 //                  逆角色，等价角色进行替换
                     if (EquivalentPropertyMap.EquivalentPropertyMap.containsKey(rp)) {
                         rp = EquivalentPropertyMap.EquivalentPropertyMap.get(rp);
-                    }
+                }
 
                     if (InversePropertyMap.InverseMap.containsKey(rp)) {
                         rp = InversePropertyMap.InverseMap.get(rp);

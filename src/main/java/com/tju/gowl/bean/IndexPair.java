@@ -1,10 +1,10 @@
 package com.tju.gowl.bean;
 
-public class IndexBeanString {
+public class IndexPair {
     private int firstTriple;
     private int lastTriple;
 
-    public IndexBeanString(int firstTriple, int lastTriple) {
+    public IndexPair(int firstTriple, int lastTriple) {
         this.firstTriple = firstTriple;
         this.lastTriple = lastTriple;
     }

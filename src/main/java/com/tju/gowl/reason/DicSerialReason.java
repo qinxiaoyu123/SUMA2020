@@ -29,8 +29,8 @@ public class DicSerialReason {
         //规则
         Map<String, List<DicOwlBean>> totalRule = DicOwlMap.getRuleMap();
         //索引
-        Map<Integer, List<IndexBean>> Isp = IndexMap.getIsp();
-        Map<Integer, List<IndexBean>> Iop = IndexMap.getIop();
+        Map<Integer, List<IndexBean>> Isp = new ConcurrentHashMap<>();
+        Map<Integer, List<IndexBean>> Iop = new ConcurrentHashMap<>();
 
         while(true){
             //preDataCount = totalData.size();
@@ -54,12 +54,7 @@ public class DicSerialReason {
                     int Rs = rdfData.getRs();
                     int Rp = rdfData.getRp();
                     int Ro = rdfData.getRo();
-                    boolean rsBool =  boolSameAs(Rs);
-                    boolean rpBool =  boolSameAs(Rp);
-                    boolean roBool =  boolSameAs(Ro);
-                    if(!(rsBool && rpBool && roBool)){
-                        continue;
-                    }
+                    if (isOutDated(Rs, Rp, Ro)) continue;
                     convertDataToRuleKey(ruleKey, Rs, Rp, Ro);
 
                     ruleKey.forEach(str -> {
@@ -88,77 +83,77 @@ public class DicSerialReason {
                                         basicReason(Rs, typeEncode, head);
                                         break;
                                     case 3005:
-                                        objectSomeValuesFromReason(totalData, iteratorMap, stashMap, Isp, Iop, Rs, head);
+                                        objectSomeValuesFromReason(totalData, iteratorMap, stashMap, Rs, head);
                                         break;
                                     case 0:
-                                        equivalentClass2Reason(Isp, Iop, Rs, head);
+                                        equivalentClass2Reason(Rs, head);
                                         break;
                                     case 1:
-                                        equivalentRoleReason(Isp, Iop, Rs, Ro, head);
+                                        equivalentRoleReason(Rs, Ro, head);
                                         break;
                                     case 2:
-                                        equivalentClass3Reason(Isp, Iop, Rs, head);
+                                        equivalentClass3Reason(Rs, head);
                                         break;
                                     case 2019:
-                                        transitiveReason(Isp, Iop, Rs, Rp, Ro);
+                                        transitiveReason(Rs, Rp, Ro);
                                         break;
                                     case 3006:
-                                        objectAllValuesFromReason(Isp, Iop, Rs, head);
+                                        objectAllValuesFromReason(Rs, head);
                                         break;
                                     case 3008:
-                                        objectMinCardinalityReason(totalData, iteratorMap, stashMap, Isp, Iop, Rs, head);
+                                        objectMinCardinalityReason(Rs, head);
                                         break;
                                     case -3006://ObjectAllValuesFrom
-                                        objectAllValuesInverseFromReason(Isp, Iop, Rs, head);
+                                        objectAllValuesInverseFromReason(Rs, head);
                                         break;
                                     case 2017:
-                                        symmetricObjectPropertyReason(Isp, Iop, Rs, Rp, Ro);
+                                        symmetricObjectPropertyReason(Rs, Rp, Ro);
                                         break;
                                     case 2016:
-                                        inverseFunctionalObjectPropertyReason(Isp, Iop, Rs, Rp, Ro);
+                                        inverseFunctionalObjectPropertyReason(Rs, Rp, Ro);
                                         break;
                                     case 2015:
-                                        functionalObjectPropertyReason(Isp, Iop, Rs, Rp, Ro);
+                                        functionalObjectPropertyReason(Rs, Rp, Ro);
                                         break;
                                     case 10:
-                                        type10Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        type10Reason(Rs, Rp, Ro, head);
                                         break;
                                     case 11:
-                                        type11Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        type11Reason(Rs, Rp, Ro, head);
                                         break;
                                     case 12:
                                         try {
-                                            type12Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                            type12Reason(Rs, Rp, Ro, head);
                                         } catch (IOException e) {
                                             e.printStackTrace();
                                         }
                                         break;
                                     case 14:
-                                        type14Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        type14Reason(Rs, Rp, Ro, head);
                                         break;
                                     case 15:
-                                        type15Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        type15Reason(Rs, Rp, Ro, head);
                                         break;
                                     case 16:
-                                        type16Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        type16Reason(Rs, Rp, Ro, head);
                                         break;
                                     case 17:
-                                        type16Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        type16Reason(Rs, Rp, Ro, head);
                                         break;
                                     case 18:
-                                        type18Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        type18Reason(Rs, Rp, Ro, head);
                                         break;
                                     case 19:
-                                        type19Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        type19Reason(Rs, Rp, Ro, head);
                                         break;
                                     case 20:
-                                        type20Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        type20Reason(Rs, Rp, Ro, head);
                                         break;
                                     case 21:
-                                        type21Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        type21Reason(Rs, Rp, Ro, head);
                                         break;
                                     case 22:
-                                        type22Reason(Isp, Iop, Rs, Rp, Ro, head);
+                                        type22Reason(Rs, Rp, Ro, head);
                                         break;
 
                                 }
@@ -185,7 +180,7 @@ public class DicSerialReason {
                 System.out.println("after equiv data size"+totalData.size());
                 break;
             }
-            if(someValue>=14){
+            if(loopCount>=14){
                 System.out.println("14轮循环结束");
                 System.out.println("someValue"+someValue);
                 totalData.putAll(stashMap);
@@ -212,16 +207,41 @@ public class DicSerialReason {
 
     }
 
-    private static boolean boolSameAs(int rs) {
+    private static boolean isOutDated(int rs, int rp, int ro) {
+        boolean rsBool =  true;
+        boolean rpBool =  true;
+        boolean roBool =  true;
+        int rsRep = 0;
+        int rpRep = 0;
+        int roRep = 0;
         if(equiRepresentation.containsKey(rs)){
-            if(equiRepresentation.get(rs)!= rs){
-                return false;
+            rsRep = equiRepresentation.get(rs);
+            if(rsRep != rs){
+                rsBool = false;
             }
         }
-        return true;
+        if(equiRepresentation.containsKey(rp)){
+            rpRep = equiRepresentation.get(rp);
+            if(rpRep != rp){
+                rpBool = false;
+            }
+        }
+        if(equiRepresentation.containsKey(ro)){
+            roRep = equiRepresentation.get(ro);
+            if(roRep != ro){
+                roBool = false;
+            }
+        }
+
+        if(!(rsBool && rpBool && roBool)){
+            DicRdfDataMap.addStashRdfDataBean(rsRep, rpRep, roRep);
+            return true;
+        }
+        return false;
     }
 
-    private static void type22Reason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro, List<Integer> head) {
+
+    private static void type22Reason(int rs, int rp, int ro, List<Integer> head) {
         int class1 = head.get(0);
         int class2 = head.get(1);
         int property = head.get(2);
@@ -237,7 +257,7 @@ public class DicSerialReason {
 
             if(!DicRdfDataMap.checkDuplicate(rsTmp, typeEncode, class1)) {
                 if(DicRdfDataMap.checkDuplicate(rsTmp, typeEncode, class2)){
-                    if(checkAllValue(rsTmp,property,class3,isp)){
+                    if(checkAllValue(rsTmp,property,class3)){
                         DicRdfDataMap.addNewRdfDataBean(rsTmp, typeEncode, class1);
                     }
                 }
@@ -245,30 +265,30 @@ public class DicSerialReason {
         }while(indexNew != -1);
     }
 
-    private static void type21Reason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro, List<Integer> head) {
+    private static void type21Reason(int rs, int rp, int ro, List<Integer> head) {
         int class1 = head.get(0);
         int class2 = head.get(1);
         int property = head.get(2);
         int class3 = head.get(3);
         if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1 ))return;
         if(!DicRdfDataMap.checkDuplicate(rs, typeEncode, class2)) return;
-        if(checkAllValue(rs,property,class3,isp)){
+        if(checkAllValue(rs,property,class3)){
             DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
         }
     }
 
-    private static void type20Reason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro, List<Integer> head) {
+    private static void type20Reason(int rs, int rp, int ro, List<Integer> head) {
         int class1 = head.get(0);
         int class2 = head.get(1);
         int property = head.get(2);
         int class3 = head.get(3);
         if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1)) return;
-        if(checkAllValue(rs,property,class3,isp)){
+        if(checkAllValue(rs,property,class3)){
             DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
         }
     }
 
-    private static void type19Reason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro, List<Integer> head) {
+    private static void type19Reason(int rs, int rp, int ro, List<Integer> head) {
         int class1 = head.get(0);
         int property = head.get(1);
         int class3 = head.get(2);
@@ -281,25 +301,25 @@ public class DicSerialReason {
             indexNew = dicDataBeanIterator.getNop();
             int rsTmp = dicDataBeanIterator.getRs();
             if(!DicRdfDataMap.checkDuplicate(rsTmp, typeEncode, class1)) {
-                if(checkAllValue(rsTmp,property,class3,isp)){
+                if(checkAllValue(rsTmp,property,class3)){
                     DicRdfDataMap.addNewRdfDataBean(rsTmp, typeEncode, class1);
                 }
             }
         }while(indexNew != -1);
     }
 
-    private static void type18Reason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro, List<Integer> head) {
+    private static void type18Reason(int rs, int rp, int ro, List<Integer> head) {
         int class1 = head.get(0);
         int property = head.get(1);
         int class3 = head.get(2);
         if(DicRdfDataMap.checkDuplicate(rs, typeEncode, class1)) return;
-        if(checkAllValue(rs,property,class3,isp)){
+        if(checkAllValue(rs,property,class3)){
             DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
         }
     }
 
 
-    private static void type16Reason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro, List<Integer> head) {
+    private static void type16Reason(int rs, int rp, int ro, List<Integer> head) {
         //rs type class3
         int class1 = head.get(0);
         int class2 = head.get(1);
@@ -317,8 +337,8 @@ public class DicSerialReason {
 
             if(!DicRdfDataMap.checkDuplicate(rsTmp, typeEncode, class1)) {
                 if(DicRdfDataMap.checkDuplicate(rsTmp, typeEncode, class2)){
-                    if(checkAllValue(rsTmp,property,class3,isp)){
-                        if(checkAllValue(rsTmp,property,class4,isp)){
+                    if(checkAllValue(rsTmp,property,class3)){
+                        if(checkAllValue(rsTmp,property,class4)){
                             DicRdfDataMap.addNewRdfDataBean(rsTmp, typeEncode, class1);
                         }
                     }
@@ -327,7 +347,7 @@ public class DicSerialReason {
         }while(indexNew != -1);
     }
 
-    private static boolean checkAllValue(int rs, int property, int class3, Map<Integer, List<IndexBean>> isp) {
+    private static boolean checkAllValue(int rs, int property, int class3) {
         int firstTripleIsp = IndexMap.getFirstIndexSpFromMap(rs, property);
         if(firstTripleIsp == -1) {
             return true;
@@ -344,7 +364,7 @@ public class DicSerialReason {
         return true;
     }
 
-    private static void type15Reason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro, List<Integer> head) {
+    private static void type15Reason(int rs, int rp, int ro, List<Integer> head) {
         int class1 = head.get(0);
         int class2 = head.get(1);
         int property = head.get(2);
@@ -371,7 +391,7 @@ public class DicSerialReason {
         DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
     }
 
-    private static void type14Reason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro, List<Integer> head) {
+    private static void type14Reason(int rs, int rp, int ro, List<Integer> head) {
         int class1 = head.get(0);
         int class2 = head.get(1);
         int property = head.get(2);
@@ -398,7 +418,7 @@ public class DicSerialReason {
     }
 
 
-    private static void type12Reason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro1, List<Integer> head) throws IOException {
+    private static void type12Reason(int rs, int rp, int ro1, List<Integer> head) throws IOException {
         int class1 = head.get(0);
         int count =head.get(1);
         int property = head.get(2);
@@ -429,7 +449,7 @@ public class DicSerialReason {
 
     }
 
-    private static void type11Reason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs1, int rp, int ro, List<Integer> head) {
+    private static void type11Reason(int rs1, int rp, int ro, List<Integer> head) {
         int class1 = head.get(0);
         int property = head.get(1);
         int class2 = head.get(2);
@@ -447,7 +467,7 @@ public class DicSerialReason {
         }while(indexNew != -1);
     }
 
-    private static void type10Reason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro, List<Integer> head) {
+    private static void type10Reason(int rs, int rp, int ro, List<Integer> head) {
         int class1 = head.get(0);
         int property = head.get(1);
         int class2 = head.get(2);
@@ -466,22 +486,20 @@ public class DicSerialReason {
 
     private static void addEquivIndividual(Map<Integer, DicRdfDataBean> totalData) {
         Iterator<HashSet<Integer>> iterPool = equiPool.iterator();
-        Map<Integer, List<IndexBean>> isp = IndexMap.getIsp();
-        Map<Integer, List<IndexBean>> iop = IndexMap.getIop();
+
         while(iterPool.hasNext()){
             HashSet<Integer> tmpPool = iterPool.next();
             Iterator<Integer> tmp1 = tmpPool.iterator();
             while(tmp1.hasNext()){
                 int tmp = tmp1.next();
-                addEquivRsTriple(totalData, isp, tmpPool, tmp);
-                addEquivRoTriple(totalData, iop, tmpPool, tmp);
+                addEquivRsTriple(totalData, tmpPool, tmp);
+                addEquivRoTriple(totalData, tmpPool, tmp);
             }
         }
     }
 
-    private static void addEquivRoTriple(Map<Integer, DicRdfDataBean> totalData, Map<Integer, List<IndexBean>> iop, HashSet<Integer> tmpPool, int tmp) {
-        Map<Integer, List<IndexBean>> isp = IndexMap.getIsp();
-        List<Integer> rsRpTriples = findAllTriplesFromRo(totalData, iop, tmp);
+    private static void addEquivRoTriple(Map<Integer, DicRdfDataBean> totalData, HashSet<Integer> tmpPool, int tmp) {
+        List<Integer> rsRpTriples = findAllTriplesFromRo(tmp);
         Iterator<Integer> tmp2 = tmpPool.iterator();
         while(tmp2.hasNext()){
             int tmp22 = tmp2.next();
@@ -500,16 +518,17 @@ public class DicSerialReason {
         }
     }
 
-    private static List<Integer> findAllTriplesFromRo(Map<Integer, DicRdfDataBean> totalData, Map<Integer, List<IndexBean>> iop, int tmp) {
+    private static List<Integer> findAllTriplesFromRo(int tmp) {
+        Map<Integer, Map<Integer, IndexPair>> iop = IndexMap.getIop();
         List<Integer> rsRpTriples = new ArrayList<>();
         if(iop.containsKey(tmp)){
-            List<IndexBean> indexBean = iop.get(tmp);
-            Iterator<IndexBean> iterIndexBean = indexBean.iterator();
+            Map<Integer, IndexPair> indexBean = iop.get(tmp);
+            Iterator<Map.Entry<Integer, IndexPair>> iterIndexBean = indexBean.entrySet().iterator();
             while(iterIndexBean.hasNext()){
                 //rs rp 第一条数据
-                IndexBean tt = iterIndexBean.next();
-                int firstTripleIop = tt.getIndex();
-                int rp = tt.getResource();
+                Map.Entry<Integer, IndexPair> tt = iterIndexBean.next();
+                int firstTripleIop = tt.getValue().getFirstTriple();
+                int rp = tt.getKey();
                 DicRdfDataBean dicDataBeanIterator;
                 int indexNew = firstTripleIop;
                 do{
@@ -524,8 +543,8 @@ public class DicSerialReason {
         return rsRpTriples;
     }
 
-    private static void addEquivRsTriple(Map<Integer, DicRdfDataBean> totalData, Map<Integer, List<IndexBean>> isp, HashSet<Integer> tmpPool, int tmp) {
-        List<Integer> rpRoTriples = findAllTriplesFromRs(totalData, isp, tmp);
+    private static void addEquivRsTriple(Map<Integer, DicRdfDataBean> totalData, HashSet<Integer> tmpPool, int tmp) {
+        List<Integer> rpRoTriples = findAllTriplesFromRs(tmp);
         Iterator<Integer> tmp2 = tmpPool.iterator();
         while(tmp2.hasNext()){
             int tmp22 = tmp2.next();
@@ -544,16 +563,17 @@ public class DicSerialReason {
         }
     }
 
-    private static List<Integer> findAllTriplesFromRs(Map<Integer, DicRdfDataBean> totalData, Map<Integer, List<IndexBean>> isp, int tmp) {
+    private static List<Integer> findAllTriplesFromRs(int tmp) {
+        Map<Integer, Map<Integer, IndexPair>> isp = IndexMap.getIsp();
         List<Integer> rpRoTriples = new ArrayList<>();
         if(isp.containsKey(tmp)){
-            List<IndexBean> indexBean = isp.get(tmp);
-            Iterator<IndexBean> iterIndexBean = indexBean.iterator();
+            Map<Integer, IndexPair> indexBean = isp.get(tmp);
+            Iterator<Map.Entry<Integer, IndexPair>> iterIndexBean = indexBean.entrySet().iterator();
             while(iterIndexBean.hasNext()){
                 //rs rp 第一条数据
-                IndexBean tt = iterIndexBean.next();
-                int firstTripleIsp = tt.getIndex();
-                int rp = tt.getResource();
+                Map.Entry<Integer, IndexPair> tt = iterIndexBean.next();
+                int firstTripleIsp = tt.getValue().getFirstTriple();
+                int rp = tt.getKey();
                 DicRdfDataBean dicDataBeanIterator;
                 int indexNew = firstTripleIsp;
                 do{
@@ -568,7 +588,7 @@ public class DicSerialReason {
         return rpRoTriples;
     }
 
-    private static void functionalObjectPropertyReason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro) {
+    private static void functionalObjectPropertyReason(int rs, int rp, int ro) {
         int rsEquiv = findEquivPoolIndex(rs);
 //        System.out.println(Dictionary.getDecode().get(rs));
 //        System.out.println(Dictionary.getDecode().get(rp));
@@ -631,11 +651,9 @@ public class DicSerialReason {
         }
     }
 
-    private static void sameAsPropertyReason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro) {
 
-    }
 
-    private static void inverseFunctionalObjectPropertyReason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro) {
+    private static void inverseFunctionalObjectPropertyReason(int rs, int rp, int ro) {
 //        Map<String, Integer> inverseFunProMap = FunctionalPropertyMap.getInverseFunPropertyMap();
 //        int rsEquiv = findEquivPoolIndex(rs);
         int roEquiv = findEquivPoolIndex(ro);
@@ -730,81 +748,62 @@ public class DicSerialReason {
         Iterator<Integer> samAsIter = poolTmp.iterator();
         while(samAsIter.hasNext()){
             int ii = samAsIter.next();
-            if(equiRepresentation.containsKey(ii)){
-                int tmp = equiRepresentation.get(ii);
-                if(minNew != ii && minNew != tmp){
-                    replaceWithMinIsp(ii, minNew);
-                    replaceWithMinIop(ii, minNew);
-                }
-                else {
-                    continue;
-                }
-            }
-            else{
-                if(minNew == ii){
-                    equiRepresentation.put(ii, ii);
-                }
-                else{
-                    equiRepresentation.put(ii, minNew);
-                    replaceWithMinIsp(ii, minNew);
-                    replaceWithMinIop(ii, minNew);
-                }
-            }
+            equiRepresentation.put(ii, minNew);
         }
     }
 
     private static void replaceWithMinIop(int ii, int minNew) {
-        Map<Integer, List<IndexBean>> isp = IndexMap.getIsp();
-        Map<Integer, List<IndexBean>> iop = IndexMap.getIop();
-//        System.out.println(Dictionary.getDecode().get(ii));
-//        System.out.println(Dictionary.getDecode().get(minNew));
-        if(!iop.containsKey(ii)) return;
-        List<IndexBean> indexBeanList = iop.get(ii);
-        Iterator<IndexBean> indexBeanListIter = indexBeanList.iterator();
-        while(indexBeanListIter.hasNext()){
-            IndexBean beanTmp = indexBeanListIter.next();
-            int rpTmp = beanTmp.getResource();
-            int indexTmp = beanTmp.getIndex();
-            int firstTripleIop = indexTmp;
-            if(firstTripleIop == -1){ return; }
-            DicRdfDataBean dicDataBeanIterator;
-            int indexNew = firstTripleIop;
-            do{
-                dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
-                indexNew = dicDataBeanIterator.getNop();
-                int rs1 = dicDataBeanIterator.getRs();
-                if(!DicRdfDataMap.checkDuplicate(rs1, rpTmp, minNew)) {
-                    //rs rp ro1
-                    DicRdfDataMap.addNewRdfDataBean(rs1, rpTmp, minNew);
-                }
-            }while(indexNew != -1);
-        }
+//        Map<Integer, List<IndexBean>> isp = IndexMap.getIsp();
+//        Map<Integer, List<IndexBean>> iop = IndexMap.getIop();
+////        System.out.println(Dictionary.getDecode().get(ii));
+////        System.out.println(Dictionary.getDecode().get(minNew));
+//        if(!iop.containsKey(ii)) return;
+//        List<IndexBean> indexBeanList = iop.get(ii);
+//        Iterator<IndexBean> indexBeanListIter = indexBeanList.iterator();
+//        while(indexBeanListIter.hasNext()){
+//            IndexBean beanTmp = indexBeanListIter.next();
+//            int rpTmp = beanTmp.getResource();
+//            int indexTmp = beanTmp.getIndex();
+//            int firstTripleIop = indexTmp;
+//            if(firstTripleIop == -1){ return; }
+//            DicRdfDataBean dicDataBeanIterator;
+//            int indexNew = firstTripleIop;
+//            do{
+//                dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
+//                indexNew = dicDataBeanIterator.getNop();
+//                int rs1 = dicDataBeanIterator.getRs();
+//                if(!DicRdfDataMap.checkDuplicate(rs1, rpTmp, minNew)) {
+//                    //rs rp ro1
+//                    DicRdfDataMap.addNewRdfDataBean(rs1, rpTmp, minNew);
+//                }
+//            }while(indexNew != -1);
+//        }
     }
 
     private static void replaceWithMinIsp(int ii, int minNew) {
-        Map<Integer, List<IndexBean>> isp = IndexMap.getIsp();
-        Map<Integer, List<IndexBean>> iop = IndexMap.getIop();
-        if(!isp.containsKey(ii)) return;
-        List<IndexBean> indexBeanList = isp.get(ii);
-        Iterator<IndexBean> indexBeanListIter = indexBeanList.iterator();
-        while(indexBeanListIter.hasNext()){
-            IndexBean beanTmp = indexBeanListIter.next();
-            int rpTmp = beanTmp.getResource();
-            int indexTmp = beanTmp.getIndex();
-            int firstTripleIsp = indexTmp;
-            if(firstTripleIsp == -1){ return; }
-            DicRdfDataBean dicDataBeanIterator;
-            int indexNew = firstTripleIsp;
-            do{
-                dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
-                indexNew = dicDataBeanIterator.getNsp();
-                int ro1 = dicDataBeanIterator.getRo();
-                if(!DicRdfDataMap.checkDuplicate(minNew, rpTmp, ro1)) {
-                    //rs rp ro1
-                    DicRdfDataMap.addNewRdfDataBean(minNew, rpTmp, ro1);
-                }
-            }while(indexNew != -1);
-        }
+//        Map<Integer, List<IndexBean>> isp = IndexMap.getIsp();
+//        Map<Integer, List<IndexBean>> iop = IndexMap.getIop();
+//        if(!isp.containsKey(ii)) return;
+//        List<IndexBean> indexBeanList = isp.get(ii);
+//        Iterator<IndexBean> indexBeanListIter = indexBeanList.iterator();
+//        while(indexBeanListIter.hasNext()){
+//            IndexBean beanTmp = indexBeanListIter.next();
+//            int rpTmp = beanTmp.getResource();
+//            int indexTmp = beanTmp.getIndex();
+//            int firstTripleIsp = indexTmp;
+//            if(firstTripleIsp == -1){ return; }
+//            DicRdfDataBean dicDataBeanIterator;
+//            int indexNew = firstTripleIsp;
+//            do{
+//                dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
+//                indexNew = dicDataBeanIterator.getNsp();
+//                int ro1 = dicDataBeanIterator.getRo();
+//                if(!DicRdfDataMap.checkDuplicate(minNew, rpTmp, ro1)) {
+//                    //rs rp ro1
+//                    DicRdfDataMap.addNewRdfDataBean(minNew, rpTmp, ro1);
+//                }
+//            }while(indexNew != -1);
+//        }
     }
 
 
@@ -832,14 +831,14 @@ public class DicSerialReason {
         }
     }
 
-    private static void symmetricObjectPropertyReason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro) {
+    private static void symmetricObjectPropertyReason(int rs, int rp, int ro) {
         if(!DicRdfDataMap.checkDuplicate(ro, rp, rs)) {
             DicRdfDataMap.addNewRdfDataBean(ro, rp, rs);
         }
 
     }
 
-    private static void objectAllValuesInverseFromReason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, List<Integer> head) {
+    private static void objectAllValuesInverseFromReason(int rs, List<Integer> head) {
         int rp = head.get(0);
         int class2 = head.get(1);
         int firstTripleIop = IndexMap.getFirstIndexOpFromMap(rp, rs);
@@ -857,7 +856,7 @@ public class DicSerialReason {
         }while(indexNew != -1);
     }
 
-    private static void objectMinCardinalityReason(Map<Integer, DicRdfDataBean> totalData, Map<Integer, DicRdfDataBean> iteratorMap, Map<Integer, DicRdfDataBean> stashMap, Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, List<Integer> head) {
+    private static void objectMinCardinalityReason(int rs, List<Integer> head) {
         int cardinality = head.get(0);
         int rp = head.get(1);
         int class2 = head.get(2);
@@ -916,7 +915,7 @@ public class DicSerialReason {
         anonymous--;
         DicRdfDataMap.addStashRdfDataBean(ro, typeEncode, class2);
     }
-    private static void objectAllValuesFromReason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, List<Integer> head) {
+    private static void objectAllValuesFromReason(int rs, List<Integer> head) {
         int rp = head.get(0);
         int class2 = head.get(1);
         int firstTripleIsp = IndexMap.getFirstIndexSpFromMap(rs, rp);
@@ -934,7 +933,7 @@ public class DicSerialReason {
         }while(indexNew != -1);
     }
 
-    private static void transitiveReason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int rp, int ro) {
+    private static void transitiveReason(int rs, int rp, int ro) {
         int firstTripleIsp = IndexMap.getFirstIndexSpFromMap(ro, rp);
         if (firstTripleIsp == -1) return;
         DicRdfDataBean dicDataBeanIterator;
@@ -951,7 +950,7 @@ public class DicSerialReason {
 
     }
 
-    private static void equivalentClass3Reason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int ro, List<Integer> head) {
+    private static void equivalentClass3Reason(int ro, List<Integer> head) {
         int class1 = head.get(0);
         int class2 = head.get(1);
         int r = head.get(2);
@@ -975,7 +974,7 @@ public class DicSerialReason {
 
     }
 
-    private static void equivalentRoleReason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, int ro, List<Integer> head) {
+    private static void equivalentRoleReason(int rs, int ro, List<Integer> head) {
         int class1 = head.get(0);
         int class2 = head.get(1);
         int r = head.get(2);
@@ -999,7 +998,7 @@ public class DicSerialReason {
 
     }
 
-    private static void equivalentClass2Reason(Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, List<Integer> head) {
+    private static void equivalentClass2Reason(int rs, List<Integer> head) {
         int class1 = head.get(0);
         int class2 = head.get(1);
         int r = head.get(2);
@@ -1030,7 +1029,7 @@ public class DicSerialReason {
 
     }
 
-    private static void objectSomeValuesFromReason(Map<Integer, DicRdfDataBean> totalData, Map<Integer, DicRdfDataBean> iteratorMap, Map<Integer, DicRdfDataBean> stashMap, Map<Integer, List<IndexBean>> isp, Map<Integer, List<IndexBean>> iop, int rs, List<Integer> head) {
+    private static void objectSomeValuesFromReason(Map<Integer, DicRdfDataBean> totalData, Map<Integer, DicRdfDataBean> iteratorMap, Map<Integer, DicRdfDataBean> stashMap, int rs, List<Integer> head) {
         int rp = head.get(0);
         int class2 = head.get(1);
         int index = totalData.size()+iteratorMap.size()+stashMap.size();

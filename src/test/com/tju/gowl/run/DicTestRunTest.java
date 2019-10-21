@@ -1,10 +1,8 @@
 package com.tju.gowl.run;
 
 import com.tju.gowl.RewriteThing;
-import com.tju.gowl.concurrent.ConcurrentReadFile;
-import com.tju.gowl.concurrent.FileHandle;
-import com.tju.gowl.concurrent.IndexCalculate;
-import com.tju.gowl.concurrent.IndexPair;
+
+import com.tju.gowl.bean.IndexPair;
 import com.tju.gowl.dictionary.Dictionary;
 import com.tju.gowl.io.DictionaryInputNew;
 import com.tju.gowl.io.DictionaryOutput;
@@ -51,18 +49,18 @@ class DicTestRunTest {
         DictionaryInputNew.readTBox(pathTBox);
 
         String pathABox = "data/uobm1.nt";
-        File file = new File(pathABox);
-        List<IndexPair> indexPairs = IndexCalculate.getIndex(file, 64);
-        long startTime2 = System.currentTimeMillis();
-        ConcurrentReadFile concurrentReadFile = new ConcurrentReadFile(pathABox, indexPairs, new FileHandle() {
-            @Override
-            public void handle(String line) {
-//                index = getIndex(index, line);
-            }
-        });
-        concurrentReadFile.readFile();
-        concurrentReadFile.end();
-        System.out.println(String.format("ConcurrentReadFile read file cost time : %s", System.currentTimeMillis() - startTime2));
+//        File file = new File(pathABox);
+//        List<IndexPair> indexPairs = IndexCalculate.getIndex(file, 64);
+//        long startTime2 = System.currentTimeMillis();
+//        ConcurrentReadFile concurrentReadFile = new ConcurrentReadFile(pathABox, indexPairs, new FileHandle() {
+//            @Override
+//            public void handle(String line) {
+////                index = getIndex(index, line);
+//            }
+//        });
+//        concurrentReadFile.readFile();
+//        concurrentReadFile.end();
+//        System.out.println(String.format("ConcurrentReadFile read file cost time : %s", System.currentTimeMillis() - startTime2));
 
 
         DictionaryOutput.outWriteDicOwlMap("data/outRule.txt");

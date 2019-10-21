@@ -6,10 +6,8 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class findAnyBug {
     @Test
@@ -24,7 +22,15 @@ public class findAnyBug {
         String RoNew = rs.substring(0, rs.length()-1)+list2.get(1);
         System.out.println(RoNew);
     }
+    @Test
+    void know_HashMap_null(){
+       Map<Integer, Integer> aa = new ConcurrentHashMap<>();
+       aa.put(1,2);
+       int i = aa.get(2);
 
+           System.out.println("null");
+
+    }
     @Test
     public void output_bug_line_in_file() throws IOException {
         String pathABox="data/new_uobm1.nt";
