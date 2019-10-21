@@ -2,11 +2,11 @@ package com.tju.gowl.materialization;
 
 import java.util.Map;
 
-public class EncodeOwlThing {
-    private static CodeStorage codeStorage = new CodeStorage();
-    private static Map<String, Integer> encodeMap = codeStorage.getEncode();
-    private static Map<Integer, String> decodeMap = codeStorage.getDecode();
-    private static int indexCode = codeStorage.getIndexEncode();
+public class EncodeOwlThingImpl {
+    private static CodeRepository CodeRepository = new CodeRepository();
+    private static Map<String, Integer> encodeMap = CodeRepository.getEncode();
+    private static Map<Integer, String> decodeMap = CodeRepository.getDecode();
+    private static int indexCode = CodeRepository.getIndexEncode();
 
     public static int encodeRdf(String ss) {
         int ssIndex;
@@ -14,7 +14,7 @@ public class EncodeOwlThing {
             encodeMap.put(ss, indexCode);
             decodeMap.put(indexCode, ss);
             ssIndex = indexCode;
-            codeStorage.increaseIndexEncode();
+            CodeRepository.increaseIndexEncode();
         } else {
             ssIndex = encodeMap.get(ss);
         }

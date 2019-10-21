@@ -3,7 +3,7 @@ package com.tju.gowl.materialization;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class CodeStorage {
+public class CodeRepository {
     private static int indexEncode = 2;
     private static final Map<String, Integer> EN_CODE = new ConcurrentHashMap<>();
     //TODO 换成array
