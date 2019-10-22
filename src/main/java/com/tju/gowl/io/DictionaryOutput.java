@@ -3,6 +3,7 @@ package com.tju.gowl.io;
 import com.tju.gowl.bean.*;
 import com.tju.gowl.dictionary.Dictionary;
 import com.tju.gowl.reason.DicSerialReason;
+import com.tju.gowl.reason.SameAsReason;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.io.BufferedWriter;
@@ -29,7 +30,7 @@ public class DictionaryOutput {
     public static void outWriteSameAs(String path) throws IOException {
         List<String> decodeMap = Dictionary.getDecode();
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path),"GBK"));
-        List<HashSet<Integer>> poolEqui = DicSerialReason.equiPool;
+        List<HashSet<Integer>> poolEqui = SameAsReason.equiPool;
         Iterator<HashSet<Integer>> poolIter = poolEqui.iterator();
         int count = 0;
         while(poolIter.hasNext()){

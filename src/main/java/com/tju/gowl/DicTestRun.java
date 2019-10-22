@@ -15,9 +15,6 @@ public class DicTestRun {
         String pathTBox = "data/univ-bench-dl.owl";
         String pathABox = "data/uobm1.nt";
         materialization(pathTBox, pathABox);
-        while(true){
-
-        }
     }
 
     public static void materialization(String pathTBox, String pathABox) throws OWLOntologyCreationException, IOException {
