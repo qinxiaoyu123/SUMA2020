@@ -1,6 +1,6 @@
 package com.tju.gowl.bean;
 
-import com.tju.gowl.index.OneKeyIndex;
+import com.tju.gowl.index.TwoKeyMap;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -51,9 +51,9 @@ public class DicRdfDataMap {
         dicDataBean.setRs(rs);
         dicDataBean.setRp(rp);
         dicDataBean.setRo(ro);
-        int nsp = OneKeyIndex.getFirstIndexSpFromMap(rs, rp, index);
+        int nsp = TwoKeyMap.getFirstIndexSpFromMap(rs, rp, index);
         dicDataBean.setNsp(nsp, index);
-        int nop = OneKeyIndex.getFirstIndexOpFromMap(rp, ro, index);
+        int nop = TwoKeyMap.getFirstIndexOpFromMap(rp, ro, index);
         dicDataBean.setNop(nop, index);
         dicDataBean.setNp(-1);
         dicStashMap.put(index, dicDataBean);
@@ -64,9 +64,9 @@ public class DicRdfDataMap {
         dicDataBean.setRs(rs);
         dicDataBean.setRp(rp);
         dicDataBean.setRo(ro);
-        int nsp = OneKeyIndex.getFirstIndexSpFromMap(rs, rp, index);
+        int nsp = TwoKeyMap.getFirstIndexSpFromMap(rs, rp, index);
         dicDataBean.setNsp(nsp, index);
-        int nop = OneKeyIndex.getFirstIndexOpFromMap(rp, ro, index);
+        int nop = TwoKeyMap.getFirstIndexOpFromMap(rp, ro, index);
         dicDataBean.setNop(nop, index);
         dicDataBean.setNp(-1);
         dicDataMap.put(index, dicDataBean);
@@ -78,9 +78,9 @@ public class DicRdfDataMap {
         dicDataBean.setRs(rs);
         dicDataBean.setRp(rp);
         dicDataBean.setRo(ro);
-        int nsp = OneKeyIndex.getFirstIndexSpFromMap(rs, rp, index);
+        int nsp = TwoKeyMap.getFirstIndexSpFromMap(rs, rp, index);
         dicDataBean.setNsp(nsp, index);
-        int nop = OneKeyIndex.getFirstIndexOpFromMap(rp, ro, index);
+        int nop = TwoKeyMap.getFirstIndexOpFromMap(rp, ro, index);
         dicDataBean.setNop(nop, index);
         dicDataBean.setNp(-1);
         dicDataMap.put(index, dicDataBean);
@@ -94,7 +94,7 @@ public class DicRdfDataMap {
         dicDataBean.setRp(rp);
         dicDataBean.setRo(ro);
         dicDataBean.setNsp(nsp, index);
-        int nop = OneKeyIndex.getFirstIndexOpFromMap(rp, ro, index);
+        int nop = TwoKeyMap.getFirstIndexOpFromMap(rp, ro, index);
         dicDataBean.setNop(nop, index);
         dicDataBean.setNp(-1);
         dicStashMap.put(index, dicDataBean);

@@ -4,9 +4,9 @@ import com.tju.gowl.bean.DicRdfDataBean;
 import com.tju.gowl.bean.DicRdfDataMap;
 import com.tju.gowl.bean.IndexBean;
 import com.tju.gowl.bean.IndexMap;
-import com.tju.gowl.index.OneKeyIndex;
+import com.tju.gowl.index.TwoKeyMap;
 import com.tju.gowl.dictionary.Dictionary;
-import com.tju.gowl.index.OneKeyIndex;
+import com.tju.gowl.index.TwoKeyMap;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -25,7 +25,7 @@ public class SameAsReason {
         return true;
     }
     static void loopRsRpFindRo(int rs, int rp, int ro) {
-        int firstTripleIsp = OneKeyIndex.getFirstIndexSpFromMap(rs, rp);
+        int firstTripleIsp = TwoKeyMap.getFirstIndexSpFromMap(rs, rp);
         if(firstTripleIsp == -1){ return; }
 
         DicRdfDataBean dicDataBeanIterator;
@@ -72,7 +72,7 @@ public class SameAsReason {
 
 
     private static void addEquivRsTriple(HashSet<Integer> tmpPool, int tmp) {
-        List<Integer> rpRoTriples = OneKeyIndex.findAllTriplesFromRs(tmp);
+        List<Integer> rpRoTriples = TwoKeyMap.findAllTriplesFromRs(tmp);
         Iterator<Integer> tmp2 = tmpPool.iterator();
         while(tmp2.hasNext()){
             int tmp22 = tmp2.next();
@@ -81,7 +81,7 @@ public class SameAsReason {
                 while(rpRoList.hasNext()){
                     int rp = rpRoList.next();
                     int ro = rpRoList.next();
-                    if(!OneKeyIndex.checkDuplicate(tmp22, rp, ro)) {
+                    if(!TwoKeyMap.checkDuplicate(tmp22, rp, ro)) {
                         DicRdfDataMap.addSourceRdfDataBean(tmp22, rp, ro);
 //                        DicRdfDataMap.addSourceRdfDataBean(totalData.size(), tmp22, rp, ro);
 
@@ -105,7 +105,7 @@ public class SameAsReason {
     }
 
     private static void addEquivRoTriple(HashSet<Integer> tmpPool, int tmp) {
-        List<Integer> rsRpTriples = OneKeyIndex.findAllTriplesFromRo(tmp);
+        List<Integer> rsRpTriples = TwoKeyMap.findAllTriplesFromRo(tmp);
         Iterator<Integer> tmp2 = tmpPool.iterator();
         while(tmp2.hasNext()){
             int tmp22 = tmp2.next();
@@ -114,7 +114,7 @@ public class SameAsReason {
                 while(rsRpList.hasNext()){
                     int rs = rsRpList.next();
                     int rp = rsRpList.next();
-                    if(!OneKeyIndex.checkDuplicate(rs, rp, tmp22)) {
+                    if(!TwoKeyMap.checkDuplicate(rs, rp, tmp22)) {
                         DicRdfDataMap.addSourceRdfDataBean(rs, rp, tmp22);
 //                        DicRdfDataMap.addSourceRdfDataBean(totalData.size(), rs, rp, tmp22);
 
@@ -125,7 +125,7 @@ public class SameAsReason {
         }
     }
     static void loopRpRoFindRs(int rs, int rp, int ro) {
-        int firstTripleIop = OneKeyIndex.getFirstIndexOpFromMap(rp, ro);
+        int firstTripleIop = TwoKeyMap.getFirstIndexOpFromMap(rp, ro);
         if(firstTripleIop == -1){ return; }
 
         DicRdfDataBean dicDataBeanIterator;
@@ -204,8 +204,8 @@ public class SameAsReason {
             if(equiRepresentation.containsKey(ii)){
                 int tmp = equiRepresentation.get(ii);
                 if(minNew != ii && minNew != tmp){
-                    OneKeyIndex.replaceWithMinIsp(ii, minNew);
-                    OneKeyIndex.replaceWithMinIop(ii, minNew);
+                    TwoKeyMap.replaceWithMinIsp(ii, minNew);
+                    TwoKeyMap.replaceWithMinIop(ii, minNew);
                 }
                 else {
                     continue;
@@ -217,8 +217,8 @@ public class SameAsReason {
                 }
                 else{
                     equiRepresentation.put(ii, minNew);
-                    OneKeyIndex.replaceWithMinIsp(ii, minNew);
-                    OneKeyIndex.replaceWithMinIop(ii, minNew);
+                    TwoKeyMap.replaceWithMinIsp(ii, minNew);
+                    TwoKeyMap.replaceWithMinIop(ii, minNew);
                 }
             }
         }
