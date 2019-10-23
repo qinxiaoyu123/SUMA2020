@@ -3,6 +3,7 @@ package com.tju.gowl;
 import com.hp.hpl.jena.query.*;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.tju.gowl.jenaQuery.query;
 
 import java.io.IOException;
 import java.util.Iterator;

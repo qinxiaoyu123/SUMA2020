@@ -1,6 +1,6 @@
 package com.tju.gowl;
 
-import com.tju.gowl.io.DictionaryInputNew;
+import com.tju.gowl.io.DictionaryInput;
 import com.tju.gowl.io.DictionaryOutput;
 import com.tju.gowl.reason.DicSerialReason;
 
@@ -25,16 +25,16 @@ public class ArgDicTestRun {
             index++;
         }
         //规则预处理
-        DictionaryInputNew.readTBox(pathTBox);
+        DictionaryInput.readTBox(pathTBox);
 //        InversePropertyMap.rewriteInverseRule();
         //数据预处理
-        DictionaryInputNew.readABox(pathABox);
+        DictionaryInput.readABox(pathABox);
 
         //单线程推理
         long startTime = System.currentTimeMillis();
         DicSerialReason.reason();
         long startTime1=System.currentTimeMillis();
         System.out.println("reason time"+(startTime1-startTime));
-        DictionaryOutput.outWriteDicDataMap(pathdata,1);
+        DictionaryOutput.outWriteDicDataMap(pathdata);
     }
 }

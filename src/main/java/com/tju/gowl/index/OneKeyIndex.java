@@ -1,16 +1,5 @@
 package com.tju.gowl.index;
 
-import com.tju.gowl.bean.DicRdfDataBean;
-import com.tju.gowl.bean.DicRdfDataMap;
-import com.tju.gowl.bean.IndexBean;
-import com.tju.gowl.bean.IndexMap;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
 public class OneKeyIndex {
 //    private static final Map<Integer, List<IndexBean>> Isp = new ConcurrentHashMap<>();
 //    private static final Map<Integer, List<IndexBean>> Iop = new ConcurrentHashMap<>();

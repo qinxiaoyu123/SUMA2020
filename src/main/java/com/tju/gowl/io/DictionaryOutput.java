@@ -75,51 +75,9 @@ public class DictionaryOutput {
         out.close();
     }
 
-    public static void outWriteDicDataMap(String pathAboxNew) throws IOException {
-        Map<Integer, DicRdfDataBean> totalData = DicRdfDataMap.getDicDataMap();
-        List<String> decodeMap = Dictionary.getDecode();
-        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathAboxNew),"GBK"));
-        out.write("<unknown:namespace> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .");
-        out.newLine();
-        out.write("<unknown:namespace> <http://www.w3.org/2002/07/owl#imports> <http://swat.cse.lehigh.edu/onto/univ-bench.owl> .");
-        out.newLine();
-        for(Map.Entry<Integer, DicRdfDataBean> entry : totalData.entrySet()){
-//            out.write(entry.getKey());//写入文件
-            int rs = entry.getValue().getRs();
-            String Rs;
-            if(rs<0){
-                Rs = "<"+String.valueOf(rs)+">";
-            }
-            else{
-                Rs = decodeMap.get(rs);
-            }
 
-            int rp = entry.getValue().getRp();
-            String Rp;
-            if(rp<0){
-                Rp = "<"+String.valueOf(rp)+">";
-            }
-            else{
-                Rp = decodeMap.get(rp);
-            }
-
-            int ro = entry.getValue().getRo();
-            String Ro;
-            if(ro<0){
-                Ro = "<"+String.valueOf(ro)+">";
-            }
-            else{
-                Ro = decodeMap.get(ro);
-            }
-//            out.write(entry.getKey()+" "+Rs+" "+Rp+" "+Ro+" ."+entry.getValue().getNsp()+" "+entry.getValue().getNp()+" "+entry.getValue().getNpo());
-            out.write(Rs+" "+Rp+" "+Ro+" .");
-            out.newLine();
-        }
-        out.flush();
-        out.close();
-    }
     //逆属性进行写
-    public static void outWriteDicDataMap(String pathAboxNew, int flag) throws IOException {
+    public static void outWriteDicDataMap(String pathAboxNew) throws IOException {
         int count = 0;
         Map<Integer, DicRdfDataBean> totalData = DicRdfDataMap.getDicDataMap();
         List<String> decodeMap = Dictionary.getDecode();

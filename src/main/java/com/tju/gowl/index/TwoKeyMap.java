@@ -36,6 +36,8 @@ public class TwoKeyMap {
 
         }
     }
+
+
     public static int getFirstIndexOpFromMap(int rp, int ro, int index) {
         if (IopTwoKey.containsKey(ro)) {//包含 rs
             Map<Integer, Integer> IpTwoKey = IopTwoKey.get(ro);
@@ -56,7 +58,6 @@ public class TwoKeyMap {
 
     }
 
-
     public static int getFirstIndexSpFromMap(int rs, int rp) {
         if (IspTwoKey.containsKey(rs)) {//包含 rs
             Map<Integer, Integer> IpTwoKey = IspTwoKey.get(rs);
@@ -67,7 +68,8 @@ public class TwoKeyMap {
         return -1;
     }
 
-    public static int getFirstIndexOpFromMap(int rp, int ro) {
+
+    public static int getFirstIndexOpFromMap(int rp , int ro)  {
         if (IopTwoKey.containsKey(ro)) {//包含 rs
             Map<Integer, Integer> IpTwoKey = IopTwoKey.get(ro);
             if (IpTwoKey.containsKey(rp)) {

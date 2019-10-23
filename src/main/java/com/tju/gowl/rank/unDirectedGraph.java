@@ -4,10 +4,6 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class unDirectedGraph {
-
-
-
-
     public static class Graph {
 //        private int MAX_VERTS = 400;//表示顶点的个数
         public static final List<Integer> poolWeightList = new ArrayList<>();//用来存储顶点的数
@@ -44,7 +40,7 @@ public class unDirectedGraph {
         public void addVertex(int lab) {
 
             if(vertexMap.containsKey(lab)){
-                System.out.println("node "+lab+" exists!");
+//                System.out.println("node "+lab+" exists!");
                 int tmp = vertexMap.get(lab).weight;
                 vertexMap.get(lab).weight = tmp + 1;
                 return;
@@ -101,7 +97,7 @@ public class unDirectedGraph {
                     theStack.push(lab);
                     vTmp.poolIndex = nPool;
                     weightPool = weightPool + vTmp.weight;
-                    displayVertex(lab);
+//                    displayVertex(lab);
                     while(!theStack.isEmpty()){
 //                        System.out.println("AAA");
                         boolean flag = getAdjUnvisitedVertex((Integer) theStack.peek());
@@ -133,7 +129,7 @@ public class unDirectedGraph {
                         theStack.push(vTmp);
                         vertexTmp.poolIndex = nPool;
                         weightPool = weightPool + vertexTmp.weight;
-                        displayVertex(vTmp);
+//                        displayVertex(vTmp);
                         vertexTmp.wasVisited = true;
                         flag = true;
                     }

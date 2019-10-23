@@ -2,12 +2,9 @@ package com.tju.gowl.reason;
 
 import com.tju.gowl.bean.DicRdfDataBean;
 import com.tju.gowl.bean.DicRdfDataMap;
-import com.tju.gowl.bean.IndexBean;
-import com.tju.gowl.bean.IndexMap;
 import com.tju.gowl.index.ThreeKeyMap;
 import com.tju.gowl.index.TwoKeyMap;
 import com.tju.gowl.dictionary.Dictionary;
-import com.tju.gowl.index.TwoKeyMap;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
