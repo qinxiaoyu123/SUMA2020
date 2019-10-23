@@ -6,6 +6,8 @@ import com.tju.gowl.index.ThreeKeyMap;
 import com.tju.gowl.index.TwoKeyMap;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import static com.tju.gowl.reason.DicSerialReason.*;
 public class QueryReason {
@@ -14,23 +16,16 @@ public class QueryReason {
         int class2 = head.get(1);
         int property = head.get(2);
         int class3 = head.get(3);
-        int firstTripleIop = TwoKeyMap.getFirstIndexOpFromMap(property, rs);
-        if(firstTripleIop == -1){ return; }
-        DicRdfDataBean dicDataBeanIterator;
-        int indexNew = firstTripleIop;
-        do{
-            dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
-            indexNew = dicDataBeanIterator.getNop();
-            int rsTmp = dicDataBeanIterator.getRs();
-
+        List<Integer> rsList = queryRsByRpRo(property, rs);
+        Iterator<Integer> rsIter = rsList.iterator();
+        while(rsIter.hasNext()){
+            int rsTmp = rsIter.next();
             if(!ThreeKeyMap.checkDuplicate(rsTmp, typeEncode, class1)) {
-                if(ThreeKeyMap.checkDuplicate(rsTmp, typeEncode, class2)){
-                    if(checkAllValue(rsTmp,property,class3)){
-                        DicRdfDataMap.addNewRdfDataBean(rsTmp, typeEncode, class1);
-                    }
+                if(checkAllValue(rsTmp,property,class3)){
+                    DicRdfDataMap.addNewRdfDataBean(rsTmp, typeEncode, class1);
                 }
             }
-        }while(indexNew != -1);
+        }
     }
 
     static void type21Reason(int rs, int rp, int ro, List<Integer> head) {
@@ -60,20 +55,31 @@ public class QueryReason {
         int class1 = head.get(0);
         int property = head.get(1);
         int class3 = head.get(2);
+        List<Integer> rsList = queryRsByRpRo(property, rs);
+        Iterator<Integer> rsIter = rsList.iterator();
+        while(rsIter.hasNext()){
+            int rsTmp = rsIter.next();
+            if(!ThreeKeyMap.checkDuplicate(rsTmp, typeEncode, class1)) {
+                if(checkAllValue(rsTmp,property,class3)){
+                    DicRdfDataMap.addNewRdfDataBean(rsTmp, typeEncode, class1);
+                }
+            }
+        }
+    }
+
+    private static List<Integer> queryRsByRpRo(int property, int rs) {
+        List<Integer> rsList = new ArrayList<>();
         int firstTripleIop = TwoKeyMap.getFirstIndexOpFromMap(property, rs);
-        if(firstTripleIop == -1){ return; }
+        if(firstTripleIop == -1){ return rsList;  }
         DicRdfDataBean dicDataBeanIterator;
         int indexNew = firstTripleIop;
         do{
             dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
             indexNew = dicDataBeanIterator.getNop();
             int rsTmp = dicDataBeanIterator.getRs();
-            if(!ThreeKeyMap.checkDuplicate(rsTmp, typeEncode, class1)) {
-                if(checkAllValue(rsTmp,property,class3)){
-                    DicRdfDataMap.addNewRdfDataBean(rsTmp, typeEncode, class1);
-                }
-            }
+            rsList.add(rsTmp);
         }while(indexNew != -1);
+        return rsList;
     }
 
     static void type18Reason(int rs, int rp, int ro, List<Integer> head) {
@@ -81,7 +87,7 @@ public class QueryReason {
         int property = head.get(1);
         int class3 = head.get(2);
         if(ThreeKeyMap.checkDuplicate(rs, typeEncode, class1)) return;
-        if(checkAllValue(rs,property,class3)){
+        if(checkAllValue(rs,rp,class3)){
             DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
         }
     }
@@ -138,25 +144,15 @@ public class QueryReason {
         int property = head.get(2);
         int class3 = head.get(3);
         int class4= head.get(4);
-        if(ThreeKeyMap.checkDuplicate(rs, typeEncode, class1)) return;
-        if(!ThreeKeyMap.checkDuplicate(rs, typeEncode, class2)) return;
-        int firstTripleIsp = TwoKeyMap.getFirstIndexSpFromMap(rs, property);
-        if(firstTripleIsp == -1) {
-            DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
-            return;
-        }
-        DicRdfDataBean dicDataBeanIterator;
-        int indexNew = firstTripleIsp;
-        do{
-            dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
-            indexNew = dicDataBeanIterator.getNsp();
-            int ro1 = dicDataBeanIterator.getRo();
-            if(!ThreeKeyMap.checkDuplicate(ro1, typeEncode, class3))
-                return;
-            if(!ThreeKeyMap.checkDuplicate(ro1, typeEncode, class4))
-                return;
-        }while(indexNew != -1);
+        if(checkClass(rs, class1)) return;
+        if(!checkClass(rs, class2)) return;
+        if(checkAllValue(rs, property,class3) && checkAllValue(rs, property,class4))
         DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
+    }
+
+    private static boolean checkClass(int rs, int class1) {
+        if(ThreeKeyMap.checkDuplicate(rs, typeEncode, class1)) return true;
+        else return false;
     }
 
     static void type14Reason(int rs, int rp, int ro, List<Integer> head) {
@@ -166,22 +162,7 @@ public class QueryReason {
         int class3 = head.get(3);
         int class4= head.get(4);
         if(ThreeKeyMap.checkDuplicate(rs, typeEncode, class1)) return;
-        int firstTripleIsp = TwoKeyMap.getFirstIndexSpFromMap(rs, property);
-        if(firstTripleIsp == -1) {
-            DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
-            return;
-        }
-        DicRdfDataBean dicDataBeanIterator;
-        int indexNew = firstTripleIsp;
-        do{
-            dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
-            indexNew = dicDataBeanIterator.getNsp();
-            int ro1 = dicDataBeanIterator.getRo();
-            if(!ThreeKeyMap.checkDuplicate(ro1, typeEncode, class3))
-                return;
-            if(!ThreeKeyMap.checkDuplicate(ro1, typeEncode, class4))
-                return;
-        }while(indexNew != -1);
+        if(checkAllValue(rs, property,class3) && checkAllValue(rs, property,class4))
         DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
     }
 

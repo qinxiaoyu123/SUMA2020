@@ -146,3 +146,26 @@ WHERE {
  ?x benchmark:isMemberOf <http://www.Department0.University0.edu>
 }
 
+^[query16]
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX benchmark: <http://semantics.crl.ibm.com/univ-bench-dl.owl#>
+SELECT ?x
+WHERE {
+ ?x rdf:type benchmark:WomanCollege .
+}
+
+^[query17]
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX benchmark: <http://semantics.crl.ibm.com/univ-bench-dl.owl#>
+SELECT ?x
+WHERE {
+ ?x rdf:type benchmark:GraduateStudent .
+}
+
+^[query18]
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX benchmark: <http://semantics.crl.ibm.com/univ-bench-dl.owl#>
+SELECT ?x
+WHERE {
+ ?x rdf:type benchmark:NonScienceStudent .
+}
