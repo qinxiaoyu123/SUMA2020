@@ -1,5 +1,7 @@
 package com.tju.gowl.bean;
 
+import com.tju.gowl.index.OneKeyIndex;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -25,28 +27,7 @@ public class DicRdfDataMap {
     public static Map<Integer,DicRdfDataBean> getDicIteratorMap(){ return dicIteratorMap; }
 
 
-    public static boolean checkDuplicate(int firstTripleIsp, int ro) {
-        DicRdfDataBean dataBean;
-        int indexNew = firstTripleIsp;
-        if(indexNew == -1){
-            return false;
-        }
-        do{
-            dataBean = getDataBean(indexNew);
-            indexNew = dataBean.getNsp();
-            int roIterator = dataBean.getRo();
-            if(ro == roIterator) return true;
-        }while(indexNew != -1);
-        return false;
-    }
-//Isp = 1, Isp ; Isp = 0; Ipo
-    public static boolean checkDuplicate(int rs, int rp, int ro) {
-        int firstIndex = IndexMap.getFirstIndexSpFromMap(rs,rp);
-        if(firstIndex == -1){
-            return false;
-        }
-        return checkDuplicate(firstIndex, ro);
-    }
+
 
     public static DicRdfDataBean getDataBean(int index) {
         if(index < dicDataMap.size()){
@@ -70,9 +51,9 @@ public class DicRdfDataMap {
         dicDataBean.setRs(rs);
         dicDataBean.setRp(rp);
         dicDataBean.setRo(ro);
-        int nsp = IndexMap.getFirstIndexSpFromMap(rs, rp, index);
+        int nsp = OneKeyIndex.getFirstIndexSpFromMap(rs, rp, index);
         dicDataBean.setNsp(nsp, index);
-        int nop = IndexMap.getFirstIndexOpFromMap(rp, ro, index);
+        int nop = OneKeyIndex.getFirstIndexOpFromMap(rp, ro, index);
         dicDataBean.setNop(nop, index);
         dicDataBean.setNp(-1);
         dicStashMap.put(index, dicDataBean);
@@ -83,13 +64,28 @@ public class DicRdfDataMap {
         dicDataBean.setRs(rs);
         dicDataBean.setRp(rp);
         dicDataBean.setRo(ro);
-        int nsp = IndexMap.getFirstIndexSpFromMap(rs, rp, index);
+        int nsp = OneKeyIndex.getFirstIndexSpFromMap(rs, rp, index);
         dicDataBean.setNsp(nsp, index);
-        int nop = IndexMap.getFirstIndexOpFromMap(rp, ro, index);
+        int nop = OneKeyIndex.getFirstIndexOpFromMap(rp, ro, index);
         dicDataBean.setNop(nop, index);
         dicDataBean.setNp(-1);
         dicDataMap.put(index, dicDataBean);
     }
+
+    public static void addSourceRdfDataBean(int rs, int rp, int ro) {
+        int index = dicDataMap.size();
+        DicRdfDataBean dicDataBean = new DicRdfDataBean();
+        dicDataBean.setRs(rs);
+        dicDataBean.setRp(rp);
+        dicDataBean.setRo(ro);
+        int nsp = OneKeyIndex.getFirstIndexSpFromMap(rs, rp, index);
+        dicDataBean.setNsp(nsp, index);
+        int nop = OneKeyIndex.getFirstIndexOpFromMap(rp, ro, index);
+        dicDataBean.setNop(nop, index);
+        dicDataBean.setNp(-1);
+        dicDataMap.put(index, dicDataBean);
+    }
+
 
     public static void addNewRdfDataBean( int rs, int rp, int ro, int nsp) {
         int index = dicDataMap.size()+dicIteratorMap.size()+dicStashMap.size();
@@ -98,7 +94,7 @@ public class DicRdfDataMap {
         dicDataBean.setRp(rp);
         dicDataBean.setRo(ro);
         dicDataBean.setNsp(nsp, index);
-        int nop = IndexMap.getFirstIndexOpFromMap(rp, ro, index);
+        int nop = OneKeyIndex.getFirstIndexOpFromMap(rp, ro, index);
         dicDataBean.setNop(nop, index);
         dicDataBean.setNp(-1);
         dicStashMap.put(index, dicDataBean);
