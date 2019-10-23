@@ -4,7 +4,7 @@ import com.tju.gowl.axiomProcessor.Processor;
 import com.tju.gowl.bean.*;
 import com.tju.gowl.dictionary.Dictionary;
 import com.tju.gowl.rank.unDirectedGraph;
-import com.tju.gowl.reason.EquiClassRuleRewrite;
+import com.tju.gowl.rewrite.EquiClassRuleRewrite;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 
@@ -15,7 +15,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static com.tju.gowl.axiomProcessor.Processor.classAssertion;
 
@@ -60,7 +59,6 @@ public class DictionaryInputNew {
             int rs = Dictionary.encodeRdf(Rs);
             int rp = Dictionary.encodeRdf(Rp);
             int ro = Dictionary.encodeRdf(Ro);
-
 //                  逆角色，等价角色进行替换
             if (EquivalentPropertyMap.EquivalentPropertyMap.containsKey(rp)) {
                 rp = EquivalentPropertyMap.EquivalentPropertyMap.get(rp);
@@ -234,13 +232,20 @@ public class DictionaryInputNew {
 //
 //        System.out.println(key);
         //Output.writeFile("data/dic100");
-
-        DictionaryInputNew.readTBox("data/univ-bench-dl.owl");
-        DictionaryOutput.outWriteEquiDicOwlMap("data/equiv.nt");
-        DictionaryOutput.outWriteDicOwlMap("data/outRule1.txt");
-        System.out.println(DicOwlMap.EquiDicRuleMap);
-        System.out.println(DicOwlMap.EquiDicRuleMap.size());
-        EquiClassRuleRewrite.rewrite();
+        DictionaryInputNew.readABox("data/uobm1.nt");
+//        System.out.println(rsSet.size());
+//        System.out.println(rpSet.size());
+//        System.out.println(roSet.size());
+        //24858
+        //28
+        //32544
+//        DictionaryInputNew.readTBox("data/univ-bench-dl.owl");
+//        DictionaryInputNew.readABox("data/uobm1.nt");
+//        DictionaryOutput.outWriteEquiDicOwlMap("data/equiv.nt");
+//        DictionaryOutput.outWriteDicOwlMap("data/outRule1.txt");
+//        System.out.println(DicOwlMap.EquiDicRuleMap);
+//        System.out.println(DicOwlMap.EquiDicRuleMap.size());
+//        EquiClassRuleRewrite.rewrite();
 
 //        Map<Integer, Integer> ee = EquivalentPropertyMap.getEquivalentPropertyMap();
 //        System.out.println(ee);

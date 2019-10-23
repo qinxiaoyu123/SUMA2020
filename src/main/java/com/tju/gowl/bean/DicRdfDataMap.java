@@ -1,5 +1,6 @@
 package com.tju.gowl.bean;
 
+import com.tju.gowl.index.ThreeKeyMap;
 import com.tju.gowl.index.TwoKeyMap;
 
 import java.util.ArrayList;
@@ -57,6 +58,7 @@ public class DicRdfDataMap {
         dicDataBean.setNop(nop, index);
         dicDataBean.setNp(-1);
         dicStashMap.put(index, dicDataBean);
+        ThreeKeyMap.checkDuplicate(rs, rp, ro, index);
     }
 
     public static void addSourceRdfDataBean(int index, int rs, int rp, int ro) {
@@ -70,6 +72,7 @@ public class DicRdfDataMap {
         dicDataBean.setNop(nop, index);
         dicDataBean.setNp(-1);
         dicDataMap.put(index, dicDataBean);
+        ThreeKeyMap.checkDuplicate(rs, rp, ro, index);
     }
 
     public static void addSourceRdfDataBean(int rs, int rp, int ro) {
@@ -84,6 +87,7 @@ public class DicRdfDataMap {
         dicDataBean.setNop(nop, index);
         dicDataBean.setNp(-1);
         dicDataMap.put(index, dicDataBean);
+        ThreeKeyMap.checkDuplicate(rs, rp, ro, index);
     }
 
 
@@ -98,6 +102,7 @@ public class DicRdfDataMap {
         dicDataBean.setNop(nop, index);
         dicDataBean.setNp(-1);
         dicStashMap.put(index, dicDataBean);
+        ThreeKeyMap.checkDuplicate(rs, rp, ro, index);
     }
 
 

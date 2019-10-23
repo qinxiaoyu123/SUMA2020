@@ -4,6 +4,7 @@ import com.tju.gowl.dictionary.Dictionary;
 import com.tju.gowl.io.DictionaryInputNew;
 import com.tju.gowl.io.DictionaryOutput;
 import com.tju.gowl.reason.DicSerialReason;
+import com.tju.gowl.reason.SameAsReason;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
 import java.io.IOException;
@@ -32,6 +33,10 @@ public class DicTestRun {
         DicSerialReason.reason();
         long startTime4=System.currentTimeMillis();
         System.out.println("reason time"+(startTime4-startTime3));
+
+        SameAsReason.addEquivIndividual();
+
+
         System.out.println("size of dictionary"+Dictionary.getEncode().size());
         DictionaryOutput.outWriteSameAs("data/sameAs.nt");
         DictionaryOutput.encodeMap("data/encode.nt");

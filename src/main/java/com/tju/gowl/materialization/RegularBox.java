@@ -4,7 +4,7 @@ import com.tju.gowl.axiomProcessor.Processor;
 import com.tju.gowl.bean.EquivalentPropertyMap;
 import com.tju.gowl.bean.InversePropertyMap;
 import com.tju.gowl.rank.unDirectedGraph;
-import com.tju.gowl.reason.EquiClassRuleRewrite;
+import com.tju.gowl.rewrite.EquiClassRuleRewrite;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 

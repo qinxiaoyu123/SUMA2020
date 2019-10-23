@@ -4,6 +4,7 @@ import com.tju.gowl.bean.DicRdfDataBean;
 import com.tju.gowl.bean.DicRdfDataMap;
 import com.tju.gowl.bean.IndexBean;
 import com.tju.gowl.bean.IndexMap;
+import com.tju.gowl.index.ThreeKeyMap;
 import com.tju.gowl.index.TwoKeyMap;
 import com.tju.gowl.dictionary.Dictionary;
 import com.tju.gowl.index.TwoKeyMap;
@@ -81,7 +82,7 @@ public class SameAsReason {
                 while(rpRoList.hasNext()){
                     int rp = rpRoList.next();
                     int ro = rpRoList.next();
-                    if(!TwoKeyMap.checkDuplicate(tmp22, rp, ro)) {
+                    if(!ThreeKeyMap.checkDuplicate(tmp22, rp, ro)) {
                         DicRdfDataMap.addSourceRdfDataBean(tmp22, rp, ro);
 //                        DicRdfDataMap.addSourceRdfDataBean(totalData.size(), tmp22, rp, ro);
 
@@ -91,7 +92,8 @@ public class SameAsReason {
 
         }
     }
-    static void addEquivIndividual(Map<Integer, DicRdfDataBean> totalData) {
+    public static void addEquivIndividual() {
+        Map<Integer, DicRdfDataBean> totalData = DicRdfDataMap.getDicDataMap();
         Iterator<HashSet<Integer>> iterPool = equiPool.iterator();
         while(iterPool.hasNext()){
             HashSet<Integer> tmpPool = iterPool.next();
@@ -102,6 +104,7 @@ public class SameAsReason {
                 addEquivRoTriple(tmpPool, tmp);
             }
         }
+        System.out.println("after equiv data size"+totalData.size());
     }
 
     private static void addEquivRoTriple(HashSet<Integer> tmpPool, int tmp) {
@@ -114,7 +117,7 @@ public class SameAsReason {
                 while(rsRpList.hasNext()){
                     int rs = rsRpList.next();
                     int rp = rsRpList.next();
-                    if(!TwoKeyMap.checkDuplicate(rs, rp, tmp22)) {
+                    if(!ThreeKeyMap.checkDuplicate(rs, rp, tmp22)) {
                         DicRdfDataMap.addSourceRdfDataBean(rs, rp, tmp22);
 //                        DicRdfDataMap.addSourceRdfDataBean(totalData.size(), rs, rp, tmp22);
 
