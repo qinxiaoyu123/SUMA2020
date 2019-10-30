@@ -10,10 +10,7 @@ import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DictionaryOutput {
     public static void outWriteDicOwlMap(String pathTboxNew) throws IOException {
@@ -28,7 +25,7 @@ public class DictionaryOutput {
         out.close();
     }
     public static void outWriteSameAs(String path) throws IOException {
-        List<String> decodeMap = Dictionary.getDecode();
+        List<String> decodeMap = Arrays.asList(Dictionary.getDecode());
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path),"GBK"));
         List<HashSet<Integer>> poolEqui = SameAsReason.equiPool;
         Iterator<HashSet<Integer>> poolIter = poolEqui.iterator();
@@ -49,7 +46,7 @@ public class DictionaryOutput {
         out.close();
     }
     public static void outWriteEquiDicOwlMap(String pathTboxNew) throws IOException {
-        List<String> decodeMap = Dictionary.getDecode();
+        List<String> decodeMap = Arrays.asList(Dictionary.getDecode());
         Map<Integer, List<DicOwlBean>> totalRule = DicOwlMap.EquiDicRuleMap;
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathTboxNew),"GBK"));
         for(Map.Entry<Integer, List<DicOwlBean>> entry : totalRule.entrySet()){
@@ -80,7 +77,7 @@ public class DictionaryOutput {
     public static void outWriteDicDataMap(String pathAboxNew) throws IOException {
         int count = 0;
         Map<Integer, DicRdfDataBean> totalData = DicRdfDataMap.getDicDataMap();
-        List<String> decodeMap = Dictionary.getDecode();
+        String[] decodeMap = Dictionary.getDecode();
         Map<Integer, Integer> inverseMapDecode = InversePropertyMap.getInverseMapDecode();
         Map<Integer, Integer> EquivalentMapDecode = EquivalentPropertyMap.getEquivalentPropertyMapDecode();
 //        System.out.println(inverseMap);
@@ -97,7 +94,8 @@ public class DictionaryOutput {
                 Rs = "<"+String.valueOf(rs)+">";
             }
             else{
-                Rs = decodeMap.get(rs);
+//                System.out.println(rs);
+                Rs = decodeMap[rs];
             }
 
             int rp = entry.getValue().getRp();
@@ -106,7 +104,7 @@ public class DictionaryOutput {
                 Rp = "<"+String.valueOf(rp)+">";
             }
             else{
-                Rp = decodeMap.get(rp);
+                Rp = decodeMap[rp];
             }
 
             int ro = entry.getValue().getRo();
@@ -115,17 +113,17 @@ public class DictionaryOutput {
                 Ro = "<"+String.valueOf(ro)+">";
             }
             else{
-                Ro = decodeMap.get(ro);
+                Ro = decodeMap[ro];
             }
 //            out.write(entry.getKey()+" "+Rs+" "+Rp+" "+Ro+" ."+entry.getValue().getNsp()+" "+entry.getValue().getNp()+" "+entry.getValue().getNpo());
             if(inverseMapDecode.containsKey(rp)){
-                String Rp1 = decodeMap.get(inverseMapDecode.get(rp));
+                String Rp1 = decodeMap[inverseMapDecode.get(rp)];
 //                System.out.println(Ro+" "+Rp1+" "+Rs+" .");
                 out.write(Ro+" "+Rp1+" "+Rs+" .");
                 count++;
             }
             if(EquivalentMapDecode.containsKey(rp)){
-                String Rp1 = decodeMap.get(EquivalentMapDecode.get(rp));
+                String Rp1 = decodeMap[EquivalentMapDecode.get(rp)];
 //                System.out.println(Ro+" "+Rp1+" "+Rs+" .");
                 out.write(Rs+" "+Rp1+" "+Ro+" .");
                 count++;
@@ -143,12 +141,15 @@ public class DictionaryOutput {
         Map<String, Integer> encode = Dictionary.getEncode();
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathEncode),"GBK"));
         for(Map.Entry<String, Integer> entry : encode.entrySet()){
-            out.write(entry.getKey());//写入文件
-            out.write(" "+entry.getValue().toString());
+            out.write(entry.getValue().toString());
+            out.write(" "+entry.getKey());//写入文件
             out.newLine();
         }
         out.flush();
         out.close();
+
+        encode.clear();
+        System.gc();
     }
 
 

@@ -14,6 +14,26 @@ import static com.tju.gowl.jenaQuery.JenaTest.jenaQuerySimple;
 
 public class DicTestRun {
     public static void main(String[] args) throws Exception {
+        queryUOBM();
+//        queryLUBM();
+    }
+
+    private static void queryLUBM() throws OWLOntologyCreationException, IOException {
+        String pathTBox = "D:\\experiments\\lubm1\\lubm-univ-bench.owl";
+        String pathABox = "D:\\experiments\\lubm1\\lubm1.nt";
+        String pathData = "D:\\experiments\\lubm1\\lubm1_new_gowl.nt";
+        boolean isQueryByJena = true;
+        String pathDataThing = "D:\\experiments\\lubm1\\lubm1_newThing_gowl.nt";
+        String queryPath = "D:\\experiments\\lubm1\\standard_and_gap.sparql";
+        String answerPath = "D:\\experiments\\lubm1\\ans.nt";
+        materialization(pathTBox, pathABox);
+        writeFile(pathData);
+        if(isQueryByJena){
+            queryByJena(pathData, pathDataThing, queryPath, answerPath);
+        }
+    }
+
+    private static void queryUOBM() throws OWLOntologyCreationException, IOException {
         String pathTBox = "data/univ-bench-dl.owl";
         String pathABox = "data/uobm1.nt";
         String pathData = "data/new_uobm1.nt";
@@ -45,10 +65,11 @@ public class DicTestRun {
         DictionaryInput.readTBox(pathTBox);
         //数据预处理
         preDealData(pathABox);
-
+        DictionaryOutput.encodeMap("data/encode.txt");
 //        DictionaryOutput.outWriteDicOwlMap("data/outRule.txt");
         //单线程推理
         reason();
+        DictionaryInput.readDictionary("data/encode.txt");
 //        System.out.println("size of dictionary"+Dictionary.getEncode().size());
 //        DictionaryOutput.outWriteSameAs("data/sameAs.nt");
 //        DictionaryOutput.encodeMap("data/encode.nt");

@@ -97,8 +97,8 @@ public class DicSerialReason {
                 System.out.println("total data size"+totalData.size());
                 break;
             }
-            if(someValue>=14){
-                System.out.println("14轮循环结束");
+            if(someValue>=7){
+                System.out.println("7轮循环结束");
                 System.out.println("someValue"+someValue);
                 totalData.putAll(stashMap);
                 totalData.putAll(iteratorMap);

@@ -60,7 +60,7 @@ public class DictionaryInput {
                     DicRdfDataMap.addSourceRdfDataBean(index, rs, rp, ro);
 
                     index++;
-                    if (index % 100000 == 0) {
+                    if (index % 1000000 == 0) {
                         System.out.println("finish read " + index + " data");
                     }
 
@@ -164,11 +164,14 @@ public class DictionaryInput {
 
     private static void axiomProcessor(OWLOntology univBench, int ip) {
         int type;
-        Iterator localIterator1 = univBench.getAxioms().iterator();
+        Iterator localIterator1 = univBench.axioms().iterator();
         int index = 0;
         while (localIterator1.hasNext()) {
             index++;
             OWLAxiom axiom = (OWLAxiom) localIterator1.next();
+//            if(ip>0){
+//                System.out.println(axiom.toString());
+//            }
             type = axiom.typeIndex();
             switch (type) {
                 case Processor.ObjectPropertyRange:
@@ -227,7 +230,7 @@ public class DictionaryInput {
 //
 //        System.out.println(key);
         //Output.writeFile("data/dic100");
-        DictionaryInput.readABox("data/uobm1.nt");
+        DictionaryInput.readTBox("D:\\experiments\\dbpedia\\dbpedia\\dbpedia+travel.owl");
 //        System.out.println(rsSet.size());
 //        System.out.println(rpSet.size());
 //        System.out.println(roSet.size());
@@ -259,5 +262,20 @@ public class DictionaryInput {
 //            System.out.print(st.nextToken());//输出结果为：Java ,is /,great.
 //        }
 
+    }
+
+    public static void readDictionary(String pathEncode) throws IOException {
+        Path fpath = Paths.get(pathEncode);
+        Dictionary.Decode = new String[Dictionary.indexEncode];
+        String[] decode = Dictionary.getDecode();
+//             decode = new String[Dictionary.indexEncode];
+        int index;
+        BufferedReader bfr = Files.newBufferedReader(fpath);
+        String line;
+        while ((line = bfr.readLine()) != null) {
+            List<String> list = Arrays.stream(line.split(" ")).collect(Collectors.toList());
+            index = Integer.parseInt(list.get(0));
+            decode[index] = list.get(1);
+        }
     }
 }

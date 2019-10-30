@@ -39,17 +39,17 @@ public class SameAsReason {
     }
 
     private static void outEquiMapping() {
-        List<String> decodeMap = Dictionary.getDecode();
+        String[] decodeMap = Dictionary.getDecode();
         Iterator<Map.Entry<Integer, Integer>> ii = equiPoolIndex.entrySet().iterator();
         while( ii.hasNext()){
             Map.Entry<Integer, Integer> iii = ii.next();
-            System.out.println(decodeMap.get(iii.getKey())+" "+iii.getValue());
+            System.out.println(decodeMap[iii.getKey()]+" "+iii.getValue());
 
         }
     }
 
     private static void outEquiPool() {
-        List<String> decodeMap = Dictionary.getDecode();
+        String[] decodeMap = Dictionary.getDecode();
         int count11 = 0;
         Iterator<HashSet<Integer>> ii = equiPool.iterator();
         while(ii.hasNext()){
@@ -60,7 +60,7 @@ public class SameAsReason {
             while(iiii.hasNext()){
                 Integer iiiii = iiii.next();
 
-                System.out.println(decodeMap.get(iiiii));
+                System.out.println(decodeMap[iiiii]);
 
             }
 

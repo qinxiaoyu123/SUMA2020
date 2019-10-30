@@ -109,7 +109,7 @@ public class EquiClassRuleRewrite {
         String key1 = ssbuff1.append(r).append("*").toString();
         DicOwlMap.addDicOwlMap(dicOwlBean1, key1);
         if(class3 == 1){//owl:Thing
-            System.out.println("class3==1: "+Dictionary.getDecode().get(class1));
+            System.out.println("class3==1: "+Dictionary.getDecode()[class1]);
             return;
         }
         DicOwlBean dicOwlBean2 = new DicOwlBean();
@@ -151,7 +151,7 @@ public class EquiClassRuleRewrite {
         String key1 = ssbuff1.append(r).append("*").toString();
         DicOwlMap.addDicOwlMap(dicOwlBean1, key1);
         if(class3 == 1){//owl:Thing
-            System.out.println("class3==1: "+Dictionary.getDecode().get(class1));
+//            System.out.println("class3==1: "+Dictionary.getDecode()[class1]);
             return;
         }
         DicOwlBean dicOwlBean2 = new DicOwlBean();

@@ -1,17 +1,17 @@
 package com.tju.gowl.dictionary;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Dictionary {
-    private static Integer indexEncode = 2;
+    public static Integer indexEncode = 2;
     private static final Map<String, Integer> Encode=new ConcurrentHashMap<>();
     //TODO 换成array
-    private static final List<String> Decode=new ArrayList<>();
+    int[] array = new int[4];
+    public static String[] Decode=null;
+//    private static final List<String> Decode=new ArrayList<>();
     public static Map<String, Integer> getEncode(){ return Encode; }
-    public static List<String> getDecode(){ return Decode; }
+    public static String[] getDecode(){ return Decode; }
 
 //    private static Integer indexNsp = 0;
 //    private static final Map<String, Integer> EncodeNsp=new ConcurrentHashMap<>();
@@ -30,15 +30,15 @@ public class Dictionary {
     public Dictionary() {
 
         Encode.put("<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>",0);
-        Decode.add("<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>");
+//        Decode.add("<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>");
         Encode.put("owl:Thing",1);
-        Decode.add("owl:Thing");
+//        Decode.add("owl:Thing");
     }
     public static int encodeRdf(String ss) {
         int ssIndex;
         if(!Encode.containsKey(ss)){
             Encode.put(ss, indexEncode);
-            Decode.add(ss);
+//            Decode.add(ss);
             ssIndex = indexEncode;
             indexEncode ++;
         }
@@ -48,23 +48,7 @@ public class Dictionary {
         return ssIndex;
     }
 
-    public static int encodeRdf(String ss, String tbox) {
-//        if(ss.contains(" ")){
-//            System.out.println("kongge"+ss);
-//        }
-        int ssIndex;
-        if(!Encode.containsKey(ss)){
-            Encode.put(ss, indexEncode);
-            Decode.add(indexEncode, ss);
-            ssIndex = indexEncode;
-            indexEncode ++;
-//            System.out.println("only appear at TBox"+ss);
-        }
-        else{
-            ssIndex = Encode.get(ss);
-        }
-        return ssIndex;
-    }
+
 
 //    public static int encodeNsp(String ss) {
 //        int ssIndex;

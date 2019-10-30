@@ -10,8 +10,39 @@ public class compare {
     static HashSet<String> data_gOWL = new HashSet<>();
 
     static HashSet<String> data_pellet = new HashSet<>();
+    static HashSet<String> lubm1 = new HashSet<>();
+    static HashSet<String> lubm2 = new HashSet<>();
 
     public static void main(String[] args) throws Exception {
+//        compareReslut();
+        compareLUBM();
+    }
+
+    private static void compareLUBM() throws IOException {
+        String pathABox1="D:\\experiments\\lubm-rollup.nt";
+        String pathABox2="D:\\experiments\\lubm-univ-bench.nt";
+        readOntology1(pathABox1);
+        readOntology2(pathABox2);
+        System.out.println(lubm1.size());
+        System.out.println(lubm2.size());
+//        lubm1.removeAll(lubm2);
+//        Iterator<String> iter = lubm1.iterator();
+//        while (iter.hasNext()){
+//            System.out.println(iter.next());
+//        }
+////        System.out.println(data_pellet);
+//        System.out.println(lubm1.size());
+
+        lubm2.removeAll(lubm1);
+        Iterator<String> iter = lubm2.iterator();
+        while (iter.hasNext()){
+            System.out.println(iter.next());
+        }
+//        System.out.println(data_pellet);
+        System.out.println(lubm2.size());
+    }
+
+    private static void compareReslut() throws IOException {
         String pathABox1="F:\\first paper\\experiments\\pellet-1.3\\uobm\\aaa\\resultnew.nt";
         String pathABox2="data/resultnew.nt";
         readPelletData(pathABox1);
@@ -57,6 +88,30 @@ public class compare {
                 ss.setLength(0);
 
             }
+        }
+    }
+
+    private static void readOntology1(String pathABox) throws IOException {
+        Path fpath= Paths.get(pathABox);
+        BufferedReader bfr= Files.newBufferedReader(fpath);
+
+        String line;
+
+        StringBuffer ss = new StringBuffer();
+        while((line=bfr.readLine())!=null) {
+            lubm1.add(line);
+        }
+    }
+
+    private static void readOntology2(String pathABox) throws IOException {
+        Path fpath= Paths.get(pathABox);
+        BufferedReader bfr= Files.newBufferedReader(fpath);
+
+        String line;
+
+        StringBuffer ss = new StringBuffer();
+        while((line=bfr.readLine())!=null) {
+           lubm2.add(line);
         }
     }
 
