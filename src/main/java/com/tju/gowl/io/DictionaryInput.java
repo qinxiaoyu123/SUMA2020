@@ -230,7 +230,7 @@ public class DictionaryInput {
 //
 //        System.out.println(key);
         //Output.writeFile("data/dic100");
-        DictionaryInput.readTBox("D:\\experiments\\dbpedia\\dbpedia\\dbpedia+travel.owl");
+        DictionaryInput.readTBox("data/dbpedia+travel.owl");
 //        System.out.println(rsSet.size());
 //        System.out.println(rpSet.size());
 //        System.out.println(roSet.size());
