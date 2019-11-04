@@ -64,7 +64,13 @@ public class DicOwlBean {
         List<Integer> listHead = Arrays.asList(ruleHead1, ruleHead2, ruleHead3, ruleHead4, ruleHead5);
         this.ruleHead = listHead;
     }
-
-
+    public void setRuleHead(int ruleHead1, int ruleHead2, int ruleHead3, int ruleHead4, int ruleHead5, int ruleHead6) {
+        List<Integer> listHead = Arrays.asList(ruleHead1, ruleHead2, ruleHead3, ruleHead4, ruleHead5, ruleHead6);
+        this.ruleHead = listHead;
+    }
+    public void setRuleHead(int ruleHead1, int ruleHead2, int ruleHead3, int ruleHead4, int ruleHead5, int ruleHead6, int ruleHead7) {
+        List<Integer> listHead = Arrays.asList(ruleHead1, ruleHead2, ruleHead3, ruleHead4, ruleHead5, ruleHead6, ruleHead7);
+        this.ruleHead = listHead;
+    }
 
 }

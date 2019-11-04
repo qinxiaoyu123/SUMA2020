@@ -32,6 +32,16 @@ public class EquivalentClassProcessor {
             } else if (ax instanceof OWLObjectSomeValuesFrom){
                 EquivalentClassProcessor.OWLObjectSomeValuesFromProcessor(ax, class1, ip);
             }
+            else if (ax instanceof OWLObjectComplementOf){
+                if(ip ==1){
+                    class2 = getComplementClass ((OWLObjectComplementOf) ax);
+                    DicOwlMap.addDicOwlSubCLassMap(Processor.SubClassOf, class1, class2);
+                    DicOwlMap.addEquiSubClassOfRuleMap(class1,Processor.SubClassOf,class2);
+                }
+            }
+            else{
+                System.out.println("未处理等价交类型："+ax.toString());
+            }
         }
 
     }
@@ -42,10 +52,63 @@ public class EquivalentClassProcessor {
             Processor.graph.addVertex(propertyInt);
             return;
         }
-        String fillter = ((OWLObjectSomeValuesFrom) ax).getFiller().toString();
-        int fillterInt = Dictionary.encodeRdf(fillter);
-        DicOwlMap.addDicOwlObjectSomeValuesMap(Processor.ObjectSomeValuesFrom, class1, propertyInt, fillterInt);
-        DicOwlMap.addEquiDicSomeValuesMap(class1, Processor.ObjectSomeValuesFrom, propertyInt, fillterInt);
+        OWLClassExpression axTmp = ((OWLObjectSomeValuesFrom) ax).getFiller();
+        String fillter = axTmp.toString();
+        if(axTmp instanceof OWLClass){
+            int fillterInt = Dictionary.encodeRdf(fillter);
+            DicOwlMap.addDicOwlObjectSomeValuesMap(Processor.ObjectSomeValuesFrom, class1, propertyInt, fillterInt);
+            DicOwlMap.addEquiDicSomeValuesMap(class1, Processor.ObjectSomeValuesFrom, propertyInt, fillterInt);
+        }
+        else{
+            if(axTmp instanceof OWLObjectIntersectionOf){
+                Iterator<OWLClassExpression> iterator = ((OWLObjectIntersectionOf) axTmp).getOperandsAsList().iterator();
+                while(iterator.hasNext()){
+                    OWLClassExpression classTmp = iterator.next();
+                    String classString = classTmp.toString();
+                    int classInt = Dictionary.encodeRdf(classString);
+                    if(classTmp instanceof OWLClass){
+                        DicOwlMap.addDicOwlObjectSomeValuesMap(Processor.ObjectSomeValuesFrom, class1, propertyInt, classInt);
+                        DicOwlMap.addEquiDicSomeValuesMap(class1, Processor.ObjectSomeValuesFrom, propertyInt, classInt);
+                    }
+                    else{
+                        System.out.println("未处理OWLObjectSomeValues 71"+ax.toString());
+                    }
+                }
+
+            }
+            else if(axTmp instanceof OWLObjectUnionOf){
+                //TODO 近似
+//                System.out.println("qxy "+axTmp.toString());
+                Iterator<OWLClassExpression> iterator = ((OWLObjectUnionOf) axTmp).getOperandsAsList().iterator();
+                while(iterator.hasNext()){
+                    OWLClassExpression classTmp = iterator.next();
+                    String classString = classTmp.toString();
+                    int classInt = Dictionary.encodeRdf(classString);
+                    if(classTmp instanceof OWLClass){
+                        DicOwlMap.addEquiDicSomeValuesMap(class1, Processor.ObjectSomeValuesFrom, propertyInt, classInt);
+                    }
+                    else{
+                        System.out.println("未处理OWLObjectSomeValues 90"+ax.toString());
+                    }
+                }
+
+            }
+            else if(axTmp instanceof OWLHasValueRestriction){
+                String proString = ((OWLHasValueRestriction) axTmp).getProperty().toString();
+
+                String fillterString = ((OWLHasValueRestriction) axTmp).getFiller().toString();
+                int proInt = Dictionary.encodeRdf(proString);
+                int fillterInt = Dictionary.encodeRdf(fillterString);
+
+            }
+            else if(axTmp instanceof OWLObjectOneOf){
+                System.out.println("qxy "+axTmp.toString());
+            }
+            else{
+                System.out.println("未处理OWLObjectSomeValues "+ax.toString());
+            }
+
+        }
 
     }
     public static void OWLObjectUnionOfProcessor(OWLClassExpression ax, int class1, int ip) {
@@ -72,18 +135,24 @@ public class EquivalentClassProcessor {
             return;
         }
         int cardinality = ((OWLObjectMinCardinality)ax).getCardinality();
-        String class2 = ((OWLObjectMinCardinality) ax).getFiller().toString();
-        int class2Int = Dictionary.encodeRdf(class2);
+        if(((OWLObjectMinCardinality) ax).getFiller() instanceof OWLClass){
+//            System.out.println("MinCardinality： "+ax.toString());
+            String class2 = ((OWLObjectMinCardinality) ax).getFiller().toString();
+            int class2Int = Dictionary.encodeRdf(class2);
 
-        //>=1 == ObjectSomeValuesFrom
-        if(cardinality == 1){
-            DicOwlMap.addEquiDicSomeValuesMap(class1, Processor.ObjectSomeValuesFrom, propertyInt, class2Int);
-            DicOwlMap.addDicOwlObjectSomeValuesMap(Processor.ObjectSomeValuesFrom, class1, propertyInt, class2Int);
-        }
-        else if(cardinality >1){
+            //>=1 == ObjectSomeValuesFrom
+            if(cardinality == 1){
+                DicOwlMap.addEquiDicSomeValuesMap(class1, Processor.ObjectSomeValuesFrom, propertyInt, class2Int);
+                DicOwlMap.addDicOwlObjectSomeValuesMap(Processor.ObjectSomeValuesFrom, class1, propertyInt, class2Int);
+            }
+            else if(cardinality >1){
 //            3008
-            DicOwlMap.addEquiMinCardinalityMap(class1, Processor.ObjectMinCardinality, cardinality, propertyInt, class2Int);
-            DicOwlMap.addDicOwlMinCardinalityMap(Processor.ObjectMinCardinality, class1, cardinality, propertyInt, class2Int);
+                DicOwlMap.addEquiMinCardinalityMap(class1, Processor.ObjectMinCardinality, cardinality, propertyInt, class2Int);
+                DicOwlMap.addDicOwlMinCardinalityMap(Processor.ObjectMinCardinality, class1, cardinality, propertyInt, class2Int);
+            }
+        }
+        else{
+            System.out.println("未处理MinCardinality： "+ax.toString());
         }
 
     }
@@ -97,23 +166,7 @@ public class EquivalentClassProcessor {
         OWLClassExpression fillter = ((OWLObjectAllValuesFrom) ax).getFiller();
         int classAllValues = 0;
         if(fillter instanceof OWLObjectComplementOf){
-            String cc = ((OWLObjectComplementOf) fillter).getOperand().toString();
-            int ccInt = Dictionary.encodeRdf(cc);
-            int ccDisjoint = DisjointClassesMap.getDisjointClassesMap(ccInt);
-            //TODO 这里把DisjointClassesMap看作补集，不严格，消除补
-            if(ccDisjoint == -1){
-                StringTokenizer st = new StringTokenizer(cc, "#");
-                List<String> list=new ArrayList<>();
-                while(st.hasMoreElements()) {
-                    list.add(st.nextToken());
-                }
-                StringBuffer ss = new StringBuffer(list.get(0));
-                ss.append("#ComplementOf").append(list.get(1));
-                classAllValues = Dictionary.encodeRdf(ss.toString());
-            }
-            else{
-                classAllValues = ccDisjoint;
-            }
+            classAllValues = getComplementClass((OWLObjectComplementOf) fillter);
         }
         else if(fillter instanceof OWLClass){
             classAllValues = Dictionary.encodeRdf(fillter.toString());
@@ -122,5 +175,28 @@ public class EquivalentClassProcessor {
         DicOwlMap.addDicOwlObjectAllValuesMap(type, class1, propertyInt, classAllValues);
         DicOwlMap.addEquiDicAllVauleMap(class1,type, propertyInt, classAllValues);
 
+    }
+
+    private static int getComplementClass(OWLObjectComplementOf fillter) {
+        int classAllValues;
+        String cc = fillter.getOperand().toString();
+        int ccInt = Dictionary.encodeRdf(cc);
+        int ccDisjoint = DisjointClassesMap.getDisjointClassesMap(ccInt);
+        //TODO 这里把DisjointClassesMap看作补集，不严格，消除补
+        if(ccDisjoint == -1){
+            StringTokenizer st = new StringTokenizer(cc, "#");
+            List<String> list=new ArrayList<>();
+            while(st.hasMoreElements()) {
+                list.add(st.nextToken());
+            }
+            StringBuffer ss = new StringBuffer(list.get(0));
+            ss.append("#ComplementOf").append(list.get(1));
+            classAllValues = Dictionary.encodeRdf(ss.toString());
+            System.out.println("qinxioayu"+ss.toString());
+        }
+        else{
+            classAllValues = ccDisjoint;
+        }
+        return classAllValues;
     }
 }

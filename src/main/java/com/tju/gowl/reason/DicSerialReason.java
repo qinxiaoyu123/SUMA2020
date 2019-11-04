@@ -151,6 +151,9 @@ public class DicSerialReason {
             case 3006:
                 ObjectAllValuesFromReason.reason(rs, head);
                 break;
+            case 3007:
+                ObjectHasValueReason.reason(totalData, iteratorMap, stashMap, rs, head);
+                break;
             case 3008:
                 ObjectMinCardinalityReason.reason(rs, head);
                 break;
@@ -206,7 +209,51 @@ public class DicSerialReason {
             case 22:
                 QueryReason.type22Reason(rs, rp, ro, head);
                 break;
-
+            case 23:
+                QueryReason.type23Reason(rs, rp, ro, head);
+                break;
+            case 24:
+                QueryReason.type24Reason(rs, rp, ro, head);
+                break;
+            case 25:
+                QueryReason.type25Reason(rs, rp, ro, head);
+                break;
+            case 26:
+                QueryReason.type26Reason(rs, rp, ro, head);
+                break;
+            case 27:
+                QueryReason.type27Reason(rs, rp, ro, head);
+                break;
+            case 28:
+                QueryReason.type28Reason(rs, rp, ro, head);
+                break;
+            case 29:
+                QueryReason.type29Reason(rs, rp, ro, head);
+                break;
+            case 30:
+                QueryReason.type30Reason(rs, rp, ro, head);
+                break;
+            case 31:
+                QueryReason.type31Reason(rs, rp, ro, head);
+                break;
+            case 32:
+                QueryReason.type32Reason(rs, rp, ro, head);
+                break;
+            case 33:
+                QueryReason.type33Reason(rs, rp, ro, head);
+                break;
+            case 34:
+                QueryReason.type34Reason(rs, rp, ro, head);
+                break;
+            case 35:
+                QueryReason.type35Reason(rs, rp, ro, head);
+                break;
+            case 36:
+                QueryReason.type36Reason(rs, rp, ro, head);
+                break;
+            case 37:
+                QueryReason.type37Reason(rs, rp, ro, head);
+                break;
         }
     }
 

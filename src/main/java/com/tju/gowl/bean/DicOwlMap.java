@@ -200,7 +200,15 @@ public class DicOwlMap {
         String key = ssbuff.append(class1).toString();
         addDicOwlMap(dicOwlBean, key);
     }
-
+    public static void addDicOwlObjectHasValueMap(int type, int class1, int propertyInt, int fillterInt) {
+        DicOwlBean dicOwlBean = new DicOwlBean();
+        Pair<Integer, Integer> pair = rewriteProperty(type, propertyInt);
+        dicOwlBean.setType(pair.getValue());
+        dicOwlBean.setRuleHead(pair.getKey(),fillterInt);
+        StringBuffer ssbuff = new StringBuffer("*0");
+        String key = ssbuff.append(class1).toString();
+        addDicOwlMap(dicOwlBean, key);
+    }
     public static void addEquiDicSomeValuesMap(int class1, int type, int propertyInt, int class2Int) {
         DicOwlBean dicOwlBean = new DicOwlBean();
         Pair<Integer, Integer> pair = rewriteProperty(type, propertyInt);
@@ -322,6 +330,8 @@ public class DicOwlMap {
         bean.setRuleHead(cardinality, pair.getKey(), class2Int);
         DicOwlMap.EquiDicRuleMap.get(class1).add(bean);
     }
+
+
 
 
 //    public static void addRuleMap(int class1, int type, int class2) {

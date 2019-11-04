@@ -30,6 +30,7 @@ public class Processor {
     public static final int FunctionalObjectProperty = 2015;
     public static final int ObjectSomeValuesFrom = 3005;
     public static final int ObjectAllValuesFrom = 3006;
+    public static final int ObjectHasVaule = 3007;
     public static final int ObjectMinCardinality = 3008;
     public static final int OWLClassAssertion = 2005;
     public static final int EquivalentClass = 2001;
@@ -162,9 +163,24 @@ public class Processor {
             DicOwlMap.addDicOwlSubCLassMap(type,sub,sup);
 
         }
+        else if(SuperClass instanceof OWLHasValueRestriction){
+            OWLObjectHasValueProcessor(SuperClass, sub, ip);
+        }
         else{
             System.out.println("未处理OWLSubCLass公理类型"+axiom.toString());
         }
+    }
+
+    private static void OWLObjectHasValueProcessor(OWLClassExpression ax, int class1, int ip) {
+        String proString = ((OWLHasValueRestriction) ax).getProperty().toString();
+        int propertyInt = Dictionary.encodeRdf(proString);
+        if(ip == 0){
+            graph.addVertex(propertyInt);
+            return;
+        }
+        String fillterString = ((OWLHasValueRestriction) ax).getFiller().toString();
+        int fillterInt = Dictionary.encodeRdf(fillterString);
+        DicOwlMap.addDicOwlObjectHasValueMap(ObjectHasVaule, class1, propertyInt, fillterInt);
     }
 
     public static void OWLObjectSomeValuesFromProcessor(OWLClassExpression ax, int class1, int ip) {
@@ -216,6 +232,7 @@ public class Processor {
             OWLClassExpression ax = iterator.next();
             if(ax instanceof OWLClass){
                 class1 = Dictionary.encodeRdf(ax.toString());
+                break;
             }
         }
         if(ip == 1){
@@ -223,7 +240,7 @@ public class Processor {
                 DicOwlMap.EquiDicRuleMap.put(class1, new ArrayList<>());
             }
         }
-        iterator = axiom.getOperandsAsList().iterator();
+//        iterator = axiom.getOperandsAsList().iterator();
         while(iterator.hasNext()){
             OWLClassExpression ax = iterator.next();
 
@@ -236,7 +253,28 @@ public class Processor {
             else if(ax instanceof OWLObjectUnionOf){
                 EquivalentClassProcessor.OWLObjectUnionOfProcessor(ax, class1, ip);
             }
+            else if(ax instanceof OWLClass ){
+                if(ip ==1){
 
+                    if(!iterator.hasNext()){
+//                        System.out.println("only one class: "+axiom.toString());
+                        int class2 = Dictionary.encodeRdf(ax.toString());
+                        DicOwlMap.addDicOwlSubCLassMap(Processor.SubClassOf, class1, class2);
+                        DicOwlMap.addDicOwlSubCLassMap(Processor.SubClassOf, class2, class1);
+                    }
+                    else{
+                        System.out.println("未处理EquivalentClass + class " + axiom.toString());
+                    }
+                }
+            }
+            else if(ax instanceof OWLObjectOneOf){
+//                System.out.println("one of "+ axiom.toString());
+            }
+            else{
+                if(ip ==1) {
+                    System.out.println("未处理EquivalentClass " + axiom.toString());
+                }
+            }
         }
     }
 
