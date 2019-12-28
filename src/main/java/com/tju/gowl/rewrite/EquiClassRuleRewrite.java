@@ -115,6 +115,7 @@ public class EquiClassRuleRewrite {
                     int class3 = owlBeanList.get(1).getRuleHead().get(1);
                     int class4= owlBeanList.get(2).getRuleHead().get(1);
                     addWomanCollege(class1, class2, property, class3, class4);
+                    System.out.println(find(class2)+" "+find(property)+" "+find(class3)+" "+find(class4));
                 }
 
 //                    System.out.println(Dictionary.getDecode().get(class2));

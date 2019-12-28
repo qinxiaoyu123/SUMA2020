@@ -181,6 +181,24 @@ public class DicOwlMap {
 
     }
 
+    public static void addDicOwlInversePropertyMap(int type, int pro, int ran) {
+        DicOwlBean dicOwlBean = new DicOwlBean();
+        dicOwlBean.setType(type);
+        dicOwlBean.setRuleHead(ran);
+        StringBuffer ssbuff = new StringBuffer("*");
+        String key = ssbuff.append(pro).append("*").toString();
+        addDicOwlMap(dicOwlBean, key);
+    }
+
+    public static void addDicOwlEquivalentPropertyMap(int type, int pro, int ran) {
+        DicOwlBean dicOwlBean = new DicOwlBean();
+        dicOwlBean.setType(type);
+        dicOwlBean.setRuleHead(ran);
+        StringBuffer ssbuff = new StringBuffer("*");
+        String key = ssbuff.append(pro).append("*").toString();
+        addDicOwlMap(dicOwlBean, key);
+    }
+
     public static void addDicOwlPropertyDomainMap(int type, int pro, int dom) {
         Pair<Integer, Integer> pair = rewriteProperty(type, pro);
         DicOwlBean dicOwlBean = new DicOwlBean();
@@ -220,6 +238,7 @@ public class DicOwlMap {
 
 
     private static Pair<Integer, Integer> rewriteProperty(int type, int propertyInt) {
+        if(Processor.isRoleWriting == false) return new Pair<>(propertyInt, type);
         if(EquivalentPropertyMap.EquivalentPropertyMap.containsKey(propertyInt)){
             propertyInt = EquivalentPropertyMap.EquivalentPropertyMap.get(propertyInt);
         }
@@ -333,7 +352,16 @@ public class DicOwlMap {
         DicOwlMap.EquiDicRuleMap.get(class1).add(bean);
     }
 
-
+    public static void addDicOwlRileAllValuesMap(int type, int class1, int propertyInt, int classAllValues) {
+//        Pair<Integer, Integer> pair = rewriteProperty(type, propertyInt);
+        DicOwlBean dicOwlBean = new DicOwlBean();
+//        Pair<Integer, Integer> pair = rewriteProperty(type, propertyInt);
+        dicOwlBean.setType(55);
+        dicOwlBean.setRuleHead(class1,classAllValues);
+        StringBuffer ssbuff = new StringBuffer("*");
+        String key = ssbuff.append(propertyInt).append("*").toString();
+        addDicOwlMap(dicOwlBean, key);
+    }
 
 
 //    public static void addRuleMap(int class1, int type, int class2) {

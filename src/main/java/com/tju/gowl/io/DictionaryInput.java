@@ -170,7 +170,7 @@ public class DictionaryInput {
         System.out.println("Number after adding ClassAssertion: " + tmpCount);
     }
 
-    public static void readTBox(String pathTBox) throws OWLOntologyCreationException {
+    public static void readTBoxWithoutRoleRewrite(String pathTBox) throws OWLOntologyCreationException {
         File testFile = new File(pathTBox);
         OWLOntologyManager m = OWLManager.createOWLOntologyManager();
         OWLOntology univBench = m.loadOntologyFromOntologyDocument(testFile);
@@ -187,6 +187,34 @@ public class DictionaryInput {
         ip = 1;
         axiomProcessor(univBench, ip);
         EquiClassRuleRewrite.rewrite();
+    }
+
+    public static void readTBox(String pathTBox) throws OWLOntologyCreationException {
+        File testFile = new File(pathTBox);
+        OWLOntologyManager m = OWLManager.createOWLOntologyManager();
+        OWLOntology univBench = m.loadOntologyFromOntologyDocument(testFile);
+        if(Processor.isRoleWriting){
+            int ip = 0;//添加属性图节点，边，权重更新, 不添加公理
+            //round1 初始化属性图（公理处理，添加属性图节点，边，权重更新）
+            axiomProcessor(univBench, ip);
+            //round2 图节点排序（属性重要度排序）
+            //TODO graph声明位置变更
+            Processor.graph.depthFirstSearch();
+            //根据排序确定等价属性，逆属性替换表
+            setEquivalentPropertyMap();
+            setInversePropertyMap();
+            //round3 根据属性重要度，添加公理，等价属性，逆属性替换
+            ip = 1;
+            axiomProcessor(univBench, ip);
+            EquiClassRuleRewrite.rewrite();
+        }
+        else{
+            int ip = 0;
+            axiomProcessor(univBench, ip);
+            ip = 1;
+            axiomProcessor(univBench, ip);
+            EquiClassRuleRewrite.rewrite();
+        }
     }
 
     private static void setInversePropertyMap() {

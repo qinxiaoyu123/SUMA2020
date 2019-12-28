@@ -1,5 +1,6 @@
 package com.tju.gowl;
 
+import com.tju.gowl.axiomProcessor.Processor;
 import com.tju.gowl.dictionary.Dictionary;
 import com.tju.gowl.io.DictionaryInput;
 import com.tju.gowl.io.DictionaryOutput;
@@ -13,9 +14,13 @@ import java.io.IOException;
 import static com.tju.gowl.jenaQuery.JenaTest.jenaQuerySimple;
 
 public class DicTestRun {
+
     public static void main(String[] args) throws Exception {
         queryUOBM();
 //        queryLUBM();
+    }
+    public static  void initIsRoleWriting(boolean isRoleWriting){
+        Processor.isRoleWriting = isRoleWriting;
     }
 
     private static void queryLUBM() throws OWLOntologyCreationException, IOException {
@@ -44,13 +49,18 @@ public class DicTestRun {
 
     private static void queryUOBM() throws OWLOntologyCreationException, IOException {
         String pathTBox = "data/univ-bench-dl.owl";
+       String pathABox = "data/uobm1.nt";
+//        String pathABox = "data/uobm_test.nt";
 //        String pathABox = "data/uobm1.nt";
-        String pathABox = "data/uobm1.nt";
-        String pathData = "data/new_uobm1.nt";
-        boolean isQueryByJena = false;
-        String pathDataThing = "data/newThing_oubm1.nt";
+        String pathData = "data/new_uobm1_no.nt";
+        boolean isQueryByJena = true;
+        String pathDataThing = "data/newThing_oubm1_test.nt";
+        initIsRoleWriting(false);
         String queryPath = "data/standard.sparql";
-        String answerPath = "data/result_new.nt";
+        String answerPath = "data/result_new_no_rewrite.nt";
+
+//        String queryPath = "data/test.sparql";
+//        String answerPath = "data/result_new_no_rewrite.nt";
         int n = 7;
         materialization(pathTBox, pathABox, n);
         writeFile(pathData);

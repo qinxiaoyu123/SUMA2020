@@ -1,15 +1,15 @@
 package com.tju.gowl.reason;
 
-import com.tju.gowl.bean.*;
-import com.tju.gowl.dictionary.Dictionary;
-import com.tju.gowl.index.ThreeKeyMap;
-import com.tju.gowl.index.TwoKeyMap;
-import com.tju.gowl.index.TwoKeyMap;
-import com.tju.gowl.index.TwoKeyMap;
+import com.tju.gowl.bean.DicOwlBean;
+import com.tju.gowl.bean.DicOwlMap;
+import com.tju.gowl.bean.DicRdfDataBean;
+import com.tju.gowl.bean.DicRdfDataMap;
 
-import java.io.*;
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class DicSerialReason {
     public static int anonymous = -2;
@@ -160,6 +160,13 @@ public class DicSerialReason {
             case 2019:
                 TransitiveReason.reason(rs, rp, ro);
                 break;
+            case 2014://InverseProperty = 2014;
+                //TODO tianjiaguuizebiao
+                InversePropertyReason.reason(totalData, iteratorMap, stashMap, rs, head, ro);
+                break;
+            case 2012://EquivalentProperty = 2012;
+                EquivalentPropertyReason.reason(totalData, iteratorMap, stashMap, rs, head, ro);
+                break;
             case 3006:
                 ObjectAllValuesFromReason.reason(rs, head);
                 break;
@@ -271,6 +278,9 @@ public class DicSerialReason {
                 break;
             case 39:
                 QueryReason.type39Reason(rs, rp, ro, head);
+                break;
+            case 55:
+                QueryReason.type55Reason(rs, rp, ro, head);
                 break;
         }
     }

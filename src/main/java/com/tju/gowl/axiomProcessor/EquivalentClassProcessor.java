@@ -9,6 +9,8 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.tju.gowl.rewrite.EquiClassRuleRewrite.find;
+
 public class EquivalentClassProcessor {
 
     public static void OWLObjectIntersectionOfProcessor(OWLClassExpression axiom, int class1, int ip) {
@@ -182,6 +184,10 @@ public class EquivalentClassProcessor {
         }
         int type = ax.typeIndex();
         DicOwlMap.addDicOwlObjectAllValuesMap(type, class1, propertyInt, classAllValues);
+        DicOwlMap.addDicOwlRileAllValuesMap(type, class1, propertyInt, classAllValues);
+//        System.out.println(find(class1));
+//        System.out.println(find(propertyInt));
+//        System.out.println(find(classAllValues));
         DicOwlMap.addEquiDicAllVauleMap(class1,type, propertyInt, classAllValues);
 
     }
@@ -191,6 +197,8 @@ public class EquivalentClassProcessor {
         String cc = fillter.getOperand().toString();
         int ccInt = Dictionary.encodeRdf(cc);
         int ccDisjoint = DisjointClassesMap.getDisjointClassesMap(ccInt);
+        System.out.println(find(ccInt)+"qxy");
+        System.out.println(ccDisjoint+find(ccDisjoint));
         //TODO 这里把DisjointClassesMap看作补集，不严格，消除补
         if(ccDisjoint == -1){
             StringTokenizer st = new StringTokenizer(cc, "#");

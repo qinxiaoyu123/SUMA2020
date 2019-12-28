@@ -12,6 +12,18 @@ import java.util.Iterator;
 import java.util.List;
 import static com.tju.gowl.reason.DicSerialReason.*;
 public class QueryReason {
+
+    static void type55Reason(int rs, int rp, int ro, List<Integer> head) {
+//        System.out.println("aaaaa");
+        int class1 = head.get(0);
+        int classValue = head.get(1);
+        if(!ThreeKeyMap.checkDuplicate(rs, typeEncode, class1)) return;
+//        System.out.println("aaaaa1");
+        if(!ThreeKeyMap.checkDuplicate(ro, typeEncode, classValue)) {
+            DicRdfDataMap.addNewRdfDataBean(ro, typeEncode, classValue);
+        }
+    }
+
     static void type22Reason(int rs, int rp, int ro, List<Integer> head) {
         int class1 = head.get(0);
         int class2 = head.get(1);
