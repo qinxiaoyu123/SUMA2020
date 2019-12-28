@@ -8,7 +8,6 @@ import com.tju.gowl.jenaQuery.RewriteThing;
 import com.tju.gowl.reason.DicSerialReason;
 import com.tju.gowl.reason.SameAsReason;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
-
 import java.io.IOException;
 
 import static com.tju.gowl.jenaQuery.JenaTest.jenaQuerySimple;
