@@ -15,7 +15,7 @@ import java.util.*;
 public class DictionaryOutput {
     public static void outWriteDicOwlMap(String pathTboxNew) throws IOException {
         Map<String, List<DicOwlBean>> totalRule = DicOwlMap.getRuleMap();
-        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathTboxNew),"GBK"));
+        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathTboxNew),"UTF-8"));
         for(Map.Entry<String, List<DicOwlBean>> entry : totalRule.entrySet()){
             out.write(entry.getKey());//写入文件
             out.write(" "+entry.getValue().toString());
@@ -26,7 +26,7 @@ public class DictionaryOutput {
     }
     public static void outWriteSameAs(String path) throws IOException {
         List<String> decodeMap = Arrays.asList(Dictionary.getDecode());
-        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path),"GBK"));
+        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path),"UTF-8"));
         List<HashSet<Integer>> poolEqui = SameAsReason.equiPool;
         Iterator<HashSet<Integer>> poolIter = poolEqui.iterator();
         int count = 0;
@@ -48,7 +48,7 @@ public class DictionaryOutput {
     public static void outWriteEquiDicOwlMap(String pathTboxNew) throws IOException {
         List<String> decodeMap = Arrays.asList(Dictionary.getDecode());
         Map<Integer, List<DicOwlBean>> totalRule = DicOwlMap.EquiDicRuleMap;
-        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathTboxNew),"GBK"));
+        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathTboxNew),"UTF-8"));
         for(Map.Entry<Integer, List<DicOwlBean>> entry : totalRule.entrySet()){
             out.write(entry.getKey()+" ");
             out.write(decodeMap.get(entry.getKey()));//写入文件
@@ -81,7 +81,7 @@ public class DictionaryOutput {
         Map<Integer, Integer> inverseMapDecode = InversePropertyMap.getInverseMapDecode();
         Map<Integer, Integer> EquivalentMapDecode = EquivalentPropertyMap.getEquivalentPropertyMapDecode();
 //        System.out.println(inverseMap);
-        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathAboxNew),"GBK"));
+        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathAboxNew),"UTF-8"));
         out.write("<unknown:namespace> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .");
         out.newLine();
         out.write("<unknown:namespace> <http://www.w3.org/2002/07/owl#imports> <http://swat.cse.lehigh.edu/onto/univ-bench.owl> .");
@@ -134,12 +134,12 @@ public class DictionaryOutput {
         }
         out.flush();
         out.close();
-        System.out.println("total data"+count);
+        System.out.println("total data size: "+count);
     }
 
     public static void encodeMap(String pathEncode) throws IOException {
         Map<String, Integer> encode = Dictionary.getEncode();
-        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathEncode),"GBK"));
+        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathEncode),"UTF-8"));
         for(Map.Entry<String, Integer> entry : encode.entrySet()){
             out.write(entry.getValue().toString());
             out.write(" "+entry.getKey());//写入文件

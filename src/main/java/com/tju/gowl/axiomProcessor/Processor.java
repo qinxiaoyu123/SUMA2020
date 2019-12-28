@@ -1,9 +1,6 @@
 package com.tju.gowl.axiomProcessor;
 
-import com.tju.gowl.bean.DicOwlMap;
-import com.tju.gowl.bean.DisjointClassesMap;
-import com.tju.gowl.bean.EquivalentPropertyMap;
-import com.tju.gowl.bean.InversePropertyMap;
+import com.tju.gowl.bean.*;
 import com.tju.gowl.dictionary.Dictionary;
 import com.tju.gowl.rank.unDirectedGraph;
 import org.semanticweb.owlapi.model.*;
@@ -29,6 +26,7 @@ public class Processor {
     public static final int InverseFunctionalObjectProperty = 2016;
     public static final int FunctionalObjectProperty = 2015;
     public static final int ObjectSomeValuesFrom = 3005;
+    public static final int ObjectSomeValuesOneOf = 4000;
     public static final int ObjectAllValuesFrom = 3006;
     public static final int ObjectHasVaule = 3007;
     public static final int ObjectMinCardinality = 3008;
@@ -37,6 +35,7 @@ public class Processor {
     public static final int InverseProperty = 2014;
     public static final int EquivalentProperty = 2012;
     public static final int OWLDisjointClassesAxiom = 2003;
+    public static final int ObjectPropertyAssertion = 2008;
     public static final unDirectedGraph.Graph graph = new unDirectedGraph.Graph();
     public static final Map<Integer,Integer> typeInverse = new ConcurrentHashMap<Integer, Integer>(){{
         put(ObjectPropertyRange,ObjectPropertyDomain);
@@ -167,7 +166,7 @@ public class Processor {
             OWLObjectHasValueProcessor(SuperClass, sub, ip);
         }
         else{
-            System.out.println("未处理OWLSubCLass公理类型"+axiom.toString());
+//            System.out.println("未处理OWLSubCLass公理类型"+axiom.toString());
         }
     }
 
@@ -345,5 +344,17 @@ public class Processor {
         int second = Dictionary.encodeRdf(secondProperty);
         DisjointClassesMap.setDisjointClassesMap(first,second);
         DisjointClassesMap.setDisjointClassesMap(second,first);
+    }
+
+    public static void OWLObjectPropertyAssertionProcessor(OWLAxiom axiom, int ip) {
+        if(ip ==0) return;
+        String subject = ((OWLObjectPropertyAssertionAxiom) axiom).getSubject().toString();
+        String property = ((OWLObjectPropertyAssertionAxiom) axiom).getProperty().toString();
+        String object = ((OWLObjectPropertyAssertionAxiom) axiom).getObject().toString();
+        int first = Dictionary.encodeRdf(subject);
+        int second = Dictionary.encodeRdf(property);
+        int third = Dictionary.encodeRdf(object);
+        Map<Integer, DicRdfDataBean> dic = DicRdfDataMap.getDicDataMap();
+        DicRdfDataMap.addSourceRdfDataBean(dic.size(), first, second, third);
     }
 }

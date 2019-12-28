@@ -24,14 +24,16 @@ class DicTestRunTest {
     void materialization_LUBM() throws OWLOntologyCreationException, IOException {
         String pathTBox = "data/pellet.owl";
         String pathABox = "data/uobm1.nt";
-        materialization(pathTBox,pathABox);
+        int n =0;
+        materialization(pathTBox,pathABox, n);
     }
 
     @Test
     void materialization_UOBM() throws OWLOntologyCreationException, IOException {
         String pathTBox = "data/univ-bench-dl.owl";
         String pathABox = "data/uobm1.nt";
-        materialization(pathTBox,pathABox);
+        int n = 0;
+        materialization(pathTBox,pathABox, n);
     }
 
     @Test
@@ -59,7 +61,8 @@ class DicTestRunTest {
         DictionaryOutput.outWriteDicOwlMap("data/outRule.txt");
         //单线程推理
         long startTime3 = System.currentTimeMillis();
-        DicSerialReason.reason();
+        int n = 0;
+        DicSerialReason.reason(n);
         long startTime4=System.currentTimeMillis();
         System.out.println("reason time"+(startTime4-startTime3));
 

@@ -1,5 +1,7 @@
 package com.tju.gowl.io;
 
+import com.hp.hpl.jena.rdf.model.*;
+import com.hp.hpl.jena.util.FileManager;
 import com.tju.gowl.axiomProcessor.Processor;
 import com.tju.gowl.bean.*;
 import com.tju.gowl.dictionary.Dictionary;
@@ -8,14 +10,23 @@ import com.tju.gowl.rewrite.EquiClassRuleRewrite;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
+
+
+import java.io.InputStream;
+
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
+import com.hp.hpl.jena.util.FileManager;
 
 import static com.tju.gowl.axiomProcessor.Processor.classAssertion;
 
@@ -25,9 +36,9 @@ public class DictionaryInput {
 //    public static List<Integer> classAssertion = new ArrayList<>();
 
     public static void readABox(String pathABox) {
-
+        Map<Integer, DicRdfDataBean> dic = DicRdfDataMap.getDicDataMap();
         Path fpath = Paths.get(pathABox);
-        int index = 0;
+        int index = dic.size();
         try {
             BufferedReader bfr = Files.newBufferedReader(fpath);
             String line;
@@ -77,6 +88,76 @@ public class DictionaryInput {
 
     }
 
+    public static void readTtlABox(String pathABox) {
+        Model model = ModelFactory.createDefaultModel();
+        InputStream in = FileManager.get().open(pathABox);
+        if (in == null)
+        {
+            throw new IllegalArgumentException("File: " + pathABox + " not found");
+        }
+        //model.read(in, "","RDF/XML");//根据文件格式选用参数即可解析不同类型
+        //model.read(in, "","N3");
+        model.read(in, "","TTL");
+        System.out.println("开始");
+        // list the statements in the graph
+        StmtIterator iter = model.listStatements();
+        Map<Integer, DicRdfDataBean> dic = DicRdfDataMap.getDicDataMap();
+        int index = dic.size();
+        // print out the predicate, subject and object of each statement
+        while (iter.hasNext()) {
+            Statement stmt = iter.nextStatement(); // get next statement
+            //Resource subject = stmt.getSubject(); // get the subject
+            //Property predicate = stmt.getPredicate(); // get the predicate
+            //RDFNode object = stmt.getObject(); // get the object
+
+            String subject = stmt.getSubject().toString(); // get the subject
+            String predicate = stmt.getPredicate().toString(); // get the predicate
+            RDFNode object = stmt.getObject(); // get the object
+
+
+//            System.out.print("主语 " + subject + "\t");
+//            System.out.print(" 谓语 " + predicate + "\t");
+
+            String Rs = subject;
+            String Rp = predicate;
+            String Ro = object.toString();
+            int ro;
+            if (object instanceof Resource) {
+
+//                System.out.print(" 宾语 " + object);
+                ro = Dictionary.encodeRdf("<"+Ro+">");
+            } else {// object is a literal
+//                System.out.print("宾语 \"" + object.toString() + "\"");
+                ro = Dictionary.encodeRdf("\""+Ro+"\"");
+            }
+
+
+            int rs = Dictionary.encodeRdf("<"+Rs+">");
+            int rp = Dictionary.encodeRdf("<"+Rp+">");
+
+//                  逆角色，等价角色进行替换
+            if (EquivalentPropertyMap.EquivalentPropertyMap.containsKey(rp)) {
+                rp = EquivalentPropertyMap.EquivalentPropertyMap.get(rp);
+            }
+            if (InversePropertyMap.InverseMap.containsKey(rp)) {
+                rp = InversePropertyMap.InverseMap.get(rp);
+                int tmp = rs;
+                rs = ro;
+                ro = tmp;
+            }
+            DicRdfDataMap.addSourceRdfDataBean(index, rs, rp, ro);
+
+            index++;
+            if (index % 1000000 == 0) {
+                System.out.println("finish read " + index + " data");
+            }
+
+        }
+        System.out.println("Number of source data: " + index);
+        addClassAssertion(index);
+
+    }
+
     private static void addClassAssertion(int index) {
         int tmpCount = index;
         Iterator<Integer> iter = classAssertion.iterator();
@@ -86,7 +167,7 @@ public class DictionaryInput {
             DicRdfDataMap.addSourceRdfDataBean(tmpCount, tmp1, 0, tmp2);
             tmpCount++;
         }
-        System.out.println("count after adding ClassAssertion: " + tmpCount);
+        System.out.println("Number after adding ClassAssertion: " + tmpCount);
     }
 
     public static void readTBox(String pathTBox) throws OWLOntologyCreationException {
@@ -213,12 +294,16 @@ public class DictionaryInput {
                 case Processor.OWLDisjointClassesAxiom:
                     Processor.OWLDisjointClassesProcessor(axiom, ip);
                     break;
+                case Processor.ObjectPropertyAssertion:
+                    Processor.OWLObjectPropertyAssertionProcessor(axiom, ip);
+                    break;
+
                 default:
                     //OWLLogicalAxiom
                     break;
             }
         }
-        System.out.println("axioms count" + index);
+        System.out.println("axioms count " + index);
     }
 
     public static void main(String[] args) throws IOException, OWLOntologyCreationException {
@@ -265,12 +350,14 @@ public class DictionaryInput {
     }
 
     public static void readDictionary(String pathEncode) throws IOException {
-        Path fpath = Paths.get(pathEncode);
+//        Path fpath = Paths.get(pathEncode);
         Dictionary.Decode = new String[Dictionary.indexEncode];
         String[] decode = Dictionary.getDecode();
 //             decode = new String[Dictionary.indexEncode];
         int index;
-        BufferedReader bfr = Files.newBufferedReader(fpath);
+        FileInputStream in = new FileInputStream(pathEncode);
+        BufferedReader bfr = new BufferedReader(new InputStreamReader(in,"UTF-8"));
+//        BufferedReader bfr = Files.newBufferedReader(fpath,"utf-8");
         String line;
         while ((line = bfr.readLine()) != null) {
             List<String> list = Arrays.stream(line.split(" ")).collect(Collectors.toList());

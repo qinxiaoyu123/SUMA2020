@@ -20,7 +20,7 @@ public class JenaTest {
         Model model = ModelFactory.createMemModelMaker().createDefaultModel();
         //extended data
         model.read(dataPath);
-        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(answerPath),"GBK"));
+        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(answerPath),"UTF-8"));
         long startTime1;
         long startTime2;
         List<String> queryList = query.getQueryList();
@@ -50,7 +50,9 @@ public class JenaTest {
                         ss.setLength(0);
                         ss.append(resource.toString()).append(" ").append(resource1.toString()).append(" ").append(resource2.toString());
                         out.write(ss.toString());
-                        resultsSet.add(ss.toString());
+                        if(!ss.toString().startsWith("-")){
+                            resultsSet.add(ss.toString());
+                        }
                         out.newLine();
                         resultsCount ++;
                     }
@@ -58,7 +60,9 @@ public class JenaTest {
                         ss.setLength(0);
                         ss.append(resource.toString()).append(" ").append(resource1.toString());
                         out.write(ss.toString());
-                        resultsSet.add(ss.toString());
+                        if(!ss.toString().startsWith("-")){
+                            resultsSet.add(ss.toString());
+                        }
                         out.newLine();
                         resultsCount ++;
                     }
@@ -68,7 +72,9 @@ public class JenaTest {
                     ss.setLength(0);
                     ss.append(resource.toString());
                     out.write(ss.toString());
-                    resultsSet.add(ss.toString());
+                    if(!ss.toString().startsWith("-")){
+                        resultsSet.add(ss.toString());
+                    }
                     out.newLine();
                     resultsCount ++;
                 }

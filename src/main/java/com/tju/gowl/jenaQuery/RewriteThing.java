@@ -14,7 +14,7 @@ public class RewriteThing {
         String pathABox = path1;
         Path fpath= Paths.get(pathABox);
         BufferedReader bfr= Files.newBufferedReader(fpath);
-        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path2),"GBK"));
+        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path2),"UTF-8"));
         String line;
         boolean flag = false;
         StringBuffer ss = new StringBuffer();

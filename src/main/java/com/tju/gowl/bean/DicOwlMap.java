@@ -217,6 +217,8 @@ public class DicOwlMap {
         EquiDicRuleMap.get(class1).add(dicOwlBean);
     }
 
+
+
     private static Pair<Integer, Integer> rewriteProperty(int type, int propertyInt) {
         if(EquivalentPropertyMap.EquivalentPropertyMap.containsKey(propertyInt)){
             propertyInt = EquivalentPropertyMap.EquivalentPropertyMap.get(propertyInt);

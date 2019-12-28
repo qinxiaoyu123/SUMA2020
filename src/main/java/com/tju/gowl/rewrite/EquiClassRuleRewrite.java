@@ -66,13 +66,11 @@ public class EquiClassRuleRewrite {
 //                    System.out.println("30063005size："+Dictionary.getDecode().get(class4));
                 }
                 else if(owlBeanList.get(0).getType() == 2002 && owlBeanList.get(1).getType() == 2002){
-                    System.out.println("xinadd");
                     int class2 = owlBeanList.get(0).getRuleHead().get(0);
                     int class3 = owlBeanList.get(1).getRuleHead().get(0);
                     System.out.println(find(class2)+" "+find(class3));
                     addQuietDestination(class1, class2, class3);
                 }
-
                 else{
                     System.out.println("未处理等价类：");
                 }
@@ -100,6 +98,16 @@ public class EquiClassRuleRewrite {
                     int class4 = owlBeanList.get(2).getRuleHead().get(1);
                     addBudgetHotelDestination(class1, class2, property1, class3, property2, class4);
 //                    System.out.println(find(class2)+" "+find(property1)+" "+find(class3)+" "+find(property2)+" "+find(class4));
+                }
+                else if(owlBeanList.get(0).getType() == 2002 && owlBeanList.get(1).getType() == 4000 && owlBeanList.get(2).getType() == 4000){
+                    System.out.println("xinadd");
+                    int class2 = owlBeanList.get(0).getRuleHead().get(0);
+                    int property = owlBeanList.get(1).getRuleHead().get(0);
+                    int indual1 = owlBeanList.get(1).getRuleHead().get(1);
+                    int indual2 = owlBeanList.get(2).getRuleHead().get(1);
+                    System.out.println(find(class2)+" "+find(property)+" "+find(indual1)+" "+find(indual2));
+                    addBudgetAccommodation(class1, class2, property, indual1, indual2);
+
                 }
                 else {
                     int class2 = owlBeanList.get(0).getRuleHead().get(0);
@@ -139,6 +147,22 @@ public class EquiClassRuleRewrite {
 //
 //            }
         }
+    }
+
+    private static void addBudgetAccommodation(int class1, int class2, int property, int indual1, int indual2) {
+        DicOwlBean dicOwlBean = new DicOwlBean();
+        dicOwlBean.setType(38);//class2
+        dicOwlBean.setRuleHead(class1, class2, property, indual1, indual2);
+        StringBuffer ssbuff = new StringBuffer("*0");
+        String key = ssbuff.append(class2).toString();
+        DicOwlMap.addDicOwlMap(dicOwlBean, key);
+
+        DicOwlBean dicOwlBean1 = new DicOwlBean();
+        dicOwlBean1.setType(39);//class2
+        dicOwlBean1.setRuleHead(class1, class2, property, indual1, indual2);
+        StringBuffer ssbuff1 = new StringBuffer("*");
+        String key1 = ssbuff1.append(property).append("*").toString();
+        DicOwlMap.addDicOwlMap(dicOwlBean1, key1);
     }
 
     private static void addBackpackersDestination(int class1, int class2, int property1, int class3, int property2, int class4, int class5) {

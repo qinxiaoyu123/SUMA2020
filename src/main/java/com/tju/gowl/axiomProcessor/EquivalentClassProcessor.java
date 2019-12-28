@@ -102,6 +102,15 @@ public class EquivalentClassProcessor {
 
             }
             else if(axTmp instanceof OWLObjectOneOf){
+                Iterator<OWLIndividual> iter = ((OWLObjectOneOf) axTmp).getOperandsAsList().iterator();
+                List<String> list = new ArrayList<>();
+                while(iter.hasNext()){
+                    list.add(iter.next().toString());
+                }
+                int indual1 = Dictionary.encodeRdf(list.get(0));
+                int indual2 = Dictionary.encodeRdf(list.get(1));
+                DicOwlMap.addEquiDicSomeValuesMap(class1, Processor.ObjectSomeValuesOneOf, propertyInt, indual1);
+                DicOwlMap.addEquiDicSomeValuesMap(class1, Processor.ObjectSomeValuesOneOf, propertyInt, indual2);
                 System.out.println("qxy "+axTmp.toString());
             }
             else{
@@ -192,7 +201,6 @@ public class EquivalentClassProcessor {
             StringBuffer ss = new StringBuffer(list.get(0));
             ss.append("#ComplementOf").append(list.get(1));
             classAllValues = Dictionary.encodeRdf(ss.toString());
-            System.out.println("qinxioayu"+ss.toString());
         }
         else{
             classAllValues = ccDisjoint;

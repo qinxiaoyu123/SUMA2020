@@ -21,7 +21,7 @@ public class DicSerialReason {
 
 
 
-    public static void reason() throws IOException {
+    public static void reason(int n) throws IOException {
         int loopCount = 1;
         //遍历数据
         Map<Integer, DicRdfDataBean> totalData = DicRdfDataMap.getDicDataMap();
@@ -33,6 +33,7 @@ public class DicSerialReason {
         Map<String, List<DicOwlBean>> totalRule = DicOwlMap.getRuleMap();
         //索引
 
+        long startTime1 = System.currentTimeMillis();
 
         while(true){
             //preDataCount = totalData.size();
@@ -90,21 +91,31 @@ public class DicSerialReason {
             }
             if(stashMap.size()==0){
                 //没有新数据产生
-                System.out.println("没有新数据产生");
+                System.out.println("No new data was generated!");
                 totalData.putAll(iteratorMap);
                 stashMap.clear();
                 iteratorMap.clear();
-                System.out.println("total data size"+totalData.size());
+//                System.out.println("total data size"+totalData.size());
                 break;
             }
-            if(someValue>=7){
-                System.out.println("7轮循环结束");
+            if(someValue>=20){
+                System.out.println(20+"-step universal model is finished");
                 System.out.println("someValue"+someValue);
                 totalData.putAll(stashMap);
                 totalData.putAll(iteratorMap);
                 stashMap.clear();
                 iteratorMap.clear();
-                System.out.println("total data size"+totalData.size());
+//                System.out.println("total data size"+totalData.size());
+                break;
+            }
+            if(loopCount>=n){
+                System.out.println(n+"-step universal model is finished");
+//                System.out.println("someValue"+someValue);
+                totalData.putAll(stashMap);
+                totalData.putAll(iteratorMap);
+                stashMap.clear();
+                iteratorMap.clear();
+//                System.out.println("total data size: "+totalData.size());
                 break;
             }
             totalData.putAll(iteratorMap);
@@ -112,6 +123,7 @@ public class DicSerialReason {
             iteratorMap.putAll(stashMap);
             stashMap.clear();
             loopCount++;
+
         }
 
 //        outEquiPool();
@@ -253,6 +265,12 @@ public class DicSerialReason {
                 break;
             case 37:
                 QueryReason.type37Reason(rs, rp, ro, head);
+                break;
+            case 38:
+                QueryReason.type38Reason(rs, rp, ro, head);
+                break;
+            case 39:
+                QueryReason.type39Reason(rs, rp, ro, head);
                 break;
         }
     }

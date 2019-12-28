@@ -371,7 +371,7 @@ public class QueryReason {
         if(ThreeKeyMap.checkDuplicate(rs, typeEncode, class1)){
             return;
         }
-        else if(!ThreeKeyMap.checkDuplicate(rs, typeEncode, class2)){
+        if(!ThreeKeyMap.checkDuplicate(rs, typeEncode, class2)){
             return;
         }
         int count1 = checkMinCount(rs, property2, class4);
@@ -694,5 +694,37 @@ public class QueryReason {
                 }
             }
         }while(indexNew != -1);
+    }
+
+    public static void type38Reason(int rs, int rp, int ro, List<Integer> head) {
+        int class1 = head.get(0);
+        int class2 = head.get(1);
+        int property = head.get(2);
+        int indual1 = head.get(3);
+        int indual2 = head.get(4);
+        if(ThreeKeyMap.checkDuplicate(rs, typeEncode, class1)){
+            return;
+        }
+        if(ThreeKeyMap.checkDuplicate(rs, property, indual1)||ThreeKeyMap.checkDuplicate(rs, property, indual2)){
+            DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
+        }
+
+    }
+
+    public static void type39Reason(int rs, int rp, int ro, List<Integer> head) {
+        int class1 = head.get(0);
+        int class2 = head.get(1);
+        int property = head.get(2);
+        int indual1 = head.get(3);
+        int indual2 = head.get(4);
+        if(ThreeKeyMap.checkDuplicate(rs, typeEncode, class1)){
+            return;
+        }
+        if(!ThreeKeyMap.checkDuplicate(rs, typeEncode, class2)){
+            return;
+        }
+        if(ro == indual1 || ro == indual2){
+            DicRdfDataMap.addNewRdfDataBean(rs, typeEncode, class1);
+        }
     }
 }

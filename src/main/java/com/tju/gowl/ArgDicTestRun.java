@@ -13,12 +13,15 @@ import java.io.IOException;
 import static com.tju.gowl.jenaQuery.JenaTest.jenaQuerySimple;
 
 public class ArgDicTestRun {
+    public  static boolean flagTTL = false;
     public static void main(String[] args) throws Exception {
         int index = 0;
+
         String pathTBox = null;
         String pathABox = null;
+        int n = 7;
         String pathData = null;
-        boolean isQueryByJena = true;
+        boolean isQueryByJena = false;
         String pathDataThing = "newThing_oubm1.nt";
         String queryPath = null;
         String answerPath = "result_new.nt";
@@ -28,10 +31,17 @@ public class ArgDicTestRun {
         }
         if(args.length>index){
             pathABox = args[index];
+            if(args[index].endsWith(".ttl")){
+                flagTTL = true;
+            }
             index++;
         }
         if(args.length>index){
             pathData = args[index];
+            index++;
+        }
+        if(args.length>index){
+            n = Integer.valueOf(args[index]);
             index++;
         }
         if(args.length>index){
@@ -42,7 +52,7 @@ public class ArgDicTestRun {
             queryPath = args[index];
             index++;
         }
-        materialization(pathTBox, pathABox);
+        materialization(pathTBox, pathABox, n);
         writeFile(pathData);
         if(isQueryByJena){
             queryByJena(pathData, pathDataThing, queryPath, answerPath);
@@ -58,7 +68,7 @@ public class ArgDicTestRun {
         jenaQuerySimple(pathABoxThing, queryPath, answerPath);
     }
 
-    public static void materialization(String pathTBox, String pathABox) throws OWLOntologyCreationException, IOException {
+    public static void materialization(String pathTBox, String pathABox, int n) throws OWLOntologyCreationException, IOException {
         //type owl:Thing 编码
         new Dictionary();
 //        规则预处理
@@ -70,7 +80,7 @@ public class ArgDicTestRun {
 //        DictionaryOutput.outWriteDicOwlMap("data/outRule.txt");
         DictionaryOutput.encodeMap("encode.txt");
         //单线程推理
-        reason();
+        reason(n);
         DictionaryInput.readDictionary("encode.txt");
 //        System.out.println("size of dictionary"+Dictionary.getEncode().size());
 //        DictionaryOutput.outWriteSameAs("data/sameAs.nt");
@@ -81,18 +91,23 @@ public class ArgDicTestRun {
 
     }
 
-    private static void reason() throws IOException {
+    private static void reason(int n) throws IOException {
         long startTime3 = System.currentTimeMillis();
-        DicSerialReason.reason();
+        DicSerialReason.reason(n);
         long startTime4=System.currentTimeMillis();
-        System.out.println("reason time"+(startTime4-startTime3));
+        System.out.println("reason time: "+(startTime4-startTime3)+"ms");
         SameAsReason.addEquivIndividual();
     }
 
     private static void preDealData(String pathABox) {
         long startTime1 = System.currentTimeMillis();
-        DictionaryInput.readABox(pathABox);
+        if(flagTTL){
+            DictionaryInput.readTtlABox(pathABox);
+        }
+        else{
+            DictionaryInput.readABox(pathABox);
+        }
         long startTime2 = System.currentTimeMillis();
-        System.out.println("reading time"+(startTime2-startTime1));
+        System.out.println("reading time: "+(startTime2-startTime1)+ "ms");
     }
 }
