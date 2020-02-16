@@ -1,0 +1,150 @@
+33 <http://semantics.crl.ibm.com/univ-bench-dl.owl#TennisFan>
+2002 
+25 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Person>
+3005 
+17 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout>
+120 <http://semantics.crl.ibm.com/univ-bench-dl.owl#TennisClass>
+
+34 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallFan>
+2002 
+25 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Person>
+3005 
+17 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout>
+116 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallClass>
+
+35 <http://semantics.crl.ibm.com/univ-bench-dl.owl#PeopleWithManyHobbies>
+3008 
+3 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Man>
+9 <http://semantics.crl.ibm.com/univ-bench-dl.owl#like>
+1 owl:Thing
+
+36 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Employee>
+2002 
+25 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Person>
+3005 
+37 <http://semantics.crl.ibm.com/univ-bench-dl.owl#worksFor>
+132 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization>
+
+8 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingLover>
+2002 
+25 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Person>
+3005 
+9 <http://semantics.crl.ibm.com/univ-bench-dl.owl#like>
+89 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingClass>
+
+10 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ScienceStudent>
+2002 
+29 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Student>
+3005 
+11 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMajor>
+59 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Science>
+
+12 <http://semantics.crl.ibm.com/univ-bench-dl.owl#GraduateStudent>
+3006 
+13 <http://semantics.crl.ibm.com/univ-bench-dl.owl#takesCourse>
+121 <http://semantics.crl.ibm.com/univ-bench-dl.owl#GraduateCourse>
+3005 
+13 <http://semantics.crl.ibm.com/univ-bench-dl.owl#takesCourse>
+1 owl:Thing
+
+14 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SportsLover>
+2002 
+25 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Person>
+3005 
+9 <http://semantics.crl.ibm.com/univ-bench-dl.owl#like>
+94 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Sports>
+
+15 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Chair>
+2002 
+25 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Person>
+3005 
+2 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isHeadOf>
+76 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Department>
+
+16 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballFan>
+2002 
+25 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Person>
+3005 
+17 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout>
+122 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballClass>
+
+18 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallLover>
+2002 
+25 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Person>
+3005 
+9 <http://semantics.crl.ibm.com/univ-bench-dl.owl#like>
+116 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallClass>
+
+19 <http://semantics.crl.ibm.com/univ-bench-dl.owl#PeopleWithHobby>
+2002 
+25 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Person>
+3005 
+9 <http://semantics.crl.ibm.com/univ-bench-dl.owl#like>
+1 owl:Thing
+
+20 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SportsFan>
+2002 
+25 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Person>
+3005 
+17 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout>
+94 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Sports>
+
+21 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Dean>
+3005 
+2 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isHeadOf>
+102 <http://semantics.crl.ibm.com/univ-bench-dl.owl#College>
+
+22 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballLover>
+2002 
+25 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Person>
+3005 
+9 <http://semantics.crl.ibm.com/univ-bench-dl.owl#like>
+122 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballClass>
+
+23 <http://semantics.crl.ibm.com/univ-bench-dl.owl#TeachingAssistant>
+2002 
+25 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Person>
+3005 
+24 <http://semantics.crl.ibm.com/univ-bench-dl.owl#teachingAssistantOf>
+62 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Course>
+
+25 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Person>
+
+26 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingFan>
+2002 
+25 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Person>
+3005 
+17 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout>
+89 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingClass>
+
+27 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Director>
+2002 
+25 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Person>
+3005 
+2 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isHeadOf>
+112 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Program>
+
+28 <http://semantics.crl.ibm.com/univ-bench-dl.owl#NonScienceStudent>
+2002 
+29 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Student>
+3006 
+11 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMajor>
+131 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ComplementOfScience>
+
+29 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Student>
+2002 
+25 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Person>
+3005 
+30 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isStudentOf>
+132 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization>
+
+31 <http://semantics.crl.ibm.com/univ-bench-dl.owl#WomanCollege>
+2002 
+102 <http://semantics.crl.ibm.com/univ-bench-dl.owl#College>
+-3006 
+30 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isStudentOf>
+56 <http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent>
+-3006 
+30 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isStudentOf>
+4 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman>
+

@@ -1,0 +1,139 @@
+node 9 exists!
+node 7 exists!
+node 3 exists!
+node 5 exists!
+node 7 exists!
+node 18 exists!
+node 7 exists!
+node 5 exists!
+node 9 exists!
+node 5 exists!
+node 5 exists!
+node 7 exists!
+node 29 exists!
+node 7 exists!
+node 27 exists!
+未处理OWLSubCLass公理类型SubClassOf(<http://semantics.crl.ibm.com/univ-bench-dl.owl#LeisureStudent> ObjectMaxCardinality(3 <http://semantics.crl.ibm.com/univ-bench-dl.owl#takesCourse> owl:Thing))
+node 27 exists!
+node 9 exists!
+node 27 exists!
+node 5 exists!
+node 7 exists!
+node 117 exists!
+node 117 exists!
+node 12 exists!
+node 115 exists!
+node 12 exists!
+node 18 exists!
+node 9 exists!
+node 18 exists!
+node 12 exists!
+node 121 exists!
+node 115 exists!
+node 117 exists!
+node 125 exists!
+node 122 exists!
+node 7 exists!
+axioms count502
+node130
+node3
+node5
+node7
+node9
+node27
+node115
+node12
+node120
+node18
+node121
+node116
+node117
+node118
+node119
+node122
+node123
+node124
+node29
+node125
+node126
+node31
+node127
+未处理OWLSubCLass公理类型SubClassOf(<http://semantics.crl.ibm.com/univ-bench-dl.owl#LeisureStudent> ObjectMaxCardinality(3 <http://semantics.crl.ibm.com/univ-bench-dl.owl#takesCourse> owl:Thing))
+axioms count502
+class3==1: <http://semantics.crl.ibm.com/univ-bench-dl.owl#PeopleWithHobby>
+finish read 100000 data
+finish read 200000 data
+初始数据数目257708
+count after adding ClassAssertion: 257766
+reading time548
+loopCount 1 datacount 257766
+loopCount 2 datacount 387982
+loopCount 3 datacount 422738
+loopCount 4 datacount 430502
+loopCount 5 datacount 431079
+loopCount 6 datacount 431127
+没有新数据产生
+total data size431127
+after equiv data size433824
+reason time988
+total data487558
+q 1
+queryTime45
+resultsCount21
+resultsCount21
+q 2
+queryTime2
+resultsCount2465
+resultsCount2465
+q 3
+queryTime1
+resultsCount581
+resultsCount581
+q 4
+queryTime1
+resultsCount446
+resultsCount292
+q 5
+queryTime1
+resultsCount235
+resultsCount235
+q 6
+queryTime3
+resultsCount991
+resultsCount991
+q 7
+queryTime1
+resultsCount0
+resultsCount0
+q 8
+queryTime1
+resultsCount376
+resultsCount376
+q 9
+queryTime1
+resultsCount817
+resultsCount747
+q 10
+queryTime1
+resultsCount8
+resultsCount8
+q 11
+queryTime0
+resultsCount5368
+resultsCount2416
+q 12
+queryTime0
+resultsCount50
+resultsCount50
+q 13
+queryTime1
+resultsCount416
+resultsCount416
+q 14
+queryTime1
+resultsCount6535
+resultsCount6535
+q 15
+queryTime1
+resultsCount112
+resultsCount112
