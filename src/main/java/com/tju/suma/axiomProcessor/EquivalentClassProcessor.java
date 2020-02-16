@@ -186,9 +186,7 @@ public class EquivalentClassProcessor {
             while(st.hasMoreElements()) {
                 list.add(st.nextToken());
             }
-            StringBuilder ss = new StringBuilder(list.get(0));
-            ss.append("#ComplementOf").append(list.get(1));
-            classAllValues = Dictionary.encodeRdf(ss.toString());
+            classAllValues = Dictionary.encodeRdf(list.get(0) + "#ComplementOf" + list.get(1));
         }
         else{
             classAllValues = ccDisjoint;

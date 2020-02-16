@@ -46,7 +46,7 @@ public class MainClassInJar {
             index++;
         }
         if(args.length>index){
-            n = Integer.valueOf(args[index]);
+            n = Integer.parseInt(args[index]);
             index++;
         }
         if(args.length>index){
@@ -55,7 +55,6 @@ public class MainClassInJar {
         }
         if(args.length>index){
             queryPath = args[index];
-            index++;
         }
         materialization(pathTBox, pathABox, n);
         writeFile(pathData);
@@ -74,29 +73,19 @@ public class MainClassInJar {
     }
 
     public static void materialization(String pathTBox, String pathABox, int n) throws OWLOntologyCreationException, IOException {
-        //type owl:Thing 编码
         new Dictionary();
 //        规则预处理
-//        DictionaryInput.readTBox(pathTBox);
         DictionaryInput.readTBox(pathTBox);
         //数据预处理
         preDealData(pathABox);
-
-//        DictionaryOutput.outWriteDicOwlMap("data/outRule.txt");
         DictionaryOutput.encodeMap("encode.txt");
         //单线程推理
         reason(n);
         DictionaryInput.readDictionary("encode.txt");
-//        System.out.println("size of dictionary"+Dictionary.getEncode().size());
-//        DictionaryOutput.outWriteSameAs("data/sameAs.nt");
-//        DictionaryOutput.encodeMap("data/encode.nt");
-
-//        DictionaryOutput.outWriteEquiDicOwlMap("data/equiClassRule.nt");
-        //owl:Thing <owl:Thing> jena 解析
 
     }
 
-    private static void reason(int n) throws IOException {
+    private static void reason(int n) {
         long startTime3 = System.currentTimeMillis();
         DicSerialReason.reason(n);
         long startTime4=System.currentTimeMillis();

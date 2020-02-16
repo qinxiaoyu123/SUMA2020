@@ -50,24 +50,15 @@ public class RoleGraph {
 
     //注意用邻接矩阵表示边，是对称的，两部分都要赋值
     public void addEdge(int start, int end) {
-        if (adjList.containsKey(start)) {
-            adjList.get(start).add(end);
-        } else {
+        if (!adjList.containsKey(start)) {
             adjList.put(start, new ArrayList<>());
-            adjList.get(start).add(end);
         }
+        adjList.get(start).add(end);
 
-        if (adjList.containsKey(end)) {
-            adjList.get(end).add(start);
-        } else {
+        if (!adjList.containsKey(end)) {
             adjList.put(end, new ArrayList<>());
-            adjList.get(end).add(start);
         }
-    }
-
-    //打印某个顶点表示的值
-    public void displayVertex(int v) {
-        System.out.println("node" + v);
+        adjList.get(end).add(start);
     }
 
     /**
@@ -79,12 +70,10 @@ public class RoleGraph {
      */
     public void depthFirstSearch() {
         //从第一个顶点开始访问
-        Iterator<Map.Entry<Integer, RoleGraph.Vertex>> entryIter = vertexMap.entrySet().iterator();
-        while (entryIter.hasNext()) {
+        for (Map.Entry<Integer, Vertex> integerVertexEntry : vertexMap.entrySet()) {
             weightPool = 0;
-            Map.Entry<Integer, RoleGraph.Vertex> entry = entryIter.next();
-            int lab = entry.getKey();
-            RoleGraph.Vertex vTmp = entry.getValue();
+            int lab = integerVertexEntry.getKey();
+            Vertex vTmp = integerVertexEntry.getValue();
             boolean flagVisit = vTmp.wasVisited;
             if (!flagVisit) {
                 vTmp.wasVisited = true;
@@ -92,7 +81,7 @@ public class RoleGraph {
                 vTmp.poolIndex = nPool;
                 weightPool = weightPool + vTmp.weight;
                 while (!theStack.isEmpty()) {
-                    boolean flag = getAdjUnvisitedVertex((Integer) theStack.peek());
+                    boolean flag = getAdjUnvisitedVertex(theStack.peek());
                     //如果当前顶点值为-1，则表示没有邻接且未被访问顶点，那么出栈顶点
                     if (!flag) {
                         theStack.pop();
@@ -110,11 +99,9 @@ public class RoleGraph {
         boolean flag = false;
         if (adjList.containsKey(v)) {
             List<Integer> vList = adjList.get(v);
-            Iterator<Integer> iter = vList.iterator();
-            while (iter.hasNext()) {
-                int vTmp = iter.next();
-                RoleGraph.Vertex vertexTmp = vertexMap.get(vTmp);
-                if (vertexTmp.wasVisited == false) {
+            for (int vTmp : vList) {
+                Vertex vertexTmp = vertexMap.get(vTmp);
+                if (!vertexTmp.wasVisited) {
                     theStack.push(vTmp);
                     vertexTmp.poolIndex = nPool;
                     weightPool = weightPool + vertexTmp.weight;
@@ -129,8 +116,7 @@ public class RoleGraph {
     public int getPropertyWeight(int equiPro1) {
         if (vertexMap.containsKey(equiPro1)) {
             int poolIndexTmp = vertexMap.get(equiPro1).poolIndex;
-            int weightImp = poolWeightList.get(poolIndexTmp);
-            return weightImp;
+            return poolWeightList.get(poolIndexTmp);
         }
         return 0;
     }

@@ -5,6 +5,8 @@ import com.tju.suma.bean.DicRdfDataMap;
 import com.tju.suma.index.ThreeKeyMap;
 import com.tju.suma.index.TwoKeyMap;
 
+import java.util.Objects;
+
 public class TransitiveReason {
     static void reason(int rs, int rp, int ro) {
         int firstTripleIsp = TwoKeyMap.getFirstIndexSpFromMap(ro, rp);
@@ -13,6 +15,7 @@ public class TransitiveReason {
         int indexNew = firstTripleIsp;
         do{
             dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
+            Objects.requireNonNull(dicDataBeanIterator, "dicDataBeanIterator is null at TransitiveReason");
             indexNew = dicDataBeanIterator.getNsp();
             int ro1 = dicDataBeanIterator.getRo();
             if(!ThreeKeyMap.checkDuplicate(rs, rp, ro1)) {

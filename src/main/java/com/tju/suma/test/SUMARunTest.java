@@ -64,7 +64,7 @@ public class SUMARunTest {
         DictionaryOutput.encodeMap("data/encode.txt");
     }
 
-    public static void materialization(int n_step) throws IOException {
+    public static void materialization(int n_step) {
         long startTime3 = System.currentTimeMillis();
         DicSerialReason.reason(n_step);
         long startTime4 = System.currentTimeMillis();
