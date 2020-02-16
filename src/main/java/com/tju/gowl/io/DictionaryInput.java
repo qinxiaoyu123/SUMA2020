@@ -1,12 +1,13 @@
 package com.tju.gowl.io;
 
-import com.hp.hpl.jena.rdf.model.*;
 import com.hp.hpl.jena.util.FileManager;
 import com.tju.gowl.axiomProcessor.Processor;
 import com.tju.gowl.bean.*;
 import com.tju.gowl.dictionary.Dictionary;
 import com.tju.gowl.rank.unDirectedGraph;
 import com.tju.gowl.rewrite.EquiClassRuleRewrite;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.LineIterator;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 
@@ -26,7 +27,6 @@ import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
-import com.hp.hpl.jena.util.FileManager;
 
 import static com.tju.gowl.axiomProcessor.Processor.classAssertion;
 
@@ -35,38 +35,41 @@ public class DictionaryInput {
 //include 指定尖括号 0包含 1不包含
 //    public static List<Integer> classAssertion = new ArrayList<>();
 
-    public static void readABox(String pathABox) {
+    public static void readABox(String pathABox) throws IOException {
         Map<Integer, DicRdfDataBean> dic = DicRdfDataMap.getDicDataMap();
-        Path fpath = Paths.get(pathABox);
         int index = dic.size();
+        LineIterator it = FileUtils.lineIterator(new File(pathABox), "UTF-8");
+        int rewrite_equiv_count = 0;
+        int rewrite_inver_count = 0;
         try {
-            BufferedReader bfr = Files.newBufferedReader(fpath);
-            String line;
-            while ((line = bfr.readLine()) != null) {
+            while (it.hasNext()) {
+                String line = it.nextLine();
                 if (!line.contains("\\") && !line.contains("unknown:namespace")) {
 //                    StringTokenizer st = new StringTokenizer(line, " ");
 //                    List<String> list = new ArrayList<>(3);
 //                    while (st.hasMoreElements()) {
 //                        list.add(st.nextToken());
 //                    }
-
                     List<String> list = Arrays.stream(line.split(" ")).collect(Collectors.toList());
 //            DicRdfDataBean rdfDataBean = new DicRdfDataBean();
                     String Rs = list.get(0);
                     String Rp = list.get(1);
                     String Ro = list.get(2);
+                    list = null;
                     int rs = Dictionary.encodeRdf(Rs);
                     int rp = Dictionary.encodeRdf(Rp);
                     int ro = Dictionary.encodeRdf(Ro);
 //                  逆角色，等价角色进行替换
                     if (EquivalentPropertyMap.EquivalentPropertyMap.containsKey(rp)) {
                         rp = EquivalentPropertyMap.EquivalentPropertyMap.get(rp);
+                        rewrite_equiv_count ++;
                     }
                     if (InversePropertyMap.InverseMap.containsKey(rp)) {
                         rp = InversePropertyMap.InverseMap.get(rp);
                         int tmp = rs;
                         rs = ro;
                         ro = tmp;
+                        rewrite_inver_count++;
                     }
                     DicRdfDataMap.addSourceRdfDataBean(index, rs, rp, ro);
 
@@ -79,11 +82,15 @@ public class DictionaryInput {
 //                    System.out.println(line);
                 }
             }
-            bfr.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } finally {
+            LineIterator.closeQuietly(it);
         }
         System.out.println("初始数据数目" + index);
+        System.out.println("改写的等价角色数据" + rewrite_equiv_count);
+        System.out.println("改写的逆角色数据" + rewrite_inver_count);
+        System.out.println("逆属性个数" + InversePropertyMap.InverseMap.size());
+        System.out.println("等价属性个数" + EquivalentPropertyMap.EquivalentPropertyMap.size());
+
         addClassAssertion(index);
 
     }

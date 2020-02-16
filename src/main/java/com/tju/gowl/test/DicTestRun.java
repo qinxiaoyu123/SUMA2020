@@ -1,4 +1,4 @@
-package com.tju.gowl;
+package com.tju.gowl.test;
 
 import com.tju.gowl.axiomProcessor.Processor;
 import com.tju.gowl.dictionary.Dictionary;
@@ -16,6 +16,7 @@ public class DicTestRun {
 
     public static void main(String[] args) throws Exception {
         queryUOBM();
+
 //        queryLUBM();
     }
     public static  void initIsRoleWriting(boolean isRoleWriting){
@@ -48,7 +49,7 @@ public class DicTestRun {
 
     private static void queryUOBM() throws OWLOntologyCreationException, IOException {
         String pathTBox = "data/univ-bench-dl.owl";
-       String pathABox = "data/uobm1.nt";
+        String pathABox = "data/uobm1.nt";
 //        String pathABox = "data/uobm_test.nt";
 //        String pathABox = "data/uobm1.nt";
         String pathData = "data/new_uobm1_no.nt";
@@ -107,7 +108,7 @@ public class DicTestRun {
         SameAsReason.addEquivIndividual();
     }
 
-    private static void preDealData(String pathABox) {
+    private static void preDealData(String pathABox) throws IOException {
         long startTime1 = System.currentTimeMillis();
         DictionaryInput.readABox(pathABox);
         long startTime2 = System.currentTimeMillis();

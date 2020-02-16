@@ -1,5 +1,6 @@
-package com.tju.gowl;
+package com.tju.gowl.test;
 
+import com.tju.gowl.axiomProcessor.Processor;
 import com.tju.gowl.dictionary.Dictionary;
 import com.tju.gowl.io.DictionaryInput;
 import com.tju.gowl.io.DictionaryOutput;
@@ -38,6 +39,10 @@ public class ArgDicTestRun {
         }
         if(args.length>index){
             pathData = args[index];
+            index++;
+        }
+        if(args.length>index){
+            Processor.isRoleWriting = Boolean.parseBoolean(args[index]);
             index++;
         }
         if(args.length>index){
@@ -99,7 +104,7 @@ public class ArgDicTestRun {
         SameAsReason.addEquivIndividual();
     }
 
-    private static void preDealData(String pathABox) {
+    private static void preDealData(String pathABox) throws IOException {
         long startTime1 = System.currentTimeMillis();
         if(flagTTL){
             DictionaryInput.readTtlABox(pathABox);

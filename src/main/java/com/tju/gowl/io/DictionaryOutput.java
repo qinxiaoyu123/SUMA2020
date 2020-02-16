@@ -76,6 +76,8 @@ public class DictionaryOutput {
     //逆属性进行写
     public static void outWriteDicDataMap(String pathAboxNew) throws IOException {
         int count = 0;
+        int eqiv_count = 0;
+        int inverse_count = 0;
         Map<Integer, DicRdfDataBean> totalData = DicRdfDataMap.getDicDataMap();
         String[] decodeMap = Dictionary.getDecode();
         Map<Integer, Integer> inverseMapDecode = InversePropertyMap.getInverseMapDecode();
@@ -120,12 +122,14 @@ public class DictionaryOutput {
                 String Rp1 = decodeMap[inverseMapDecode.get(rp)];
 //                System.out.println(Ro+" "+Rp1+" "+Rs+" .");
                 out.write(Ro+" "+Rp1+" "+Rs+" .");
+                inverse_count++;
                 count++;
             }
             if(EquivalentMapDecode.containsKey(rp)){
                 String Rp1 = decodeMap[EquivalentMapDecode.get(rp)];
 //                System.out.println(Ro+" "+Rp1+" "+Rs+" .");
                 out.write(Rs+" "+Rp1+" "+Ro+" .");
+                eqiv_count++;
                 count++;
             }
             out.write(Rs+" "+Rp+" "+Ro+" .");
@@ -135,6 +139,8 @@ public class DictionaryOutput {
         out.flush();
         out.close();
         System.out.println("total data size: "+count);
+        System.out.println("equiv data size: "+eqiv_count);
+        System.out.println("inverse data size: "+inverse_count);
     }
 
     public static void encodeMap(String pathEncode) throws IOException {

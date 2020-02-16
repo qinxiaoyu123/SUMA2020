@@ -1,4 +1,4 @@
-package com.tju.gowl;
+package com.tju.gowl.test;
 
 import com.hp.hpl.jena.query.*;
 import com.hp.hpl.jena.rdf.model.Model;

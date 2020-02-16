@@ -1,4 +1,4 @@
-package com.tju.gowl;
+package com.tju.gowl.test;
 
 import java.io.*;
 import java.nio.file.Files;
