@@ -5,7 +5,6 @@ import com.tju.suma.bean.DicOwlMap;
 import com.tju.suma.bean.DicRdfDataBean;
 import com.tju.suma.bean.DicRdfDataMap;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,55 +13,47 @@ import java.util.Map;
 public class DicSerialReason {
     public static int anonymous = -2;
     public static final int typeEncode = 0;
-    private static StringBuffer sameAsString = new StringBuffer("sameAs");
-    private static int sameAsInt = 0;
     public static int someValue = 1;
     public static boolean someValueFlag = false;
 
 
-
-    public static void reason(int n) throws IOException {
+    public static void reason(int n) {
         int loopCount = 1;
         //遍历数据
         Map<Integer, DicRdfDataBean> totalData = DicRdfDataMap.getDicDataMap();
         //存放每次新生成的数据,每次循环结束把新数据copy到iteratorMap进行第二轮迭代
-        Map<Integer,DicRdfDataBean> stashMap = DicRdfDataMap.getDicStashMap();
+        Map<Integer, DicRdfDataBean> stashMap = DicRdfDataMap.getDicStashMap();
         //迭代数据，第二轮以后迭代 iteratorMap，每次结束把数据copy到totalData进行存储
-        Map<Integer,DicRdfDataBean> iteratorMap = DicRdfDataMap.getDicIteratorMap();
+        Map<Integer, DicRdfDataBean> iteratorMap = DicRdfDataMap.getDicIteratorMap();
         //规则
         Map<String, List<DicOwlBean>> totalRule = DicOwlMap.getRuleMap();
         //索引
 
-        long startTime1 = System.currentTimeMillis();
-
-        while(true){
-            //preDataCount = totalData.size();
-            System.out.println("loopCount"+" "+loopCount+" "+"datacount"+" "+(totalData.size()+iteratorMap.size()));
+        while (true) {
+            System.out.println("loopCount" + " " + loopCount + " " + "datacount" + " " + (totalData.size() + iteratorMap.size()));
             someValueFlag = false;
             Iterator<Map.Entry<Integer, DicRdfDataBean>> entries;
-            if(loopCount ==1) {
+            if (loopCount == 1) {
                 entries = totalData.entrySet().iterator();
-            }
-            else{
+            } else {
                 entries = iteratorMap.entrySet().iterator();
             }
             try {
                 while (entries.hasNext()) {
                     Map.Entry<Integer, DicRdfDataBean> entry = entries.next();
                     DicRdfDataBean rdfData = entry.getValue();
-                    //TODO
                     List<String> ruleKey = new ArrayList<>();
 
                     int Rs = rdfData.getRs();
                     int Rp = rdfData.getRp();
                     int Ro = rdfData.getRo();
-                    boolean rsBool =  SameAsReason.boolSameAs(Rs);
-                    boolean rpBool =  SameAsReason.boolSameAs(Rp);
-                    boolean roBool =  SameAsReason.boolSameAs(Ro);
-                    if(!(rsBool && rpBool && roBool)){
+                    boolean rsBool = SameAsReason.boolSameAs(Rs);
+                    boolean rpBool = SameAsReason.boolSameAs(Rp);
+                    boolean roBool = SameAsReason.boolSameAs(Ro);
+                    if (!(rsBool && rpBool && roBool)) {
                         continue;
                     }
-                    convertDataToRuleKey(ruleKey, Rs, Rp, Ro);
+                    convertDataToRuleKey(ruleKey, Rp, Ro);
 
                     ruleKey.forEach(str -> {
                         if (totalRule.containsKey(str)) {
@@ -70,47 +61,35 @@ public class DicSerialReason {
                             for (DicOwlBean typeHead : OwlRule) {
                                 int type = typeHead.getType();
                                 List<Integer> head = typeHead.getRuleHead();
-                         /*   ObjectPropertyDomain 2022
-                            ObjectPropertyRange 2023
-                            ObjectSomeValuesFrom 3005
-                            SubClassOf 2002
-                            SubObjectPropertyOf 2013
-                            SymmetricObjectProperty 2017 */
                                 switchReasonType(totalData, stashMap, iteratorMap, Rs, Rp, Ro, type, head);
 
                             }
                         }
-                        else {
-                            //无对应规则
-                        }
                     });
                 }
             } catch (Exception e) {
-                e .printStackTrace();
+                e.printStackTrace();
                 System.err.println("happen error");
             }
-            if(stashMap.size()==0){
+            if (stashMap.size() == 0) {
                 //没有新数据产生
                 System.out.println("No new data was generated!");
                 totalData.putAll(iteratorMap);
                 stashMap.clear();
                 iteratorMap.clear();
-//                System.out.println("total data size"+totalData.size());
                 break;
             }
-            if(someValue>=20){
-                System.out.println(20+"-step universal model is finished");
-                System.out.println("someValue"+someValue);
+            if (someValue >= 20) {
+                System.out.println(20 + "-step universal model is finished");
+                System.out.println("someValue" + someValue);
                 totalData.putAll(stashMap);
                 totalData.putAll(iteratorMap);
                 stashMap.clear();
                 iteratorMap.clear();
-//                System.out.println("total data size"+totalData.size());
                 break;
             }
-            if(loopCount>=n){
-                System.out.println(n+"-step universal model is finished");
-//                System.out.println("someValue"+someValue);
+            if (loopCount >= n) {
+                System.out.println(n + "-step universal model is finished");
                 totalData.putAll(stashMap);
                 totalData.putAll(iteratorMap);
                 stashMap.clear();
@@ -126,24 +105,19 @@ public class DicSerialReason {
 
         }
 
-//        outEquiPool();
-//        outEquiMapping();
-
     }
 
     private static void switchReasonType(Map<Integer, DicRdfDataBean> totalData, Map<Integer, DicRdfDataBean> stashMap, Map<Integer, DicRdfDataBean> iteratorMap, int rs, int rp, int ro, int type, List<Integer> head) {
-        switch (type){
+        switch (type) {
             case 2013://SubObjectPropertyOf 2013
                 SubPropertyReason.reason(totalData, iteratorMap, stashMap, rs, head, ro);
                 break;
             case 2022://ObjectPropertyDomain 2022
-                BasicReason.reason(totalData, iteratorMap, stashMap, rs, typeEncode, head);
+            case 2002://SubClassOf 2002
+                BasicReason.reason(totalData, iteratorMap, stashMap, rs, head);
                 break;
             case 2023://ObjectPropertyRange 2023
-                BasicReason.reason(totalData, iteratorMap, stashMap, ro, typeEncode, head);
-                break;
-            case 2002://SubClassOf 2002
-                BasicReason.reason(totalData, iteratorMap, stashMap, rs, typeEncode, head);
+                BasicReason.reason(totalData, iteratorMap, stashMap, ro, head);
                 break;
             case 3005:
                 ObjectSomeValuesFromReason.reason(totalData, iteratorMap, stashMap, rs, head);
@@ -161,7 +135,6 @@ public class DicSerialReason {
                 TransitiveReason.reason(rs, rp, ro);
                 break;
             case 2014://InverseProperty = 2014;
-                //TODO tianjiaguuizebiao
                 InversePropertyReason.reason(totalData, iteratorMap, stashMap, rs, head, ro);
                 break;
             case 2012://EquivalentProperty = 2012;
@@ -171,7 +144,7 @@ public class DicSerialReason {
                 ObjectAllValuesFromReason.reason(rs, head);
                 break;
             case 3007:
-                ObjectHasValueReason.reason(totalData, iteratorMap, stashMap, rs, head);
+                ObjectHasValueReason.reason(rs, head);
                 break;
             case 3008:
                 ObjectMinCardinalityReason.reason(rs, head);
@@ -189,109 +162,108 @@ public class DicSerialReason {
                 FunctionalObjectPropertyReason.reason(rs, rp, ro);
                 break;
             case 10:
-                QueryReason.type10Reason(rs, rp, ro, head);
+                QueryReason.type10Reason(rs, ro, head);
                 break;
             case 11:
-                QueryReason.type11Reason(rs, rp, ro, head);
+                QueryReason.type11Reason(ro, head);
                 break;
             case 12:
-                try {
-                    QueryReason.type12Reason(rs, rp, ro, head);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                QueryReason.type12Reason(rs, rp, head);
                 break;
             case 14:
-                QueryReason.type14Reason(rs, rp, ro, head);
+                QueryReason.type14Reason(rs, head);
                 break;
             case 15:
-                QueryReason.type15Reason(rs, rp, ro, head);
+                QueryReason.type15Reason(rs, head);
                 break;
             case 16:
-                QueryReason.type16Reason(rs, rp, ro, head);
-                break;
             case 17:
-                QueryReason.type16Reason(rs, rp, ro, head);
+                QueryReason.type16Reason(rs, head);
                 break;
             case 18:
-                QueryReason.type18Reason(rs, rp, ro, head);
+                QueryReason.type18Reason(rs, rp, head);
                 break;
             case 19:
-                QueryReason.type19Reason(rs, rp, ro, head);
+                QueryReason.type19Reason(rs, head);
                 break;
             case 20:
-                QueryReason.type20Reason(rs, rp, ro, head);
+                QueryReason.type20Reason(rs, head);
                 break;
             case 21:
-                QueryReason.type21Reason(rs, rp, ro, head);
+                QueryReason.type21Reason(rs, head);
                 break;
             case 22:
-                QueryReason.type22Reason(rs, rp, ro, head);
+                QueryReason.type22Reason(rs, head);
                 break;
             case 23:
-                QueryReason.type23Reason(rs, rp, ro, head);
+                QueryReason.type23Reason(rs, head);
                 break;
             case 24:
-                QueryReason.type24Reason(rs, rp, ro, head);
+                QueryReason.type24Reason(rs, head);
                 break;
             case 25:
-                QueryReason.type25Reason(rs, rp, ro, head);
+                QueryReason.type25Reason(rs, head);
                 break;
             case 26:
-                QueryReason.type26Reason(rs, rp, ro, head);
+                QueryReason.type26Reason(rs, head);
                 break;
             case 27:
-                QueryReason.type27Reason(rs, rp, ro, head);
+                QueryReason.type27Reason(rs, head);
                 break;
             case 28:
-                QueryReason.type28Reason(rs, rp, ro, head);
+                QueryReason.type28Reason(rs, head);
                 break;
             case 29:
-                QueryReason.type29Reason(rs, rp, ro, head);
+                QueryReason.type29Reason(rs, ro, head);
                 break;
             case 30:
-                QueryReason.type30Reason(rs, rp, ro, head);
+                QueryReason.type30Reason(rs, head);
                 break;
             case 31:
-                QueryReason.type31Reason(rs, rp, ro, head);
+                QueryReason.type31Reason(rs, head);
                 break;
             case 32:
-                QueryReason.type32Reason(rs, rp, ro, head);
+                QueryReason.type32Reason(rs, head);
                 break;
             case 33:
-                QueryReason.type33Reason(rs, rp, ro, head);
+                QueryReason.type33Reason(rs, ro, head);
                 break;
             case 34:
-                QueryReason.type34Reason(rs, rp, ro, head);
+                QueryReason.type34Reason(rs, head);
                 break;
             case 35:
-                QueryReason.type35Reason(rs, rp, ro, head);
+                QueryReason.type35Reason(rs, ro, head);
                 break;
             case 36:
-                QueryReason.type36Reason(rs, rp, ro, head);
+                QueryReason.type36Reason(rs, head);
                 break;
             case 37:
-                QueryReason.type37Reason(rs, rp, ro, head);
+                QueryReason.type37Reason(rs, head);
                 break;
             case 38:
-                QueryReason.type38Reason(rs, rp, ro, head);
+                QueryReason.type38Reason(rs, head);
                 break;
             case 39:
-                QueryReason.type39Reason(rs, rp, ro, head);
+                QueryReason.type39Reason(rs, ro, head);
                 break;
             case 55:
-                QueryReason.type55Reason(rs, rp, ro, head);
+                QueryReason.type55Reason(rs, ro, head);
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + type);
         }
     }
 
 
-    private static void convertDataToRuleKey(List<String> ruleKey, int rs, int rp, int ro) {
-        StringBuffer ssbuff = new StringBuffer();
-        String key1 = ssbuff.append("*").append(rp).append(ro).toString();
+    private static void convertDataToRuleKey(List<String> ruleKey, int rp, int ro) {
+        StringBuilder sBuilder = new StringBuilder();
+        sBuilder.append("*");
+        sBuilder.append(rp);
+        sBuilder.append(ro);
+        String key1 = sBuilder.toString();
         ruleKey.add(key1);
-        ssbuff.setLength(0);
-        String key2 = ssbuff.append("*").append(rp).append("*").toString();
+        sBuilder.setLength(0);
+        String key2 = sBuilder.append("*").append(rp).append("*").toString();
         ruleKey.add(key2);
     }
 }

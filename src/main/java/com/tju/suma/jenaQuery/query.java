@@ -10,21 +10,25 @@ import java.util.List;
 
 public class query {
     private static final List<String> queryList = new ArrayList<>();
-    public static List<String> getQueryList(){ return queryList; }
+
+    public static List<String> getQueryList() {
+        return queryList;
+    }
+
     static int queryCount = 0;
 
-    public static void readQuery(String pathQuery) throws IOException {
-        Path fpath= Paths.get(pathQuery);
+    public static void readQuery(String pathQuery) {
+        Path fpath = Paths.get(pathQuery);
         try {
             BufferedReader bfr = Files.newBufferedReader(fpath);
             String line;
-            StringBuffer query = new StringBuffer();
+            StringBuilder query = new StringBuilder();
             while ((line = bfr.readLine()) != null) {
-                if(!line.contains("^")){
+                if (!line.contains("^")) {
                     query.append(line).append("\n");
-                    if(line.contains("}")){
+                    if (line.contains("}")) {
                         queryList.add(query.toString());
-                        queryCount ++;
+                        queryCount++;
                         query.setLength(0);
                     }
                 }
@@ -35,7 +39,7 @@ public class query {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         readQuery("data/standard_and_gap.sparql");
         System.out.println(queryList);
         System.out.println(queryCount);

@@ -10,14 +10,8 @@ public class TwoKeyMap {
     private static final Map<Integer, Map<Integer,Integer>> IspTwoKey = new ConcurrentHashMap<>();
     private static final Map<Integer, Map<Integer,Integer>> IopTwoKey = new ConcurrentHashMap<>();
 
-    public static Map<Integer, Map<Integer, Integer>> getIsp() { return IspTwoKey; }
-
-    public static Map<Integer, Map<Integer, Integer>> getIop() {
-        return IopTwoKey;
-    }
-
     public static int getFirstIndexSpFromMap(int rs, int rp, int index) {
-        if (IspTwoKey.containsKey(rs)) {//包含 rs
+        if (IspTwoKey.containsKey(rs)) {
             Map<Integer, Integer> IpTwoKey = IspTwoKey.get(rs);
             if(IpTwoKey.containsKey(rp)){
                 return IpTwoKey.get(rp);
@@ -38,7 +32,7 @@ public class TwoKeyMap {
 
 
     public static int getFirstIndexOpFromMap(int rp, int ro, int index) {
-        if (IopTwoKey.containsKey(ro)) {//包含 rs
+        if (IopTwoKey.containsKey(ro)) {
             Map<Integer, Integer> IpTwoKey = IopTwoKey.get(ro);
             if(IpTwoKey.containsKey(rp)){
                 return IpTwoKey.get(rp);
@@ -58,7 +52,7 @@ public class TwoKeyMap {
     }
 
     public static int getFirstIndexSpFromMap(int rs, int rp) {
-        if (IspTwoKey.containsKey(rs)) {//包含 rs
+        if (IspTwoKey.containsKey(rs)) {
             Map<Integer, Integer> IpTwoKey = IspTwoKey.get(rs);
             if (IpTwoKey.containsKey(rp)) {
                 return IpTwoKey.get(rp);
@@ -69,7 +63,7 @@ public class TwoKeyMap {
 
 
     public static int getFirstIndexOpFromMap(int rp , int ro)  {
-        if (IopTwoKey.containsKey(ro)) {//包含 rs
+        if (IopTwoKey.containsKey(ro)) {
             Map<Integer, Integer> IpTwoKey = IopTwoKey.get(ro);
             if (IpTwoKey.containsKey(rp)) {
                 return IpTwoKey.get(rp);
@@ -83,21 +77,19 @@ public class TwoKeyMap {
         List<Integer> rpRoTriples = new ArrayList<>();
         if(IspTwoKey.containsKey(tmp)){
             Map<Integer, Integer> indexBean = IspTwoKey.get(tmp);
-            Iterator<Map.Entry<Integer, Integer>> iterIndexBean = indexBean.entrySet().iterator();
-            while(iterIndexBean.hasNext()){
-                //rs rp 第一条数据
-                Map.Entry<Integer, Integer> tt = iterIndexBean.next();
+            for (Map.Entry<Integer, Integer> tt : indexBean.entrySet()) {
                 int firstTripleIsp = tt.getValue();
                 int rp = tt.getKey();
                 DicRdfDataBean dicDataBeanIterator;
                 int indexNew = firstTripleIsp;
-                do{
+                do {
                     dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
+                    Objects.requireNonNull(dicDataBeanIterator,"dicDataBeanIterator is null");
                     indexNew = dicDataBeanIterator.getNsp();
                     int roTmp = dicDataBeanIterator.getRo();
                     rpRoTriples.add(rp);
                     rpRoTriples.add(roTmp);
-                }while(indexNew != -1);
+                } while (indexNew != -1);
             }
         }
         return rpRoTriples;
@@ -106,21 +98,19 @@ public class TwoKeyMap {
         List<Integer> rsRpTriples = new ArrayList<>();
         if(IopTwoKey.containsKey(tmp)){
             Map<Integer, Integer> indexBean = IopTwoKey.get(tmp);
-            Iterator<Map.Entry<Integer, Integer>> iterIndexBean = indexBean.entrySet().iterator();
-            while(iterIndexBean.hasNext()){
-                //rs rp 第一条数据
-                Map.Entry<Integer, Integer> tt = iterIndexBean.next();
+            for (Map.Entry<Integer, Integer> tt : indexBean.entrySet()) {
                 int firstTripleIop = tt.getValue();
                 int rp = tt.getKey();
                 DicRdfDataBean dicDataBeanIterator;
                 int indexNew = firstTripleIop;
-                do{
+                do {
                     dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
+                    Objects.requireNonNull(dicDataBeanIterator,"dicDataBeanIterator is null");
                     indexNew = dicDataBeanIterator.getNop();
                     int roTmp = dicDataBeanIterator.getRs();
                     rsRpTriples.add(roTmp);
                     rsRpTriples.add(rp);
-                }while(indexNew != -1);
+                } while (indexNew != -1);
             }
         }
         return rsRpTriples;
@@ -158,6 +148,7 @@ public class TwoKeyMap {
         }
         do{
             dataBean = DicRdfDataMap.getDataBean(indexNew);
+            Objects.requireNonNull(dataBean,"dataBean is null");
             indexNew = dataBean.getNsp();
             int roIterator = dataBean.getRo();
             if(ro == roIterator) return true;

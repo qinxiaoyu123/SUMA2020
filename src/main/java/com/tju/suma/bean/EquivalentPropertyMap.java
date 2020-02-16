@@ -14,18 +14,6 @@ public class EquivalentPropertyMap {
         return EquivalentPropertyMapDecode;
     }
 
-    public static Map<Integer, Integer> getEquivalentPropertyMap(){ return EquivalentPropertyMap; }
-
-    public static int getEquivalentProperty(int first) {
-        if(EquivalentPropertyMap.containsKey(first)){
-            //replace first with second
-            return EquivalentPropertyMap.get(first);
-        }
-        else{
-            return -1;
-        }
-    }
-
     public static void setEquivalentPropertyDecode(int second, int first) {
         EquivalentPropertyMapDecode.put(second,first);
     }

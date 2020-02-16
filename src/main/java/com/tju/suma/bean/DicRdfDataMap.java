@@ -9,11 +9,6 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DicRdfDataMap {
 
     private static final Map<Integer, DicRdfDataBean> dicDataMap=new ConcurrentHashMap<>();
-    //Isp Nsp
-//    private static final Map<Integer, Integer> dicDataIndexIsp=new ConcurrentHashMap<>();
-//    //Ipo Npo
-//    private static final Map<Integer, Integer> dicDataIndexIpo=new ConcurrentHashMap<>();
-    //private static final Map<String, List<String>> ruleMap =new ConcurrentHashMap<>();
     private static final Map<Integer,DicRdfDataBean> dicStashMap=new ConcurrentHashMap<>();
     private static final Map<Integer,DicRdfDataBean> dicIteratorMap=new ConcurrentHashMap<>();
 
@@ -101,12 +96,4 @@ public class DicRdfDataMap {
         dicStashMap.put(index, dicDataBean);
         ThreeKeyMap.checkDuplicate(rs, rp, ro, index);
     }
-
-
-//    public static Map<Integer,Integer> getDicdataIndexIsp(){
-//        return dicDataIndexIsp;
-//    }
-    //public static Map<String, List<String>> getRuleMap(){ return ruleMap; }
-
-//    public static Map<Integer, Integer> getDicdataIndexIpo() { return dicDataIndexIpo; }
 }

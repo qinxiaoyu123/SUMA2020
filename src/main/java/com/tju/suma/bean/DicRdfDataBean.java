@@ -1,5 +1,7 @@
 package com.tju.suma.bean;
 
+import java.util.Objects;
+
 public class DicRdfDataBean {
     private int Rs;
     private int Rp;
@@ -41,18 +43,14 @@ public class DicRdfDataBean {
     }
 
     public void setNsp(int nsp, int index) {
-//        System.out.println("nsp"+nsp);
-//        System.out.println("index"+index);
         if(nsp == -1){
             this.setNsp(-1);
-//            System.out.println("aaaaaa");
         }
         else{
             DicRdfDataBean dataBean = DicRdfDataMap.getDataBean(nsp);
+            Objects.requireNonNull(dataBean,"dataBean is null");
             this.setNsp(dataBean.getNsp());
-//            System.out.println("qian"+index+dataBean);
             dataBean.setNsp(index);
-//            System.out.println(dataBean);
         }
     }
 
@@ -62,40 +60,10 @@ public class DicRdfDataBean {
         }
         else{
             DicRdfDataBean dataBean = DicRdfDataMap.getDataBean(nop);
+            Objects.requireNonNull(dataBean,"dataBean is null");
             this.setNop(dataBean.getNop());
             dataBean.setNop(index);
         }
-    }
-
-//    public int setNspFind(int nsp, Map<Integer, Integer> dicDataIndexIsp, Map<Integer, DicRdfDataBean> dicTotalData, int index) {
-//        if (!dicDataIndexIsp.containsKey(nsp)){
-//            dicDataIndexIsp.put(nsp,index);
-//            return -1;
-//        }
-//        else{
-//            //index_ip 找到第一条sp数据的地址
-//            int index_ip = dicDataIndexIsp.get(nsp);
-//            int Nsp_ip = dicTotalData.get(index_ip).getNsp();
-//            dicTotalData.get(index_ip).setNsp(index);
-//            return Nsp_ip;
-//        }
-//
-//    }
-//    public int setNpoFind(int npo, Map<Integer, Integer> dicDataIndexIpo, Map<Integer, DicRdfDataBean> dicTotalData, int index) {
-//        if (!dicDataIndexIpo.containsKey(npo)){
-//            dicDataIndexIpo.put(npo,index);
-//            return -1;
-//        }
-//        else{
-//            //index_ip 找到第一条sp数据的地址
-//            int index_ip = dicDataIndexIpo.get(npo);
-//            int Npo_ip = dicTotalData.get(index_ip).getNpo();
-//            dicTotalData.get(index_ip).setNpo(index);
-//            return Npo_ip;
-//        }
-//    }
-    public int getNp() {
-        return Np;
     }
 
     public void setNp(int np) {

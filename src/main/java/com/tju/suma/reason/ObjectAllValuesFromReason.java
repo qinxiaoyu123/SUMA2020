@@ -6,6 +6,7 @@ import com.tju.suma.index.ThreeKeyMap;
 import com.tju.suma.index.TwoKeyMap;
 
 import java.util.List;
+import java.util.Objects;
 
 import static com.tju.suma.reason.DicSerialReason.typeEncode;
 
@@ -19,6 +20,7 @@ public class ObjectAllValuesFromReason {
         int indexNew = firstTripleIsp;
         do{
             dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
+            Objects.requireNonNull(dicDataBeanIterator, "dicDataBeanIterator at reason is null");
             indexNew = dicDataBeanIterator.getNsp();
             int ro1 = dicDataBeanIterator.getRo();
             if(!ThreeKeyMap.checkDuplicate(ro1, typeEncode, class2)) {
@@ -36,6 +38,7 @@ public class ObjectAllValuesFromReason {
         int indexNew = firstTripleIop;
         do{
             dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
+            Objects.requireNonNull(dicDataBeanIterator, "dicDataBeanIterator at inverseReason is null");
             indexNew = dicDataBeanIterator.getNop();
             int rs1 = dicDataBeanIterator.getRs();
             if(!ThreeKeyMap.checkDuplicate(rs1, typeEncode, class2)) {

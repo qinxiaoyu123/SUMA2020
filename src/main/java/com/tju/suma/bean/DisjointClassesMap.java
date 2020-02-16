@@ -11,11 +11,6 @@ public class DisjointClassesMap {
     }
 
     public static int getDisjointClassesMap(int first) {
-        if(disjointClassesMap.containsKey(first)){
-            return disjointClassesMap.get(first);
-        }
-        else{
-            return -1;
-        }
+        return disjointClassesMap.getOrDefault(first, -1);
     }
 }

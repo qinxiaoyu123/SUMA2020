@@ -4,7 +4,6 @@ import com.tju.suma.axiomProcessor.Processor;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -12,146 +11,33 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DicOwlMap {
     private static final Map<String, List<DicOwlBean>> DicRuleMap = new ConcurrentHashMap<>();
     public static final Map<Integer, List<DicOwlBean>> EquiDicRuleMap = new ConcurrentHashMap<>();
-    public static Map<Integer, List<DicOwlBean>> getEquiDicRuleMap() {
-        return EquiDicRuleMap;
-    }
 
-    //    private static final Map<String, String> InverseProperty = new ConcurrentHashMap<>();
-//    private static final Map<String, Integer> TransitiveProperty = new ConcurrentHashMap<>();
     public static Map<String, List<DicOwlBean>> getRuleMap(){ return DicRuleMap; }
-//    public static Map<String, String> getInverseProperty(){ return InverseProperty; }
-//    public static Map<String, Integer> getTransitiveProperty(){ return TransitiveProperty; }
-
-
-    public static void addEquiDicRuleMap(int class1, int type, int cardinality, int propertyInt, int class2Int) {
-        if(type == 3008){//min
-            if(DicOwlMap.EquiDicRuleMap.containsKey(class1)){
-                DicOwlBean bean = new DicOwlBean();
-                bean.setType(3008);
-                bean.setRuleHead(cardinality, propertyInt, class2Int);
-                DicOwlMap.EquiDicRuleMap.get(class1).add(bean);
-            }
-        }
-
-    }
-
-    public static void addEquiDicRuleMap(int class1, int type, int propertyInt, int fillterInt) {
-        if(type == 3005){//someVauleFrom
-            if(EquiDicRuleMap.containsKey(class1)){
-                DicOwlBean bean = new DicOwlBean();
-                bean.setType(3005);
-                bean.setRuleHead(propertyInt, fillterInt);
-                EquiDicRuleMap.get(class1).add(bean);
-            }
-            else{
-                System.out.println("addEquiDicRuleMap_error");
-            }
-        }
-        else if(type == 3006){//allVauleFrom
-            if(EquiDicRuleMap.containsKey(class1)){
-                DicOwlBean bean = new DicOwlBean();
-                bean.setType(3006);
-                bean.setRuleHead(propertyInt, fillterInt);
-                EquiDicRuleMap.get(class1).add(bean);
-            }
-            else{
-                System.out.println("addEquiDicRuleMap_error");
-            }
-        }
-        else{
-            if(EquiDicRuleMap.containsKey(class1)){
-                DicOwlBean bean = new DicOwlBean();
-                bean.setType(type);
-                bean.setRuleHead(propertyInt, fillterInt);
-                EquiDicRuleMap.get(class1).add(bean);
-            }
-            else{
-                System.out.println("addEquiDicRuleMap_error");
-            }
-        }
-    }
-    public static void addDicOwlMap(int type, int pro) {
-        if(type==2019 || type==2017|| type==2016|| type==2015) {
-            //TransitiveObjectProperty 2019
-            DicOwlBean dicOwlBean = new DicOwlBean();
-            dicOwlBean.setType(type);
-            dicOwlBean.setRuleHead(pro);
-            StringBuffer ssbuff = new StringBuffer("*");
-            String key = ssbuff.append(pro).append("*").toString();
-
-            addDicOwlMap(dicOwlBean, key);
-        }
-
-    }
+    
     public static void addDicOwlMap(int type, int class1, int class2) {
         DicOwlBean dicOwlBean = new DicOwlBean();
         dicOwlBean.setType(type);
         dicOwlBean.setRuleHead(class2);
-        if (type == 2002){ //subclassof
+        //subClassOf
+        if (type == 2002){ 
             if(class2 == 0) return;
-            StringBuffer ssbuff = new StringBuffer("*0");
-            String key = ssbuff.append(class1).toString();
+            String key = "*0" + class1;
             addDicOwlMap(dicOwlBean, key);
 
         }
-       else{//ObjectPropertyRange  ObjectPropertyDomain SubObjectPropertyOf
-            StringBuffer ssbuff = new StringBuffer("*");
-            String key = ssbuff.append(class1).append("*").toString();
+       else{
+           //ObjectPropertyRange  ObjectPropertyDomain SubObjectPropertyOf
+            String key = "*" + class1 + "*";
             addDicOwlMap(dicOwlBean, key);
         }
 
 
     }
-    public static void addDicOwlMap(int type, int class1, int r, int class3) {
-//        if(type == 5){
-//
-////            DicOwlBean dicOwlBean = new DicOwlBean();
-////            dicOwlBean.setType(6);
-////            dicOwlBean.setRuleHead(class1,class3);
-////            StringBuffer ssbuff = new StringBuffer("*");
-////            String key = ssbuff.append(r).append("*").toString();
-//
-////            addDicOwlMap(dicOwlBean, key);
-//            ssbuff.setLength(0);
-//            DicOwlBean dicOwlBean1 = new DicOwlBean();
-//            dicOwlBean1.setType(7);
-//            dicOwlBean1.setRuleHead(class1,r);
-//            ssbuff.append("*0");
-//            String key1 = ssbuff.append(class3).toString();
-//
-//            addDicOwlMap(dicOwlBean1, key1);
-//        }
-//        else{
-            //somevaluefromm
-            DicOwlBean dicOwlBean = new DicOwlBean();
-            dicOwlBean.setType(type);
-            dicOwlBean.setRuleHead(r,class3);
-            StringBuffer ssbuff = new StringBuffer("*0");
-            String key = ssbuff.append(class1).toString();
-
-            addDicOwlMap(dicOwlBean, key);
-//        }
-
-    }
-    public static void addDicOwlMap(int type, int class1, int class2, int r, int class3) {
-         if(type == 3008){//minCardinality  class1, cardinality, propertyInt, class2Int
-            DicOwlBean dicOwlBean = new DicOwlBean();
-            dicOwlBean.setType(3008);//class2
-            dicOwlBean.setRuleHead(class2,r,class3);
-            StringBuffer ssbuff = new StringBuffer("*0");
-            String key = ssbuff.append(class1).toString();
-            addDicOwlMap(dicOwlBean, key);
-        }
-
-    }
-
     public static void addDicOwlMap(DicOwlBean dicOwlBean, String key) {
         if (DicRuleMap.containsKey(key)) {
             List<DicOwlBean> lists = DicRuleMap.get(key);
-            Iterator<DicOwlBean> iterator1 = lists.iterator();
-            while(iterator1.hasNext()){
-                DicOwlBean aa = iterator1.next();
-                if(aa.equals(dicOwlBean)){
+            for (DicOwlBean aa : lists) {
+                if (aa.equals(dicOwlBean)) {
                     return;
                 }
             }
@@ -175,8 +61,7 @@ public class DicOwlMap {
         DicOwlBean dicOwlBean = new DicOwlBean();
         dicOwlBean.setType(pair.getValue());
         dicOwlBean.setRuleHead(ran);
-        StringBuffer ssbuff = new StringBuffer("*");
-        String key = ssbuff.append(pair.getKey()).append("*").toString();
+        String key = "*" + pair.getKey() + "*";
         addDicOwlMap(dicOwlBean, key);
 
     }
@@ -185,8 +70,7 @@ public class DicOwlMap {
         DicOwlBean dicOwlBean = new DicOwlBean();
         dicOwlBean.setType(type);
         dicOwlBean.setRuleHead(ran);
-        StringBuffer ssbuff = new StringBuffer("*");
-        String key = ssbuff.append(pro).append("*").toString();
+        String key = "*" + pro + "*";
         addDicOwlMap(dicOwlBean, key);
     }
 
@@ -194,8 +78,7 @@ public class DicOwlMap {
         DicOwlBean dicOwlBean = new DicOwlBean();
         dicOwlBean.setType(type);
         dicOwlBean.setRuleHead(ran);
-        StringBuffer ssbuff = new StringBuffer("*");
-        String key = ssbuff.append(pro).append("*").toString();
+        String key = "*" + pro + "*";
         addDicOwlMap(dicOwlBean, key);
     }
 
@@ -204,8 +87,7 @@ public class DicOwlMap {
         DicOwlBean dicOwlBean = new DicOwlBean();
         dicOwlBean.setType(pair.getValue());
         dicOwlBean.setRuleHead(dom);
-        StringBuffer ssbuff = new StringBuffer("*");
-        String key = ssbuff.append(pair.getKey()).append("*").toString();
+        String key = "*" + pair.getKey() + "*";
         addDicOwlMap(dicOwlBean, key);
     }
 
@@ -214,8 +96,7 @@ public class DicOwlMap {
         Pair<Integer, Integer> pair = rewriteProperty(type, propertyInt);
         dicOwlBean.setType(pair.getValue());
         dicOwlBean.setRuleHead(pair.getKey(),fillterInt);
-        StringBuffer ssbuff = new StringBuffer("*0");
-        String key = ssbuff.append(class1).toString();
+        String key = "*0" + class1;
         addDicOwlMap(dicOwlBean, key);
     }
     public static void addDicOwlObjectHasValueMap(int type, int class1, int propertyInt, int fillterInt) {
@@ -223,8 +104,7 @@ public class DicOwlMap {
         Pair<Integer, Integer> pair = rewriteProperty(type, propertyInt);
         dicOwlBean.setType(pair.getValue());
         dicOwlBean.setRuleHead(pair.getKey(),fillterInt);
-        StringBuffer ssbuff = new StringBuffer("*0");
-        String key = ssbuff.append(class1).toString();
+        String key = "*0" + class1;
         addDicOwlMap(dicOwlBean, key);
     }
     public static void addEquiDicSomeValuesMap(int class1, int type, int propertyInt, int class2Int) {
@@ -234,11 +114,8 @@ public class DicOwlMap {
         dicOwlBean.setRuleHead(pair.getKey(),class2Int);
         EquiDicRuleMap.get(class1).add(dicOwlBean);
     }
-
-
-
     private static Pair<Integer, Integer> rewriteProperty(int type, int propertyInt) {
-        if(Processor.isRoleWriting == false) return new Pair<>(propertyInt, type);
+        if(!Processor.isRoleWriting) return new Pair<>(propertyInt, type);
         if(EquivalentPropertyMap.EquivalentPropertyMap.containsKey(propertyInt)){
             propertyInt = EquivalentPropertyMap.EquivalentPropertyMap.get(propertyInt);
         }
@@ -246,8 +123,7 @@ public class DicOwlMap {
             propertyInt = InversePropertyMap.InverseMap.get(propertyInt);
             type = Processor.typeInverse.get(type);
         }
-        Pair<Integer, Integer> pair = new Pair<>(propertyInt, type);
-        return pair;
+        return new Pair<>(propertyInt, type);
     }
 
     public static void addDicOwlSubCLassMap(int type, int sub, int sup) {
@@ -255,8 +131,7 @@ public class DicOwlMap {
         dicOwlBean.setType(type);
         dicOwlBean.setRuleHead(sup);
 //        if(class2 == 0) return;
-        StringBuffer ssbuff = new StringBuffer("*0");
-        String key = ssbuff.append(sub).toString();
+        String key = "*0" + sub;
         addDicOwlMap(dicOwlBean, key);
     }
 
@@ -281,8 +156,7 @@ public class DicOwlMap {
         DicOwlBean dicOwlBean = new DicOwlBean();
         dicOwlBean.setType(pair.getValue());
         dicOwlBean.setRuleHead(pair.getKey());
-        StringBuffer ssbuff = new StringBuffer("*");
-        String key = ssbuff.append(pro).append("*").toString();
+        String key = "*" + pro + "*";
         addDicOwlMap(dicOwlBean, key);
     }
 
@@ -291,8 +165,7 @@ public class DicOwlMap {
         DicOwlBean dicOwlBean = new DicOwlBean();
         dicOwlBean.setType(pair.getValue());
         dicOwlBean.setRuleHead(pair.getKey());
-        StringBuffer ssbuff = new StringBuffer("*");
-        String key = ssbuff.append(pro).append("*").toString();
+        String key = "*" + pro + "*";
         addDicOwlMap(dicOwlBean, key);
     }
 
@@ -301,8 +174,7 @@ public class DicOwlMap {
         DicOwlBean dicOwlBean = new DicOwlBean();
         dicOwlBean.setType(pair.getValue());
         dicOwlBean.setRuleHead(pair.getKey());
-        StringBuffer ssbuff = new StringBuffer("*");
-        String key = ssbuff.append(pro).append("*").toString();
+        String key = "*" + pro + "*";
         addDicOwlMap(dicOwlBean, key);
     }
 
@@ -311,8 +183,7 @@ public class DicOwlMap {
         DicOwlBean dicOwlBean = new DicOwlBean();
         dicOwlBean.setType(pair.getValue());
         dicOwlBean.setRuleHead(pair.getKey());
-        StringBuffer ssbuff = new StringBuffer("*");
-        String key = ssbuff.append(pro).append("*").toString();
+        String key = "*" + pro + "*";
         addDicOwlMap(dicOwlBean, key);
     }
 
@@ -321,12 +192,11 @@ public class DicOwlMap {
         Pair<Integer, Integer> pair = rewriteProperty(type, propertyInt);
         dicOwlBean.setType(pair.getValue());
         dicOwlBean.setRuleHead(pair.getKey(),classAllValues);
-        StringBuffer ssbuff = new StringBuffer("*0");
-        String key = ssbuff.append(class1).toString();
+        String key = "*0" + class1;
         addDicOwlMap(dicOwlBean, key);
     }
 
-    public static void addEquiDicAllVauleMap(int class1, int type, int propertyInt, int classAllValues) {
+    public static void addEquiDicAllValueMap(int class1, int type, int propertyInt, int classAllValues) {
         Pair<Integer, Integer> pair = rewriteProperty(type, propertyInt);
         DicOwlBean bean = new DicOwlBean();
         bean.setType(pair.getValue());
@@ -339,8 +209,7 @@ public class DicOwlMap {
         Pair<Integer, Integer> pair = rewriteProperty(type, propertyInt);
         dicOwlBean.setType(pair.getValue());//class2
         dicOwlBean.setRuleHead(cardinality,pair.getKey(),class2Int);
-        StringBuffer ssbuff = new StringBuffer("*0");
-        String key = ssbuff.append(class1).toString();
+        String key = "*0" + class1;
         addDicOwlMap(dicOwlBean, key);
     }
 
@@ -352,42 +221,11 @@ public class DicOwlMap {
         DicOwlMap.EquiDicRuleMap.get(class1).add(bean);
     }
 
-    public static void addDicOwlRileAllValuesMap(int type, int class1, int propertyInt, int classAllValues) {
-//        Pair<Integer, Integer> pair = rewriteProperty(type, propertyInt);
+    public static void addDicOwlRileAllValuesMap(int class1, int propertyInt, int classAllValues) {
         DicOwlBean dicOwlBean = new DicOwlBean();
-//        Pair<Integer, Integer> pair = rewriteProperty(type, propertyInt);
         dicOwlBean.setType(55);
         dicOwlBean.setRuleHead(class1,classAllValues);
-        StringBuffer ssbuff = new StringBuffer("*");
-        String key = ssbuff.append(propertyInt).append("*").toString();
+        String key = "*" + propertyInt + "*";
         addDicOwlMap(dicOwlBean, key);
     }
-
-
-//    public static void addRuleMap(int class1, int type, int class2) {
-//        if(type == 2002){
-//            DicOwlBean dicOwlBean = new DicOwlBean();
-//            dicOwlBean.setType(10);//equi
-//            dicOwlBean.setRuleHead(class1);
-//            StringBuffer ssbuff = new StringBuffer("*0");
-//            String key = ssbuff.append(class2).toString();
-//            addDicOwlMap(dicOwlBean, key);
-//        }
-//        else if(type == 3005||type == 3008){
-//            DicOwlBean dicOwlBean = new DicOwlBean();
-//            dicOwlBean.setType(10);//equi
-//            dicOwlBean.setRuleHead(class1);
-//            StringBuffer ssbuff = new StringBuffer("*");
-//            String key = ssbuff.append(class2).append("*").toString();
-//            addDicOwlMap(dicOwlBean, key);
-//        }
-//        else{
-//            DicOwlBean dicOwlBean = new DicOwlBean();
-//            dicOwlBean.setType(10);//equi
-//            dicOwlBean.setRuleHead(class1);
-//            StringBuffer ssbuff = new StringBuffer("*");
-//            String key = ssbuff.append(class2).append("*").toString();
-//            addDicOwlMap(dicOwlBean, key);
-//        }
-//    }
 }

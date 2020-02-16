@@ -8,8 +8,6 @@ import java.util.Objects;
 public class DicOwlBean {
     private int type;
     private List<Integer> ruleHead;
-    //int type
-
 
     @Override
     public boolean equals(Object o) {
@@ -49,28 +47,22 @@ public class DicOwlBean {
         this.ruleHead = Collections.singletonList(ruleHead);
     }
     public void setRuleHead(int ruleHead1, int ruleHead2) {
-        List<Integer> listHead = Arrays.asList(ruleHead1, ruleHead2);
-        this.ruleHead = listHead;
+        this.ruleHead = Arrays.asList(ruleHead1, ruleHead2);
     }
     public void setRuleHead(int ruleHead1, int ruleHead2, int ruleHead3) {
-        List<Integer> listHead = Arrays.asList(ruleHead1, ruleHead2, ruleHead3);
-        this.ruleHead = listHead;
+        this.ruleHead = Arrays.asList(ruleHead1, ruleHead2, ruleHead3);
     }
     public void setRuleHead(int ruleHead1, int ruleHead2, int ruleHead3, int ruleHead4) {
-        List<Integer> listHead = Arrays.asList(ruleHead1, ruleHead2, ruleHead3, ruleHead4);
-        this.ruleHead = listHead;
+        this.ruleHead = Arrays.asList(ruleHead1, ruleHead2, ruleHead3, ruleHead4);
     }
     public void setRuleHead(int ruleHead1, int ruleHead2, int ruleHead3, int ruleHead4, int ruleHead5) {
-        List<Integer> listHead = Arrays.asList(ruleHead1, ruleHead2, ruleHead3, ruleHead4, ruleHead5);
-        this.ruleHead = listHead;
+        this.ruleHead = Arrays.asList(ruleHead1, ruleHead2, ruleHead3, ruleHead4, ruleHead5);
     }
     public void setRuleHead(int ruleHead1, int ruleHead2, int ruleHead3, int ruleHead4, int ruleHead5, int ruleHead6) {
-        List<Integer> listHead = Arrays.asList(ruleHead1, ruleHead2, ruleHead3, ruleHead4, ruleHead5, ruleHead6);
-        this.ruleHead = listHead;
+        this.ruleHead = Arrays.asList(ruleHead1, ruleHead2, ruleHead3, ruleHead4, ruleHead5, ruleHead6);
     }
     public void setRuleHead(int ruleHead1, int ruleHead2, int ruleHead3, int ruleHead4, int ruleHead5, int ruleHead6, int ruleHead7) {
-        List<Integer> listHead = Arrays.asList(ruleHead1, ruleHead2, ruleHead3, ruleHead4, ruleHead5, ruleHead6, ruleHead7);
-        this.ruleHead = listHead;
+        this.ruleHead = Arrays.asList(ruleHead1, ruleHead2, ruleHead3, ruleHead4, ruleHead5, ruleHead6, ruleHead7);
     }
 
 }

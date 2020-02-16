@@ -7,6 +7,7 @@ import com.tju.suma.index.TwoKeyMap;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import static com.tju.suma.reason.DicSerialReason.*;
 
@@ -17,13 +18,14 @@ public class ObjectSomeValuesFromReason {
         int index = totalData.size()+iteratorMap.size()+stashMap.size();
         int firstTripleIsp = TwoKeyMap.getFirstIndexSpFromMap(rs, rp, index);
         if(firstTripleIsp != -1){
-            if(class2 == 1){//TODO owl:Thing 情况
+            if(class2 == 1){
                 return;
             }
             DicRdfDataBean dicDataBeanIterator;
             int indexNew = firstTripleIsp;
             do{
                 dicDataBeanIterator = DicRdfDataMap.getDataBean(indexNew);
+                Objects.requireNonNull(dicDataBeanIterator,"dicDataBeanIterator at ObjectSomeValuesFromReason");
                 indexNew = dicDataBeanIterator.getNsp();
                 int ro = dicDataBeanIterator.getRo();
                 if(ThreeKeyMap.checkDuplicate(ro, typeEncode, class2)){

@@ -5,7 +5,6 @@ import com.tju.suma.dictionary.Dictionary;
 import com.tju.suma.roleScore.RoleGraph;
 import org.semanticweb.owlapi.model.*;
 
-import javax.management.relation.Role;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -54,11 +53,9 @@ public class Processor {
         put(ObjectMinCardinality,-ObjectMinCardinality);
     }} ;
     public static void OWLClassAssertionProcessor(OWLClassAssertionAxiom axiom, int ip) {
-        //                OWLClassAssertionAxiom2005
         if(ip == 0){
             return;
         }
-//        System.out.println("OWLClassAssertionProcessor "+ip);
         String class1 = axiom.getClassExpression().toString();
         String individual = axiom.getIndividual().toString();
         int classInt = Dictionary.encodeRdf(class1);
@@ -68,7 +65,6 @@ public class Processor {
     }
 
     public static void FunctionalPropertyProcessor(OWLAxiom axiom, int ip) {
-        //OWLFunctionalObjectPropertyAxiom2015
         int type = axiom.typeIndex();
         String property = ((OWLFunctionalObjectPropertyAxiom) axiom).getProperty().toString();
         int pro = Dictionary.encodeRdf(property);
@@ -81,7 +77,6 @@ public class Processor {
     }
 
     public static void InverseFunctionalProcessor(OWLAxiom axiom, int ip) {
-//        OWLInverseFunctionalObjectPropertyAxiom2016
         int type = axiom.typeIndex();
         String property = ((OWLInverseFunctionalObjectPropertyAxiom) axiom).getProperty().toString();
         int pro = Dictionary.encodeRdf(property);
@@ -117,14 +112,12 @@ public class Processor {
         }
     }
 
-
     public static void OWLSubObjectPropertyProcessor(OWLAxiom axiom, int ip) {
         int type = axiom.typeIndex();
         String SubProperty = ((OWLSubObjectPropertyOfAxiom) axiom).getSubProperty().toString();
         String SuperProperty = ((OWLSubObjectPropertyOfAxiom) axiom).getSuperProperty().toString();
         int sub = Dictionary.encodeRdf(SubProperty);
         int sup = Dictionary.encodeRdf(SuperProperty);
-//        Map<Integer, Integer> inverseMap = InversePropertyMap.getInverseMap();
         if(ip == 0){
             graph.addVertex(sub);
             graph.addVertex(sup);
@@ -133,20 +126,6 @@ public class Processor {
         else{
             DicOwlMap.addDicOwlSubPropertyMap(type, sub, sup);
         }
-
-//        if(inverseMap.containsKey(sub)){
-//            if(inverseMap.containsKey(sup)){
-//                DicOwlMap.addDicOwlMap(type, inverseMap.get(sub), inverseMap.get(sup));
-//            }else{
-//                System.out.println("未处理SubObjectProperty逆角色");
-//            }
-//        }
-//        else if(inverseMap.containsKey(sup)){
-//            System.out.println("未处理SubObjectProperty逆角色");
-//        }
-//        else{
-//            DicOwlMap.addDicOwlMap(type, sub, sup);
-//        }
     }
 
     public static void OWLSubCLassProcessor(OWLAxiom axiom, int ip) {
@@ -168,9 +147,6 @@ public class Processor {
         }
         else if(SuperClass instanceof OWLHasValueRestriction){
             OWLObjectHasValueProcessor(SuperClass, sub, ip);
-        }
-        else{
-//            System.out.println("未处理OWLSubCLass公理类型"+axiom.toString());
         }
     }
 
@@ -243,7 +219,6 @@ public class Processor {
                 DicOwlMap.EquiDicRuleMap.put(class1, new ArrayList<>());
             }
         }
-//        iterator = axiom.getOperandsAsList().iterator();
         while(iterator.hasNext()){
             OWLClassExpression ax = iterator.next();
 
@@ -260,88 +235,66 @@ public class Processor {
                 if(ip ==1){
 
                     if(!iterator.hasNext()){
-//                        System.out.println("only one class: "+axiom.toString());
                         int class2 = Dictionary.encodeRdf(ax.toString());
                         DicOwlMap.addDicOwlSubCLassMap(Processor.SubClassOf, class1, class2);
                         DicOwlMap.addDicOwlSubCLassMap(Processor.SubClassOf, class2, class1);
                     }
                     else{
-                        System.out.println("未处理EquivalentClass + class " + axiom.toString());
+                        System.out.println("This EquivalentClass needs to be processed: " + axiom.toString());
                     }
                 }
             }
             else if(ax instanceof OWLObjectOneOf){
-//                System.out.println("one of "+ axiom.toString());
+                System.out.println("This OWLObjectOneOf needs to be processed: "+ axiom.toString());
             }
             else{
                 if(ip ==1) {
-                    System.out.println("未处理EquivalentClass " + axiom.toString());
+                    System.out.println("This EquivalentClass needs to be processed: " + axiom.toString());
                 }
             }
         }
     }
 
     public static void OWLInversePropertyProcessor(OWLAxiom axiom, int ip) {
-        //ip0 构建属性图 IP1构建规则表
-        if(isRoleWriting == true && ip == 1){
+        //ip0 构建属性图 ip1构建规则表
+        if(isRoleWriting && ip == 1){
             return;
         }
-        if(isRoleWriting == true && ip == 0) {
-            String ax = axiom.toString();
-            Pattern p = compile("\\<(.*?)\\>");//正则表达式，取=和|之间的字符串，不包括=和|
-            Matcher mm = p.matcher(ax);
-            List<String> list = new ArrayList<>();
-            while (mm.find()) {
-                list.add(mm.group(0));
-                //   System.out.println(mm.group(ip));//m.group(0)包括这两个字符
-            }
-            String firstProperty = list.get(0);
-            String secondProperty = list.get(1);
-            int pro = Dictionary.encodeRdf(firstProperty);
-            int ran = Dictionary.encodeRdf(secondProperty);
+        String ax = axiom.toString();
+        Pattern p = compile("<(.*?)>");
+        Matcher mm = p.matcher(ax);
+        List<String> list = new ArrayList<>();
+        while (mm.find()) {
+            list.add(mm.group(0));
+        }
+        String firstProperty = list.get(0);
+        String secondProperty = list.get(1);
+        int pro = Dictionary.encodeRdf(firstProperty);
+        int ran = Dictionary.encodeRdf(secondProperty);
 
-            InversePropertyMap.InverseProperty.add(pro);
-            InversePropertyMap.InverseProperty.add(ran);
-
+        InversePropertyMap.InverseProperty.add(pro);
+        InversePropertyMap.InverseProperty.add(ran);
+        if(isRoleWriting && ip == 0) {
             graph.addVertex(pro);
             graph.addVertex(ran);
         }
-        else if (isRoleWriting == false){
-            String ax = axiom.toString();
-            Pattern p = compile("\\<(.*?)\\>");//正则表达式，取=和|之间的字符串，不包括=和|
-            Matcher mm = p.matcher(ax);
-            List<String> list = new ArrayList<>();
-            while (mm.find()) {
-                list.add(mm.group(0));
-                //   System.out.println(mm.group(ip));//m.group(0)包括这两个字符
-            }
-            String firstProperty = list.get(0);
-            String secondProperty = list.get(1);
-            int pro = Dictionary.encodeRdf(firstProperty);
-            int ran = Dictionary.encodeRdf(secondProperty);
-
-            InversePropertyMap.InverseProperty.add(pro);
-            InversePropertyMap.InverseProperty.add(ran);
-
+        else if (!isRoleWriting){
             DicOwlMap.addDicOwlInversePropertyMap(axiom.typeIndex(), pro, ran);
             DicOwlMap.addDicOwlInversePropertyMap(axiom.typeIndex(), ran, pro);
-//            graph.addVertex(pro);
-//            graph.addVertex(ran);
         }
     }
 
     public static void OWLEquivalentPropertyProcessor(OWLAxiom axiom, int ip) {
-        if(isRoleWriting == true && ip == 1){
+        if(isRoleWriting && ip == 1){
             return;
         }
-        if(isRoleWriting == true && ip == 0) {
+
             String ax = axiom.toString();
-            Pattern p = compile("\\<(.*?)\\>");//正则表达式，取=和|之间的字符串，不包括=和|
+            Pattern p = compile("<(.*?)>");
             Matcher mm = p.matcher(ax);
             List<String> list = new ArrayList<>();
             while (mm.find()) {
                 list.add(mm.group(0));
-                //   System.out.println(mm.group(ip));//m.group(0)包括这两个字符
             }
             String firstProperty = list.get(0);
             String secondProperty = list.get(1);
@@ -350,27 +303,11 @@ public class Processor {
 
             EquivalentPropertyMap.EquivalentPropertyList.add(pro);
             EquivalentPropertyMap.EquivalentPropertyList.add(ran);
-
+        if(isRoleWriting && ip == 0) {
             graph.addVertex(pro);
             graph.addVertex(ran);
         }
-        else if(isRoleWriting == false){
-            String ax = axiom.toString();
-            Pattern p = compile("\\<(.*?)\\>");//正则表达式，取=和|之间的字符串，不包括=和|
-            Matcher mm = p.matcher(ax);
-            List<String> list = new ArrayList<>();
-            while (mm.find()) {
-                list.add(mm.group(0));
-                //   System.out.println(mm.group(ip));//m.group(0)包括这两个字符
-            }
-            String firstProperty = list.get(0);
-            String secondProperty = list.get(1);
-            int pro = Dictionary.encodeRdf(firstProperty);
-            int ran = Dictionary.encodeRdf(secondProperty);
-
-            EquivalentPropertyMap.EquivalentPropertyList.add(pro);
-            EquivalentPropertyMap.EquivalentPropertyList.add(ran);
-
+        else if(!isRoleWriting){
             DicOwlMap.addDicOwlEquivalentPropertyMap(axiom.typeIndex(), pro, ran);
             DicOwlMap.addDicOwlEquivalentPropertyMap(axiom.typeIndex(), ran, pro);
 
@@ -378,17 +315,16 @@ public class Processor {
     }
 
     public static void OWLDisjointClassesProcessor(OWLAxiom axiom, int ip) {
-        if(isRoleWriting == true && ip == 1){
+        if(isRoleWriting && ip == 1){
             return;
         }
-        if(isRoleWriting == true && ip == 0) {
+        if(isRoleWriting && ip == 0) {
             String ax = axiom.toString();
-            Pattern p = compile("\\<(.*?)\\>");//正则表达式，取=和|之间的字符串，不包括=和|
+            Pattern p = compile("<(.*?)>");
             Matcher mm = p.matcher(ax);
             List<String> list = new ArrayList<>();
             while (mm.find()) {
                 list.add(mm.group(0));
-                //   System.out.println(mm.group(ip));//m.group(0)包括这两个字符
             }
             String firstProperty = list.get(0);
             String secondProperty = list.get(1);
@@ -397,14 +333,13 @@ public class Processor {
             DisjointClassesMap.setDisjointClassesMap(first, second);
             DisjointClassesMap.setDisjointClassesMap(second, first);
         }
-        if(isRoleWriting == false){
+        if(!isRoleWriting){
             String ax = axiom.toString();
-            Pattern p = compile("\\<(.*?)\\>");//正则表达式，取=和|之间的字符串，不包括=和|
+            Pattern p = compile("<(.*?)>");
             Matcher mm = p.matcher(ax);
             List<String> list = new ArrayList<>();
             while (mm.find()) {
                 list.add(mm.group(0));
-                //   System.out.println(mm.group(ip));//m.group(0)包括这两个字符
             }
             String firstProperty = list.get(0);
             String secondProperty = list.get(1);

@@ -5,13 +5,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class ThreeKeyMap {
     private static final Map<Integer, Map<Integer,Map <Integer,Integer>>> IndexThreeKey = new ConcurrentHashMap<>();
-    private static final Map<Integer, Map<Integer,Map <Integer,Integer>>> IopThreeKey = new ConcurrentHashMap<>();
-
-    public static Map<Integer, Map<Integer,Map <Integer,Integer>>> getIndexThreeKey() { return IndexThreeKey; }
-
-    public static Map<Integer, Map<Integer,Map <Integer,Integer>>> getIop() {
-        return IopThreeKey;
-    }
 
     public static boolean checkDuplicate(int rs, int rp, int ro, int index) {
         if (IndexThreeKey.containsKey(rp)) {
@@ -48,9 +41,7 @@ public class ThreeKeyMap {
             Map<Integer, Map<Integer, Integer>> IndexTwoKey = IndexThreeKey.get(rp);
             if (IndexTwoKey.containsKey(rs)) {
                 Map<Integer, Integer> IndexOneKey = IndexTwoKey.get(rs);
-                if (IndexOneKey.containsKey(ro)) {
-                    return true;
-                }
+                return IndexOneKey.containsKey(ro);
             }
         }
         return false;

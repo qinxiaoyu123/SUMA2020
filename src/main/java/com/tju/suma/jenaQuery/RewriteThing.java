@@ -1,6 +1,7 @@
 package com.tju.suma.jenaQuery;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -11,13 +12,12 @@ import java.util.StringTokenizer;
 
 public class RewriteThing {
     public static void rewriteThing(String path1, String path2) throws IOException {
-        String pathABox = path1;
-        Path fpath= Paths.get(pathABox);
+        Path fpath= Paths.get(path1);
         BufferedReader bfr= Files.newBufferedReader(fpath);
-        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path2),"UTF-8"));
+        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path2), StandardCharsets.UTF_8));
         String line;
-        boolean flag = false;
-        StringBuffer ss = new StringBuffer();
+        boolean flag;
+        StringBuilder ss = new StringBuilder();
         while((line=bfr.readLine())!=null) {
             flag = false;
             StringTokenizer st = new StringTokenizer(line, " ");

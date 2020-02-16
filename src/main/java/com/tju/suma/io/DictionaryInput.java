@@ -12,6 +12,7 @@ import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -29,8 +30,6 @@ import static com.tju.suma.axiomProcessor.Processor.classAssertion;
 
 
 public class DictionaryInput {
-//include 指定尖括号 0包含 1不包含
-//    public static List<Integer> classAssertion = new ArrayList<>();
     public static RoleGraph graph = RoleGraph.getRoleGraph();
     public static void readABox(String pathABox) throws IOException {
         Map<Integer, DicRdfDataBean> dic = DicRdfDataMap.getDicDataMap();
@@ -42,17 +41,10 @@ public class DictionaryInput {
             while (it.hasNext()) {
                 String line = it.nextLine();
                 if (!line.contains("\\") && !line.contains("unknown:namespace")) {
-//                    StringTokenizer st = new StringTokenizer(line, " ");
-//                    List<String> list = new ArrayList<>(3);
-//                    while (st.hasMoreElements()) {
-//                        list.add(st.nextToken());
-//                    }
                     List<String> list = Arrays.stream(line.split(" ")).collect(Collectors.toList());
-//            DicRdfDataBean rdfDataBean = new DicRdfDataBean();
                     String Rs = list.get(0);
                     String Rp = list.get(1);
                     String Ro = list.get(2);
-                    list = null;
                     int rs = Dictionary.encodeRdf(Rs);
                     int rp = Dictionary.encodeRdf(Rp);
                     int ro = Dictionary.encodeRdf(Ro);
@@ -75,12 +67,11 @@ public class DictionaryInput {
                         System.out.println("finish read " + index + " data");
                     }
 
-                } else {
-//                    System.out.println(line);
                 }
             }
         } finally {
-            LineIterator.closeQuietly(it);
+            it.close();
+
         }
         System.out.println("初始数据数目" + index);
         System.out.println("改写的等价角色数据" + rewrite_equiv_count);
@@ -110,34 +101,22 @@ public class DictionaryInput {
         // print out the predicate, subject and object of each statement
         while (iter.hasNext()) {
             Statement stmt = iter.nextStatement(); // get next statement
-            //Resource subject = stmt.getSubject(); // get the subject
-            //Property predicate = stmt.getPredicate(); // get the predicate
-            //RDFNode object = stmt.getObject(); // get the object
-
             String subject = stmt.getSubject().toString(); // get the subject
             String predicate = stmt.getPredicate().toString(); // get the predicate
             RDFNode object = stmt.getObject(); // get the object
 
-
-//            System.out.print("主语 " + subject + "\t");
-//            System.out.print(" 谓语 " + predicate + "\t");
-
-            String Rs = subject;
-            String Rp = predicate;
             String Ro = object.toString();
             int ro;
             if (object instanceof Resource) {
-
-//                System.out.print(" 宾语 " + object);
                 ro = Dictionary.encodeRdf("<"+Ro+">");
-            } else {// object is a literal
-//                System.out.print("宾语 \"" + object.toString() + "\"");
+            }
+            // object is a literal
+            else {
                 ro = Dictionary.encodeRdf("\""+Ro+"\"");
             }
 
-
-            int rs = Dictionary.encodeRdf("<"+Rs+">");
-            int rp = Dictionary.encodeRdf("<"+Rp+">");
+            int rs = Dictionary.encodeRdf("<"+ subject +">");
+            int rp = Dictionary.encodeRdf("<"+ predicate +">");
 
 //                  逆角色，等价角色进行替换
             if (EquivalentPropertyMap.EquivalentPropertyMap.containsKey(rp)) {
@@ -174,51 +153,26 @@ public class DictionaryInput {
         System.out.println("Number after adding ClassAssertion: " + tmpCount);
     }
 
-    public static void readTBoxWithoutRoleRewrite(String pathTBox) throws OWLOntologyCreationException {
-        File testFile = new File(pathTBox);
-        OWLOntologyManager m = OWLManager.createOWLOntologyManager();
-        OWLOntology univBench = m.loadOntologyFromOntologyDocument(testFile);
-        int ip = 0;//添加属性图节点，边，权重更新, 不添加公理
-        //round1 初始化属性图（公理处理，添加属性图节点，边，权重更新）
-        axiomProcessor(univBench, ip);
-        //round2 图节点排序（属性重要度排序）
-        //TODO graph声明位置变更
-        graph.depthFirstSearch();
-        //根据排序确定等价属性，逆属性替换表
-        setEquivalentPropertyMap();
-        setInversePropertyMap();
-        //round3 根据属性重要度，添加公理，等价属性，逆属性替换
-        ip = 1;
-        axiomProcessor(univBench, ip);
-        EquiClassRuleRewrite.rewrite();
-    }
-
     public static void readTBox(String pathTBox) throws OWLOntologyCreationException {
         File testFile = new File(pathTBox);
         OWLOntologyManager m = OWLManager.createOWLOntologyManager();
         OWLOntology univBench = m.loadOntologyFromOntologyDocument(testFile);
-        if(Processor.isRoleWriting){
-            //添加属性图节点，边，权重更新, 不添加公理
-            int ip = 0;
-            //round1 初始化属性图（公理处理，添加属性图节点，边，权重更新）
-            axiomProcessor(univBench, ip);
-            //round2 图节点排序（属性重要度排序）
+
+        //添加属性图节点，边，权重更新, 不添加公理
+        int ip = 0;
+        //round1 初始化属性图（公理处理，添加属性图节点，边，权重更新）
+        axiomProcessor(univBench, ip);
+        //round2 图节点排序（属性重要度排序）
+        if(Processor.isRoleWriting) {
             graph.depthFirstSearch();
             //根据排序确定等价属性，逆属性替换表
             setEquivalentPropertyMap();
             setInversePropertyMap();
-            //round3 根据属性重要度，添加公理，等价属性，逆属性替换
-            ip = 1;
-            axiomProcessor(univBench, ip);
-            EquiClassRuleRewrite.rewrite();
         }
-        else{
-            int ip = 0;
-            axiomProcessor(univBench, ip);
-            ip = 1;
-            axiomProcessor(univBench, ip);
-            EquiClassRuleRewrite.rewrite();
-        }
+        //round3 根据属性重要度，添加公理，等价属性，逆属性替换
+        ip = 1;
+        axiomProcessor(univBench, ip);
+        EquiClassRuleRewrite.rewrite();
     }
 
     private static void setInversePropertyMap() {
@@ -277,14 +231,11 @@ public class DictionaryInput {
 
     private static void axiomProcessor(OWLOntology univBench, int ip) {
         int type;
-        Iterator localIterator1 = univBench.axioms().iterator();
+        Iterator<OWLAxiom> localIterator1 = univBench.axioms().iterator();
         int index = 0;
         while (localIterator1.hasNext()) {
             index++;
-            OWLAxiom axiom = (OWLAxiom) localIterator1.next();
-//            if(ip>0){
-//                System.out.println(axiom.toString());
-//            }
+            OWLAxiom axiom = localIterator1.next();
             type = axiom.typeIndex();
             switch (type) {
                 case Processor.ObjectPropertyRange:
@@ -338,61 +289,19 @@ public class DictionaryInput {
         System.out.println("axioms count " + index);
     }
 
-    public static void main(String[] args) throws IOException, OWLOntologyCreationException {
-        Dictionary dd = new Dictionary();
-//      readABox("data/testequiv.nt", "n","n",1);
-//        StringBuffer ssbuff = new StringBuffer("*0");
-//        int i = 101;
-//        String key = ssbuff.append(i).toString();
-//
-//        System.out.println(key);
-        //Output.writeFile("data/dic100");
+    public static void main(String[] args) throws OWLOntologyCreationException {
         DictionaryInput.readTBox("data/dbpedia+travel.owl");
-//        System.out.println(rsSet.size());
-//        System.out.println(rpSet.size());
-//        System.out.println(roSet.size());
-        //24858
-        //28
-        //32544
-//        DictionaryInputNew.readTBox("data/univ-bench-dl.owl");
-//        DictionaryInputNew.readABox("data/uobm1.nt");
-//        DictionaryOutput.outWriteEquiDicOwlMap("data/equiv.nt");
-//        DictionaryOutput.outWriteDicOwlMap("data/outRule1.txt");
-//        System.out.println(DicOwlMap.EquiDicRuleMap);
-//        System.out.println(DicOwlMap.EquiDicRuleMap.size());
-//        EquiClassRuleRewrite.rewrite();
-
-//        Map<Integer, Integer> ee = EquivalentPropertyMap.getEquivalentPropertyMap();
-//        System.out.println(ee);
-//        Map<Integer, Integer> aa = InversePropertyMap.getInverseMap();
-//        System.out.println(aa);
-//        InversePropertyMap.rewriteInverseRule();
-//        DictionaryInput.readABox("data/small.nt","n","n",1);
-//        DictionaryOutput.outWriteDicDataMap("data/inverse.nt");
-//        DictionaryOutput.outWriteDicOwlMap("data/out-rule.txt");
-//        DictionaryOutput.encodeMap("data/out-encode.txt");
-        //Scanner cin = new Scanner(System.in);
-//        StringBuilder s = new StringBuilder("SubClassOf(<http://swat.cse.lehigh.edu/onto/univ-bench.owl#Specification> <http://swat.cse.lehigh.edu/onto/univ-bench.owl#Publication>)2002");
-//        String sr =s.toString();
-//        StringTokenizer st = new StringTokenizer(sr,"SubClassOf<>");//去除字符串中的逗号，空格，斜线
-//        while(st.hasMoreTokens()) {
-//            System.out.print(st.nextToken());//输出结果为：Java ,is /,great.
-//        }
-
     }
 
     public static void readDictionary(String pathEncode) throws IOException {
-//        Path fpath = Paths.get(pathEncode);
         Dictionary.Decode = new String[Dictionary.indexEncode];
         String[] decode = Dictionary.getDecode();
-//             decode = new String[Dictionary.indexEncode];
         int index;
         FileInputStream in = new FileInputStream(pathEncode);
-        BufferedReader bfr = new BufferedReader(new InputStreamReader(in,"UTF-8"));
-//        BufferedReader bfr = Files.newBufferedReader(fpath,"utf-8");
+        BufferedReader bfr = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
         String line;
         while ((line = bfr.readLine()) != null) {
-            List<String> list = Arrays.stream(line.split(" ")).collect(Collectors.toList());
+            List<String> list = Arrays.stream(line.split("\\s+")).collect(Collectors.toList());
             index = Integer.parseInt(list.get(0));
             decode[index] = list.get(1);
         }
