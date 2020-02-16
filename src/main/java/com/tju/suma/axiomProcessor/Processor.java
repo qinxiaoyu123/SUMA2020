@@ -2,9 +2,10 @@ package com.tju.suma.axiomProcessor;
 
 import com.tju.suma.bean.*;
 import com.tju.suma.dictionary.Dictionary;
-import com.tju.suma.rank.RoleGraph;
+import com.tju.suma.roleScore.RoleGraph;
 import org.semanticweb.owlapi.model.*;
 
+import javax.management.relation.Role;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,6 +13,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+
 
 import static java.util.regex.Pattern.*;
 
@@ -37,7 +40,7 @@ public class Processor {
     public static final int OWLDisjointClassesAxiom = 2003;
     public static final int ObjectPropertyAssertion = 2008;
     public static boolean isRoleWriting = false;
-    public static final RoleGraph graph = new RoleGraph();
+    public static RoleGraph graph = RoleGraph.getRoleGraph();
     public static final Map<Integer,Integer> typeInverse = new ConcurrentHashMap<Integer, Integer>(){{
         put(ObjectPropertyRange,ObjectPropertyDomain);
         put(ObjectPropertyDomain,ObjectPropertyRange);
@@ -70,7 +73,7 @@ public class Processor {
         String property = ((OWLFunctionalObjectPropertyAxiom) axiom).getProperty().toString();
         int pro = Dictionary.encodeRdf(property);
         if(ip == 0){
-            graph.addVertex(pro);
+            RoleGraph.getRoleGraph().addVertex(pro);
         }
         else{
             DicOwlMap.addDicOwlFunctionalPropertyMap(type, pro);

@@ -1,23 +1,25 @@
-package com.tju.suma.rank;
+package com.tju.suma.roleScore;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class RoleGraph {
-    public static final List<Integer> poolWeightList = new ArrayList<>();
-    public static final Map<Integer, RoleGraph.Vertex> vertexMap = new ConcurrentHashMap<>();
-    public static final Map<Integer, List<Integer>> adjList = new ConcurrentHashMap<>();
+    public final List<Integer> poolWeightList = new ArrayList<>();
+    public final Map<Integer, RoleGraph.Vertex> vertexMap = new ConcurrentHashMap<>();
+    public final Map<Integer, List<Integer>> adjList = new ConcurrentHashMap<>();
 
     private int nPool;
     private int weightPool;
-    private Stack<Integer> theStack = new Stack<>();//用栈实现深度优先搜索
+    private static final RoleGraph graph = new RoleGraph();
+    //用栈实现深度优先搜索
+    private Stack<Integer> theStack = new Stack<>();
 
     /**
      * 顶点类
-     *
-     * @author vae
      */
-
+    public static RoleGraph getRoleGraph(){
+        return graph;
+    }
     static class Vertex {
         public int weight;
         public boolean wasVisited;
@@ -30,15 +32,13 @@ public class RoleGraph {
         }
     }
 
-    public RoleGraph() {
+    private RoleGraph() {
         this.nPool = 0;
     }
 
     //将顶点添加到数组中，是否访问标志置为wasVisited=false(未访问)
     public void addVertex(int lab) {
-
         if (vertexMap.containsKey(lab)) {
-//                System.out.println("node "+lab+" exists!");
             int tmp = vertexMap.get(lab).weight;
             vertexMap.get(lab).weight = tmp + 1;
         } else {
@@ -86,18 +86,15 @@ public class RoleGraph {
             int lab = entry.getKey();
             RoleGraph.Vertex vTmp = entry.getValue();
             boolean flagVisit = vTmp.wasVisited;
-//                System.out.println("AAA"+flagVisit);
             if (!flagVisit) {
                 vTmp.wasVisited = true;
-//                    System.out.println("lab"+lab);
                 theStack.push(lab);
                 vTmp.poolIndex = nPool;
                 weightPool = weightPool + vTmp.weight;
-//                    displayVertex(lab);
                 while (!theStack.isEmpty()) {
-//                        System.out.println("AAA");
                     boolean flag = getAdjUnvisitedVertex((Integer) theStack.peek());
-                    if (!flag) {   //如果当前顶点值为-1，则表示没有邻接且未被访问顶点，那么出栈顶点
+                    //如果当前顶点值为-1，则表示没有邻接且未被访问顶点，那么出栈顶点
+                    if (!flag) {
                         theStack.pop();
                     }
                 }
@@ -110,13 +107,9 @@ public class RoleGraph {
 
     //找到与某一顶点邻接且未被访问的顶点
     public boolean getAdjUnvisitedVertex(Integer v) {
-//            List<Integer> tmp = new ArrayList<>();
         boolean flag = false;
         if (adjList.containsKey(v)) {
-//                System.out.println("v"+v);
             List<Integer> vList = adjList.get(v);
-//                System.out.println("vlist"+vList);
-
             Iterator<Integer> iter = vList.iterator();
             while (iter.hasNext()) {
                 int vTmp = iter.next();
@@ -125,7 +118,6 @@ public class RoleGraph {
                     theStack.push(vTmp);
                     vertexTmp.poolIndex = nPool;
                     weightPool = weightPool + vertexTmp.weight;
-//                        displayVertex(vTmp);
                     vertexTmp.wasVisited = true;
                     flag = true;
                 }
@@ -134,43 +126,12 @@ public class RoleGraph {
         return flag;
     }
 
-    public static int getPropertyWeight(int equiPro1) {
+    public int getPropertyWeight(int equiPro1) {
         if (vertexMap.containsKey(equiPro1)) {
             int poolIndexTmp = vertexMap.get(equiPro1).poolIndex;
             int weightImp = poolWeightList.get(poolIndexTmp);
             return weightImp;
         }
         return 0;
-    }
-
-    public static void main(String[] args) {
-        RoleGraph graph = new RoleGraph();
-        graph.addVertex(1);
-        graph.addVertex(1);
-        graph.addVertex(1);
-        graph.addVertex(1);
-        graph.addVertex(1);
-        graph.addVertex(2);
-        graph.addVertex(3);
-        graph.addVertex(5);
-        graph.addVertex(6);
-
-        graph.addEdge(1, 5);//AB
-        graph.addEdge(6, 5);//BC
-//            graph.addEdge(1, 3);//AD
-//            graph.addEdge(2, 3);//DE
-
-        System.out.println("深度优先搜索算法 :");
-        graph.depthFirstSearch();//ABCDE
-
-        System.out.println();
-        Iterator<Map.Entry<Integer, RoleGraph.Vertex>> entryIter = vertexMap.entrySet().iterator();
-        while (entryIter.hasNext()) {
-            Map.Entry<Integer, RoleGraph.Vertex> entry = entryIter.next();
-            int lab = entry.getKey();
-            RoleGraph.Vertex vTmp = entry.getValue();
-            System.out.println("lab " + lab + "  " + vTmp.poolIndex);
-        }
-        System.out.println(poolWeightList);
     }
 }
