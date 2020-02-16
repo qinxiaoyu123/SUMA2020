@@ -1,4 +1,4 @@
-package com.tju.gowl.run;
+package com.tju.suma.run;
 
 import org.junit.jupiter.api.Test;
 

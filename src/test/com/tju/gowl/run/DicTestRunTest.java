@@ -1,14 +1,14 @@
-package com.tju.gowl.run;
+package com.tju.suma.run;
 
-import com.tju.gowl.jenaQuery.RewriteThing;
-import com.tju.gowl.concurrent.ConcurrentReadFile;
-import com.tju.gowl.concurrent.FileHandle;
-import com.tju.gowl.concurrent.IndexCalculate;
-import com.tju.gowl.concurrent.IndexPair;
-import com.tju.gowl.dictionary.Dictionary;
-import com.tju.gowl.io.DictionaryInput;
-import com.tju.gowl.io.DictionaryOutput;
-import com.tju.gowl.reason.DicSerialReason;
+import com.tju.suma.jenaQuery.RewriteThing;
+import com.tju.suma.concurrent.ConcurrentReadFile;
+import com.tju.suma.concurrent.FileHandle;
+import com.tju.suma.concurrent.IndexCalculate;
+import com.tju.suma.concurrent.IndexPair;
+import com.tju.suma.dictionary.Dictionary;
+import com.tju.suma.io.DictionaryInput;
+import com.tju.suma.io.DictionaryOutput;
+import com.tju.suma.reason.DicSerialReason;
 import org.junit.jupiter.api.Test;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
@@ -16,8 +16,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import static com.tju.gowl.DicTestRun.materialization;
-import static com.tju.gowl.jenaQuery.JenaTest.jenaQuerySimple;
+import static com.tju.suma.DicTestRun.materialization;
+import static com.tju.suma.jenaQuery.JenaTest.jenaQuerySimple;
 
 class DicTestRunTest {
     @Test

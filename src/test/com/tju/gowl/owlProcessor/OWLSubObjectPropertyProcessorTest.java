@@ -1,4 +1,4 @@
-package com.tju.gowl.owlProcessor;
+package com.tju.suma.owlProcessor;
 
 import org.junit.jupiter.api.Test;
 
