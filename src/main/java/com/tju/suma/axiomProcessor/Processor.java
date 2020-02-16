@@ -2,7 +2,7 @@ package com.tju.suma.axiomProcessor;
 
 import com.tju.suma.bean.*;
 import com.tju.suma.dictionary.Dictionary;
-import com.tju.suma.rank.unDirectedGraph;
+import com.tju.suma.rank.RoleGraph;
 import org.semanticweb.owlapi.model.*;
 
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class Processor {
     public static final int OWLDisjointClassesAxiom = 2003;
     public static final int ObjectPropertyAssertion = 2008;
     public static boolean isRoleWriting = false;
-    public static final unDirectedGraph.Graph graph = new unDirectedGraph.Graph();
+    public static final RoleGraph graph = new RoleGraph();
     public static final Map<Integer,Integer> typeInverse = new ConcurrentHashMap<Integer, Integer>(){{
         put(ObjectPropertyRange,ObjectPropertyDomain);
         put(ObjectPropertyDomain,ObjectPropertyRange);

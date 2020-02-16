@@ -3,7 +3,7 @@ package com.tju.suma.materialization;
 import com.tju.suma.axiomProcessor.Processor;
 import com.tju.suma.bean.EquivalentPropertyMap;
 import com.tju.suma.bean.InversePropertyMap;
-import com.tju.suma.rank.unDirectedGraph;
+import com.tju.suma.rank.RoleGraph;
 import com.tju.suma.rewrite.EquiClassRuleRewrite;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
@@ -92,8 +92,8 @@ public class RegularBox {
         while (equiProIter.hasNext()) {
             int equiPro1 = equiProIter.next();
             int equiPro2 = equiProIter.next();
-            int weightPro1 = unDirectedGraph.Graph.getPropertyWeight(equiPro1);
-            int weightPro2 = unDirectedGraph.Graph.getPropertyWeight(equiPro2);
+            int weightPro1 = RoleGraph.getPropertyWeight(equiPro1);
+            int weightPro2 = RoleGraph.getPropertyWeight(equiPro2);
             if (weightPro1 < weightPro2) {
                 EquivalentPropertyMap.setEquivalentProperty(equiPro1, equiPro2);
                 EquivalentPropertyMap.setEquivalentPropertyDecode(equiPro2, equiPro1);
@@ -119,8 +119,8 @@ public class RegularBox {
         while (inverseProIter.hasNext()) {
             int inversePro1 = inverseProIter.next();
             int inversePro2 = inverseProIter.next();
-            int weightPro1 = unDirectedGraph.Graph.getPropertyWeight(inversePro1);
-            int weightPro2 = unDirectedGraph.Graph.getPropertyWeight(inversePro2);
+            int weightPro1 = RoleGraph.getPropertyWeight(inversePro1);
+            int weightPro2 = RoleGraph.getPropertyWeight(inversePro2);
             if (weightPro1 < weightPro2) {
                 InversePropertyMap.InverseMap.put(inversePro1, inversePro2);
                 InversePropertyMap.InverseMapDecode.put(inversePro2, inversePro1);

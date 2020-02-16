@@ -4,7 +4,7 @@ import com.hp.hpl.jena.util.FileManager;
 import com.tju.suma.axiomProcessor.Processor;
 import com.tju.suma.bean.*;
 import com.tju.suma.dictionary.Dictionary;
-import com.tju.suma.rank.unDirectedGraph;
+import com.tju.suma.rank.RoleGraph;
 import com.tju.suma.rewrite.EquiClassRuleRewrite;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
@@ -198,11 +198,11 @@ public class DictionaryInput {
         OWLOntologyManager m = OWLManager.createOWLOntologyManager();
         OWLOntology univBench = m.loadOntologyFromOntologyDocument(testFile);
         if(Processor.isRoleWriting){
-            int ip = 0;//添加属性图节点，边，权重更新, 不添加公理
+            //添加属性图节点，边，权重更新, 不添加公理
+            int ip = 0;
             //round1 初始化属性图（公理处理，添加属性图节点，边，权重更新）
             axiomProcessor(univBench, ip);
             //round2 图节点排序（属性重要度排序）
-            //TODO graph声明位置变更
             Processor.graph.depthFirstSearch();
             //根据排序确定等价属性，逆属性替换表
             setEquivalentPropertyMap();
@@ -226,8 +226,8 @@ public class DictionaryInput {
         while (inverseProIter.hasNext()) {
             int inversePro1 = inverseProIter.next();
             int inversePro2 = inverseProIter.next();
-            int weightPro1 = unDirectedGraph.Graph.getPropertyWeight(inversePro1);
-            int weightPro2 = unDirectedGraph.Graph.getPropertyWeight(inversePro2);
+            int weightPro1 = RoleGraph.getPropertyWeight(inversePro1);
+            int weightPro2 = RoleGraph.getPropertyWeight(inversePro2);
             if (weightPro1 < weightPro2) {
                 InversePropertyMap.InverseMap.put(inversePro1, inversePro2);
                 InversePropertyMap.InverseMapDecode.put(inversePro2, inversePro1);
@@ -253,8 +253,8 @@ public class DictionaryInput {
         while (equiProIter.hasNext()) {
             int equiPro1 = equiProIter.next();
             int equiPro2 = equiProIter.next();
-            int weightPro1 = unDirectedGraph.Graph.getPropertyWeight(equiPro1);
-            int weightPro2 = unDirectedGraph.Graph.getPropertyWeight(equiPro2);
+            int weightPro1 = RoleGraph.getPropertyWeight(equiPro1);
+            int weightPro2 = RoleGraph.getPropertyWeight(equiPro2);
             if (weightPro1 < weightPro2) {
                 EquivalentPropertyMap.setEquivalentProperty(equiPro1, equiPro2);
                 EquivalentPropertyMap.setEquivalentPropertyDecode(equiPro2, equiPro1);
