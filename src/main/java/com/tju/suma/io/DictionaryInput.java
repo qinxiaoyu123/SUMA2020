@@ -73,11 +73,12 @@ public class DictionaryInput {
             it.close();
 
         }
-        System.out.println("初始数据数目" + index);
-        System.out.println("改写的等价角色数据" + rewrite_equiv_count);
-        System.out.println("改写的逆角色数据" + rewrite_inver_count);
-        System.out.println("逆属性个数" + InversePropertyMap.InverseMap.size());
-        System.out.println("等价属性个数" + EquivalentPropertyMap.EquivalentPropertyMap.size());
+        System.out.println("----------------------------------------------------");
+        System.out.println("Number of initial data: " + index);
+        System.out.println("Number of facts with equivalent role substitution: " + rewrite_equiv_count);
+        System.out.println("Number of facts with inverse role substitution: " + rewrite_inver_count);
+        System.out.println("Number of equivalent roles: " + EquivalentPropertyMap.EquivalentPropertyMap.size()*2);
+        System.out.println("Number of inverse roles: " + InversePropertyMap.InverseMap.size()*2);
 
         addClassAssertion(index);
 
@@ -150,7 +151,7 @@ public class DictionaryInput {
             DicRdfDataMap.addSourceRdfDataBean(tmpCount, tmp1, 0, tmp2);
             tmpCount++;
         }
-        System.out.println("Number after adding ClassAssertion: " + tmpCount);
+        System.out.println("Number of facts after adding ClassAssertion: " + tmpCount);
     }
 
     public static void readTBox(String pathTBox) throws OWLOntologyCreationException {
@@ -286,7 +287,7 @@ public class DictionaryInput {
                     break;
             }
         }
-        System.out.println("axioms count " + index);
+        if(ip == 1) System.out.println("axioms count " + index);
     }
 
     public static void main(String[] args) throws OWLOntologyCreationException {

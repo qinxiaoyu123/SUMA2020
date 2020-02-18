@@ -81,7 +81,6 @@ public class DicSerialReason {
             }
             if (someValue >= 20) {
                 System.out.println(20 + "-step universal model is finished");
-                System.out.println("someValue" + someValue);
                 totalData.putAll(stashMap);
                 totalData.putAll(iteratorMap);
                 stashMap.clear();

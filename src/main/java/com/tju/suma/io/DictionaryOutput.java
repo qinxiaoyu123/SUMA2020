@@ -66,9 +66,9 @@ public class DictionaryOutput {
         }
         out.flush();
         out.close();
-        System.out.println("total data size: " + count);
-        System.out.println("equiv data size: " + eqiv_count);
-        System.out.println("inverse data size: " + inverse_count);
+        System.out.println("The number of facts after materialization: " + count);
+        System.out.println("The number of facts reduced in materialization due to equivalent role rewriting: " + eqiv_count);
+        System.out.println("The number of facts reduced in materialization due to inverse role rewriting: " + inverse_count);
     }
 
     public static void encodeMap(String pathEncode) throws IOException {

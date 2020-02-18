@@ -435,7 +435,6 @@ public class QueryReason {
         int class3 = head.get(3);
         int property2 = head.get(4);
         int class4 = head.get(5);
-        System.out.println(EquiClassRuleRewrite.find(class2) + " " + EquiClassRuleRewrite.find(property1) + " " + EquiClassRuleRewrite.find(class3) + " " + EquiClassRuleRewrite.find(property2) + " " + EquiClassRuleRewrite.find(class4));
         if (ThreeKeyMap.checkDuplicate(rs, typeEncode, class1)) {
             return;
         }
@@ -468,7 +467,6 @@ public class QueryReason {
         int class3 = head.get(3);
         int property2 = head.get(4);
         int class4 = head.get(5);
-        System.out.println(EquiClassRuleRewrite.find(class2) + " " + EquiClassRuleRewrite.find(property1) + " " + EquiClassRuleRewrite.find(class3) + " " + EquiClassRuleRewrite.find(property2) + " " + EquiClassRuleRewrite.find(class4));
         if (ThreeKeyMap.checkDuplicate(rs, typeEncode, class1)) {
             return;
         }

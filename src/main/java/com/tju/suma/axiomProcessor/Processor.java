@@ -347,8 +347,6 @@ public class Processor {
             int second = Dictionary.encodeRdf(secondProperty);
             DisjointClassesMap.setDisjointClassesMap(first, second);
             DisjointClassesMap.setDisjointClassesMap(second, first);
-            System.out.println(DisjointClassesMap.disjointClassesMap.size());
-            System.out.println("aaa");
         }
     }
 

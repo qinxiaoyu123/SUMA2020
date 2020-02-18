@@ -139,12 +139,9 @@ public class DicOwlMap {
         if(InversePropertyMap.InverseMap.containsKey(sub)){
             if(InversePropertyMap.InverseMap.containsKey(sup)){
                 DicOwlMap.addDicOwlMap(type, InversePropertyMap.InverseMap.get(sub), InversePropertyMap.InverseMap.get(sup));
-            }else{
-                System.out.println("未处理逆角色");
             }
         }
         else if(InversePropertyMap.InverseMap.containsKey(sup)){
-            System.out.println("未处理逆角色");
         }
         else{
             DicOwlMap.addDicOwlMap(type, sub, sup);

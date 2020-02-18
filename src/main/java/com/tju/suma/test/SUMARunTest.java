@@ -41,6 +41,7 @@ public class SUMARunTest {
         writeFile(pathExtendedABox);
 
         if (isQueryByJena) {
+            System.out.println("----------------------Start  Query--------------------------");
             queryByJena(pathExtendedABox, pathDataThing, queryPath, answerPath);
         }
     }

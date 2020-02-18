@@ -60,7 +60,7 @@ public class SameAsReason {
                 addEquivRoTriple(tmpPool, tmp);
             }
         }
-        System.out.println("after equiv data size "+totalData.size());
+        System.out.println("The number of facts after adding sameAs: "+totalData.size());
     }
 
     private static void addEquivRoTriple(HashSet<Integer> tmpPool, int tmp) {

@@ -72,10 +72,8 @@ public class JenaTest {
             }
             qe.close();
             count++;
-            System.out.println("q" + " " + count);
-            System.out.println("queryTime" + (startTime2 - startTime1));
-            System.out.println("resultsCount" + resultsCount);
-            System.out.println("resultsCount" + resultsSet.size());
+            System.out.println("q "+ count);
+            System.out.println("resultsCount: " + resultsSet.size());
 
         }
         out.flush();

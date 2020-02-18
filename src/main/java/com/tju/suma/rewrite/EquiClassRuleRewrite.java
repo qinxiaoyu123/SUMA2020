@@ -45,10 +45,7 @@ public class EquiClassRuleRewrite {
                 } else if (owlBeanList.get(0).getType() == 2002 && owlBeanList.get(1).getType() == 2002) {
                     int class2 = owlBeanList.get(0).getRuleHead().get(0);
                     int class3 = owlBeanList.get(1).getRuleHead().get(0);
-                    System.out.println(find(class2) + " " + find(class3));
                     addQuietDestination(class1, class2, class3);
-                } else {
-                    System.out.println("未处理等价类：");
                 }
             } else if (owlBeanList.size() == 3) {
                 if (owlBeanList.get(0).getType() == 2002 && owlBeanList.get(1).getType() == 3005 && owlBeanList.get(2).getType() == 3008) {
@@ -59,7 +56,6 @@ public class EquiClassRuleRewrite {
                     int count = owlBeanList.get(2).getRuleHead().get(0);
                     int property2 = owlBeanList.get(2).getRuleHead().get(1);
                     int class4 = owlBeanList.get(2).getRuleHead().get(2);
-                    System.out.println(find(class2) + " " + find(property1) + " " + find(class3) + " " + find(property2) + " " + find(class4));
                     addFamilyDestination(class1, class2, property1, class3, count, property2, class4);
                 } else if (owlBeanList.get(0).getType() == 2002 && owlBeanList.get(1).getType() == 3005 && owlBeanList.get(2).getType() == 3005) {
                     int class2 = owlBeanList.get(0).getRuleHead().get(0);
@@ -74,7 +70,6 @@ public class EquiClassRuleRewrite {
                     int property = owlBeanList.get(1).getRuleHead().get(0);
                     int indual1 = owlBeanList.get(1).getRuleHead().get(1);
                     int indual2 = owlBeanList.get(2).getRuleHead().get(1);
-                    System.out.println(find(class2) + " " + find(property) + " " + find(indual1) + " " + find(indual2));
                     addBudgetAccommodation(class1, class2, property, indual1, indual2);
 
                 } else {
@@ -83,7 +78,6 @@ public class EquiClassRuleRewrite {
                     int class3 = owlBeanList.get(1).getRuleHead().get(1);
                     int class4 = owlBeanList.get(2).getRuleHead().get(1);
                     addWomanCollege(class1, class2, property, class3, class4);
-                    System.out.println(find(class2) + " " + find(property) + " " + find(class3) + " " + find(class4));
                 }
 
             } else if (owlBeanList.size() == 4) {
@@ -115,7 +109,6 @@ public class EquiClassRuleRewrite {
     }
 
     private static void addBackpackersDestination(int class1, int class2, int property1, int class3, int property2, int class4, int class5) {
-        System.out.println(find(class2)+" "+find(property1)+" "+find(class3)+" "+find(property2)+" "+find(class4)+" "+find(class5));
         DicOwlBean dicOwlBean = new DicOwlBean();
         dicOwlBean.setType(32);//class2
         dicOwlBean.setRuleHead(class1, class2, property1, class3, property2, class4, class5);
@@ -240,7 +233,6 @@ public class EquiClassRuleRewrite {
         String key1 = "*" + r + "*";
         DicOwlMap.addDicOwlMap(dicOwlBean1, key1);
         if(class3 == 1){//owl:Thing
-            System.out.println("class3==1: "+Dictionary.getDecode()[class1]);
             return;
         }
         DicOwlBean dicOwlBean2 = new DicOwlBean();
