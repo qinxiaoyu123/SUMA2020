@@ -3,7 +3,6 @@ package com.tju.suma.axiomProcessor;
 import com.tju.suma.bean.DicOwlMap;
 import com.tju.suma.bean.DisjointClassesMap;
 import com.tju.suma.dictionary.Dictionary;
-import com.tju.suma.test.SUMARunTest;
 import org.apache.log4j.Logger;
 import org.semanticweb.owlapi.model.*;
 
@@ -15,7 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class EquivalentClassProcessor {
-    private static Logger log = Logger.getLogger(EquivalentClassProcessor.class.getClass());
+    private static Logger log = Logger.getLogger(EquivalentClassProcessor.class);
     public static void OWLObjectIntersectionOfProcessor(OWLClassExpression axiom, int class1, int ip) {
         Iterator<OWLClassExpression> iterator = ((OWLObjectIntersectionOf)axiom).getOperandsAsList().iterator();
         int class2 ;

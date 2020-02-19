@@ -1,6 +1,5 @@
 package com.tju.suma.reason;
 
-import com.tju.suma.axiomProcessor.EquivalentClassProcessor;
 import com.tju.suma.bean.DicOwlBean;
 import com.tju.suma.bean.DicOwlMap;
 import com.tju.suma.bean.DicRdfDataBean;
@@ -17,7 +16,7 @@ public class DicSerialReason {
     public static final int typeEncode = 0;
     public static int someValue = 1;
     public static boolean someValueFlag = false;
-    private static Logger log = Logger.getLogger(DicSerialReason.class.getClass());
+    private static Logger log = Logger.getLogger(DicSerialReason.class);
 
 
     public static void reason(int n) {

@@ -4,7 +4,6 @@ import com.tju.suma.bean.DicRdfDataBean;
 import com.tju.suma.bean.DicRdfDataMap;
 import com.tju.suma.index.ThreeKeyMap;
 import com.tju.suma.index.TwoKeyMap;
-import com.tju.suma.io.DictionaryInput;
 import org.apache.log4j.Logger;
 
 import java.util.*;
@@ -14,7 +13,7 @@ public class SameAsReason {
     public static List<HashSet<Integer>> equiPool = new ArrayList<>();
     static Map<Integer, Integer> equiPoolIndex = new ConcurrentHashMap<>();
     static Map<Integer, Integer> equiRepresentation = new ConcurrentHashMap<>();
-    private static Logger log = Logger.getLogger(SameAsReason.class.getClass());
+    private static Logger log = Logger.getLogger(SameAsReason.class);
     static boolean boolSameAs(int rs) {
         if(equiRepresentation.containsKey(rs)){
             return equiRepresentation.get(rs) == rs;

@@ -108,3 +108,113 @@
 [INFO][2020-02-19 20:18:09,449][java.lang.Class]resultsCount: 112
 [INFO][2020-02-19 20:18:09,451][java.lang.Class]q 16
 [INFO][2020-02-19 20:18:09,451][java.lang.Class]resultsCount: 5
+[INFO][2020-02-19 20:32:22,105][java.lang.Class]axioms count 502
+[INFO][2020-02-19 20:32:23,160][java.lang.Class]----------------------------------------------------
+[INFO][2020-02-19 20:32:23,161][java.lang.Class]Number of initial data: 257708
+[INFO][2020-02-19 20:32:23,161][java.lang.Class]Number of facts with equivalent role substitution: 3506
+[INFO][2020-02-19 20:32:23,161][java.lang.Class]Number of facts with inverse role substitution: 2528
+[INFO][2020-02-19 20:32:23,161][java.lang.Class]Number of equivalent roles: 2
+[INFO][2020-02-19 20:32:23,161][java.lang.Class]Number of inverse roles: 8
+[INFO][2020-02-19 20:32:23,162][java.lang.Class]Number of facts after adding ClassAssertion: 257766
+[INFO][2020-02-19 20:32:23,162][java.lang.Class]reading data time: 1052 ms
+[INFO][2020-02-19 20:32:23,453][java.lang.Class]----------------------Start Materialization--------------------------
+[INFO][2020-02-19 20:32:23,453][java.lang.Class]loopCount 1 dataCount 257766
+[INFO][2020-02-19 20:32:23,732][java.lang.Class]loopCount 2 dataCount 387984
+[INFO][2020-02-19 20:32:23,934][java.lang.Class]loopCount 3 dataCount 422928
+[INFO][2020-02-19 20:32:23,985][java.lang.Class]loopCount 4 dataCount 430500
+[INFO][2020-02-19 20:32:23,996][java.lang.Class]loopCount 5 dataCount 431079
+[INFO][2020-02-19 20:32:24,000][java.lang.Class]loopCount 6 dataCount 431127
+[INFO][2020-02-19 20:32:24,002][java.lang.Class]No new data was generated!
+[INFO][2020-02-19 20:32:24,005][java.lang.Class]reason time: 553 ms
+[INFO][2020-02-19 20:32:24,011][com.tju.suma.reason.SameAsReason]The number of facts after adding sameAs: 433824
+[INFO][2020-02-19 20:32:25,297][java.lang.Class]The number of facts after materialization: 487558
+[INFO][2020-02-19 20:32:25,297][java.lang.Class]The number of facts reduced in materialization due to equivalent role rewriting: 17794
+[INFO][2020-02-19 20:32:25,297][java.lang.Class]The number of facts reduced in materialization due to inverse role rewriting: 35940
+[INFO][2020-02-19 20:32:25,297][java.lang.Class]----------------------Start Query--------------------------
+[INFO][2020-02-19 20:32:27,879][java.lang.Class]q 1
+[INFO][2020-02-19 20:32:27,880][java.lang.Class]resultsCount: 21
+[INFO][2020-02-19 20:32:27,900][java.lang.Class]q 2
+[INFO][2020-02-19 20:32:27,900][java.lang.Class]resultsCount: 2465
+[INFO][2020-02-19 20:32:27,920][java.lang.Class]q 3
+[INFO][2020-02-19 20:32:27,920][java.lang.Class]resultsCount: 581
+[INFO][2020-02-19 20:32:27,933][java.lang.Class]q 4
+[INFO][2020-02-19 20:32:27,934][java.lang.Class]resultsCount: 292
+[INFO][2020-02-19 20:32:27,944][java.lang.Class]q 5
+[INFO][2020-02-19 20:32:27,944][java.lang.Class]resultsCount: 235
+[INFO][2020-02-19 20:32:27,969][java.lang.Class]q 6
+[INFO][2020-02-19 20:32:27,969][java.lang.Class]resultsCount: 991
+[INFO][2020-02-19 20:32:27,971][java.lang.Class]q 7
+[INFO][2020-02-19 20:32:27,971][java.lang.Class]resultsCount: 0
+[INFO][2020-02-19 20:32:27,981][java.lang.Class]q 8
+[INFO][2020-02-19 20:32:27,981][java.lang.Class]resultsCount: 376
+[INFO][2020-02-19 20:32:28,166][java.lang.Class]q 9
+[INFO][2020-02-19 20:32:28,166][java.lang.Class]resultsCount: 747
+[INFO][2020-02-19 20:32:28,168][java.lang.Class]q 10
+[INFO][2020-02-19 20:32:28,168][java.lang.Class]resultsCount: 8
+[INFO][2020-02-19 20:32:28,260][java.lang.Class]q 11
+[INFO][2020-02-19 20:32:28,260][java.lang.Class]resultsCount: 2416
+[INFO][2020-02-19 20:32:28,262][java.lang.Class]q 12
+[INFO][2020-02-19 20:32:28,263][java.lang.Class]resultsCount: 50
+[INFO][2020-02-19 20:32:28,273][java.lang.Class]q 13
+[INFO][2020-02-19 20:32:28,273][java.lang.Class]resultsCount: 416
+[INFO][2020-02-19 20:32:28,441][java.lang.Class]q 14
+[INFO][2020-02-19 20:32:28,441][java.lang.Class]resultsCount: 6535
+[INFO][2020-02-19 20:32:28,446][java.lang.Class]q 15
+[INFO][2020-02-19 20:32:28,446][java.lang.Class]resultsCount: 112
+[INFO][2020-02-19 20:32:28,447][java.lang.Class]q 16
+[INFO][2020-02-19 20:32:28,447][java.lang.Class]resultsCount: 5
+[INFO][2020-02-19 20:34:55,109][com.tju.suma.io.DictionaryInput]axioms count 502
+[INFO][2020-02-19 20:34:56,156][com.tju.suma.io.DictionaryInput]----------------------------------------------------
+[INFO][2020-02-19 20:34:56,156][com.tju.suma.io.DictionaryInput]Number of initial data: 257708
+[INFO][2020-02-19 20:34:56,156][com.tju.suma.io.DictionaryInput]Number of facts with equivalent role substitution: 3506
+[INFO][2020-02-19 20:34:56,157][com.tju.suma.io.DictionaryInput]Number of facts with inverse role substitution: 2528
+[INFO][2020-02-19 20:34:56,157][com.tju.suma.io.DictionaryInput]Number of equivalent roles: 2
+[INFO][2020-02-19 20:34:56,157][com.tju.suma.io.DictionaryInput]Number of inverse roles: 8
+[INFO][2020-02-19 20:34:56,157][com.tju.suma.io.DictionaryInput]Number of facts after adding ClassAssertion: 257766
+[INFO][2020-02-19 20:34:56,157][com.tju.suma.test.SUMARunTest]reading data time: 1043 ms
+[INFO][2020-02-19 20:34:56,461][com.tju.suma.reason.DicSerialReason]----------------------Start Materialization--------------------------
+[INFO][2020-02-19 20:34:56,461][com.tju.suma.reason.DicSerialReason]loopCount 1 dataCount 257766
+[INFO][2020-02-19 20:34:56,757][com.tju.suma.reason.DicSerialReason]loopCount 2 dataCount 387982
+[INFO][2020-02-19 20:34:56,959][com.tju.suma.reason.DicSerialReason]loopCount 3 dataCount 422734
+[INFO][2020-02-19 20:34:57,004][com.tju.suma.reason.DicSerialReason]loopCount 4 dataCount 430501
+[INFO][2020-02-19 20:34:57,014][com.tju.suma.reason.DicSerialReason]loopCount 5 dataCount 431079
+[INFO][2020-02-19 20:34:57,018][com.tju.suma.reason.DicSerialReason]loopCount 6 dataCount 431127
+[INFO][2020-02-19 20:34:57,020][com.tju.suma.reason.DicSerialReason]No new data was generated!
+[INFO][2020-02-19 20:34:57,021][com.tju.suma.test.SUMARunTest]reason time: 561 ms
+[INFO][2020-02-19 20:34:57,026][com.tju.suma.reason.SameAsReason]The number of facts after adding sameAs: 433824
+[INFO][2020-02-19 20:34:58,207][java.lang.Class]The number of facts after materialization: 487558
+[INFO][2020-02-19 20:34:58,208][java.lang.Class]The number of facts reduced in materialization due to equivalent role rewriting: 17794
+[INFO][2020-02-19 20:34:58,208][java.lang.Class]The number of facts reduced in materialization due to inverse role rewriting: 35940
+[INFO][2020-02-19 20:34:58,208][com.tju.suma.test.SUMARunTest]----------------------Start Query--------------------------
+[INFO][2020-02-19 20:35:00,779][com.tju.suma.jenaQuery.JenaTest]q 1
+[INFO][2020-02-19 20:35:00,779][com.tju.suma.jenaQuery.JenaTest]resultsCount: 21
+[INFO][2020-02-19 20:35:00,802][com.tju.suma.jenaQuery.JenaTest]q 2
+[INFO][2020-02-19 20:35:00,803][com.tju.suma.jenaQuery.JenaTest]resultsCount: 2465
+[INFO][2020-02-19 20:35:00,823][com.tju.suma.jenaQuery.JenaTest]q 3
+[INFO][2020-02-19 20:35:00,823][com.tju.suma.jenaQuery.JenaTest]resultsCount: 581
+[INFO][2020-02-19 20:35:00,839][com.tju.suma.jenaQuery.JenaTest]q 4
+[INFO][2020-02-19 20:35:00,839][com.tju.suma.jenaQuery.JenaTest]resultsCount: 292
+[INFO][2020-02-19 20:35:00,852][com.tju.suma.jenaQuery.JenaTest]q 5
+[INFO][2020-02-19 20:35:00,852][com.tju.suma.jenaQuery.JenaTest]resultsCount: 235
+[INFO][2020-02-19 20:35:00,874][com.tju.suma.jenaQuery.JenaTest]q 6
+[INFO][2020-02-19 20:35:00,874][com.tju.suma.jenaQuery.JenaTest]resultsCount: 991
+[INFO][2020-02-19 20:35:00,876][com.tju.suma.jenaQuery.JenaTest]q 7
+[INFO][2020-02-19 20:35:00,876][com.tju.suma.jenaQuery.JenaTest]resultsCount: 0
+[INFO][2020-02-19 20:35:00,887][com.tju.suma.jenaQuery.JenaTest]q 8
+[INFO][2020-02-19 20:35:00,887][com.tju.suma.jenaQuery.JenaTest]resultsCount: 376
+[INFO][2020-02-19 20:35:01,068][com.tju.suma.jenaQuery.JenaTest]q 9
+[INFO][2020-02-19 20:35:01,069][com.tju.suma.jenaQuery.JenaTest]resultsCount: 747
+[INFO][2020-02-19 20:35:01,070][com.tju.suma.jenaQuery.JenaTest]q 10
+[INFO][2020-02-19 20:35:01,070][com.tju.suma.jenaQuery.JenaTest]resultsCount: 8
+[INFO][2020-02-19 20:35:01,143][com.tju.suma.jenaQuery.JenaTest]q 11
+[INFO][2020-02-19 20:35:01,143][com.tju.suma.jenaQuery.JenaTest]resultsCount: 2416
+[INFO][2020-02-19 20:35:01,145][com.tju.suma.jenaQuery.JenaTest]q 12
+[INFO][2020-02-19 20:35:01,145][com.tju.suma.jenaQuery.JenaTest]resultsCount: 50
+[INFO][2020-02-19 20:35:01,154][com.tju.suma.jenaQuery.JenaTest]q 13
+[INFO][2020-02-19 20:35:01,155][com.tju.suma.jenaQuery.JenaTest]resultsCount: 416
+[INFO][2020-02-19 20:35:01,314][com.tju.suma.jenaQuery.JenaTest]q 14
+[INFO][2020-02-19 20:35:01,315][com.tju.suma.jenaQuery.JenaTest]resultsCount: 6535
+[INFO][2020-02-19 20:35:01,324][com.tju.suma.jenaQuery.JenaTest]q 15
+[INFO][2020-02-19 20:35:01,324][com.tju.suma.jenaQuery.JenaTest]resultsCount: 112
+[INFO][2020-02-19 20:35:01,326][com.tju.suma.jenaQuery.JenaTest]q 16
+[INFO][2020-02-19 20:35:01,327][com.tju.suma.jenaQuery.JenaTest]resultsCount: 5

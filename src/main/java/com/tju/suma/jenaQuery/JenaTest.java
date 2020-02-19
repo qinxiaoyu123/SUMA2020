@@ -1,8 +1,9 @@
 package com.tju.suma.jenaQuery;
 
 import com.hp.hpl.jena.query.*;
-import com.hp.hpl.jena.rdf.model.*;
-import com.tju.suma.axiomProcessor.EquivalentClassProcessor;
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.RDFNode;
 import org.apache.log4j.Logger;
 
 import java.io.BufferedWriter;
@@ -16,7 +17,7 @@ import java.util.List;
 
 public class JenaTest {
     static HashSet<String> resultsSet = new HashSet<>();
-    private static Logger log = Logger.getLogger(JenaTest.class.getClass());
+    private static Logger log = Logger.getLogger(JenaTest.class);
     public static void jenaQuerySimple(String dataPath, String queryPath) throws IOException {
          jenaQuerySimple(dataPath, queryPath, null);
     }
@@ -28,24 +29,19 @@ public class JenaTest {
         //extended data
         model.read(dataPath);
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(answerPath), StandardCharsets.UTF_8));
-        long startTime1;
-        long startTime2;
         List<String> queryList = query.getQueryList();
         Iterator<String> QueryIterator = queryList.iterator();
         int count = 0;
         while (QueryIterator.hasNext()) {
             resultsSet.clear();
             String queryString = QueryIterator.next();
-            startTime1 = System.currentTimeMillis();
             Query query = QueryFactory.create(queryString);
             QueryExecution qe = QueryExecutionFactory.create(query, model);
-            startTime2 = System.currentTimeMillis();
 
             ResultSet results = qe.execSelect();
 
             //输出查询结果
             StringBuilder ss = new StringBuilder();
-            int resultsCount = 0;
             while (results.hasNext()) {
                 QuerySolution next = results.next();
                 RDFNode resource = next.get("?x");
@@ -69,7 +65,6 @@ public class JenaTest {
                     resultsSet.add(ss.toString());
                 }
                 out.newLine();
-                resultsCount++;
 
             }
             qe.close();

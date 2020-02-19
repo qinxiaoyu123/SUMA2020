@@ -33,7 +33,7 @@ import static com.tju.suma.axiomProcessor.Processor.classAssertion;
 
 public class DictionaryInput {
     public static RoleGraph graph = RoleGraph.getRoleGraph();
-    private static Logger log = Logger.getLogger(DictionaryInput.class.getClass());
+    private static Logger log = Logger.getLogger(DictionaryInput.class);
     public static void readABox(String pathABox) throws IOException {
         Map<Integer, DicRdfDataBean> dic = DicRdfDataMap.getDicDataMap();
         int index = dic.size();
