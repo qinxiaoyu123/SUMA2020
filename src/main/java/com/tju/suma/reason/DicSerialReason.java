@@ -28,9 +28,9 @@ public class DicSerialReason {
         //规则
         Map<String, List<DicOwlBean>> totalRule = DicOwlMap.getRuleMap();
         //索引
-
+        System.out.println("----------------------Start Materialization--------------------------");
         while (true) {
-            System.out.println("loopCount" + " " + loopCount + " " + "datacount" + " " + (totalData.size() + iteratorMap.size()));
+            System.out.println("loopCount " + loopCount + " dataCount "+(totalData.size() + iteratorMap.size()));
             someValueFlag = false;
             Iterator<Map.Entry<Integer, DicRdfDataBean>> entries;
             if (loopCount == 1) {

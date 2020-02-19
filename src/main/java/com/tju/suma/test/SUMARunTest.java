@@ -7,14 +7,17 @@ import com.tju.suma.io.DictionaryOutput;
 import com.tju.suma.jenaQuery.RewriteThing;
 import com.tju.suma.reason.DicSerialReason;
 import com.tju.suma.reason.SameAsReason;
+import org.apache.log4j.Logger;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.io.IOException;
 
 import static com.tju.suma.jenaQuery.JenaTest.jenaQuerySimple;
 
 public class SUMARunTest {
-
+    public static Log log = LogFactory.getLog(SUMARunTest.class);
     public static void main(String[] args) throws Exception {
         String pathTBox = "data/univ-bench-dl.owl";
         String pathABox = "data/uobm1.nt";
@@ -41,6 +44,7 @@ public class SUMARunTest {
         writeFile(pathExtendedABox);
 
         if (isQueryByJena) {
+            log.info("----------------------Start Query--------------------------");
             System.out.println("----------------------Start Query--------------------------");
             queryByJena(pathExtendedABox, pathDataThing, queryPath, answerPath);
         }
@@ -58,7 +62,7 @@ public class SUMARunTest {
         long startTime1 = System.currentTimeMillis();
         DictionaryInput.readABox(pathABox);
         long startTime2 = System.currentTimeMillis();
-        System.out.println("reading data time: " + (startTime2 - startTime1) + "ms");
+        System.out.println("reading data time: " + (startTime2 - startTime1) + " ms");
     }
 
     private static void outPutDictionaryToFile() throws IOException {
