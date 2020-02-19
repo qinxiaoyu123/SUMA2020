@@ -3,6 +3,8 @@ package com.tju.suma.axiomProcessor;
 import com.tju.suma.bean.DicOwlMap;
 import com.tju.suma.bean.DisjointClassesMap;
 import com.tju.suma.dictionary.Dictionary;
+import com.tju.suma.test.SUMARunTest;
+import org.apache.log4j.Logger;
 import org.semanticweb.owlapi.model.*;
 
 import java.util.ArrayList;
@@ -13,7 +15,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class EquivalentClassProcessor {
-
+    private static Logger log = Logger.getLogger(EquivalentClassProcessor.class.getClass());
     public static void OWLObjectIntersectionOfProcessor(OWLClassExpression axiom, int class1, int ip) {
         Iterator<OWLClassExpression> iterator = ((OWLObjectIntersectionOf)axiom).getOperandsAsList().iterator();
         int class2 ;
@@ -43,7 +45,7 @@ public class EquivalentClassProcessor {
                 }
             }
             else{
-                System.out.println("This equivalence class needs to be added to processed："+ax.toString());
+                log.info("This equivalence class needs to be added to processed："+ax.toString());
             }
         }
 
@@ -83,7 +85,7 @@ public class EquivalentClassProcessor {
                     if (classTmp instanceof OWLClass) {
                         DicOwlMap.addEquiDicSomeValuesMap(class1, Processor.ObjectSomeValuesFrom, propertyInt, classInt);
                     } else {
-                        System.out.println("This OWLObjectSomeValues at OWLObjectUnionOf needs to be processed: " + ax.toString());
+                        log.info("This OWLObjectSomeValues at OWLObjectUnionOf needs to be processed: " + ax.toString());
                     }
                 }
 
@@ -103,7 +105,7 @@ public class EquivalentClassProcessor {
                 DicOwlMap.addEquiDicSomeValuesMap(class1, Processor.ObjectSomeValuesOneOf, propertyInt, indual2);
             }
             else{
-                System.out.println("This OWLObjectSomeValues at OWLObjectOneOf needs to be processed: "+ax.toString());
+                log.info("This OWLObjectSomeValues at OWLObjectOneOf needs to be processed: "+ax.toString());
             }
 
         }
@@ -148,7 +150,7 @@ public class EquivalentClassProcessor {
             }
         }
         else{
-            System.out.println("This MinCardinality needs to be processed: "+ax.toString());
+            log.info("This MinCardinality needs to be processed: "+ax.toString());
         }
 
     }

@@ -2,6 +2,8 @@ package com.tju.suma.io;
 
 import com.tju.suma.bean.*;
 import com.tju.suma.dictionary.Dictionary;
+import com.tju.suma.test.SUMARunTest;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
@@ -11,6 +13,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class DictionaryOutput {
+    private static Logger log = Logger.getLogger(DictionaryOutput.class.getClass());
     public static void outWriteDicDataMap(String pathAboxNew) throws IOException {
         int count = 0;
         int eqiv_count = 0;
@@ -66,9 +69,9 @@ public class DictionaryOutput {
         }
         out.flush();
         out.close();
-        System.out.println("The number of facts after materialization: " + count);
-        System.out.println("The number of facts reduced in materialization due to equivalent role rewriting: " + eqiv_count);
-        System.out.println("The number of facts reduced in materialization due to inverse role rewriting: " + inverse_count);
+        log.info("The number of facts after materialization: " + count);
+        log.info("The number of facts reduced in materialization due to equivalent role rewriting: " + eqiv_count);
+        log.info("The number of facts reduced in materialization due to inverse role rewriting: " + inverse_count);
     }
 
     public static void encodeMap(String pathEncode) throws IOException {

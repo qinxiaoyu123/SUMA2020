@@ -2,6 +2,8 @@ package com.tju.suma.jenaQuery;
 
 import com.hp.hpl.jena.query.*;
 import com.hp.hpl.jena.rdf.model.*;
+import com.tju.suma.axiomProcessor.EquivalentClassProcessor;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
@@ -14,7 +16,7 @@ import java.util.List;
 
 public class JenaTest {
     static HashSet<String> resultsSet = new HashSet<>();
-
+    private static Logger log = Logger.getLogger(JenaTest.class.getClass());
     public static void jenaQuerySimple(String dataPath, String queryPath) throws IOException {
          jenaQuerySimple(dataPath, queryPath, null);
     }
@@ -72,9 +74,8 @@ public class JenaTest {
             }
             qe.close();
             count++;
-            System.out.println("q "+ count);
-            System.out.println("resultsCount: " + resultsSet.size());
-
+            log.info("q "+ count);
+            log.info("resultsCount: " + resultsSet.size());
         }
         out.flush();
         out.close();

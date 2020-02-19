@@ -4,10 +4,12 @@ import com.hp.hpl.jena.util.FileManager;
 import com.tju.suma.axiomProcessor.Processor;
 import com.tju.suma.bean.*;
 import com.tju.suma.dictionary.Dictionary;
+import com.tju.suma.reason.DicSerialReason;
 import com.tju.suma.roleScore.RoleGraph;
 import com.tju.suma.rewrite.EquiClassRuleRewrite;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
+import org.apache.log4j.Logger;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 
@@ -31,6 +33,7 @@ import static com.tju.suma.axiomProcessor.Processor.classAssertion;
 
 public class DictionaryInput {
     public static RoleGraph graph = RoleGraph.getRoleGraph();
+    private static Logger log = Logger.getLogger(DictionaryInput.class.getClass());
     public static void readABox(String pathABox) throws IOException {
         Map<Integer, DicRdfDataBean> dic = DicRdfDataMap.getDicDataMap();
         int index = dic.size();
@@ -64,7 +67,7 @@ public class DictionaryInput {
 
                     index++;
                     if (index % 1000000 == 0) {
-                        System.out.println("finish read " + index + " data");
+                        log.info("finish read " + index + " data");
                     }
 
                 }
@@ -73,12 +76,12 @@ public class DictionaryInput {
             it.close();
 
         }
-        System.out.println("----------------------------------------------------");
-        System.out.println("Number of initial data: " + index);
-        System.out.println("Number of facts with equivalent role substitution: " + rewrite_equiv_count);
-        System.out.println("Number of facts with inverse role substitution: " + rewrite_inver_count);
-        System.out.println("Number of equivalent roles: " + EquivalentPropertyMap.EquivalentPropertyMap.size()*2);
-        System.out.println("Number of inverse roles: " + InversePropertyMap.InverseMap.size()*2);
+        log.info("----------------------------------------------------");
+        log.info("Number of initial data: " + index);
+        log.info("Number of facts with equivalent role substitution: " + rewrite_equiv_count);
+        log.info("Number of facts with inverse role substitution: " + rewrite_inver_count);
+        log.info("Number of equivalent roles: " + EquivalentPropertyMap.EquivalentPropertyMap.size()*2);
+        log.info("Number of inverse roles: " + InversePropertyMap.InverseMap.size()*2);
 
         addClassAssertion(index);
 
@@ -94,7 +97,6 @@ public class DictionaryInput {
         //model.read(in, "","RDF/XML");//根据文件格式选用参数即可解析不同类型
         //model.read(in, "","N3");
         model.read(in, "","TTL");
-        System.out.println("开始");
         // list the statements in the graph
         StmtIterator iter = model.listStatements();
         Map<Integer, DicRdfDataBean> dic = DicRdfDataMap.getDicDataMap();
@@ -133,11 +135,11 @@ public class DictionaryInput {
 
             index++;
             if (index % 1000000 == 0) {
-                System.out.println("finish read " + index + " data");
+                log.info("finish read " + index + " data");
             }
 
         }
-        System.out.println("Number of source data: " + index);
+        log.info("Number of source data: " + index);
         addClassAssertion(index);
 
     }
@@ -151,7 +153,7 @@ public class DictionaryInput {
             DicRdfDataMap.addSourceRdfDataBean(tmpCount, tmp1, 0, tmp2);
             tmpCount++;
         }
-        System.out.println("Number of facts after adding ClassAssertion: " + tmpCount);
+        log.info("Number of facts after adding ClassAssertion: " + tmpCount);
     }
 
     public static void readTBox(String pathTBox) throws OWLOntologyCreationException {
@@ -190,7 +192,7 @@ public class DictionaryInput {
                 InversePropertyMap.InverseMap.put(inversePro2, inversePro1);
                 InversePropertyMap.InverseMapDecode.put(inversePro1, inversePro2);
             } else {
-                System.out.println(inversePro1 + " " + inversePro2 + "(inverse) have the same weight!");
+                log.info(inversePro1 + " " + inversePro2 + "(inverse) have the same weight!");
                 if (inversePro1 < inversePro2) {
                     InversePropertyMap.InverseMap.put(inversePro1, inversePro2);
                     InversePropertyMap.InverseMapDecode.put(inversePro2, inversePro1);
@@ -217,7 +219,7 @@ public class DictionaryInput {
                 EquivalentPropertyMap.setEquivalentProperty(equiPro2, equiPro1);
                 EquivalentPropertyMap.setEquivalentPropertyDecode(equiPro1, equiPro2);
             } else {
-                System.out.println(weightPro1 + " " + weightPro2 + "(equi) have the same weight!");
+                log.info(weightPro1 + " " + weightPro2 + "(equi) have the same weight!");
                 if (equiPro1 < equiPro2) {
                     EquivalentPropertyMap.setEquivalentProperty(equiPro1, equiPro2);
                     EquivalentPropertyMap.setEquivalentPropertyDecode(equiPro2, equiPro1);
@@ -287,7 +289,7 @@ public class DictionaryInput {
                     break;
             }
         }
-        if(ip == 1) System.out.println("axioms count " + index);
+        if(ip == 1) log.info("axioms count " + index);
     }
 
     public static void main(String[] args) throws OWLOntologyCreationException {

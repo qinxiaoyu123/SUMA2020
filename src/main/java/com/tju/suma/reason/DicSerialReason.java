@@ -1,9 +1,11 @@
 package com.tju.suma.reason;
 
+import com.tju.suma.axiomProcessor.EquivalentClassProcessor;
 import com.tju.suma.bean.DicOwlBean;
 import com.tju.suma.bean.DicOwlMap;
 import com.tju.suma.bean.DicRdfDataBean;
 import com.tju.suma.bean.DicRdfDataMap;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,6 +17,7 @@ public class DicSerialReason {
     public static final int typeEncode = 0;
     public static int someValue = 1;
     public static boolean someValueFlag = false;
+    private static Logger log = Logger.getLogger(DicSerialReason.class.getClass());
 
 
     public static void reason(int n) {
@@ -28,9 +31,9 @@ public class DicSerialReason {
         //规则
         Map<String, List<DicOwlBean>> totalRule = DicOwlMap.getRuleMap();
         //索引
-        System.out.println("----------------------Start Materialization--------------------------");
+        log.info("----------------------Start Materialization--------------------------");
         while (true) {
-            System.out.println("loopCount " + loopCount + " dataCount "+(totalData.size() + iteratorMap.size()));
+            log.info("loopCount " + loopCount + " dataCount "+(totalData.size() + iteratorMap.size()));
             someValueFlag = false;
             Iterator<Map.Entry<Integer, DicRdfDataBean>> entries;
             if (loopCount == 1) {
@@ -69,18 +72,18 @@ public class DicSerialReason {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                System.err.println("happen error");
+                log.error("happen error");
             }
             if (stashMap.size() == 0) {
                 //没有新数据产生
-                System.out.println("No new data was generated!");
+                log.info("No new data was generated!");
                 totalData.putAll(iteratorMap);
                 stashMap.clear();
                 iteratorMap.clear();
                 break;
             }
             if (someValue >= 20) {
-                System.out.println(20 + "-step universal model is finished");
+                log.info(20 + "-step universal model is finished");
                 totalData.putAll(stashMap);
                 totalData.putAll(iteratorMap);
                 stashMap.clear();
@@ -88,12 +91,11 @@ public class DicSerialReason {
                 break;
             }
             if (loopCount >= n) {
-                System.out.println(n + "-step universal model is finished");
+                log.info(n + "-step universal model is finished");
                 totalData.putAll(stashMap);
                 totalData.putAll(iteratorMap);
                 stashMap.clear();
                 iteratorMap.clear();
-//                System.out.println("total data size: "+totalData.size());
                 break;
             }
             totalData.putAll(iteratorMap);

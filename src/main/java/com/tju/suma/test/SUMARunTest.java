@@ -17,7 +17,7 @@ import java.io.IOException;
 import static com.tju.suma.jenaQuery.JenaTest.jenaQuerySimple;
 
 public class SUMARunTest {
-    public static Log log = LogFactory.getLog(SUMARunTest.class);
+    private static Logger log = Logger.getLogger(SUMARunTest.class.getClass());
     public static void main(String[] args) throws Exception {
         String pathTBox = "data/univ-bench-dl.owl";
         String pathABox = "data/uobm1.nt";
@@ -45,7 +45,6 @@ public class SUMARunTest {
 
         if (isQueryByJena) {
             log.info("----------------------Start Query--------------------------");
-            System.out.println("----------------------Start Query--------------------------");
             queryByJena(pathExtendedABox, pathDataThing, queryPath, answerPath);
         }
     }
@@ -62,7 +61,7 @@ public class SUMARunTest {
         long startTime1 = System.currentTimeMillis();
         DictionaryInput.readABox(pathABox);
         long startTime2 = System.currentTimeMillis();
-        System.out.println("reading data time: " + (startTime2 - startTime1) + " ms");
+        log.info("reading data time: " + (startTime2 - startTime1) + " ms");
     }
 
     private static void outPutDictionaryToFile() throws IOException {
@@ -73,7 +72,7 @@ public class SUMARunTest {
         long startTime3 = System.currentTimeMillis();
         DicSerialReason.reason(n_step);
         long startTime4 = System.currentTimeMillis();
-        System.out.println("reason time: " + (startTime4 - startTime3) + " ms");
+        log.info("reason time: " + (startTime4 - startTime3) + " ms");
         SameAsReason.addEquivIndividual();
     }
 
