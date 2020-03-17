@@ -22,7 +22,7 @@ public class SUMARunTest {
         String pathExtendedABox = "data/new_uobm1_no.nt";
         String pathDataThing = "data/newThing_oubm1_test.nt";
         boolean isQueryByJena = true;
-        initIsRoleWriting(true);
+        initIsRoleWriting(false);
         String queryPath = "data/standard.sparql";
         String answerPath = "data/result_new_no_rewrite.nt";
 
