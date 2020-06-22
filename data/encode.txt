@@ -61,7 +61,7 @@
 36499 "GraduateStudent44@Department13.University0.edu/GraduateStudent44"
 41407 <http://www.Department2.University0.edu/Publication133>
 27564 <http://www.Department8.University0.edu/Publication293>
-10 <http://semantics.crl.ibm.com/univ-bench-dl.owl#PsychologyClass>
+104 <http://semantics.crl.ibm.com/univ-bench-dl.owl#PsychologyClass>
 28887 "GraduateStudent39@Department10.University0.edu/GraduateStudent39"
 25369 <http://www.Department6.University0.edu/Publication154>
 1065 <http://www.Department1.University0.edu/UndergraduateStudent326>
@@ -329,7 +329,7 @@
 39197 "UndergraduateStudent238@Department5.University0.edu/UndergraduateStudent238"
 14054 <http://www.Department0.University0.edu/Publication99>
 24363 "UndergraduateStudent149@Department6.University0.edu/UndergraduateStudent149"
-64 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Music>
+93 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Music>
 22349 "UndergraduateStudent23@Department4.University0.edu/UndergraduateStudent23"
 29517 <http://www.Department10.University0.edu/ResearchGroup8>
 32778 "UndergraduateStudent114@Department11.University0.edu/UndergraduateStudent114"
@@ -718,7 +718,7 @@
 27559 <http://www.Department8.University0.edu/Publication288>
 13249 <http://www.Department6.University0.edu/UndergraduateStudent146>
 22985 <http://www.Department2.University0.edu/UndergraduateStudent87>
-3 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman>
+45 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman>
 24355 <http://www.Department6.University0.edu/UndergraduateStudent145>
 17163 "AssociateProfessor5@Department12.University0.edu/AssociateProfessor5"
 15623 <http://www.Department14.University0.edu/Course51>
@@ -963,7 +963,7 @@
 11192 <http://www.Department3.University0.edu/GraduateStudent31>
 338 "AssociateProfessor3.first"
 10499 <http://www.Department3.University0.edu/GraduateStudent30>
-79 <http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor>
+47 <http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor>
 19344 "GraduateStudent143@Department12.University0.edu/GraduateStudent143"
 7161 "GraduateStudent33@Department16.University0.edu/GraduateStudent33"
 32925 <http://www.Department11.University0.edu/UndergraduateStudent211>
@@ -1046,7 +1046,7 @@
 7871 <http://www.Department16.University0.edu/Publication321>
 16673 <http://www.Department7.University0.edu/Publication82>
 18214 <http://www.Department6.University0.edu/UndergraduateStudent153>
-165 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Reading>
+189 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Reading>
 19218 "GraduateStudent75@Department12.University0.edu/GraduateStudent75"
 31366 "UndergraduateStudent121@Department9.University0.edu/UndergraduateStudent121"
 33249 "GraduateStudent7@Department11.University0.edu/GraduateStudent7"
@@ -1169,7 +1169,7 @@
 4024 "GraduateStudent68.first"
 24366 <http://www.Department6.University0.edu/UndergraduateStudent151>
 245 "FullProfessor2.second"
-101 <http://semantics.crl.ibm.com/univ-bench-dl.owl#teacherOf>
+129 <http://semantics.crl.ibm.com/univ-bench-dl.owl#teacherOf>
 7873 <http://www.Department16.University0.edu/Publication323>
 18967 <http://www.Department12.University0.edu/UndergraduateStudent616>
 11361 <http://www.Department3.University0.edu/GraduateStudent35>
@@ -1614,7 +1614,7 @@
 2497 <http://www.Department3.University0.edu/GraduateStudent41>
 8938 <http://www.College0.University0.edu/woman_student168>
 22486 "UndergraduateStudent80@Department4.University0.edu/UndergraduateStudent80"
-183 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Media_Arts_And_ciences>
+193 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Media_Arts_And_ciences>
 1956 "UndergraduateStudent220@Department1.University0.edu/UndergraduateStudent220"
 39441 "UndergraduateStudent410@Department5.University0.edu/UndergraduateStudent410"
 14025 <http://www.Department0.University0.edu/Publication70>
@@ -1762,7 +1762,7 @@
 25145 "GraduateStudent111@Department6.University0.edu/GraduateStudent111"
 18202 "UndergraduateStudent315@Department12.University0.edu/UndergraduateStudent315"
 612 "UndergraduateStudent7.first"
-12 <http://semantics.crl.ibm.com/univ-bench-dl.owl#AstronomyClass>
+107 <http://semantics.crl.ibm.com/univ-bench-dl.owl#AstronomyClass>
 40532 "UndergraduateStudent3@Department2.University0.edu/UndergraduateStudent3"
 11396 <http://www.Department3.University0.edu/GraduateStudent49>
 37292 "UndergraduateStudent36@Department18.University0.edu/UndergraduateStudent36"
@@ -1933,7 +1933,7 @@
 3349 "UndergraduateStudent474@Department1.University0.edu/UndergraduateStudent474"
 14643 <http://www.Department6.University0.edu/UndergraduateStudent388>
 13938 <http://www.Department0.University0.edu/GraduateStudent125>
-188 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Anthropology>
+181 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Anthropology>
 20329 <http://www.Department5.University0.edu/UndergraduateStudent603>
 15635 "UndergraduateStudent323@Department7.University0.edu/UndergraduateStudent323"
 1657 "UndergraduateStudent169.first"
@@ -2132,7 +2132,7 @@
 35905 <http://www.Department13.University0.edu/UndergraduateStudent157>
 8872 <http://www.Department0.University0.edu/UndergraduateStudent158>
 39238 "UndergraduateStudent269@Department5.University0.edu/UndergraduateStudent269"
-187 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Marine_Science>
+199 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Marine_Science>
 4356 "GraduateStudent135.first"
 15482 "UndergraduateStudent263@Department7.University0.edu/UndergraduateStudent263"
 8138 <http://www.College0.University0.edu/woman_student72>
@@ -2546,7 +2546,7 @@
 33588 <http://www.Department11.University0.edu/Publication163>
 26974 "UndergraduateStudent562@Department8.University0.edu/UndergraduateStudent562"
 38456 <http://www.Department18.University0.edu/Publication243>
-143 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Statistics>
+207 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Statistics>
 24789 "UndergraduateStudent357@Department6.University0.edu/UndergraduateStudent357"
 17542 <http://www.Department17.University0.edu/UndergraduateStudent43>
 7267 "GraduateStudent75@Department16.University0.edu/GraduateStudent75"
@@ -2695,7 +2695,7 @@
 12838 <http://www.Department0.University0.edu/UndergraduateStudent142>
 18165 "UndergraduateStudent299@Department12.University0.edu/UndergraduateStudent299"
 15606 <http://www.Department7.University0.edu/UndergraduateStudent315>
-94 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasStudent>
+8 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasStudent>
 23676 <http://www.Department4.University0.edu/Publication234>
 7111 <http://www.Department3.University0.edu/GraduateStudent72>
 5792 "UndergraduateStudent77@Department16.University0.edu/UndergraduateStudent77"
@@ -2930,13 +2930,13 @@
 21155 <http://www.Department14.University0.edu/UndergraduateStudent379>
 37894 "UndergraduateStudent442@Department18.University0.edu/UndergraduateStudent442"
 644 "UndergraduateStudent12.second"
-17 <http://semantics.crl.ibm.com/univ-bench-dl.owl#LinguisticsClass>
+84 <http://semantics.crl.ibm.com/univ-bench-dl.owl#LinguisticsClass>
 6387 "UndergraduateStudent243@Department16.University0.edu/UndergraduateStudent243"
 18604 "UndergraduateStudent495@Department12.University0.edu/UndergraduateStudent495"
 11433 <http://www.Department3.University0.edu/GraduateStudent66>
 18380 "UndergraduateStudent389@Department12.University0.edu/UndergraduateStudent389"
 11152 <http://www.Department7.University0.edu/GraduateCourse0>
-202 <http://semantics.crl.ibm.com/univ-bench-dl.owl#orgPublication>
+143 <http://semantics.crl.ibm.com/univ-bench-dl.owl#orgPublication>
 31924 "GraduateStudent48@Department9.University0.edu/GraduateStudent48"
 6382 <http://www.Department16.University0.edu/UndergraduateStudent242>
 10497 <http://www.Department3.University0.edu/UndergraduateStudent242>
@@ -3762,7 +3762,7 @@
 9947 <http://www.Department3.University0.edu/GraduateStudent75>
 23843 <http://www.Department4.University0.edu/SystemsStaff15>
 30476 "GraduateStudent97@Department15.University0.edu/GraduateStudent97"
-100 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isTaughtBy>
+46 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isTaughtBy>
 38436 <http://www.Department18.University0.edu/Publication223>
 14160 <http://www.Department0.University0.edu/Publication205>
 32993 <http://www.Department11.University0.edu/UndergraduateStudent255>
@@ -3896,11 +3896,11 @@
 38442 <http://www.Department18.University0.edu/Publication229>
 1397 "UndergraduateStudent127@Department1.University0.edu/UndergraduateStudent127"
 2832 "UndergraduateStudent372.second"
-157 <http://semantics.crl.ibm.com/univ-bench-dl.owl#English>
+187 <http://semantics.crl.ibm.com/univ-bench-dl.owl#English>
 1005 <http://www.Department14.University0.edu/Course12>
 586 <http://www.Department2.University0.edu/GraduateCourse34>
 20064 <http://www.Department13.University0.edu/SystemsStaff14>
-103 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom>
+4 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom>
 6231 <http://www.Department6.University0.edu/UndergraduateStudent198>
 2362 "UndergraduateStudent291.second"
 8775 "woman_student131.last"
@@ -4390,7 +4390,7 @@
 8728 <http://www.College0.University0.edu/woman_student121>
 18081 "UndergraduateStudent263@Department12.University0.edu/UndergraduateStudent263"
 20229 <http://www.Department14.University0.edu/GraduateCourse69>
-179 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Tennis>
+156 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Tennis>
 18434 <http://www.Department11.University0.edu/UndergraduateStudent247>
 31670 "UndergraduateStudent310@Department9.University0.edu/UndergraduateStudent310"
 2256 <http://www.Department3.University0.edu/UndergraduateStudent267>
@@ -4622,7 +4622,7 @@
 4449 <http://www.Department17.University0.edu/UndergraduateStudent11>
 16218 "UndergraduateStudent551.first"
 16656 <http://www.Department7.University0.edu/Publication65>
-102 <http://semantics.crl.ibm.com/univ-bench-dl.owl#enrollIn>
+2 <http://semantics.crl.ibm.com/univ-bench-dl.owl#enrollIn>
 22726 <http://www.Department4.University0.edu/GraduateStudent101>
 29315 <http://www.Department10.University0.edu/Publication238>
 31095 "AssistantProfessor0@Department9.University0.edu/AssistantProfessor0"
@@ -4893,7 +4893,7 @@
 996 "UndergraduateStudent63.first"
 14630 <http://www.Department14.University0.edu/UndergraduateStudent382>
 25359 <http://www.Department6.University0.edu/Publication144>
-142 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Drama>
+160 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Drama>
 12602 <http://www.Department0.University0.edu/UndergraduateStudent110>
 36407 <http://www.Department18.University0.edu/GraduateStudent113>
 1902 "UndergraduateStudent211.first"
@@ -5527,7 +5527,7 @@
 34773 "UndergraduateStudent496@Department17.University0.edu/UndergraduateStudent496"
 37660 "UndergraduateStudent269@Department18.University0.edu/UndergraduateStudent269"
 12968 "UndergraduateStudent187@Department0.University0.edu/UndergraduateStudent187"
-145 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Biomedical_Engineering>
+165 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Biomedical_Engineering>
 35128 <http://www.Department17.University0.edu/Publication92>
 2528 <http://www.Department13.University0.edu/UndergraduateStudent101>
 33811 <http://www.Department11.University0.edu/Publication386>
@@ -5656,7 +5656,7 @@
 11142 <http://www.Department14.University0.edu/UndergraduateStudent156>
 2715 "UndergraduateStudent354@Department1.University0.edu/UndergraduateStudent354"
 26625 "UndergraduateStudent354@Department8.University0.edu/UndergraduateStudent354"
-36 <http://semantics.crl.ibm.com/univ-bench-dl.owl#EnglishClass>
+102 <http://semantics.crl.ibm.com/univ-bench-dl.owl#EnglishClass>
 36928 <http://www.Department13.University0.edu/Publication269>
 35324 <http://www.Department17.University0.edu/Publication288>
 9114 "woman_student209.first"
@@ -5750,7 +5750,7 @@
 13461 "UndergraduateStudent371@Department0.University0.edu/UndergraduateStudent371"
 36923 <http://www.Department13.University0.edu/Publication264>
 22371 "UndergraduateStudent31@Department4.University0.edu/UndergraduateStudent31"
-89 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Computer_EngineeringClass>
+73 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Computer_EngineeringClass>
 30009 "UndergraduateStudent183@Department15.University0.edu/UndergraduateStudent183"
 33219 "UndergraduateStudent413@Department11.University0.edu/UndergraduateStudent413"
 15058 <http://www.Department7.University0.edu/UndergraduateStudent351>
@@ -6233,7 +6233,7 @@
 29565 <http://www.Department13.University0.edu/UndergraduateStudent352>
 10010 <http://www.Department14.University0.edu/UndergraduateStudent140>
 33802 <http://www.Department11.University0.edu/Publication377>
-138 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Modern_Arts>
+154 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Modern_Arts>
 21502 <http://www.Department5.University0.edu/UndergraduateStudent402>
 33536 <http://www.Department11.University0.edu/Publication111>
 36509 "GraduateStudent53@Department13.University0.edu/GraduateStudent53"
@@ -6363,7 +6363,7 @@
 36938 <http://www.Department13.University0.edu/Publication279>
 35593 <http://www.Department13.University0.edu/Course47>
 30697 <http://www.Department15.University0.edu/Publication135>
-66 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Institute>
+123 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Institute>
 33255 "GraduateStudent12@Department11.University0.edu/GraduateStudent12"
 33793 <http://www.Department11.University0.edu/Publication368>
 14922 <http://www.Department8.University0.edu/GraduateStudent78>
@@ -6556,7 +6556,7 @@
 16912 <http://www.Department7.University0.edu/Publication321>
 25076 "GraduateStudent68@Department6.University0.edu/GraduateStudent68"
 37250 <http://www.Department18.University0.edu/UndergraduateStudent189>
-120 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SportsFan>
+26 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SportsFan>
 2667 <http://www.Department12.University0.edu/UndergraduateStudent82>
 10732 <http://www.Department10.University0.edu/GraduateStudent47>
 13671 <http://www.Department0.University0.edu/GraduateStudent8>
@@ -6654,7 +6654,7 @@
 11757 <http://www.Department3.University0.edu/Publication91>
 28112 <http://www.Department10.University0.edu/GraduateStudent144>
 2254 "UndergraduateStudent272.first"
-5 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ResearchGroup>
+74 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ResearchGroup>
 6506 <http://www.Department18.University0.edu/UndergraduateStudent196>
 15219 <http://www.Department17.University0.edu/UndergraduateStudent237>
 14906 <http://www.Department7.University0.edu/UndergraduateStudent74>
@@ -6723,7 +6723,7 @@
 28290 "UndergraduateStudent192@Department10.University0.edu/UndergraduateStudent192"
 11761 <http://www.Department3.University0.edu/Publication95>
 29160 <http://www.Department10.University0.edu/Publication83>
-98 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasAlumnus>
+130 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasAlumnus>
 12903 <http://www.Department10.University0.edu/GraduateStudent148>
 21188 <http://www.Department14.University0.edu/GraduateStudent145>
 31935 "GraduateStudent57@Department9.University0.edu/GraduateStudent57"
@@ -6760,7 +6760,7 @@
 33189 "UndergraduateStudent391@Department11.University0.edu/UndergraduateStudent391"
 34176 "UndergraduateStudent113@Department17.University0.edu/UndergraduateStudent113"
 37438 "UndergraduateStudent120@Department18.University0.edu/UndergraduateStudent120"
-119 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Student>
+20 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Student>
 3896 "GraduateStudent42.second"
 20250 "UndergraduateStudent5@Department14.University0.edu/UndergraduateStudent5"
 11759 <http://www.Department3.University0.edu/Publication93>
@@ -6954,7 +6954,7 @@
 32544 <http://www.Department11.University0.edu/GraduateCourse50>
 27259 <http://www.Department8.University0.edu/GraduateStudent161>
 29890 <http://www.Department15.University0.edu/GraduateStudent11>
-160 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Pop_Music>
+183 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Pop_Music>
 32776 "UndergraduateStudent113@Department11.University0.edu/UndergraduateStudent113"
 34638 "UndergraduateStudent400@Department17.University0.edu/UndergraduateStudent400"
 5086 <http://www.Department0.University0.edu/SystemsStaff4>
@@ -7492,7 +7492,7 @@
 33775 <http://www.Department11.University0.edu/Publication350>
 15654 <http://www.Department7.University0.edu/UndergraduateStudent328>
 20681 <http://www.Department14.University0.edu/UndergraduateStudent161>
-69 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Asian_ArtsClass>
+66 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Asian_ArtsClass>
 39422 "UndergraduateStudent396@Department5.University0.edu/UndergraduateStudent396"
 13059 <http://www.Department13.University0.edu/UndergraduateStudent331>
 16617 <http://www.Department7.University0.edu/Publication26>
@@ -7521,7 +7521,7 @@
 40467 "FullProfessor3@Department2.University0.edu/FullProfessor3"
 22488 "UndergraduateStudent81@Department4.University0.edu/UndergraduateStudent81"
 11120 "UndergraduateStudent457@Department3.University0.edu/UndergraduateStudent457"
-107 <http://semantics.crl.ibm.com/univ-bench-dl.owl#TennisFan>
+36 <http://semantics.crl.ibm.com/univ-bench-dl.owl#TennisFan>
 25722 <http://www.Department18.University0.edu/AssociateProfessor6>
 15645 <http://www.Department7.University0.edu/UndergraduateStudent326>
 14970 "UndergraduateStudent94@Department7.University0.edu/UndergraduateStudent94"
@@ -7618,7 +7618,7 @@
 33770 <http://www.Department11.University0.edu/Publication345>
 5739 <http://www.Department16.University0.edu/GraduateStudent1>
 4431 "GraduateStudent150.first"
-53 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Industry_EngineeringClass>
+116 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Industry_EngineeringClass>
 3098 "UndergraduateStudent424.first"
 10106 <http://www.Department10.University0.edu/GraduateStudent28>
 32559 <http://www.Department11.University0.edu/GraduateCourse62>
@@ -7693,7 +7693,7 @@
 26247 <http://www.Department8.University0.edu/GraduateStudent57>
 17451 "UndergraduateStudent54@Department12.University0.edu/UndergraduateStudent54"
 36179 <http://www.Department13.University0.edu/UndergraduateStudent336>
-24 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Dean>
+33 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Dean>
 28744 "UndergraduateStudent458@Department10.University0.edu/UndergraduateStudent458"
 30716 <http://www.Department15.University0.edu/Publication154>
 1862 "UndergraduateStudent204@Department1.University0.edu/UndergraduateStudent204"
@@ -8102,7 +8102,7 @@
 36876 <http://www.Department13.University0.edu/Publication217>
 28932 <http://www.Department15.University0.edu/GraduateCourse13>
 28692 <http://www.Department9.University0.edu/GraduateStudent134>
-137 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Travelling>
+157 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Travelling>
 6252 <http://www.Department15.University0.edu/Course47>
 23146 "UndergraduateStudent401@Department4.University0.edu/UndergraduateStudent401"
 3238 <http://www.Department14.University0.edu/UndergraduateStudent197>
@@ -8156,7 +8156,7 @@
 912 <http://www.Department15.University0.edu/Course45>
 3838 "GraduateStudent30@Department1.University0.edu/GraduateStudent30"
 34370 <http://www.Department17.University0.edu/UndergraduateStudent219>
-91 <http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf>
+41 <http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf>
 28228 "UndergraduateStudent160@Department10.University0.edu/UndergraduateStudent160"
 4541 "GraduateCourse21"
 20145 <http://www.Department4.University0.edu/FullProfessor2>
@@ -8886,7 +8886,7 @@
 39176 <http://www.Department5.University0.edu/UndergraduateStudent449>
 28876 "GraduateStudent31@Department10.University0.edu/GraduateStudent31"
 33755 <http://www.Department11.University0.edu/Publication330>
-175 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Movie>
+161 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Movie>
 8507 "woman_student76.last"
 36370 "UndergraduateStudent478@Department13.University0.edu/UndergraduateStudent478"
 29609 <http://www.Department15.University0.edu/GraduateCourse20>
@@ -8903,7 +8903,7 @@
 32684 <http://www.Department11.University0.edu/UndergraduateStudent423>
 36523 "GraduateStudent63@Department13.University0.edu/GraduateStudent63"
 39646 "UndergraduateStudent570@Department5.University0.edu/UndergraduateStudent570"
-31 <http://semantics.crl.ibm.com/univ-bench-dl.owl#DramaClass>
+103 <http://semantics.crl.ibm.com/univ-bench-dl.owl#DramaClass>
 20139 <http://www.Department14.University0.edu/AssociateProfessor8>
 40349 <http://www.Department5.University0.edu/Publication427>
 4993 <http://www.Department1.University0.edu/Publication400>
@@ -9178,7 +9178,7 @@
 28801 "UndergraduateStudent492@Department10.University0.edu/UndergraduateStudent492"
 32305 <http://www.Department9.University0.edu/Publication264>
 37131 <http://www.Department13.University0.edu/other_staff4>
-161 <http://semantics.crl.ibm.com/univ-bench-dl.owl#AmericanFootball>
+201 <http://semantics.crl.ibm.com/univ-bench-dl.owl#AmericanFootball>
 27698 <http://www.Department8.University0.edu/ResearchGroup1>
 9705 "UndergraduateStudent27@Department3.University0.edu/UndergraduateStudent27"
 29682 <http://www.Department15.University0.edu/GraduateStudent153>
@@ -9673,7 +9673,7 @@
 25721 "FullProfessor6@Department8.University0.edu/FullProfessor6"
 15517 <http://www.Department7.University0.edu/UndergraduateStudent379>
 15043 <http://www.Department7.University0.edu/UndergraduateStudent113>
-116 <http://semantics.crl.ibm.com/univ-bench-dl.owl#WomanCollege>
+28 <http://semantics.crl.ibm.com/univ-bench-dl.owl#WomanCollege>
 6214 "UndergraduateStudent192@Department16.University0.edu/UndergraduateStudent192"
 11723 <http://www.Department3.University0.edu/Publication57>
 2116 "UndergraduateStudent248.first"
@@ -9742,7 +9742,7 @@
 25198 "GraduateStudent137@Department6.University0.edu/GraduateStudent137"
 35304 <http://www.Department17.University0.edu/Publication268>
 4098 "GraduateStudent82.second"
-177 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Architecture>
+163 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Architecture>
 17115 <http://www.Department12.University0.edu/FullProfessor9>
 22085 <http://www.Department14.University0.edu/ResearchGroup8>
 30945 <http://www.Department15.University0.edu/Publication383>
@@ -9804,7 +9804,7 @@
 35303 <http://www.Department17.University0.edu/Publication267>
 4423 <http://www.Department7.University0.edu/UndergraduateStudent33>
 9527 <http://www.Department3.University0.edu/UndergraduateStudent441>
-54 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BiologyClass>
+65 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BiologyClass>
 13553 "UndergraduateStudent410@Department0.University0.edu/UndergraduateStudent410"
 17122 <http://www.Department12.University0.edu/FullProfessor6>
 37211 "AssistantProfessor5@Department18.University0.edu/AssistantProfessor5"
@@ -9920,7 +9920,7 @@
 36140 <http://www.Department13.University0.edu/UndergraduateStudent307>
 13221 "UndergraduateStudent280@Department0.University0.edu/UndergraduateStudent280"
 35297 <http://www.Department17.University0.edu/Publication261>
-122 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballLover>
+15 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballLover>
 16942 <http://www.Department7.University0.edu/Publication351>
 40616 <http://www.Department2.University0.edu/UndergraduateStudent94>
 14759 <http://www.Department7.University0.edu/UndergraduateStudent35>
@@ -10051,7 +10051,7 @@
 13452 <http://www.Department8.University0.edu/GraduateStudent102>
 11726 <http://www.Department3.University0.edu/Publication60>
 15599 "UndergraduateStudent311@Department7.University0.edu/UndergraduateStudent311"
-158 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Shopping>
+176 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Shopping>
 17132 <http://www.Department12.University0.edu/GraduateCourse14>
 33111 "UndergraduateStudent332@Department11.University0.edu/UndergraduateStudent332"
 16938 <http://www.Department7.University0.edu/Publication347>
@@ -10063,7 +10063,7 @@
 32602 <http://www.Department11.University0.edu/UndergraduateStudent408>
 4556 "GraduateCourse36"
 9808 <http://www.Department15.University0.edu/Course52>
-153 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Psychology>
+190 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Psychology>
 36867 <http://www.Department13.University0.edu/Publication208>
 17142 <http://www.Department12.University0.edu/GraduateCourse18>
 40365 <http://www.Department5.University0.edu/Publication443>
@@ -10306,7 +10306,7 @@
 35101 <http://www.Department17.University0.edu/Publication65>
 34133 <http://www.Department17.University0.edu/UndergraduateStudent90>
 39528 <http://www.Department5.University0.edu/UndergraduateStudent473>
-197 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isAffiliateOf>
+142 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isAffiliateOf>
 29635 <http://www.Department15.University0.edu/GraduateCourse41>
 31027 "other_staff8@Department15.University0.edu/other_staff8"
 6616 "UndergraduateStudent312@Department16.University0.edu/UndergraduateStudent312"
@@ -10698,7 +10698,7 @@
 33815 <http://www.Department11.University0.edu/ResearchGroup3>
 36281 "UndergraduateStudent408@Department13.University0.edu/UndergraduateStudent408"
 28995 <http://www.Department18.University0.edu/GraduateCourse7>
-46 <http://semantics.crl.ibm.com/univ-bench-dl.owl#AnthropologyClass>
+71 <http://semantics.crl.ibm.com/univ-bench-dl.owl#AnthropologyClass>
 769 "UndergraduateStudent29.first"
 27804 <http://www.Department10.University0.edu/AssociateProfessor0>
 17725 <http://www.Department15.University0.edu/UndergraduateStudent240>
@@ -10748,7 +10748,7 @@
 33814 <http://www.Department11.University0.edu/ResearchGroup2>
 33474 <http://www.Department11.University0.edu/Publication49>
 30105 <http://www.Department15.University0.edu/UndergraduateStudent243>
-41 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Chemical_EngineeringClass>
+118 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Chemical_EngineeringClass>
 33174 <http://www.Department18.University0.edu/GraduateCourse8>
 39072 "UndergraduateStudent152@Department5.University0.edu/UndergraduateStudent152"
 20347 <http://www.Department14.University0.edu/GraduateStudent99>
@@ -11018,7 +11018,7 @@
 39668 "UndergraduateStudent588@Department5.University0.edu/UndergraduateStudent588"
 29632 <http://www.Department15.University0.edu/AssistantProfessor1>
 32338 <http://www.Department9.University0.edu/Publication297>
-104 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom>
+14 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom>
 39059 <http://www.Department5.University0.edu/UndergraduateStudent223>
 7374 <http://www.Department5.University0.edu/UndergraduateStudent224>
 40192 <http://www.Department5.University0.edu/Publication270>
@@ -11249,7 +11249,7 @@
 11796 <http://www.Department3.University0.edu/Publication130>
 15213 <http://www.Department7.University0.edu/UndergraduateStudent171>
 6386 <http://www.Department12.University0.edu/Course2>
-125 <http://semantics.crl.ibm.com/univ-bench-dl.owl#teachingAssistantOf>
+35 <http://semantics.crl.ibm.com/univ-bench-dl.owl#teachingAssistantOf>
 25277 <http://www.Department6.University0.edu/Publication62>
 26300 <http://www.Department8.University0.edu/UndergraduateStudent311>
 36666 <http://www.Department13.University0.edu/Publication7>
@@ -11887,7 +11887,7 @@
 25284 <http://www.Department6.University0.edu/Publication69>
 7144 <http://www.Department7.University0.edu/UndergraduateStudent163>
 6008 "UndergraduateStudent135@Department16.University0.edu/UndergraduateStudent135"
-75 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Latin_ArtsClass>
+112 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Latin_ArtsClass>
 31192 <http://www.Department9.University0.edu/UndergraduateStudent27>
 39617 "UndergraduateStudent546@Department5.University0.edu/UndergraduateStudent546"
 23926 <http://www.Department6.University0.edu/Course20>
@@ -11919,7 +11919,7 @@
 18685 "UndergraduateStudent526@Department12.University0.edu/UndergraduateStudent526"
 18612 "UndergraduateStudent499@Department12.University0.edu/UndergraduateStudent499"
 7308 <http://www.Department15.University0.edu/UndergraduateStudent249>
-110 <http://semantics.crl.ibm.com/univ-bench-dl.owl#PeopleWithManyHobbies>
+27 <http://semantics.crl.ibm.com/univ-bench-dl.owl#PeopleWithManyHobbies>
 4856 <http://www.Department1.University0.edu/Publication263>
 36275 <http://www.Department13.University0.edu/UndergraduateStudent404>
 31194 <http://www.Department9.University0.edu/UndergraduateStudent28>
@@ -12138,7 +12138,7 @@
 17718 <http://www.Department12.University0.edu/GraduateStudent187>
 1268 "UndergraduateStudent107.first"
 30898 <http://www.Department15.University0.edu/Publication336>
-203 <http://semantics.crl.ibm.com/univ-bench-dl.owl#softwareVersion>
+144 <http://semantics.crl.ibm.com/univ-bench-dl.owl#softwareVersion>
 17396 "UndergraduateStudent37@Department12.University0.edu/UndergraduateStudent37"
 22728 <http://www.Department4.University0.edu/UndergraduateStudent184>
 2534 "UndergraduateStudent320.second"
@@ -12587,7 +12587,7 @@
 16730 <http://www.Department7.University0.edu/Publication139>
 6377 <http://www.Department12.University0.edu/UndergraduateStudent293>
 5501 <http://www.Department16.University0.edu/UndergraduateStudent10>
-14 <http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent>
+64 <http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent>
 14740 <http://www.Department9.University0.edu/UndergraduateStudent39>
 13505 "UndergraduateStudent389@Department0.University0.edu/UndergraduateStudent389"
 29027 "GraduateStudent136@Department10.University0.edu/GraduateStudent136"
@@ -12709,7 +12709,7 @@
 22117 <http://www.Department14.University0.edu/SystemsStaff10>
 10269 <http://www.Department3.University0.edu/UndergraduateStudent410>
 16719 <http://www.Department7.University0.edu/Publication128>
-146 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBall>
+151 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBall>
 19127 "GraduateStudent31@Department12.University0.edu/GraduateStudent31"
 12695 <http://www.Department0.University0.edu/UndergraduateStudent99>
 16049 <http://www.Department18.University0.edu/UndergraduateStudent380>
@@ -12717,7 +12717,7 @@
 4601 <http://www.Department1.University0.edu/Publication9>
 40762 "UndergraduateStudent170@Department2.University0.edu/UndergraduateStudent170"
 2798 "UndergraduateStudent367@Department1.University0.edu/UndergraduateStudent367"
-43 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Computer_ScienceClass>
+57 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Computer_ScienceClass>
 24433 "UndergraduateStudent177@Department6.University0.edu/UndergraduateStudent177"
 9962 <http://www.Department15.University0.edu/UndergraduateStudent235>
 4095 <http://www.Department10.University0.edu/UndergraduateStudent313>
@@ -12782,7 +12782,7 @@
 27238 "GraduateStudent146@Department8.University0.edu/GraduateStudent146"
 10319 "UndergraduateStudent189@Department3.University0.edu/UndergraduateStudent189"
 10464 <http://www.Department15.University0.edu/UndergraduateStudent231>
-77 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballClass>
+114 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballClass>
 10733 <http://www.Department3.University0.edu/UndergraduateStudent415>
 11289 "GraduateStudent6@Department3.University0.edu/GraduateStudent6"
 37083 <http://www.Department13.University0.edu/Publication424>
@@ -12850,7 +12850,7 @@
 18198 "UndergraduateStudent313@Department12.University0.edu/UndergraduateStudent313"
 7068 "GraduateStudent6@Department16.University0.edu/GraduateStudent6"
 21039 <http://www.Department14.University0.edu/GraduateStudent65>
-195 <http://semantics.crl.ibm.com/univ-bench-dl.owl#publicationResearch>
+141 <http://semantics.crl.ibm.com/univ-bench-dl.owl#publicationResearch>
 30888 <http://www.Department15.University0.edu/Publication326>
 23371 "GraduateStudent86@Department4.University0.edu/GraduateStudent86"
 336 <http://www.Department1.University0.edu/GraduateCourse21>
@@ -13076,7 +13076,7 @@
 34184 <http://www.Department17.University0.edu/UndergraduateStudent194>
 11812 <http://www.Department3.University0.edu/Publication146>
 22673 <http://www.Department4.University0.edu/GraduateStudent22>
-184 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Economics>
+168 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Economics>
 38132 <http://www.Department2.University0.edu/UndergraduateStudent225>
 16976 <http://www.Department7.University0.edu/Publication385>
 39264 "UndergraduateStudent285@Department5.University0.edu/UndergraduateStudent285"
@@ -13287,7 +13287,7 @@
 24882 "UndergraduateStudent410@Department6.University0.edu/UndergraduateStudent410"
 34677 "UndergraduateStudent429@Department17.University0.edu/UndergraduateStudent429"
 10518 "UndergraduateStudent249@Department3.University0.edu/UndergraduateStudent249"
-48 <http://semantics.crl.ibm.com/univ-bench-dl.owl#GraduateCourse>
+121 <http://semantics.crl.ibm.com/univ-bench-dl.owl#GraduateCourse>
 1492 <http://www.Department18.University0.edu/UndergraduateStudent384>
 25256 <http://www.Department6.University0.edu/Publication41>
 16715 <http://www.Department7.University0.edu/Publication124>
@@ -13335,7 +13335,7 @@
 15339 "UndergraduateStudent215@Department7.University0.edu/UndergraduateStudent215"
 37272 <http://www.Department2.University0.edu/UndergraduateStudent283>
 38016 "UndergraduateStudent537@Department18.University0.edu/UndergraduateStudent537"
-132 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Insterest>
+149 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Insterest>
 12248 <http://www.Department0.University0.edu/Course17>
 30377 "GraduateStudent34@Department15.University0.edu/GraduateStudent34"
 14544 <http://www.Department7.University0.edu/GraduateCourse43>
@@ -13352,7 +13352,7 @@
 25311 <http://www.Department6.University0.edu/Publication96>
 26169 "UndergraduateStudent140@Department8.University0.edu/UndergraduateStudent140"
 37830 <http://www.Department18.University0.edu/UndergraduateStudent393>
-155 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Video_Game>
+178 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Video_Game>
 17976 <http://www.Department12.University0.edu/UndergraduateStudent227>
 29030 "GraduateStudent138@Department10.University0.edu/GraduateStudent138"
 22339 <http://www.Department4.University0.edu/UndergraduateStudent166>
@@ -13584,7 +13584,7 @@
 2905 <http://www.Department15.University0.edu/Course8>
 29917 <http://www.Department15.University0.edu/UndergraduateStudent280>
 40469 <http://www.Department2.University0.edu/UndergraduateStudent288>
-38 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallClass>
+95 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallClass>
 313 <http://www.Department1.University0.edu/GraduateCourse15>
 17359 <http://www.Department12.University0.edu/UndergraduateStudent26>
 4210 <http://www.Department12.University0.edu/UndergraduateStudent25>
@@ -13714,7 +13714,7 @@
 18603 <http://www.Department12.University0.edu/UndergraduateStudent495>
 24742 <http://www.Department6.University0.edu/UndergraduateStudent404>
 14627 <http://www.Department12.University0.edu/Course56>
-81 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Modern_LanguagesClass>
+117 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Modern_LanguagesClass>
 12021 <http://www.Department3.University0.edu/Publication355>
 18075 "UndergraduateStudent261@Department12.University0.edu/UndergraduateStudent261"
 34168 <http://www.Department17.University0.edu/UndergraduateStudent163>
@@ -14001,7 +14001,7 @@
 31626 "UndergraduateStudent282@Department9.University0.edu/UndergraduateStudent282"
 17370 <http://www.Department12.University0.edu/UndergraduateStudent30>
 21804 <http://www.Department14.University0.edu/Publication167>
-150 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Materical_Science_Engineering>
+177 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Materical_Science_Engineering>
 22518 <http://www.Department4.University0.edu/UndergraduateStudent176>
 6113 <http://www.Department10.University0.edu/UndergraduateStudent330>
 23304 <http://www.Department15.University0.edu/GraduateCourse7>
@@ -14215,7 +14215,7 @@
 28022 <http://www.Department15.University0.edu/UndergraduateStudent295>
 24584 "UndergraduateStudent252@Department6.University0.edu/UndergraduateStudent252"
 16778 <http://www.Department7.University0.edu/Publication187>
-65 <http://semantics.crl.ibm.com/univ-bench-dl.owl#HistoryClass>
+67 <http://semantics.crl.ibm.com/univ-bench-dl.owl#HistoryClass>
 32493 <http://www.Department18.University0.edu/FullProfessor6>
 41294 <http://www.Department2.University0.edu/Publication20>
 32941 "UndergraduateStudent219@Department11.University0.edu/UndergraduateStudent219"
@@ -14347,7 +14347,7 @@
 774 "UndergraduateStudent30.second"
 19399 "GraduateStudent168@Department12.University0.edu/GraduateStudent168"
 12141 <http://www.Department9.University0.edu/ClericalStaff0>
-95 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isStudentOf>
+3 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isStudentOf>
 16404 <http://www.Department11.University0.edu/GraduateCourse40>
 12011 <http://www.Department3.University0.edu/Publication345>
 22444 <http://www.Department17.University0.edu/UndergraduateStudent173>
@@ -14359,7 +14359,7 @@
 16779 <http://www.Department7.University0.edu/Publication188>
 24166 <http://www.Department6.University0.edu/UndergraduateStudent419>
 29819 "UndergraduateStudent77@Department15.University0.edu/UndergraduateStudent77"
-194 <http://semantics.crl.ibm.com/univ-bench-dl.owl#softwareDocumentation>
+138 <http://semantics.crl.ibm.com/univ-bench-dl.owl#softwareDocumentation>
 33518 <http://www.Department11.University0.edu/Publication93>
 28760 "UndergraduateStudent468@Department10.University0.edu/UndergraduateStudent468"
 19795 <http://www.Department12.University0.edu/Publication296>
@@ -14423,7 +14423,7 @@
 33006 "UndergraduateStudent262@Department11.University0.edu/UndergraduateStudent262"
 39246 <http://www.Department5.University0.edu/UndergraduateStudent273>
 40167 <http://www.Department5.University0.edu/Publication245>
-96 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMember>
+9 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMember>
 5237 <http://www.Department16.University0.edu/GraduateCourse9>
 9069 "woman_student198.first"
 3801 <http://www.Department11.University0.edu/GraduateCourse44>
@@ -14464,8 +14464,8 @@
 5231 <http://www.Department16.University0.edu/GraduateCourse7>
 13559 "UndergraduateStudent414@Department0.University0.edu/UndergraduateStudent414"
 10634 <http://www.Department0.University0.edu/Course14>
-4 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isHeadOf>
-63 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ClericalStaff>
+11 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isHeadOf>
+120 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ClericalStaff>
 21402 <http://www.Department2.University0.edu/GraduateCourse8>
 8544 "woman_student82@College0.University0.edu"
 3531 <http://www.Department18.University0.edu/UndergraduateStudent140>
@@ -14894,7 +14894,7 @@
 13453 <http://www.Department12.University0.edu/UndergraduateStudent252>
 21617 "GraduateStudent171@Department14.University0.edu/GraduateStudent171"
 1880 "UndergraduateStudent207.second"
-45 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Department>
+60 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Department>
 12238 <http://www.Department0.University0.edu/AssociateProfessor0>
 24282 "UndergraduateStudent108@Department6.University0.edu/UndergraduateStudent108"
 31874 "GraduateStudent10@Department9.University0.edu/GraduateStudent10"
@@ -15031,7 +15031,7 @@
 40178 <http://www.Department5.University0.edu/Publication256>
 32865 "UndergraduateStudent172@Department11.University0.edu/UndergraduateStudent172"
 9027 <http://www.Department5.University0.edu/UndergraduateStudent286>
-108 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Director>
+18 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Director>
 23993 <http://www.Department6.University0.edu/Course57>
 36506 <http://www.Department13.University0.edu/SystemsStaff0>
 6730 <http://www.Department10.University0.edu/UndergraduateStudent4>
@@ -15282,7 +15282,7 @@
 27279 <http://www.Department8.University0.edu/Publication8>
 38996 "UndergraduateStudent108@Department5.University0.edu/UndergraduateStudent108"
 40889 "UndergraduateStudent274@Department2.University0.edu/UndergraduateStudent274"
-154 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Baseball>
+184 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Baseball>
 19424 "GraduateStudent174@Department12.University0.edu/GraduateStudent174"
 11771 <http://www.Department3.University0.edu/Publication105>
 33013 "UndergraduateStudent266@Department11.University0.edu/UndergraduateStudent266"
@@ -15306,7 +15306,7 @@
 5354 "AssociateProfessor11@Department16.University0.edu/AssociateProfessor11"
 22346 <http://www.Department2.University0.edu/UndergraduateStudent279>
 23150 <http://www.Department15.University0.edu/UndergraduateStudent273>
-174 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Rock_and_Roll>
+179 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Rock_and_Roll>
 2765 <http://www.Department12.University0.edu/UndergraduateStudent497>
 3726 "GraduateStudent7@Department1.University0.edu/GraduateStudent7"
 33976 "UndergraduateStudent8@Department17.University0.edu/UndergraduateStudent8"
@@ -15344,7 +15344,7 @@
 1151 <http://www.Department1.University0.edu/GraduateStudent1>
 38818 <http://www.Department5.University0.edu/UndergraduateStudent9>
 11775 <http://www.Department3.University0.edu/Publication109>
-72 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Theatre_and_DanceClass>
+125 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Theatre_and_DanceClass>
 2998 "UndergraduateStudent404@Department1.University0.edu/UndergraduateStudent404"
 16310 <http://www.Department2.University0.edu/UndergraduateStudent276>
 16761 <http://www.Department7.University0.edu/Publication170>
@@ -15746,7 +15746,7 @@
 20102 "FullProfessor6@Department14.University0.edu/FullProfessor6"
 18510 <http://www.Department12.University0.edu/UndergraduateStudent448>
 22760 <http://www.Department4.University0.edu/UndergraduateStudent387>
-25 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Marine_ScienceClass>
+98 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Marine_ScienceClass>
 21773 <http://www.Department14.University0.edu/Publication136>
 36387 "UndergraduateStudent490@Department13.University0.edu/UndergraduateStudent490"
 2389 "UndergraduateStudent296@Department1.University0.edu/UndergraduateStudent296"
@@ -16000,7 +16000,7 @@
 7821 <http://www.Department16.University0.edu/Publication271>
 10934 <http://www.Department0.University0.edu/UndergraduateStudent367>
 12703 <http://www.Department0.University0.edu/UndergraduateStudent101>
-6 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ResearchAssistant>
+87 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ResearchAssistant>
 36577 "GraduateStudent107@Department13.University0.edu/GraduateStudent107"
 27612 <http://www.Department8.University0.edu/Publication341>
 7614 <http://www.Department16.University0.edu/Publication64>
@@ -16648,7 +16648,7 @@
 31005 "SystemsStaff9@Department15.University0.edu/SystemsStaff9"
 39231 "UndergraduateStudent265@Department5.University0.edu/UndergraduateStudent265"
 5726 <http://www.Department8.University0.edu/UndergraduateStudent398>
-180 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Industry_Engineering>
+162 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Industry_Engineering>
 8137 "woman_student6.last"
 14781 "UndergraduateStudent41@Department7.University0.edu/UndergraduateStudent41"
 19317 <http://www.Department12.University0.edu/GraduateStudent130>
@@ -16840,7 +16840,7 @@
 29963 "UndergraduateStudent156@Department15.University0.edu/UndergraduateStudent156"
 23754 <http://www.Department4.University0.edu/Publication312>
 36059 "UndergraduateStudent248@Department13.University0.edu/UndergraduateStudent248"
-135 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Petroleuml_Engineering>
+169 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Petroleuml_Engineering>
 16431 <http://www.Department7.University0.edu/GraduateStudent73>
 33026 "UndergraduateStudent277@Department11.University0.edu/UndergraduateStudent277"
 36206 "UndergraduateStudent354@Department13.University0.edu/UndergraduateStudent354"
@@ -17060,7 +17060,7 @@
 40783 "UndergraduateStudent186@Department2.University0.edu/UndergraduateStudent186"
 29981 "UndergraduateStudent167@Department15.University0.edu/UndergraduateStudent167"
 4080 <http://www.Department17.University0.edu/GraduateCourse31>
-8 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ArchitectureClass>
+70 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ArchitectureClass>
 38608 <http://www.Department18.University0.edu/Publication395>
 17920 <http://www.Department12.University0.edu/UndergraduateStudent206>
 19733 <http://www.Department12.University0.edu/Publication234>
@@ -17361,7 +17361,7 @@
 27596 <http://www.Department8.University0.edu/Publication325>
 13379 <http://www.Department0.University0.edu/UndergraduateStudent344>
 25444 <http://www.Department6.University0.edu/Publication229>
-144 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Computer_Engineering>
+200 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Computer_Engineering>
 1165 <http://www.Department1.University0.edu/UndergraduateStudent295>
 4313 "GraduateStudent125@Department1.University0.edu/GraduateStudent125"
 18423 "UndergraduateStudent407@Department12.University0.edu/UndergraduateStudent407"
@@ -17735,7 +17735,7 @@
 39886 "GraduateStudent156@Department5.University0.edu/GraduateStudent156"
 19727 <http://www.Department12.University0.edu/Publication228>
 19725 <http://www.Department12.University0.edu/Publication226>
-189 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Astronomy>
+171 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Astronomy>
 23285 "GraduateStudent42@Department4.University0.edu/GraduateStudent42"
 38334 <http://www.Department18.University0.edu/Publication121>
 38600 <http://www.Department18.University0.edu/Publication387>
@@ -17798,7 +17798,7 @@
 10966 <http://www.Department12.University0.edu/UndergraduateStudent451>
 18362 <http://www.Department2.University0.edu/UndergraduateStudent408>
 25449 <http://www.Department6.University0.edu/Publication234>
-115 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMajor>
+23 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMajor>
 37167 "FullProfessor7@Department18.University0.edu/FullProfessor7"
 3322 "UndergraduateStudent468.first"
 8236 "woman_student25.last"
@@ -18670,7 +18670,7 @@
 5601 <http://www.Department16.University0.edu/UndergraduateStudent32>
 22565 <http://www.Department4.University0.edu/UndergraduateStudent344>
 1873 <http://www.Department1.University0.edu/GraduateStudent127>
-39 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Modern_ArtsClass>
+55 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Modern_ArtsClass>
 4887 <http://www.Department1.University0.edu/Publication294>
 8596 "woman_student94.first"
 1314 "UndergraduateStudent114@Department1.University0.edu/UndergraduateStudent114"
@@ -18697,7 +18697,7 @@
 4886 <http://www.Department1.University0.edu/Publication293>
 21985 <http://www.Department14.University0.edu/Publication348>
 6438 <http://www.Department17.University0.edu/GraduateStudent16>
-44 <http://semantics.crl.ibm.com/univ-bench-dl.owl#FullProfessor>
+72 <http://semantics.crl.ibm.com/univ-bench-dl.owl#FullProfessor>
 23042 <http://www.Department4.University0.edu/UndergraduateStudent346>
 7772 <http://www.Department16.University0.edu/Publication222>
 2974 <http://www.Department12.University0.edu/UndergraduateStudent406>
@@ -18846,7 +18846,7 @@
 5419 <http://www.Department16.University0.edu/Course56>
 39776 "GraduateStudent62@Department5.University0.edu/GraduateStudent62"
 3462 "UndergraduateStudent495.second"
-118 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingFan>
+25 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingFan>
 21977 <http://www.Department14.University0.edu/Publication340>
 20132 "AssociateProfessor6@Department14.University0.edu/AssociateProfessor6"
 37691 "UndergraduateStudent289@Department18.University0.edu/UndergraduateStudent289"
@@ -18940,7 +18940,7 @@
 24774 <http://www.Department6.University0.edu/other_staff1>
 27808 <http://www.Department10.University0.edu/GraduateCourse19>
 25787 "AssistantProfessor4@Department8.University0.edu/AssistantProfessor4"
-193 <http://semantics.crl.ibm.com/univ-bench-dl.owl#AcademicSubject>
+134 <http://semantics.crl.ibm.com/univ-bench-dl.owl#AcademicSubject>
 38395 <http://www.Department18.University0.edu/Publication182>
 19707 <http://www.Department12.University0.edu/Publication208>
 26619 <http://www.Department8.University0.edu/UndergraduateStudent350>
@@ -18967,7 +18967,7 @@
 34666 "UndergraduateStudent421@Department17.University0.edu/UndergraduateStudent421"
 31766 <http://www.Department18.University0.edu/UndergraduateStudent318>
 38394 <http://www.Department18.University0.edu/Publication181>
-129 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballFan>
+19 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballFan>
 8651 <http://www.Department8.University0.edu/UndergraduateStudent351>
 19706 <http://www.Department12.University0.edu/Publication207>
 13795 "GraduateStudent59@Department0.University0.edu/GraduateStudent59"
@@ -19277,7 +19277,7 @@
 13311 <http://www.Department0.University0.edu/UndergraduateStudent316>
 15073 "UndergraduateStudent124@Department7.University0.edu/UndergraduateStudent124"
 7786 <http://www.Department16.University0.edu/Publication236>
-15 <http://semantics.crl.ibm.com/univ-bench-dl.owl#TennisClass>
+101 <http://semantics.crl.ibm.com/univ-bench-dl.owl#TennisClass>
 8505 "woman_student76@College0.University0.edu"
 25238 <http://www.Department6.University0.edu/Publication23>
 3466 "UndergraduateStudent496.second"
@@ -20097,10 +20097,10 @@
 19373 <http://www.Department12.University0.edu/GraduateStudent159>
 7049 <http://www.Department8.University0.edu/UndergraduateStudent117>
 19940 <http://www.Department12.University0.edu/Publication441>
-71 <http://semantics.crl.ibm.com/univ-bench-dl.owl#HumanitiesAndSocial>
+119 <http://semantics.crl.ibm.com/univ-bench-dl.owl#HumanitiesAndSocial>
 5768 <http://www.Department16.University0.edu/UndergraduateStudent70>
 15197 "UndergraduateStudent164@Department7.University0.edu/UndergraduateStudent164"
-99 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDegreeFrom>
+5 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDegreeFrom>
 23095 "UndergraduateStudent370@Department4.University0.edu/UndergraduateStudent370"
 7815 <http://www.Department16.University0.edu/Publication265>
 2101 <http://www.Department16.University0.edu/Course31>
@@ -20152,7 +20152,7 @@
 19941 <http://www.Department12.University0.edu/Publication442>
 26113 <http://www.Department8.University0.edu/UndergraduateStudent116>
 38380 <http://www.Department18.University0.edu/Publication167>
-42 <http://semantics.crl.ibm.com/univ-bench-dl.owl#PostDoc>
+106 <http://semantics.crl.ibm.com/univ-bench-dl.owl#PostDoc>
 20616 <http://www.Department6.University0.edu/UndergraduateStudent213>
 11090 "UndergraduateStudent445@Department3.University0.edu/UndergraduateStudent445"
 33458 <http://www.Department11.University0.edu/Publication33>
@@ -20505,7 +20505,7 @@
 22913 <http://www.Department4.University0.edu/GraduateStudent61>
 3514 <http://www.Department6.University0.edu/UndergraduateStudent24>
 41358 <http://www.Department2.University0.edu/Publication84>
-181 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Swimming>
+198 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Swimming>
 17973 "UndergraduateStudent226@Department12.University0.edu/UndergraduateStudent226"
 19181 <http://www.Department8.University0.edu/GraduateCourse32>
 1948 <http://www.Department16.University0.edu/UndergraduateStudent66>
@@ -20663,7 +20663,7 @@
 6500 <http://www.Department6.University0.edu/UndergraduateStudent21>
 2691 "UndergraduateStudent350.first"
 36654 "GraduateStudent168@Department13.University0.edu/GraduateStudent168"
-57 <http://semantics.crl.ibm.com/univ-bench-dl.owl#PhysicsClass>
+78 <http://semantics.crl.ibm.com/univ-bench-dl.owl#PhysicsClass>
 19949 <http://www.Department12.University0.edu/Publication450>
 10359 "UndergraduateStudent201@Department3.University0.edu/UndergraduateStudent201"
 4878 <http://www.Department1.University0.edu/Publication285>
@@ -20702,7 +20702,7 @@
 31272 <http://www.Department9.University0.edu/UndergraduateStudent370>
 25499 <http://www.Department6.University0.edu/Publication284>
 40429 "SystemsStaff9@Department5.University0.edu/SystemsStaff9"
-58 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SupportingStaff>
+76 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SupportingStaff>
 40830 "UndergraduateStudent226@Department2.University0.edu/UndergraduateStudent226"
 14080 <http://www.Department0.University0.edu/Publication125>
 15859 <http://www.Department7.University0.edu/UndergraduateStudent409>
@@ -21073,7 +21073,7 @@
 6091 <http://www.Department16.University0.edu/UndergraduateStudent157>
 26490 "UndergraduateStudent283@Department8.University0.edu/UndergraduateStudent283"
 31335 <http://www.Department9.University0.edu/UndergraduateStudent104>
-33 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Electrical_EngineeringClass>
+86 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Electrical_EngineeringClass>
 34169 <http://www.Department17.University0.edu/GraduateStudent53>
 40958 "UndergraduateStudent331@Department2.University0.edu/UndergraduateStudent331"
 16006 "UndergraduateStudent463@Department7.University0.edu/UndergraduateStudent463"
@@ -21148,7 +21148,7 @@
 16541 <http://www.Department10.University0.edu/GraduateCourse50>
 9640 <http://www.Department17.University0.edu/Course51>
 6183 <http://www.Department6.University0.edu/UndergraduateStudent273>
-11 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Course>
+82 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Course>
 9721 "UndergraduateStudent31@Department3.University0.edu/UndergraduateStudent31"
 20786 <http://www.Department14.University0.edu/UndergraduateStudent202>
 39954 <http://www.Department5.University0.edu/Publication32>
@@ -21180,7 +21180,7 @@
 33873 "http://www.Department17.University0.edu/Research29"
 38535 <http://www.Department18.University0.edu/Publication322>
 37256 <http://www.Department18.University0.edu/UndergraduateStudent14>
-198 <http://semantics.crl.ibm.com/univ-bench-dl.owl#researchProject>
+136 <http://semantics.crl.ibm.com/univ-bench-dl.owl#researchProject>
 25506 <http://www.Department6.University0.edu/Publication291>
 15101 <http://www.Department11.University0.edu/UndergraduateStudent350>
 39956 <http://www.Department5.University0.edu/Publication34>
@@ -21280,7 +21280,7 @@
 4295 "GraduateStudent121.second"
 28506 "UndergraduateStudent314@Department10.University0.edu/UndergraduateStudent314"
 35496 "SystemsStaff15@Department17.University0.edu/SystemsStaff15"
-121 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ScienceStudent>
+32 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ScienceStudent>
 13165 "UndergraduateStudent258@Department0.University0.edu/UndergraduateStudent258"
 28764 "UndergraduateStudent472@Department10.University0.edu/UndergraduateStudent472"
 23573 <http://www.Department4.University0.edu/Publication131>
@@ -21466,7 +21466,7 @@
 2043 <http://www.Department1.University0.edu/GraduateStudent62>
 28299 <http://www.Department17.University0.edu/GraduateStudent70>
 27427 <http://www.Department8.University0.edu/Publication156>
-90 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasSameHomeTownWith>
+40 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasSameHomeTownWith>
 29382 <http://www.Department10.University0.edu/Publication305>
 6276 <http://www.Department13.University0.edu/GraduateCourse14>
 23579 <http://www.Department4.University0.edu/Publication137>
@@ -21580,7 +21580,7 @@
 10261 <http://www.Department3.University0.edu/UndergraduateStudent171>
 2162 "UndergraduateStudent255@Department1.University0.edu/UndergraduateStudent255"
 6095 <http://www.Department16.University0.edu/UndergraduateStudent170>
-200 <http://semantics.crl.ibm.com/univ-bench-dl.owl#publicationAuthor>
+133 <http://semantics.crl.ibm.com/univ-bench-dl.owl#publicationAuthor>
 13474 <http://www.Department9.University0.edu/GraduateCourse31>
 41548 <http://www.Department2.University0.edu/Publication274>
 23987 <http://www.Department6.University0.edu/GraduateCourse54>
@@ -21665,7 +21665,7 @@
 17402 "UndergraduateStudent39@Department12.University0.edu/UndergraduateStudent39"
 15993 <http://www.Department6.University0.edu/UndergraduateStudent280>
 1984 <http://www.Department1.University0.edu/GraduateStudent57>
-9 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SystemsStaff>
+63 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SystemsStaff>
 12217 <http://www.Department0.University0.edu/Course5>
 34929 <http://www.Department17.University0.edu/GraduateStudent68>
 22983 "UndergraduateStudent311@Department4.University0.edu/UndergraduateStudent311"
@@ -21762,7 +21762,7 @@
 31217 "UndergraduateStudent40@Department9.University0.edu/UndergraduateStudent40"
 1800 "UndergraduateStudent193.second"
 1628 "UndergraduateStudent164@Department1.University0.edu/UndergraduateStudent164"
-88 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Research>
+68 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Research>
 5477 <http://www.Department16.University0.edu/UndergraduateStudent166>
 21507 <http://www.Department9.University0.edu/UndergraduateStudent357>
 4257 "GraduateStudent114.first"
@@ -22081,7 +22081,7 @@
 1069 "UndergraduateStudent75@Department1.University0.edu/UndergraduateStudent75"
 27417 <http://www.Department8.University0.edu/Publication146>
 29396 <http://www.Department10.University0.edu/Publication319>
-127 <http://semantics.crl.ibm.com/univ-bench-dl.owl#takesCourse>
+17 <http://semantics.crl.ibm.com/univ-bench-dl.owl#takesCourse>
 35598 <http://www.Department13.University0.edu/GraduateCourse48>
 891 "UndergraduateStudent47@Department1.University0.edu/UndergraduateStudent47"
 4083 "GraduateStudent79.second"
@@ -22216,7 +22216,7 @@
 28754 "UndergraduateStudent464@Department10.University0.edu/UndergraduateStudent464"
 28580 "UndergraduateStudent358@Department10.University0.edu/UndergraduateStudent358"
 16215 "UndergraduateStudent550.second"
-130 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isFriendOf>
+42 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isFriendOf>
 19541 <http://www.Department12.University0.edu/Publication42>
 23610 <http://www.Department4.University0.edu/Publication168>
 32640 <http://www.Department11.University0.edu/UndergraduateStudent325>
@@ -22280,7 +22280,7 @@
 38519 <http://www.Department18.University0.edu/Publication306>
 38929 "UndergraduateStudent65@Department5.University0.edu/UndergraduateStudent65"
 28207 "UndergraduateStudent150@Department10.University0.edu/UndergraduateStudent150"
-123 <http://semantics.crl.ibm.com/univ-bench-dl.owl#PeopleWithHobby>
+29 <http://semantics.crl.ibm.com/univ-bench-dl.owl#PeopleWithHobby>
 31901 "GraduateStudent31@Department9.University0.edu/GraduateStudent31"
 13611 <http://www.Department14.University0.edu/UndergraduateStudent220>
 13182 <http://www.Department17.University0.edu/GraduateStudent31>
@@ -22346,7 +22346,7 @@
 31176 <http://www.Department17.University0.edu/GraduateStudent30>
 3964 <http://www.Department9.University0.edu/UndergraduateStudent347>
 20707 <http://www.Department4.University0.edu/other_staff5>
-92 <http://semantics.crl.ibm.com/univ-bench-dl.owl#like>
+13 <http://semantics.crl.ibm.com/univ-bench-dl.owl#like>
 555 <http://www.Department7.University0.edu/AssociateProfessor5>
 22774 <http://www.Department4.University0.edu/other_staff1>
 40920 "UndergraduateStudent300@Department2.University0.edu/UndergraduateStudent300"
@@ -22356,7 +22356,7 @@
 20607 "UndergraduateStudent130@Department14.University0.edu/UndergraduateStudent130"
 32661 <http://www.Department11.University0.edu/UndergraduateStudent330>
 23014 "UndergraduateStudent330@Department4.University0.edu/UndergraduateStudent330"
-27 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Mechanical_EngineeringClass>
+124 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Mechanical_EngineeringClass>
 21964 <http://www.Department14.University0.edu/Publication327>
 3853 "GraduateStudent33.second"
 20836 <http://www.Department14.University0.edu/UndergraduateStudent224>
@@ -22671,7 +22671,7 @@
 1953 <http://www.Department0.University0.edu/UndergraduateStudent281>
 19556 <http://www.Department12.University0.edu/Publication57>
 1381 <http://www.Department2.University0.edu/GraduateStudent100>
-2 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Man>
+44 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Man>
 27661 <http://www.Department8.University0.edu/Publication390>
 13721 <http://www.Department6.University0.edu/GraduateStudent103>
 4036 <http://www.Department13.University0.edu/UndergraduateStudent283>
@@ -22703,7 +22703,7 @@
 39612 "UndergraduateStudent543@Department5.University0.edu/UndergraduateStudent543"
 960 <http://www.Department1.University0.edu/UndergraduateStudent222>
 12768 <http://www.Department0.University0.edu/UndergraduateStudent284>
-28 <http://semantics.crl.ibm.com/univ-bench-dl.owl#StatisticsClass>
+59 <http://semantics.crl.ibm.com/univ-bench-dl.owl#StatisticsClass>
 14306 <http://www.Department0.University0.edu/Publication351>
 19060 "UndergraduateStudent638.second"
 11227 <http://www.Department12.University0.edu/UndergraduateStudent501>
@@ -22728,7 +22728,7 @@
 39314 "UndergraduateStudent320@Department5.University0.edu/UndergraduateStudent320"
 1820 <http://www.Department1.University0.edu/UndergraduateStudent223>
 12727 <http://www.Department0.University0.edu/UndergraduateStudent283>
-86 <http://semantics.crl.ibm.com/univ-bench-dl.owl#FineArts>
+83 <http://semantics.crl.ibm.com/univ-bench-dl.owl#FineArts>
 14307 <http://www.Department0.University0.edu/Publication352>
 9090 "woman_student203.last"
 36111 <http://www.Department13.University0.edu/UndergraduateStudent285>
@@ -22819,7 +22819,7 @@
 35586 <http://www.Department13.University0.edu/GraduateCourse38>
 19549 <http://www.Department12.University0.edu/Publication50>
 26015 "UndergraduateStudent73@Department8.University0.edu/UndergraduateStudent73"
-114 <http://semantics.crl.ibm.com/univ-bench-dl.owl#NonScienceStudent>
+22 <http://semantics.crl.ibm.com/univ-bench-dl.owl#NonScienceStudent>
 23952 <http://www.Department6.University0.edu/GraduateCourse33>
 27402 <http://www.Department8.University0.edu/Publication131>
 31119 <http://www.Department9.University0.edu/GraduateCourse50>
@@ -22877,7 +22877,7 @@
 6553 <http://www.Department11.University0.edu/UndergraduateStudent315>
 9994 <http://www.Department3.University0.edu/UndergraduateStudent197>
 3901 <http://www.Department1.University0.edu/GraduateStudent43>
-50 <http://semantics.crl.ibm.com/univ-bench-dl.owl#UnofficialPublication>
+128 <http://semantics.crl.ibm.com/univ-bench-dl.owl#UnofficialPublication>
 23087 <http://www.Department17.University0.edu/Course38>
 4422 "GraduateStudent148.second"
 32989 "UndergraduateStudent253@Department11.University0.edu/UndergraduateStudent253"
@@ -23153,7 +23153,7 @@
 6398 <http://www.Department8.University0.edu/Course33>
 33224 "UndergraduateStudent417@Department11.University0.edu/UndergraduateStudent417"
 1035 <http://www.Department1.University0.edu/UndergraduateStudent219>
-68 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Media_Arts_And_ciencesClass>
+108 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Media_Arts_And_ciencesClass>
 14313 <http://www.Department0.University0.edu/Publication358>
 13213 "UndergraduateStudent277@Department0.University0.edu/UndergraduateStudent277"
 8520 <http://www.Department14.University0.edu/UndergraduateStudent218>
@@ -23253,7 +23253,7 @@
 9282 "woman_student244.first"
 21054 "UndergraduateStudent324@Department14.University0.edu/UndergraduateStudent324"
 39818 "GraduateStudent97@Department5.University0.edu/GraduateStudent97"
-190 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization>
+131 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization>
 9750 <http://www.Department3.University0.edu/UndergraduateStudent38>
 14298 <http://www.Department0.University0.edu/Publication343>
 757 <http://www.Department11.University0.edu/UndergraduateStudent391>
@@ -23342,7 +23342,7 @@
 33722 <http://www.Department11.University0.edu/Publication297>
 6941 <http://www.Department8.University0.edu/Course28>
 9733 <http://www.Department3.University0.edu/UndergraduateStudent34>
-204 <http://semantics.crl.ibm.com/univ-bench-dl.owl#tenured>
+147 <http://semantics.crl.ibm.com/univ-bench-dl.owl#tenured>
 2747 <http://www.Department6.University0.edu/GraduateCourse24>
 32343 <http://www.Department9.University0.edu/Publication302>
 2044 <http://www.Department1.University0.edu/UndergraduateStudent235>
@@ -23478,7 +23478,7 @@
 33724 <http://www.Department11.University0.edu/Publication299>
 5909 <http://www.Department16.University0.edu/UndergraduateStudent380>
 25462 <http://www.Department6.University0.edu/Publication247>
-23 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ConferencePaper>
+56 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ConferencePaper>
 13064 <http://www.Department0.University0.edu/UndergraduateStudent277>
 8563 "woman_student86.last"
 25154 "GraduateStudent115@Department6.University0.edu/GraduateStudent115"
@@ -23548,10 +23548,10 @@
 11657 <http://www.Department3.University0.edu/SameIndividual0>
 427 <http://www.Department1.University0.edu/Course36>
 24319 "UndergraduateStudent126@Department6.University0.edu/UndergraduateStudent126"
-26 <http://semantics.crl.ibm.com/univ-bench-dl.owl#MusicsClass>
+111 <http://semantics.crl.ibm.com/univ-bench-dl.owl#MusicsClass>
 14376 <http://www.Department18.University0.edu/UndergraduateStudent50>
 22148 "other_staff8@Department14.University0.edu/other_staff8"
-169 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Aeronautical_Engineering>
+167 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Aeronautical_Engineering>
 11513 "GraduateStudent98@Department3.University0.edu/GraduateStudent98"
 2611 <http://www.Department1.University0.edu/UndergraduateStudent494>
 27130 "GraduateStudent79@Department8.University0.edu/GraduateStudent79"
@@ -24071,7 +24071,7 @@
 38579 <http://www.Department18.University0.edu/Publication366>
 30103 "UndergraduateStudent241@Department15.University0.edu/UndergraduateStudent241"
 30572 <http://www.Department15.University0.edu/Publication10>
-159 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Medieval_Arts>
+150 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Medieval_Arts>
 15930 <http://www.Department8.University0.edu/Course15>
 29426 <http://www.Department10.University0.edu/Publication349>
 6171 "UndergraduateStudent180@Department16.University0.edu/UndergraduateStudent180"
@@ -24222,7 +24222,7 @@
 9172 "woman_student221.first"
 343 <http://www.Department1.University0.edu/Course21>
 16568 <http://www.Department17.University0.edu/UndergraduateStudent539>
-128 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Person>
+21 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Person>
 35643 <http://www.Department13.University0.edu/GraduateStudent155>
 9752 <http://www.Department11.University0.edu/Course49>
 23794 <http://www.Department4.University0.edu/Publication352>
@@ -24537,7 +24537,7 @@
 36271 "UndergraduateStudent401@Department13.University0.edu/UndergraduateStudent401"
 4033 "GraduateStudent70@Department1.University0.edu/GraduateStudent70"
 31755 <http://www.Department13.University0.edu/GraduateStudent72>
-148 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Kickboxing>
+159 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Kickboxing>
 498 <http://www.Department1.University0.edu/VisitingProfessor0>
 4088 "GraduateStudent80.first"
 2999 "UndergraduateStudent404.first"
@@ -25131,7 +25131,7 @@
 31086 <http://www.Department9.University0.edu/GraduateCourse25>
 8014 <http://www.Department13.University0.edu/ClericalStaff1>
 36815 <http://www.Department13.University0.edu/Publication156>
-192 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Publication>
+139 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Publication>
 31307 "UndergraduateStudent90@Department9.University0.edu/UndergraduateStudent90"
 19579 <http://www.Department12.University0.edu/Publication80>
 10655 <http://www.Department17.University0.edu/GraduateStudent77>
@@ -25356,7 +25356,7 @@
 4602 <http://www.Department1.University0.edu/Publication10>
 41481 <http://www.Department2.University0.edu/Publication207>
 9985 <http://www.Department6.University0.edu/GraduateStudent91>
-13 <http://semantics.crl.ibm.com/univ-bench-dl.owl#GeosciencesClass>
+90 <http://semantics.crl.ibm.com/univ-bench-dl.owl#GeosciencesClass>
 5118 <http://www.Department11.University0.edu/SystemsStaff12>
 37232 <http://www.Department18.University0.edu/UndergraduateStudent1>
 9801 <http://www.Department3.University0.edu/UndergraduateStudent50>
@@ -25397,7 +25397,7 @@
 17071 <http://www.Department7.University0.edu/other_staff10>
 37237 <http://www.Department18.University0.edu/UndergraduateStudent4>
 8760 <http://www.Department6.University0.edu/GraduateStudent93>
-62 <http://semantics.crl.ibm.com/univ-bench-dl.owl#PhilosophyClass>
+51 <http://semantics.crl.ibm.com/univ-bench-dl.owl#PhilosophyClass>
 37815 "UndergraduateStudent380@Department18.University0.edu/UndergraduateStudent380"
 4285 <http://www.Department11.University0.edu/SystemsStaff10>
 3445 "UndergraduateStudent492.first"
@@ -25452,7 +25452,7 @@
 29180 <http://www.Department10.University0.edu/Publication103>
 24223 "UndergraduateStudent82@Department6.University0.edu/UndergraduateStudent82"
 27445 <http://www.Department8.University0.edu/Publication174>
-52 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ChemistryClass>
+94 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ChemistryClass>
 8380 "woman_student50.first"
 14475 <http://www.Department7.University0.edu/Course17>
 37709 "UndergraduateStudent304@Department18.University0.edu/UndergraduateStudent304"
@@ -25774,7 +25774,7 @@
 19083 <http://www.Department13.University0.edu/UndergraduateStudent244>
 39070 <http://www.Department5.University0.edu/UndergraduateStudent512>
 39716 "GraduateStudent12@Department5.University0.edu/GraduateStudent12"
-51 <http://semantics.crl.ibm.com/univ-bench-dl.owl#EconomicsClass>
+110 <http://semantics.crl.ibm.com/univ-bench-dl.owl#EconomicsClass>
 9646 <http://www.Department0.University0.edu/UndergraduateStudent245>
 18548 "UndergraduateStudent468@Department12.University0.edu/UndergraduateStudent468"
 25494 <http://www.Department6.University0.edu/Publication279>
@@ -26426,7 +26426,7 @@
 2538 "UndergraduateStudent321.second"
 36785 <http://www.Department13.University0.edu/Publication126>
 6683 <http://www.Department14.University0.edu/UndergraduateStudent288>
-97 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isMemberOf>
+7 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isMemberOf>
 5574 "UndergraduateStudent26@Department16.University0.edu/UndergraduateStudent26"
 3344 "UndergraduateStudent473@Department1.University0.edu/UndergraduateStudent473"
 36457 <http://www.Department13.University0.edu/GraduateStudent15>
@@ -26610,7 +26610,7 @@
 8799 <http://www.Department7.University0.edu/UndergraduateStudent483>
 22539 <http://www.Department2.University0.edu/Course17>
 27173 <http://www.Department10.University0.edu/UndergraduateStudent50>
-156 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Philosophy>
+153 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Philosophy>
 7554 <http://www.Department16.University0.edu/Publication4>
 17707 "UndergraduateStudent137@Department12.University0.edu/UndergraduateStudent137"
 29457 <http://www.Department10.University0.edu/Publication380>
@@ -26663,7 +26663,7 @@
 24609 "UndergraduateStudent262@Department6.University0.edu/UndergraduateStudent262"
 28147 <http://www.Department10.University0.edu/UndergraduateStudent120>
 12198 "FullProfessor1@Department0.University0.edu/FullProfessor1"
-207 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ComplementOfScience>
+132 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ComplementOfScience>
 2688 <http://www.Department9.University0.edu/Course0>
 2654 <http://www.Department7.University0.edu/UndergraduateStudent481>
 25081 <http://www.Department6.University0.edu/GraduateStudent71>
@@ -26747,7 +26747,7 @@
 20790 "UndergraduateStudent203@Department14.University0.edu/UndergraduateStudent203"
 33379 "GraduateStudent107@Department11.University0.edu/GraduateStudent107"
 28092 <http://www.Department10.University0.edu/UndergraduateStudent389>
-196 <http://semantics.crl.ibm.com/univ-bench-dl.owl#listedCourse>
+137 <http://semantics.crl.ibm.com/univ-bench-dl.owl#listedCourse>
 12528 "UndergraduateStudent52@Department0.University0.edu/UndergraduateStudent52"
 28617 "UndergraduateStudent379@Department10.University0.edu/UndergraduateStudent379"
 34625 <http://www.Department17.University0.edu/UndergraduateStudent389>
@@ -26784,7 +26784,7 @@
 29200 <http://www.Department10.University0.edu/Publication123>
 36030 "UndergraduateStudent226@Department13.University0.edu/UndergraduateStudent226"
 35188 <http://www.Department17.University0.edu/Publication152>
-82 <http://semantics.crl.ibm.com/univ-bench-dl.owl#LeisureStudent>
+115 <http://semantics.crl.ibm.com/univ-bench-dl.owl#LeisureStudent>
 6515 <http://www.Department3.University0.edu/UndergraduateStudent336>
 19444 "GraduateStudent180@Department12.University0.edu/GraduateStudent180"
 36175 "UndergraduateStudent332@Department13.University0.edu/UndergraduateStudent332"
@@ -26814,7 +26814,7 @@
 14892 "UndergraduateStudent71@Department7.University0.edu/UndergraduateStudent71"
 35186 <http://www.Department17.University0.edu/Publication150>
 5985 <http://www.Department3.University0.edu/UndergraduateStudent333>
-74 <http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor>
+126 <http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor>
 11610 "GraduateStudent135@Department3.University0.edu/GraduateStudent135"
 38854 "UndergraduateStudent23@Department5.University0.edu/UndergraduateStudent23"
 32385 <http://www.Department9.University0.edu/Publication344>
@@ -26825,7 +26825,7 @@
 20860 "UndergraduateStudent233@Department14.University0.edu/UndergraduateStudent233"
 6704 <http://www.Department17.University0.edu/UndergraduateStudent122>
 27196 "GraduateStudent120@Department8.University0.edu/GraduateStudent120"
-126 <http://semantics.crl.ibm.com/univ-bench-dl.owl#GraduateStudent>
+16 <http://semantics.crl.ibm.com/univ-bench-dl.owl#GraduateStudent>
 3617 <http://www.Department5.University0.edu/GraduateStudent85>
 25868 "UndergraduateStudent15@Department8.University0.edu/UndergraduateStudent15"
 36582 <http://www.Department13.University0.edu/GraduateStudent112>
@@ -26859,7 +26859,7 @@
 20386 "UndergraduateStudent45@Department14.University0.edu/UndergraduateStudent45"
 32399 <http://www.Department9.University0.edu/Publication358>
 5134 <http://www.Department10.University0.edu/FullProfessor2>
-7 <http://semantics.crl.ibm.com/univ-bench-dl.owl#worksFor>
+6 <http://semantics.crl.ibm.com/univ-bench-dl.owl#worksFor>
 28304 "UndergraduateStudent199@Department10.University0.edu/UndergraduateStudent199"
 31367 <http://www.Department9.University0.edu/UndergraduateStudent189>
 38167 "GraduateStudent127@Department18.University0.edu/GraduateStudent127"
@@ -27013,7 +27013,7 @@
 34779 "UndergraduateStudent499@Department17.University0.edu/UndergraduateStudent499"
 22911 <http://www.Department10.University0.edu/UndergraduateStudent43>
 31084 "AssociateProfessor6@Department9.University0.edu/AssociateProfessor6"
-55 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Materials_ScienceClass>
+85 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Materials_ScienceClass>
 28318 "UndergraduateStudent207@Department10.University0.edu/UndergraduateStudent207"
 14951 <http://www.Department7.University0.edu/UndergraduateStudent218>
 39833 "GraduateStudent109@Department5.University0.edu/GraduateStudent109"
@@ -27039,7 +27039,7 @@
 9451 <http://www.Department3.University0.edu/GraduateCourse21>
 4903 <http://www.Department1.University0.edu/Publication310>
 12864 "UndergraduateStudent152@Department0.University0.edu/UndergraduateStudent152"
-199 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isAffiliatedOrganizationOf>
+140 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isAffiliatedOrganizationOf>
 30617 <http://www.Department15.University0.edu/Publication55>
 16411 "GraduateStudent63@Department7.University0.edu/GraduateStudent63"
 26700 "UndergraduateStudent400@Department8.University0.edu/UndergraduateStudent400"
@@ -27185,7 +27185,7 @@
 15323 <http://www.Department7.University0.edu/UndergraduateStudent210>
 36392 <http://www.Department13.University0.edu/GraduateStudent38>
 3206 "UndergraduateStudent447@Department1.University0.edu/UndergraduateStudent447"
-191 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Work>
+148 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Work>
 35204 <http://www.Department17.University0.edu/Publication168>
 30831 <http://www.Department15.University0.edu/Publication269>
 9388 <http://www.Department18.University0.edu/Lecturer2>
@@ -27575,7 +27575,7 @@
 32367 <http://www.Department9.University0.edu/Publication326>
 35495 "SystemsStaff14@Department17.University0.edu/SystemsStaff14"
 6636 <http://www.Department10.University0.edu/UndergraduateStudent149>
-83 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ReligionsClass>
+89 <http://semantics.crl.ibm.com/univ-bench-dl.owl#ReligionsClass>
 34162 <http://www.Department17.University0.edu/UndergraduateStudent105>
 17743 <http://www.Department15.University0.edu/UndergraduateStudent15>
 6085 "UndergraduateStudent155@Department16.University0.edu/UndergraduateStudent155"
@@ -27633,7 +27633,7 @@
 10651 "UndergraduateStudent292@Department3.University0.edu/UndergraduateStudent292"
 2252 <http://www.Department0.University0.edu/GraduateCourse61>
 14144 <http://www.Department0.University0.edu/Publication189>
-93 <http://semantics.crl.ibm.com/univ-bench-dl.owl#love>
+43 <http://semantics.crl.ibm.com/univ-bench-dl.owl#love>
 37416 <http://www.Department5.University0.edu/UndergraduateStudent541>
 36766 <http://www.Department13.University0.edu/Publication107>
 39568 "UndergraduateStudent505@Department5.University0.edu/UndergraduateStudent505"
@@ -28139,7 +28139,7 @@
 1610 "UndergraduateStudent161@Department1.University0.edu/UndergraduateStudent161"
 32377 <http://www.Department9.University0.edu/Publication336>
 39688 "UndergraduateStudent603@Department5.University0.edu/UndergraduateStudent603"
-166 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Chemical_Engineering>
+192 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Chemical_Engineering>
 10792 <http://www.Department2.University0.edu/UndergraduateStudent184>
 10031 <http://www.Department3.University0.edu/UndergraduateStudent108>
 5319 <http://www.Department16.University0.edu/AssociateProfessor6>
@@ -28442,7 +28442,7 @@
 24904 "UndergraduateStudent425@Department6.University0.edu/UndergraduateStudent425"
 28164 <http://www.Department10.University0.edu/UndergraduateStudent391>
 33635 <http://www.Department11.University0.edu/Publication210>
-162 <http://semantics.crl.ibm.com/univ-bench-dl.owl#PC_Game>
+186 <http://semantics.crl.ibm.com/univ-bench-dl.owl#PC_Game>
 36781 <http://www.Department13.University0.edu/Publication122>
 28636 <http://www.Department10.University0.edu/UndergraduateStudent392>
 30565 <http://www.Department15.University0.edu/Publication3>
@@ -28519,7 +28519,7 @@
 900 "UndergraduateStudent48@Department1.University0.edu/UndergraduateStudent48"
 34041 <http://www.Department17.University0.edu/UndergraduateStudent370>
 3488 "UndergraduateStudent501.first"
-139 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Mathematics>
+155 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Mathematics>
 30848 <http://www.Department15.University0.edu/Publication286>
 24870 <http://www.Department13.University0.edu/UndergraduateStudent468>
 23061 <http://www.Department13.University0.edu/UndergraduateStudent202>
@@ -28628,7 +28628,7 @@
 35220 <http://www.Department17.University0.edu/Publication184>
 11207 <http://www.Department18.University0.edu/GraduateStudent97>
 27125 "GraduateStudent74@Department8.University0.edu/GraduateStudent74"
-149 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Classic_Music>
+185 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Classic_Music>
 10000 <http://www.Department3.University0.edu/UndergraduateStudent100>
 26155 "UndergraduateStudent135@Department8.University0.edu/UndergraduateStudent135"
 39075 <http://www.Department5.University0.edu/GraduateStudent70>
@@ -29014,7 +29014,7 @@
 37006 <http://www.Department13.University0.edu/Publication347>
 39191 "UndergraduateStudent234@Department5.University0.edu/UndergraduateStudent234"
 36114 "UndergraduateStudent287@Department13.University0.edu/UndergraduateStudent287"
-186 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Linguistics>
+206 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Linguistics>
 40672 "UndergraduateStudent104@Department2.University0.edu/UndergraduateStudent104"
 2771 "UndergraduateStudent363.first"
 30468 "GraduateStudent91@Department15.University0.edu/GraduateStudent91"
@@ -29132,7 +29132,7 @@
 33625 <http://www.Department11.University0.edu/Publication200>
 30646 <http://www.Department15.University0.edu/Publication84>
 30793 <http://www.Department15.University0.edu/Publication231>
-163 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Asian_Arts>
+191 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Asian_Arts>
 27020 "GraduateStudent8@Department8.University0.edu/GraduateStudent8"
 4671 <http://www.Department1.University0.edu/Publication78>
 20682 "UndergraduateStudent161@Department14.University0.edu/UndergraduateStudent161"
@@ -29169,7 +29169,7 @@
 24164 "UndergraduateStudent59@Department6.University0.edu/UndergraduateStudent59"
 35410 <http://www.Department17.University0.edu/Publication374>
 40997 "UndergraduateStudent362@Department2.University0.edu/UndergraduateStudent362"
-76 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Manual>
+50 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Manual>
 37012 <http://www.Department13.University0.edu/Publication353>
 6501 <http://www.Department13.University0.edu/Course6>
 30644 <http://www.Department15.University0.edu/Publication82>
@@ -29206,9 +29206,9 @@
 27204 <http://www.Department13.University0.edu/UndergraduateStudent30>
 30645 <http://www.Department15.University0.edu/Publication83>
 30794 <http://www.Department15.University0.edu/Publication232>
-140 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Performing_Arts>
+182 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Performing_Arts>
 37010 <http://www.Department13.University0.edu/Publication351>
-61 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Specification>
+105 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Specification>
 12600 <http://www.Department5.University0.edu/UndergraduateStudent571>
 15379 "UndergraduateStudent229@Department7.University0.edu/UndergraduateStudent229"
 26471 <http://www.Department10.University0.edu/UndergraduateStudent163>
@@ -29379,7 +29379,7 @@
 16832 <http://www.Department7.University0.edu/Publication241>
 880 <http://www.Department1.University0.edu/UndergraduateStudent408>
 36278 <http://www.Department2.University0.edu/Course53>
-56 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingClass>
+99 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingClass>
 24420 <http://www.Department15.University0.edu/UndergraduateStudent36>
 19517 <http://www.Department12.University0.edu/Publication18>
 30544 "GraduateStudent145@Department15.University0.edu/GraduateStudent145"
@@ -29578,7 +29578,7 @@
 5653 <http://www.Department3.University0.edu/UndergraduateStudent308>
 29716 <http://www.Department15.University0.edu/UndergraduateStudent27>
 37391 <http://www.Department18.University0.edu/GraduateStudent81>
-167 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Theatre_and_Dance>
+196 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Theatre_and_Dance>
 19538 <http://www.Department12.University0.edu/Publication39>
 23615 <http://www.Department4.University0.edu/Publication173>
 31115 "Lecturer0@Department9.University0.edu/Lecturer0"
@@ -29638,7 +29638,7 @@
 4675 <http://www.Department1.University0.edu/Publication82>
 14108 <http://www.Department0.University0.edu/Publication153>
 1447 "UndergraduateStudent134.second"
-205 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Schedule>
+146 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Schedule>
 13305 "UndergraduateStudent313@Department0.University0.edu/UndergraduateStudent313"
 15223 "UndergraduateStudent176@Department7.University0.edu/UndergraduateStudent176"
 30776 <http://www.Department15.University0.edu/Publication214>
@@ -29800,7 +29800,7 @@
 35657 <http://www.Department13.University0.edu/UndergraduateStudent18>
 37014 <http://www.Department13.University0.edu/Publication355>
 3173 "UndergraduateStudent442@Department1.University0.edu/UndergraduateStudent442"
-30 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Faculty>
+69 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Faculty>
 35837 <http://www.Department2.University0.edu/Course46>
 9395 <http://www.Department3.University0.edu/Course6>
 18034 <http://www.Department11.University0.edu/UndergraduateStudent300>
@@ -30235,9 +30235,9 @@
 36225 "UndergraduateStudent368@Department13.University0.edu/UndergraduateStudent368"
 34888 "GraduateStudent34@Department17.University0.edu/GraduateStudent34"
 3910 "GraduateStudent45.second"
-16 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Materical_Science_EngineeringClass>
+127 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Materical_Science_EngineeringClass>
 37216 <http://www.Department18.University0.edu/GraduateCourse52>
-201 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isAdvisedBy>
+135 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isAdvisedBy>
 38111 "GraduateStudent78@Department18.University0.edu/GraduateStudent78"
 40222 <http://www.Department5.University0.edu/Publication300>
 18385 <http://www.Department10.University0.edu/Course31>
@@ -30378,7 +30378,7 @@
 8697 <http://www.Department0.University0.edu/UndergraduateStudent49>
 4685 <http://www.Department1.University0.edu/Publication92>
 33154 "UndergraduateStudent365@Department11.University0.edu/UndergraduateStudent365"
-105 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom>
+10 <http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom>
 36983 <http://www.Department13.University0.edu/Publication324>
 9876 <http://www.Department17.University0.edu/UndergraduateStudent327>
 31388 <http://www.Department9.University0.edu/UndergraduateStudent134>
@@ -31015,7 +31015,7 @@
 12085 <http://www.Department3.University0.edu/Publication419>
 14088 <http://www.Department0.University0.edu/Publication133>
 20400 "UndergraduateStudent50@Department14.University0.edu/UndergraduateStudent50"
-113 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallFan>
+31 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallFan>
 37575 "UndergraduateStudent204@Department18.University0.edu/UndergraduateStudent204"
 10978 "UndergraduateStudent408@Department3.University0.edu/UndergraduateStudent408"
 566 <http://www.Department1.University0.edu/UndergraduateStudent1>
@@ -31229,7 +31229,7 @@
 12514 <http://www.Department9.University0.edu/Course42>
 12079 <http://www.Department3.University0.edu/Publication413>
 23308 "GraduateStudent55@Department4.University0.edu/GraduateStudent55"
-182 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Religions>
+202 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Religions>
 13637 <http://www.Department0.University0.edu/GraduateStudent34>
 31073 <http://www.Department9.University0.edu/UndergraduateStudent385>
 30552 "GraduateStudent151@Department15.University0.edu/GraduateStudent151"
@@ -31504,7 +31504,7 @@
 18615 "UndergraduateStudent500@Department12.University0.edu/UndergraduateStudent500"
 34233 "UndergraduateStudent142@Department17.University0.edu/UndergraduateStudent142"
 1992 <http://www.Department18.University0.edu/GraduateStudent53>
-85 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Book>
+100 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Book>
 16801 <http://www.Department7.University0.edu/Publication210>
 30187 "UndergraduateStudent289@Department15.University0.edu/UndergraduateStudent289"
 2807 <http://www.Department1.University0.edu/UndergraduateStudent439>
@@ -31529,7 +31529,7 @@
 31369 "UndergraduateStudent122@Department9.University0.edu/UndergraduateStudent122"
 34014 "UndergraduateStudent24@Department17.University0.edu/UndergraduateStudent24"
 21563 <http://www.Department9.University0.edu/AssociateProfessor10>
-29 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Performing_ArtsClass>
+109 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Performing_ArtsClass>
 23314 <http://www.Department10.University0.edu/UndergraduateStudent179>
 24820 "UndergraduateStudent373@Department6.University0.edu/UndergraduateStudent373"
 32155 <http://www.Department9.University0.edu/Publication114>
@@ -31603,7 +31603,7 @@
 24163 <http://www.Department13.University0.edu/AssociateProfessor10>
 35717 "UndergraduateStudent52@Department13.University0.edu/UndergraduateStudent52"
 14608 "Lecturer5@Department7.University0.edu/Lecturer5"
-147 <http://semantics.crl.ibm.com/univ-bench-dl.owl#History>
+173 <http://semantics.crl.ibm.com/univ-bench-dl.owl#History>
 13697 <http://www.Department0.University0.edu/GraduateStudent60>
 30096 "UndergraduateStudent237@Department15.University0.edu/UndergraduateStudent237"
 1546 "UndergraduateStudent150@Department1.University0.edu/UndergraduateStudent150"
@@ -31744,7 +31744,7 @@
 31709 "UndergraduateStudent331@Department9.University0.edu/UndergraduateStudent331"
 22223 <http://www.Department4.University0.edu/GraduateCourse29>
 26077 <http://www.Department8.University0.edu/UndergraduateStudent98>
-111 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingLover>
+38 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingLover>
 4589 "GraduateCourse66"
 11631 "GraduateStudent144@Department3.University0.edu/GraduateStudent144"
 38031 "GraduateStudent10@Department18.University0.edu/GraduateStudent10"
@@ -32137,7 +32137,7 @@
 36421 "UndergraduateStudent517@Department13.University0.edu/UndergraduateStudent517"
 27367 <http://www.Department8.University0.edu/Publication96>
 2991 <http://www.Department9.University0.edu/Course18>
-34 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Civil_EngineeringClass>
+88 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Civil_EngineeringClass>
 37945 <http://www.Department18.University0.edu/UndergraduateStudent480>
 11326 <http://www.Department15.University0.edu/UndergraduateStudent77>
 4978 <http://www.Department1.University0.edu/Publication385>
@@ -32183,7 +32183,7 @@
 27369 <http://www.Department8.University0.edu/Publication98>
 25224 <http://www.Department6.University0.edu/Publication9>
 37493 <http://www.Department2.University0.edu/GraduateStudent38>
-67 <http://semantics.crl.ibm.com/univ-bench-dl.owl#AssociateProfessor>
+81 <http://semantics.crl.ibm.com/univ-bench-dl.owl#AssociateProfessor>
 38066 <http://www.Department18.University0.edu/GraduateStudent41>
 11927 <http://www.Department3.University0.edu/Publication261>
 18691 "UndergraduateStudent529@Department12.University0.edu/UndergraduateStudent529"
@@ -32483,7 +32483,7 @@
 15375 <http://www.Department11.University0.edu/UndergraduateStudent57>
 11020 "UndergraduateStudent421@Department3.University0.edu/UndergraduateStudent421"
 36447 "GraduateStudent6@Department13.University0.edu/GraduateStudent6"
-131 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Musics>
+205 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Musics>
 12626 <http://www.Department5.University0.edu/GraduateStudent106>
 26046 <http://www.Department8.University0.edu/UndergraduateStudent86>
 22846 "UndergraduateStudent241@Department4.University0.edu/UndergraduateStudent241"
@@ -32673,7 +32673,7 @@
 13234 "UndergraduateStudent286@Department0.University0.edu/UndergraduateStudent286"
 22252 <http://www.Department4.University0.edu/GraduateCourse45>
 38911 <http://www.Department5.University0.edu/UndergraduateStudent102>
-152 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Geosciences>
+172 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Geosciences>
 32217 <http://www.Department9.University0.edu/Publication176>
 19490 "GraduateStudent190@Department12.University0.edu/GraduateStudent190"
 15151 <http://www.Department5.University0.edu/UndergraduateStudent103>
@@ -33910,7 +33910,7 @@
 39019 <http://www.Department5.University0.edu/UndergraduateStudent122>
 35010 "GraduateStudent130@Department17.University0.edu/GraduateStudent130"
 12726 <http://www.Department12.University0.edu/UndergraduateStudent152>
-84 <http://semantics.crl.ibm.com/univ-bench-dl.owl#JournalArticle>
+77 <http://semantics.crl.ibm.com/univ-bench-dl.owl#JournalArticle>
 39412 <http://www.Department5.University0.edu/UndergraduateStudent388>
 24312 <http://www.Department5.University0.edu/UndergraduateStudent389>
 29675 "UndergraduateStudent5@Department15.University0.edu/UndergraduateStudent5"
@@ -34109,7 +34109,7 @@
 32200 <http://www.Department9.University0.edu/Publication159>
 8412 "woman_student57.last"
 24071 "UndergraduateStudent19@Department6.University0.edu/UndergraduateStudent19"
-78 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Chair>
+30 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Chair>
 2973 <http://www.Department7.University0.edu/UndergraduateStudent273>
 27356 <http://www.Department8.University0.edu/Publication85>
 11938 <http://www.Department3.University0.edu/Publication272>
@@ -34207,7 +34207,7 @@
 27359 <http://www.Department8.University0.edu/Publication88>
 35940 "UndergraduateStudent176@Department13.University0.edu/UndergraduateStudent176"
 11941 <http://www.Department3.University0.edu/Publication275>
-73 <http://semantics.crl.ibm.com/univ-bench-dl.owl#HumanitiesClass>
+54 <http://semantics.crl.ibm.com/univ-bench-dl.owl#HumanitiesClass>
 39845 <http://www.Department5.University0.edu/GraduateStudent138>
 24276 <http://www.Department5.University0.edu/SystemsStaff1>
 26785 <http://www.Department5.University0.edu/UndergraduateStudent43>
@@ -34236,7 +34236,7 @@
 19249 <http://www.Department10.University0.edu/GraduateStudent96>
 9236 "woman_student233.first"
 10462 <http://www.Department2.University0.edu/UndergraduateStudent150>
-40 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Program>
+79 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Program>
 27325 <http://www.Department8.University0.edu/Publication54>
 28328 <http://www.Department10.University0.edu/UndergraduateStudent214>
 41181 "GraduateStudent64@Department2.University0.edu/GraduateStudent64"
@@ -34488,7 +34488,7 @@
 6870 <http://www.Department11.University0.edu/UndergraduateStudent24>
 34733 <http://www.Department2.University0.edu/GraduateStudent84>
 40419 <http://www.Department5.University0.edu/SystemsStaff2>
-59 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Biomedical_EngineeringClass>
+80 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Biomedical_EngineeringClass>
 6760 <http://www.Department10.University0.edu/GraduateStudent94>
 18302 <http://www.Department12.University0.edu/UndergraduateStudent357>
 22919 "UndergraduateStudent277@Department4.University0.edu/UndergraduateStudent277"
@@ -34510,7 +34510,7 @@
 4934 <http://www.Department1.University0.edu/Publication341>
 34319 <http://www.Department17.University0.edu/UndergraduateStudent292>
 11066 "UndergraduateStudent437@Department3.University0.edu/UndergraduateStudent437"
-133 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Painting>
+164 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Painting>
 18533 "UndergraduateStudent460@Department12.University0.edu/UndergraduateStudent460"
 19669 <http://www.Department12.University0.edu/Publication170>
 22378 <http://www.Department4.University0.edu/UndergraduateStudent34>
@@ -35309,7 +35309,7 @@
 2109 "UndergraduateStudent247.first"
 26488 <http://www.Department8.University0.edu/GraduateStudent39>
 6158 <http://www.Department10.University0.edu/UndergraduateStudent461>
-22 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Software>
+62 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Software>
 30486 "GraduateStudent105@Department15.University0.edu/GraduateStudent105"
 40034 <http://www.Department5.University0.edu/Publication112>
 34100 "UndergraduateStudent70@Department17.University0.edu/UndergraduateStudent70"
@@ -35432,7 +35432,7 @@
 28375 <http://www.Department10.University0.edu/GraduateStudent72>
 26761 <http://www.Department8.University0.edu/UndergraduateStudent433>
 41142 "GraduateStudent28@Department2.University0.edu/GraduateStudent28"
-171 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Soccer>
+174 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Soccer>
 20522 <http://www.Department14.University0.edu/UndergraduateStudent99>
 40902 <http://www.Department2.University0.edu/UndergraduateStudent395>
 22627 <http://www.Department4.University0.edu/UndergraduateStudent278>
@@ -35547,7 +35547,7 @@
 37511 <http://www.Department18.University0.edu/UndergraduateStudent280>
 2386 "UndergraduateStudent295.second"
 32053 <http://www.Department9.University0.edu/Publication12>
-178 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Materials_Science>
+180 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Materials_Science>
 28930 <http://www.Department15.University0.edu/UndergraduateStudent133>
 30154 <http://www.Department15.University0.edu/GraduateStudent104>
 35343 <http://www.Department17.University0.edu/Publication307>
@@ -35701,7 +35701,7 @@
 30189 "UndergraduateStudent291@Department15.University0.edu/UndergraduateStudent291"
 10752 "UndergraduateStudent327@Department3.University0.edu/UndergraduateStudent327"
 32648 "UndergraduateStudent43@Department11.University0.edu/UndergraduateStudent43"
-37 <http://semantics.crl.ibm.com/univ-bench-dl.owl#University>
+92 <http://semantics.crl.ibm.com/univ-bench-dl.owl#University>
 8463 "woman_student67@College0.University0.edu"
 32654 <http://www.Department11.University0.edu/UndergraduateStudent47>
 27921 <http://www.Department10.University0.edu/GraduateStudent70>
@@ -35712,7 +35712,7 @@
 32234 <http://www.Department9.University0.edu/Publication193>
 19999 <http://www.Department12.University0.edu/SystemsStaff11>
 40972 <http://www.Department2.University0.edu/UndergraduateStudent393>
-19 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Aeronautical_EngineeringClass>
+48 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Aeronautical_EngineeringClass>
 36723 <http://www.Department13.University0.edu/Publication64>
 38128 "GraduateStudent92@Department18.University0.edu/GraduateStudent92"
 38999 "UndergraduateStudent110@Department5.University0.edu/UndergraduateStudent110"
@@ -35964,7 +35964,7 @@
 4127 "GraduateStudent88@Department1.University0.edu/GraduateStudent88"
 15808 <http://www.Department18.University0.edu/Course42>
 32437 "SystemsStaff12@Department9.University0.edu/SystemsStaff12"
-80 <http://semantics.crl.ibm.com/univ-bench-dl.owl#College>
+97 <http://semantics.crl.ibm.com/univ-bench-dl.owl#College>
 24705 <http://www.Department17.University0.edu/UndergraduateStudent275>
 30414 <http://www.Department5.University0.edu/UndergraduateStudent74>
 19654 <http://www.Department12.University0.edu/Publication155>
@@ -36021,7 +36021,7 @@
 38949 <http://www.Department5.University0.edu/UndergraduateStudent77>
 28136 <http://www.Department17.University0.edu/UndergraduateStudent278>
 22420 <http://www.Department4.University0.edu/UndergraduateStudent52>
-47 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Engineering>
+122 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Engineering>
 1185 <http://www.Department18.University0.edu/UndergraduateStudent288>
 18970 "UndergraduateStudent616.second"
 12511 <http://www.Department4.University0.edu/UndergraduateStudent279>
@@ -36466,7 +36466,7 @@
 5826 <http://www.Department16.University0.edu/GraduateStudent30>
 26012 <http://www.Department17.University0.edu/UndergraduateStudent285>
 4925 <http://www.Department1.University0.edu/Publication332>
-35 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Sports>
+113 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Sports>
 10875 <http://www.Department9.University0.edu/GraduateStudent67>
 25179 "GraduateStudent127@Department6.University0.edu/GraduateStudent127"
 22211 <http://www.Department4.University0.edu/GraduateCourse22>
@@ -36680,7 +36680,7 @@
 40055 <http://www.Department5.University0.edu/Publication133>
 29761 "UndergraduateStudent47@Department15.University0.edu/UndergraduateStudent47"
 20697 <http://www.Department18.University0.edu/Course59>
-134 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Electrical_Engineering>
+194 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Electrical_Engineering>
 16358 <http://www.Department5.University0.edu/GraduateStudent164>
 6185 "UndergraduateStudent184@Department16.University0.edu/UndergraduateStudent184"
 39917 "GraduateStudent184@Department5.University0.edu/GraduateStudent184"
@@ -36705,7 +36705,7 @@
 37847 "UndergraduateStudent405@Department18.University0.edu/UndergraduateStudent405"
 38145 "GraduateStudent107@Department18.University0.edu/GraduateStudent107"
 39379 "UndergraduateStudent363@Department5.University0.edu/UndergraduateStudent363"
-176 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Physics>
+152 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Physics>
 26762 "UndergraduateStudent433@Department8.University0.edu/UndergraduateStudent433"
 25862 <http://www.Department8.University0.edu/UndergraduateStudent13>
 38499 <http://www.Department18.University0.edu/Publication286>
@@ -37037,7 +37037,7 @@
 10454 <http://www.Department3.University0.edu/ClericalStaff0>
 27487 <http://www.Department8.University0.edu/Publication216>
 1075 <http://www.Department1.University0.edu/UndergraduateStudent76>
-18 <http://semantics.crl.ibm.com/univ-bench-dl.owl#TechnicalReport>
+49 <http://semantics.crl.ibm.com/univ-bench-dl.owl#TechnicalReport>
 13100 <http://www.Department0.University0.edu/UndergraduateStudent235>
 5155 <http://www.Department15.University0.edu/UndergraduateStudent192>
 21245 <http://www.Department8.University0.edu/UndergraduateStudent270>
@@ -37138,7 +37138,7 @@
 33835 "SystemsStaff8@Department11.University0.edu/SystemsStaff8"
 20069 <http://www.Department14.University0.edu/Chair14>
 30381 <http://www.Department5.University0.edu/UndergraduateStudent94>
-164 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Biology>
+195 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Biology>
 19892 <http://www.Department12.University0.edu/Publication393>
 20172 <http://www.Department14.University0.edu/GraduateCourse42>
 38776 <http://www.Department5.University0.edu/GraduateCourse51>
@@ -37188,7 +37188,7 @@
 7075 <http://www.Department16.University0.edu/GraduateStudent122>
 32859 "UndergraduateStudent168@Department11.University0.edu/UndergraduateStudent168"
 32589 <http://www.Department5.University0.edu/UndergraduateStudent176>
-49 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Professor>
+96 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Professor>
 31831 <http://www.Department9.University0.edu/UndergraduateStudent417>
 41584 <http://www.Department2.University0.edu/Publication310>
 3825 "GraduateStudent27.second"
@@ -37222,7 +37222,7 @@
 19633 <http://www.Department12.University0.edu/Publication134>
 34118 "UndergraduateStudent81@Department17.University0.edu/UndergraduateStudent81"
 8551 "woman_student84@College0.University0.edu"
-124 <http://semantics.crl.ibm.com/univ-bench-dl.owl#TeachingAssistant>
+34 <http://semantics.crl.ibm.com/univ-bench-dl.owl#TeachingAssistant>
 18472 <http://www.Department5.University0.edu/GraduateCourse58>
 32874 <http://www.Department11.University0.edu/UndergraduateStudent178>
 3513 <http://www.Department4.University0.edu/UndergraduateStudent257>
@@ -37439,7 +37439,7 @@
 20513 <http://www.Department9.University0.edu/UndergraduateStudent409>
 7708 <http://www.Department16.University0.edu/Publication158>
 8990 "woman_student179.first"
-117 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallLover>
+39 <http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallLover>
 21887 <http://www.Department14.University0.edu/Publication250>
 27296 <http://www.Department8.University0.edu/Publication25>
 26368 "UndergraduateStudent223@Department8.University0.edu/UndergraduateStudent223"
@@ -37629,7 +37629,7 @@
 28266 "UndergraduateStudent181@Department10.University0.edu/UndergraduateStudent181"
 20161 <http://www.Department14.University0.edu/GraduateCourse37>
 3655 "UndergraduateStudent533@Department1.University0.edu/UndergraduateStudent533"
-70 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Petroleuml_EngineeringClass>
+52 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Petroleuml_EngineeringClass>
 25855 "UndergraduateStudent10@Department8.University0.edu/UndergraduateStudent10"
 37941 "UndergraduateStudent476@Department18.University0.edu/UndergraduateStudent476"
 1724 <http://www.Department5.University0.edu/GraduateCourse66>
@@ -37803,7 +37803,7 @@
 39321 "UndergraduateStudent323@Department5.University0.edu/UndergraduateStudent323"
 41599 <http://www.Department2.University0.edu/Publication325>
 6706 "UndergraduateStudent339@Department16.University0.edu/UndergraduateStudent339"
-170 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Modern_Languages>
+197 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Modern_Languages>
 27480 <http://www.Department8.University0.edu/Publication209>
 3645 "UndergraduateStudent531@Department1.University0.edu/UndergraduateStudent531"
 37779 "UndergraduateStudent353@Department18.University0.edu/UndergraduateStudent353"
@@ -38503,7 +38503,7 @@
 858 "UndergraduateStudent42.second"
 32091 <http://www.Department9.University0.edu/Publication50>
 22493 <http://www.Department4.University0.edu/UndergraduateStudent238>
-112 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Employee>
+24 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Employee>
 15863 "UndergraduateStudent410@Department7.University0.edu/UndergraduateStudent410"
 24843 "UndergraduateStudent386@Department6.University0.edu/UndergraduateStudent386"
 3586 <http://www.Department16.University0.edu/UndergraduateStudent1>
@@ -39440,7 +39440,7 @@
 2502 "UndergraduateStudent315.second"
 10253 "UndergraduateStudent168@Department3.University0.edu/UndergraduateStudent168"
 38730 <http://www.Department5.University0.edu/FullProfessor4>
-172 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Computer_Science>
+204 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Computer_Science>
 35997 "UndergraduateStudent208@Department13.University0.edu/UndergraduateStudent208"
 24589 <http://www.Department6.University0.edu/GraduateStudent139>
 4464 "Course8"
@@ -39718,7 +39718,7 @@
 22351 <http://www.Department4.University0.edu/UndergraduateStudent219>
 22810 "UndergraduateStudent223@Department4.University0.edu/UndergraduateStudent223"
 40109 <http://www.Department5.University0.edu/Publication187>
-173 <http://semantics.crl.ibm.com/univ-bench-dl.owl#StampCollecting>
+158 <http://semantics.crl.ibm.com/univ-bench-dl.owl#StampCollecting>
 1730 <http://www.Department1.University0.edu/UndergraduateStudent182>
 38104 "GraduateStudent71@Department18.University0.edu/GraduateStudent71"
 26863 <http://www.Department8.University0.edu/UndergraduateStudent492>
@@ -40203,7 +40203,7 @@
 5548 <http://www.Department0.University0.edu/UndergraduateStudent5>
 25715 "FullProfessor4@Department8.University0.edu/FullProfessor4"
 8325 <http://www.College0.University0.edu/woman_student204>
-141 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Civil_Engineering>
+175 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Civil_Engineering>
 13174 "UndergraduateStudent263@Department0.University0.edu/UndergraduateStudent263"
 16189 "UndergraduateStudent543.first"
 20643 "UndergraduateStudent142@Department14.University0.edu/UndergraduateStudent142"
@@ -40367,7 +40367,7 @@
 10534 <http://www.Department14.University0.edu/UndergraduateStudent48>
 11614 "GraduateStudent137@Department3.University0.edu/GraduateStudent137"
 23507 <http://www.Department4.University0.edu/Publication65>
-136 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Humanities>
+170 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Humanities>
 5543 <http://www.Department16.University0.edu/UndergraduateStudent303>
 40884 <http://www.Department2.University0.edu/UndergraduateStudent330>
 16529 <http://www.Department5.University0.edu/GraduateCourse26>
@@ -40723,7 +40723,7 @@
 30045 "UndergraduateStudent205@Department15.University0.edu/UndergraduateStudent205"
 7931 <http://www.Department16.University0.edu/Publication381>
 29478 <http://www.Department10.University0.edu/Publication401>
-151 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Mechanical_Engineering>
+188 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Mechanical_Engineering>
 34939 "GraduateStudent77@Department17.University0.edu/GraduateStudent77"
 19438 "GraduateStudent178.first"
 18632 <http://www.Department17.University0.edu/GraduateStudent143>
@@ -40898,7 +40898,7 @@
 29486 <http://www.Department10.University0.edu/Publication409>
 811 "UndergraduateStudent35.first"
 27509 <http://www.Department8.University0.edu/Publication238>
-106 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout>
+12 <http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout>
 12805 <http://www.Department0.University0.edu/UndergraduateStudent431>
 34951 "GraduateStudent86@Department17.University0.edu/GraduateStudent86"
 8089 <http://www.Department16.University0.edu/other_staff12>
@@ -40945,7 +40945,7 @@
 4742 <http://www.Department1.University0.edu/Publication149>
 14887 "UndergraduateStudent70@Department7.University0.edu/UndergraduateStudent70"
 18987 <http://www.Department18.University0.edu/UndergraduateStudent200>
-32 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Medieval_ArtsClass>
+91 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Medieval_ArtsClass>
 3002 "UndergraduateStudent405@Department1.University0.edu/UndergraduateStudent405"
 21128 "UndergraduateStudent364@Department14.University0.edu/UndergraduateStudent364"
 21081 <http://www.Department14.University0.edu/GraduateStudent9>
@@ -41131,7 +41131,7 @@
 17648 "UndergraduateStudent119@Department12.University0.edu/UndergraduateStudent119"
 38675 "ClericalStaff0@Department18.University0.edu/ClericalStaff0"
 21869 <http://www.Department14.University0.edu/Publication232>
-206 <http://semantics.crl.ibm.com/univ-bench-dl.owl#publicationDate>
+145 <http://semantics.crl.ibm.com/univ-bench-dl.owl#publicationDate>
 37092 <http://www.Department13.University0.edu/ResearchGroup5>
 29069 "GraduateStudent165@Department10.University0.edu/GraduateStudent165"
 34084 "UndergraduateStudent61@Department17.University0.edu/UndergraduateStudent61"
@@ -41253,7 +41253,7 @@
 28720 "UndergraduateStudent442@Department10.University0.edu/UndergraduateStudent442"
 8800 "woman_student137@College0.University0.edu"
 19395 "GraduateStudent167@Department12.University0.edu/GraduateStudent167"
-87 <http://semantics.crl.ibm.com/univ-bench-dl.owl#MathematicsClass>
+61 <http://semantics.crl.ibm.com/univ-bench-dl.owl#MathematicsClass>
 26049 <http://www.Department17.University0.edu/GraduateStudent133>
 38977 "UndergraduateStudent95@Department5.University0.edu/UndergraduateStudent95"
 25997 <http://www.Department8.University0.edu/UndergraduateStudent66>
@@ -41348,12 +41348,12 @@
 29496 <http://www.Department10.University0.edu/Publication419>
 18559 "UndergraduateStudent475@Department12.University0.edu/UndergraduateStudent475"
 27495 <http://www.Department8.University0.edu/Publication224>
-60 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Science>
+75 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Science>
 12317 <http://www.Department11.University0.edu/FullProfessor4>
 24772 <http://www.Department6.University0.edu/UndergraduateStudent348>
 20624 <http://www.Department17.University0.edu/GraduateStudent130>
 6041 <http://www.Department18.University0.edu/UndergraduateStudent205>
-21 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Lecturer>
+53 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Lecturer>
 23353 <http://www.Department10.University0.edu/UndergraduateStudent400>
 24389 <http://www.Department8.University0.edu/UndergraduateStudent61>
 38253 <http://www.Department18.University0.edu/Publication40>
@@ -41442,7 +41442,7 @@
 31038 "other_staff14@Department15.University0.edu/other_staff14"
 36299 "UndergraduateStudent426@Department13.University0.edu/UndergraduateStudent426"
 1157 <http://www.Department1.University0.edu/UndergraduateStudent89>
-109 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SportsLover>
+37 <http://semantics.crl.ibm.com/univ-bench-dl.owl#SportsLover>
 1446 "UndergraduateStudent134.first"
 10071 "UndergraduateStudent119@Department3.University0.edu/UndergraduateStudent119"
 11228 <http://www.Department0.University0.edu/UndergraduateStudent420>
@@ -41478,7 +41478,7 @@
 38261 <http://www.Department18.University0.edu/Publication48>
 35490 <http://www.Department17.University0.edu/SystemsStaff11>
 37531 "UndergraduateStudent174@Department18.University0.edu/UndergraduateStudent174"
-168 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Latin_Arts>
+203 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Latin_Arts>
 12672 <http://www.Department0.University0.edu/UndergraduateStudent422>
 25538 <http://www.Department6.University0.edu/Publication323>
 10771 "UndergraduateStudent333@Department3.University0.edu/UndergraduateStudent333"
@@ -41611,7 +41611,7 @@
 15619 <http://www.Department4.University0.edu/UndergraduateStudent200>
 3421 "UndergraduateStudent487.first"
 34945 <http://www.Department17.University0.edu/SystemsStaff14>
-20 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Article>
+58 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Article>
 9415 "FullProfessor7@Department3.University0.edu/FullProfessor7"
 20283 <http://www.Department14.University0.edu/UndergraduateStudent433>
 21864 <http://www.Department14.University0.edu/Publication227>
@@ -41669,7 +41669,7 @@
 7332 <http://www.Department14.University0.edu/UndergraduateStudent438>
 3635 "UndergraduateStudent528.second"
 22114 <http://www.Department17.University0.edu/SystemsStaff17>
-185 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Chemistry>
+166 <http://semantics.crl.ibm.com/univ-bench-dl.owl#Chemistry>
 21859 <http://www.Department14.University0.edu/Publication222>
 5866 <http://www.Department16.University0.edu/UndergraduateStudent321>
 9855 "UndergraduateStudent62@Department3.University0.edu/UndergraduateStudent62"

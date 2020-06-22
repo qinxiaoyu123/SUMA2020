@@ -1812,3 +1812,116 @@
 [INFO][2020-06-22 14:52:05,773][com.tju.suma.jenaQuery.JenaTest]resultsCount: 112
 [INFO][2020-06-22 14:52:05,773][com.tju.suma.jenaQuery.JenaTest]q 16
 [INFO][2020-06-22 14:52:05,773][com.tju.suma.jenaQuery.JenaTest]resultsCount: 5
+[INFO][2020-06-22 14:53:43,301][com.tju.suma.io.DictionaryInput]axioms count 502
+[INFO][2020-06-22 14:53:44,478][com.tju.suma.io.DictionaryInput]----------------------------------------------------
+[INFO][2020-06-22 14:53:44,478][com.tju.suma.io.DictionaryInput]Number of initial data: 257708
+[INFO][2020-06-22 14:53:44,478][com.tju.suma.io.DictionaryInput]Number of facts with equivalent role substitution: 3506
+[INFO][2020-06-22 14:53:44,478][com.tju.suma.io.DictionaryInput]Number of facts with inverse role substitution: 2528
+[INFO][2020-06-22 14:53:44,478][com.tju.suma.io.DictionaryInput]Number of equivalent roles: 2
+[INFO][2020-06-22 14:53:44,488][com.tju.suma.io.DictionaryInput]Number of inverse roles: 8
+[INFO][2020-06-22 14:53:44,488][com.tju.suma.io.DictionaryInput]Number of facts after adding ClassAssertion: 257766
+[INFO][2020-06-22 14:53:44,488][com.tju.suma.test.SUMARunTest]reading data time: 1187 ms
+[INFO][2020-06-22 14:53:44,793][com.tju.suma.reason.DicSerialReason]----------------------Start Materialization--------------------------
+[INFO][2020-06-22 14:53:44,793][com.tju.suma.reason.DicSerialReason]loopCount 1 dataCount 257766
+[INFO][2020-06-22 14:53:45,063][com.tju.suma.reason.DicSerialReason]loopCount 2 dataCount 386553
+[INFO][2020-06-22 14:53:45,301][com.tju.suma.reason.DicSerialReason]loopCount 3 dataCount 421729
+[INFO][2020-06-22 14:53:45,352][com.tju.suma.reason.DicSerialReason]loopCount 4 dataCount 429390
+[INFO][2020-06-22 14:53:45,362][com.tju.suma.reason.DicSerialReason]loopCount 5 dataCount 429969
+[INFO][2020-06-22 14:53:45,364][com.tju.suma.reason.DicSerialReason]loopCount 6 dataCount 430018
+[INFO][2020-06-22 14:53:45,364][com.tju.suma.reason.DicSerialReason]No new data was generated!
+[INFO][2020-06-22 14:53:45,374][com.tju.suma.test.SUMARunTest]reason time: 581 ms
+[INFO][2020-06-22 14:53:45,374][com.tju.suma.reason.SameAsReason]The number of facts after adding sameAs: 432697
+[INFO][2020-06-22 14:53:45,845][java.lang.Class]The number of facts after materialization: 486431
+[INFO][2020-06-22 14:53:45,845][java.lang.Class]The number of facts reduced in materialization due to equivalent role rewriting: 17794
+[INFO][2020-06-22 14:53:45,845][java.lang.Class]The number of facts reduced in materialization due to inverse role rewriting: 35940
+[INFO][2020-06-22 14:53:45,845][com.tju.suma.test.SUMARunTest]----------------------Start Query--------------------------
+[INFO][2020-06-22 14:53:49,159][com.tju.suma.jenaQuery.JenaTest]q 1
+[INFO][2020-06-22 14:53:49,159][com.tju.suma.jenaQuery.JenaTest]resultsCount: 21
+[INFO][2020-06-22 14:53:49,179][com.tju.suma.jenaQuery.JenaTest]q 2
+[INFO][2020-06-22 14:53:49,179][com.tju.suma.jenaQuery.JenaTest]resultsCount: 2465
+[INFO][2020-06-22 14:53:49,199][com.tju.suma.jenaQuery.JenaTest]q 3
+[INFO][2020-06-22 14:53:49,199][com.tju.suma.jenaQuery.JenaTest]resultsCount: 581
+[INFO][2020-06-22 14:53:49,219][com.tju.suma.jenaQuery.JenaTest]q 4
+[INFO][2020-06-22 14:53:49,219][com.tju.suma.jenaQuery.JenaTest]resultsCount: 292
+[INFO][2020-06-22 14:53:49,229][com.tju.suma.jenaQuery.JenaTest]q 5
+[INFO][2020-06-22 14:53:49,229][com.tju.suma.jenaQuery.JenaTest]resultsCount: 235
+[INFO][2020-06-22 14:53:49,249][com.tju.suma.jenaQuery.JenaTest]q 6
+[INFO][2020-06-22 14:53:49,249][com.tju.suma.jenaQuery.JenaTest]resultsCount: 991
+[INFO][2020-06-22 14:53:49,249][com.tju.suma.jenaQuery.JenaTest]q 7
+[INFO][2020-06-22 14:53:49,249][com.tju.suma.jenaQuery.JenaTest]resultsCount: 0
+[INFO][2020-06-22 14:53:49,259][com.tju.suma.jenaQuery.JenaTest]q 8
+[INFO][2020-06-22 14:53:49,259][com.tju.suma.jenaQuery.JenaTest]resultsCount: 376
+[INFO][2020-06-22 14:53:49,449][com.tju.suma.jenaQuery.JenaTest]q 9
+[INFO][2020-06-22 14:53:49,449][com.tju.suma.jenaQuery.JenaTest]resultsCount: 747
+[INFO][2020-06-22 14:53:49,449][com.tju.suma.jenaQuery.JenaTest]q 10
+[INFO][2020-06-22 14:53:49,449][com.tju.suma.jenaQuery.JenaTest]resultsCount: 8
+[INFO][2020-06-22 14:53:49,548][com.tju.suma.jenaQuery.JenaTest]q 11
+[INFO][2020-06-22 14:53:49,548][com.tju.suma.jenaQuery.JenaTest]resultsCount: 2416
+[INFO][2020-06-22 14:53:49,558][com.tju.suma.jenaQuery.JenaTest]q 12
+[INFO][2020-06-22 14:53:49,558][com.tju.suma.jenaQuery.JenaTest]resultsCount: 50
+[INFO][2020-06-22 14:53:49,568][com.tju.suma.jenaQuery.JenaTest]q 13
+[INFO][2020-06-22 14:53:49,568][com.tju.suma.jenaQuery.JenaTest]resultsCount: 416
+[INFO][2020-06-22 14:53:49,760][com.tju.suma.jenaQuery.JenaTest]q 14
+[INFO][2020-06-22 14:53:49,760][com.tju.suma.jenaQuery.JenaTest]resultsCount: 6535
+[INFO][2020-06-22 14:53:49,770][com.tju.suma.jenaQuery.JenaTest]q 15
+[INFO][2020-06-22 14:53:49,770][com.tju.suma.jenaQuery.JenaTest]resultsCount: 112
+[INFO][2020-06-22 14:53:49,770][com.tju.suma.jenaQuery.JenaTest]q 16
+[INFO][2020-06-22 14:53:49,770][com.tju.suma.jenaQuery.JenaTest]resultsCount: 5
+[INFO][2020-06-22 17:15:17,842][com.tju.suma.io.DictionaryInput]axioms count 4
+[INFO][2020-06-22 20:30:43,644][com.tju.suma.io.DictionaryInput]axioms count 4
+[INFO][2020-06-22 20:30:59,135][com.tju.suma.io.DictionaryInput]283 284(inverse) have the same weight!
+[INFO][2020-06-22 20:30:59,135][com.tju.suma.io.DictionaryInput]285 286(inverse) have the same weight!
+[INFO][2020-06-22 20:30:59,135][com.tju.suma.io.DictionaryInput]287 288(inverse) have the same weight!
+[INFO][2020-06-22 20:30:59,135][com.tju.suma.io.DictionaryInput]289 290(inverse) have the same weight!
+[INFO][2020-06-22 20:30:59,135][com.tju.suma.io.DictionaryInput]291 292(inverse) have the same weight!
+[INFO][2020-06-22 20:30:59,135][com.tju.suma.io.DictionaryInput]293 294(inverse) have the same weight!
+[INFO][2020-06-22 20:30:59,135][com.tju.suma.io.DictionaryInput]296 297(inverse) have the same weight!
+[INFO][2020-06-22 20:30:59,135][com.tju.suma.io.DictionaryInput]298 299(inverse) have the same weight!
+[INFO][2020-06-22 20:30:59,175][com.tju.suma.io.DictionaryInput]axioms count 1827
+[INFO][2020-06-22 22:14:15,723][com.tju.suma.io.DictionaryInput]283 284(inverse) have the same weight!
+[INFO][2020-06-22 22:14:15,723][com.tju.suma.io.DictionaryInput]285 286(inverse) have the same weight!
+[INFO][2020-06-22 22:14:15,723][com.tju.suma.io.DictionaryInput]287 288(inverse) have the same weight!
+[INFO][2020-06-22 22:14:15,723][com.tju.suma.io.DictionaryInput]289 290(inverse) have the same weight!
+[INFO][2020-06-22 22:14:15,723][com.tju.suma.io.DictionaryInput]291 292(inverse) have the same weight!
+[INFO][2020-06-22 22:14:15,723][com.tju.suma.io.DictionaryInput]294 295(inverse) have the same weight!
+[INFO][2020-06-22 22:14:15,723][com.tju.suma.io.DictionaryInput]296 297(inverse) have the same weight!
+[INFO][2020-06-22 22:14:15,723][com.tju.suma.io.DictionaryInput]299 300(inverse) have the same weight!
+[INFO][2020-06-22 22:14:15,733][com.tju.suma.io.DictionaryInput]axioms count 1827
+[INFO][2020-06-22 22:19:53,720][com.tju.suma.io.DictionaryInput]265 266(inverse) have the same weight!
+[INFO][2020-06-22 22:19:53,720][com.tju.suma.io.DictionaryInput]269 270(inverse) have the same weight!
+[INFO][2020-06-22 22:19:53,720][com.tju.suma.io.DictionaryInput]271 272(inverse) have the same weight!
+[INFO][2020-06-22 22:19:53,720][com.tju.suma.io.DictionaryInput]273 274(inverse) have the same weight!
+[INFO][2020-06-22 22:19:53,720][com.tju.suma.io.DictionaryInput]275 276(inverse) have the same weight!
+[INFO][2020-06-22 22:19:53,720][com.tju.suma.io.DictionaryInput]279 280(inverse) have the same weight!
+[INFO][2020-06-22 22:19:53,720][com.tju.suma.io.DictionaryInput]281 282(inverse) have the same weight!
+[INFO][2020-06-22 22:19:53,720][com.tju.suma.io.DictionaryInput]283 284(inverse) have the same weight!
+[INFO][2020-06-22 22:19:53,740][com.tju.suma.io.DictionaryInput]axioms count 1827
+[INFO][2020-06-22 22:20:52,484][com.tju.suma.io.DictionaryInput]2 3(inverse) have the same weight!
+[INFO][2020-06-22 22:20:52,484][com.tju.suma.io.DictionaryInput]4 5(inverse) have the same weight!
+[INFO][2020-06-22 22:20:52,484][com.tju.suma.io.DictionaryInput]6 7(inverse) have the same weight!
+[INFO][2020-06-22 22:20:52,484][com.tju.suma.io.DictionaryInput]8 9(inverse) have the same weight!
+[INFO][2020-06-22 22:20:52,484][com.tju.suma.io.DictionaryInput]12 13(inverse) have the same weight!
+[INFO][2020-06-22 22:20:52,484][com.tju.suma.io.DictionaryInput]14 15(inverse) have the same weight!
+[INFO][2020-06-22 22:20:52,484][com.tju.suma.io.DictionaryInput]16 17(inverse) have the same weight!
+[INFO][2020-06-22 22:20:52,484][com.tju.suma.io.DictionaryInput]18 19(inverse) have the same weight!
+[INFO][2020-06-22 22:20:52,494][com.tju.suma.io.DictionaryInput]axioms count 1827
+[INFO][2020-06-22 22:35:53,014][com.tju.suma.io.DictionaryInput]2 3(inverse) have the same weight!
+[INFO][2020-06-22 22:35:53,014][com.tju.suma.io.DictionaryInput]4 5(inverse) have the same weight!
+[INFO][2020-06-22 22:35:53,014][com.tju.suma.io.DictionaryInput]8 9(inverse) have the same weight!
+[INFO][2020-06-22 22:35:53,014][com.tju.suma.io.DictionaryInput]12 13(inverse) have the same weight!
+[INFO][2020-06-22 22:35:53,014][com.tju.suma.io.DictionaryInput]14 15(inverse) have the same weight!
+[INFO][2020-06-22 22:35:53,014][com.tju.suma.io.DictionaryInput]16 17(inverse) have the same weight!
+[INFO][2020-06-22 22:35:53,014][com.tju.suma.io.DictionaryInput]18 19(inverse) have the same weight!
+[INFO][2020-06-22 22:35:53,014][com.tju.suma.io.DictionaryInput]20 21(inverse) have the same weight!
+[INFO][2020-06-22 22:35:53,024][com.tju.suma.io.DictionaryInput]axioms count 1827
+[INFO][2020-06-22 22:37:07,304][com.tju.suma.io.DictionaryInput]26 27(inverse) have the same weight!
+[INFO][2020-06-22 22:37:07,304][com.tju.suma.io.DictionaryInput]28 29(inverse) have the same weight!
+[INFO][2020-06-22 22:37:07,304][com.tju.suma.io.DictionaryInput]31 32(inverse) have the same weight!
+[INFO][2020-06-22 22:37:07,304][com.tju.suma.io.DictionaryInput]33 34(inverse) have the same weight!
+[INFO][2020-06-22 22:37:07,304][com.tju.suma.io.DictionaryInput]35 36(inverse) have the same weight!
+[INFO][2020-06-22 22:37:07,304][com.tju.suma.io.DictionaryInput]37 38(inverse) have the same weight!
+[INFO][2020-06-22 22:37:07,304][com.tju.suma.io.DictionaryInput]39 40(inverse) have the same weight!
+[INFO][2020-06-22 22:37:07,304][com.tju.suma.io.DictionaryInput]41 42(inverse) have the same weight!
+[INFO][2020-06-22 22:37:07,314][com.tju.suma.io.DictionaryInput]axioms count 1827
+[INFO][2020-06-22 22:37:13,999][com.tju.suma.io.DictionaryInput]finish read 1000000 data
+[INFO][2020-06-22 22:37:20,717][com.tju.suma.io.DictionaryInput]finish read 2000000 data

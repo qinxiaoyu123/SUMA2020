@@ -18,11 +18,12 @@ import static com.tju.suma.jenaQuery.JenaTest.jenaQuerySimple;
 public class SUMARunTest {
     private static Logger log = Logger.getLogger(SUMARunTest.class);
     public static void main(String[] args) throws Exception {
-        String pathTBox = "data/univ-bench-dl.owl";
-        String pathABox = "data/uobm1.nt";
-        String pathExtendedABox = "data/new_uobm1_no.nt";
+       // String pathTBox = "data/univ-bench-dl.owl";
+        String pathTBox = "D:\\experiments\\服务器代码\\yago数据\\yago-wd-schema.nt\\yago-wd-schema-rewrite.nt";
+        String pathABox = "D:\\experiments\\服务器代码\\yago数据\\yago-wd-facts.nt\\yago-wd-facts-rewrite.nt";
+        String pathExtendedABox = "D:\\experiments\\服务器代码\\yago数据\\yago-wd-facts.nt\\yago-wd-facts-rewrite-extended.nt";
         String pathDataThing = "data/newThing_oubm1_test.nt";
-        boolean isQueryByJena = true;
+        boolean isQueryByJena = false;
         initIsRoleWriting(true);
         String queryPath = "data/standard.sparql";
         String answerPath = "data/result_new_no_rewrite.nt";

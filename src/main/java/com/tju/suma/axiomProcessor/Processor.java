@@ -1,5 +1,7 @@
 package com.tju.suma.axiomProcessor;
 
+import com.hp.hpl.jena.ontology.UnionClass;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import com.tju.suma.bean.*;
 import com.tju.suma.dictionary.Dictionary;
 import com.tju.suma.roleScore.RoleGraph;
@@ -180,10 +182,23 @@ public class Processor {
         }
         int type = axiom.typeIndex();
         String property = ((OWLObjectPropertyDomainAxiom) axiom).getProperty().toString();
-        String domain = ((OWLObjectPropertyDomainAxiom) axiom).getDomain().toString();
+        OWLClassExpression domain = ((OWLObjectPropertyDomainAxiom) axiom).getDomain();
+
         int pro = Dictionary.encodeRdf(property);
-        int dom = Dictionary.encodeRdf(domain);
-        DicOwlMap.addDicOwlPropertyDomainMap(type, pro, dom);
+        if(domain instanceof OWLObjectUnionOf){
+//            System.out.println(axiom.toString());
+            Iterator<OWLClassExpression> iterator = ((OWLObjectUnionOf) domain).getOperandsAsList().iterator();
+            while(iterator.hasNext()){
+                String tmp = iterator.next().toString();
+//                System.out.println(tmp);
+                int dom = Dictionary.encodeRdf(tmp);
+                DicOwlMap.addDicOwlPropertyDomainMap(type, pro, dom);
+            }
+        }
+        else{
+            int dom = Dictionary.encodeRdf(domain.toString());
+            DicOwlMap.addDicOwlPropertyDomainMap(type, pro, dom);
+        }
 
     }
 
@@ -193,11 +208,23 @@ public class Processor {
         }
         int type = axiom.typeIndex();
         String property = ((OWLObjectPropertyRangeAxiom) axiom).getProperty().toString();
-        String range = ((OWLObjectPropertyRangeAxiom) axiom).getRange().toString();
+//        String range = ((OWLObjectPropertyRangeAxiom) axiom).getRange().toString();
+        OWLClassExpression range1 = ((OWLObjectPropertyRangeAxiom) axiom).getRange();
         int pro = Dictionary.encodeRdf(property);
-        int ran = Dictionary.encodeRdf(range);
-        DicOwlMap.addDicOwlPropertyRangeMap(type, pro, ran);
-
+        if(range1 instanceof OWLObjectUnionOf){
+//            System.out.println(axiom.toString());
+            Iterator<OWLClassExpression> iterator = ((OWLObjectUnionOf) range1).getOperandsAsList().iterator();
+            while(iterator.hasNext()){
+                String tmp = iterator.next().toString();
+//                System.out.println(tmp);
+                int ran = Dictionary.encodeRdf(tmp);
+                DicOwlMap.addDicOwlPropertyRangeMap(type, pro, ran);
+            }
+        }
+        else{
+            int ran = Dictionary.encodeRdf(range1.toString());
+            DicOwlMap.addDicOwlPropertyRangeMap(type, pro, ran);
+        }
     }
 
     public static void EquivalentClassProcessor(OWLEquivalentClassesAxiom axiom, int ip) {

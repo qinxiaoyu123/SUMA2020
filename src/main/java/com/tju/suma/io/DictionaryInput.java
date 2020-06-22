@@ -10,8 +10,7 @@ import com.tju.suma.rewrite.EquiClassRuleRewrite;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
 import org.apache.log4j.Logger;
-import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.*;
+
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -27,8 +26,11 @@ import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
+import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.model.*;
 
 import static com.tju.suma.axiomProcessor.Processor.classAssertion;
+import static org.semanticweb.owlapi.apibinding.OWLManager.createOWLOntologyManager;
 
 
 public class DictionaryInput {
@@ -44,7 +46,7 @@ public class DictionaryInput {
             while (it.hasNext()) {
                 String line = it.nextLine();
                 if (!line.contains("\\") && !line.contains("unknown:namespace")) {
-                    List<String> list = Arrays.stream(line.split(" ")).collect(Collectors.toList());
+                    List<String> list = Arrays.stream(line.split("\\s+")).collect(Collectors.toList());
                     String Rs = list.get(0);
                     String Rp = list.get(1);
                     String Ro = list.get(2);
@@ -158,7 +160,7 @@ public class DictionaryInput {
 
     public static void readTBox(String pathTBox) throws OWLOntologyCreationException {
         File testFile = new File(pathTBox);
-        OWLOntologyManager m = OWLManager.createOWLOntologyManager();
+        OWLOntologyManager m = createOWLOntologyManager();
         OWLOntology univBench = m.loadOntologyFromOntologyDocument(testFile);
 
         //添加属性图节点，边，权重更新, 不添加公理
@@ -239,6 +241,7 @@ public class DictionaryInput {
         while (localIterator1.hasNext()) {
             index++;
             OWLAxiom axiom = localIterator1.next();
+//            System.out.println(axiom.toString());
             type = axiom.typeIndex();
             switch (type) {
                 case Processor.ObjectPropertyRange:
