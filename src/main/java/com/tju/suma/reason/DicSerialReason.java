@@ -250,7 +250,8 @@ public class DicSerialReason {
                 QueryReason.type55Reason(rs, ro, head);
                 break;
             default:
-                throw new IllegalStateException("Unexpected value: " + type);
+//                throw new IllegalStateException("Unexpected value: " + type);
+                break;
         }
     }
 

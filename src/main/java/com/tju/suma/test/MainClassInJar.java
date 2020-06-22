@@ -6,7 +6,9 @@ import com.tju.suma.io.DictionaryInput;
 import com.tju.suma.io.DictionaryOutput;
 import com.tju.suma.jenaQuery.RewriteThing;
 import com.tju.suma.reason.DicSerialReason;
+import com.tju.suma.reason.ObjectSomeValuesFromReason;
 import com.tju.suma.reason.SameAsReason;
+import org.apache.log4j.Logger;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
 import java.io.IOException;
@@ -14,53 +16,81 @@ import java.io.IOException;
 import static com.tju.suma.jenaQuery.JenaTest.jenaQuerySimple;
 
 public class MainClassInJar {
-    public  static boolean flagTTL = false;
+    private static Logger log = Logger.getLogger(MainClassInJar.class);
     public static void main(String[] args) throws Exception {
-        int index = 0;
-
-        String pathTBox = null;
-        String pathABox = null;
-        int n = 7;
-        String pathData = null;
-        boolean isQueryByJena = false;
-        String pathDataThing = "newThing_oubm1.nt";
-        String queryPath = null;
+        if(args.length<5){
+            System.out.println("Please enter args as follows: pathTBox pathABox pathExtendedABox isQueryByJena queryPath");
+            return;
+        }
+        String pathTBox = args[0];
+        String pathABox = args[1];
+        String pathExtendedABox = args[2];
+        String pathDataThing = "newThing.nt";
+        boolean isQueryByJena = Boolean.parseBoolean(args[3]);
+        initIsRoleWriting(true);
+        String queryPath = args[4];
         String answerPath = "result_new.nt";
-        if(args.length>index){
-            pathTBox = args[index];
-            index++;
+
+        int n_step = 7;
+
+        DictionaryInit();
+
+        preProcessRules(pathTBox);
+        preProcessData(pathABox);
+
+        outPutDictionaryToFile();
+
+        materialization(n_step);
+
+        readDictionaryInMemory();
+
+//        DictionaryOutput.sameAsMap("sameas.txt");
+
+
+        writeFile(pathExtendedABox);
+
+//        System.out.println("ObjectSomeValuesFromReason.objectSomeVaule "+ ObjectSomeValuesFromReason.objectSomeVaule);
+//        System.out.println("ObjectSomeValuesFromReason.objectSomeReturn "+ ObjectSomeValuesFromReason.objectSomeReturn);
+
+        if (isQueryByJena) {
+            log.info("----------------------Start Query--------------------------");
+            queryByJena(pathExtendedABox, pathDataThing, queryPath, answerPath);
         }
-        if(args.length>index){
-            pathABox = args[index];
-            if(args[index].endsWith(".ttl")){
-                flagTTL = true;
-            }
-            index++;
-        }
-        if(args.length>index){
-            pathData = args[index];
-            index++;
-        }
-        if(args.length>index){
-            Processor.isRoleWriting = Boolean.parseBoolean(args[index]);
-            index++;
-        }
-        if(args.length>index){
-            n = Integer.parseInt(args[index]);
-            index++;
-        }
-        if(args.length>index){
-            isQueryByJena = Boolean.parseBoolean(args[index]);
-            index++;
-        }
-        if(args.length>index){
-            queryPath = args[index];
-        }
-        materialization(pathTBox, pathABox, n);
-        writeFile(pathData);
-        if(isQueryByJena){
-            queryByJena(pathData, pathDataThing, queryPath, answerPath);
-        }
+    }
+
+    private static void DictionaryInit() {
+        Dictionary.init();
+    }
+
+    private static void preProcessRules(String pathTBox) throws OWLOntologyCreationException {
+        DictionaryInput.readTBox(pathTBox);
+    }
+
+    private static void preProcessData(String pathABox) throws IOException {
+        long startTime1 = System.currentTimeMillis();
+        DictionaryInput.readABox(pathABox);
+        long startTime2 = System.currentTimeMillis();
+        log.info("reading data time: " + (startTime2 - startTime1) + " ms");
+    }
+
+    private static void outPutDictionaryToFile() throws IOException {
+        DictionaryOutput.encodeMap("encode.txt");
+    }
+
+    public static void materialization(int n_step) {
+        long startTime3 = System.currentTimeMillis();
+        DicSerialReason.reason(n_step);
+        long startTime4 = System.currentTimeMillis();
+        log.info("reason time: " + (startTime4 - startTime3) + " ms");
+        SameAsReason.addEquivIndividual();
+    }
+
+    private static void readDictionaryInMemory() throws IOException {
+        DictionaryInput.readDictionary("encode.txt");
+    }
+
+    public static void initIsRoleWriting(boolean isRoleWriting) {
+        Processor.isRoleWriting = isRoleWriting;
     }
 
     private static void writeFile(String pathData) throws IOException {
@@ -72,36 +102,4 @@ public class MainClassInJar {
         jenaQuerySimple(pathABoxThing, queryPath, answerPath);
     }
 
-    public static void materialization(String pathTBox, String pathABox, int n) throws OWLOntologyCreationException, IOException {
-        new Dictionary();
-//        规则预处理
-        DictionaryInput.readTBox(pathTBox);
-        //数据预处理
-        preDealData(pathABox);
-        DictionaryOutput.encodeMap("encode.txt");
-        //单线程推理
-        reason(n);
-        DictionaryInput.readDictionary("encode.txt");
-
-    }
-
-    private static void reason(int n) {
-        long startTime3 = System.currentTimeMillis();
-        DicSerialReason.reason(n);
-        long startTime4=System.currentTimeMillis();
-        System.out.println("reason time: "+(startTime4-startTime3)+"ms");
-        SameAsReason.addEquivIndividual();
-    }
-
-    private static void preDealData(String pathABox) throws IOException {
-        long startTime1 = System.currentTimeMillis();
-        if(flagTTL){
-            DictionaryInput.readTtlABox(pathABox);
-        }
-        else{
-            DictionaryInput.readABox(pathABox);
-        }
-        long startTime2 = System.currentTimeMillis();
-        System.out.println("reading time: "+(startTime2-startTime1)+ "ms");
-    }
 }

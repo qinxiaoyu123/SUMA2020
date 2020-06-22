@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SameAsReason {
     public static List<HashSet<Integer>> equiPool = new ArrayList<>();
     static Map<Integer, Integer> equiPoolIndex = new ConcurrentHashMap<>();
-    static Map<Integer, Integer> equiRepresentation = new ConcurrentHashMap<>();
+    public static Map<Integer, Integer> equiRepresentation = new ConcurrentHashMap<>();
     private static Logger log = Logger.getLogger(SameAsReason.class);
     static boolean boolSameAs(int rs) {
         if(equiRepresentation.containsKey(rs)){

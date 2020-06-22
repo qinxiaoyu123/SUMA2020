@@ -6,6 +6,7 @@ import com.tju.suma.io.DictionaryInput;
 import com.tju.suma.io.DictionaryOutput;
 import com.tju.suma.jenaQuery.RewriteThing;
 import com.tju.suma.reason.DicSerialReason;
+import com.tju.suma.reason.ObjectSomeValuesFromReason;
 import com.tju.suma.reason.SameAsReason;
 import org.apache.log4j.Logger;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
@@ -22,7 +23,7 @@ public class SUMARunTest {
         String pathExtendedABox = "data/new_uobm1_no.nt";
         String pathDataThing = "data/newThing_oubm1_test.nt";
         boolean isQueryByJena = true;
-        initIsRoleWriting(false);
+        initIsRoleWriting(true);
         String queryPath = "data/standard.sparql";
         String answerPath = "data/result_new_no_rewrite.nt";
 
@@ -39,7 +40,13 @@ public class SUMARunTest {
 
         readDictionaryInMemory();
 
+//        DictionaryOutput.sameAsMap("data/sameas.txt");
+
+
         writeFile(pathExtendedABox);
+
+//        System.out.println("ObjectSomeValuesFromReason.objectSomeVaule "+ ObjectSomeValuesFromReason.objectSomeVaule);
+//        System.out.println("ObjectSomeValuesFromReason.objectSomeReturn "+ ObjectSomeValuesFromReason.objectSomeReturn);
 
         if (isQueryByJena) {
             log.info("----------------------Start Query--------------------------");

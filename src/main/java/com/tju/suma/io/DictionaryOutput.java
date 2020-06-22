@@ -2,6 +2,7 @@ package com.tju.suma.io;
 
 import com.tju.suma.bean.*;
 import com.tju.suma.dictionary.Dictionary;
+import com.tju.suma.reason.SameAsReason;
 import com.tju.suma.test.SUMARunTest;
 import org.apache.log4j.Logger;
 
@@ -89,5 +90,18 @@ public class DictionaryOutput {
         System.gc();
     }
 
+
+    public static void sameAsMap(String pathEncode) throws IOException {
+
+        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pathEncode), StandardCharsets.UTF_8));
+        for (Map.Entry<Integer, Integer> entry : SameAsReason.equiRepresentation.entrySet()) {
+            out.write(Dictionary.Decode[entry.getValue()]);
+            out.write(" " + Dictionary.Decode[entry.getKey()]);
+            out.newLine();
+        }
+        out.flush();
+        out.close();
+
+    }
 
 }

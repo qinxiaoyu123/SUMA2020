@@ -12,6 +12,9 @@ import java.util.Objects;
 import static com.tju.suma.reason.DicSerialReason.*;
 
 public class ObjectSomeValuesFromReason {
+    public static int objectSomeVaule = 0;
+    public static int objectSomeReturn = 0;
+
     static void reason(Map<Integer, DicRdfDataBean> totalData, Map<Integer, DicRdfDataBean> iteratorMap, Map<Integer, DicRdfDataBean> stashMap, int rs, List<Integer> head) {
         int rp = head.get(0);
         int class2 = head.get(1);
@@ -29,6 +32,7 @@ public class ObjectSomeValuesFromReason {
                 indexNew = dicDataBeanIterator.getNsp();
                 int ro = dicDataBeanIterator.getRo();
                 if(ThreeKeyMap.checkDuplicate(ro, typeEncode, class2)){
+                    objectSomeReturn++;
                     return;
                 }
             }while(indexNew != -1);
@@ -41,6 +45,7 @@ public class ObjectSomeValuesFromReason {
             someValue++;
             someValueFlag = true;
         }
+        objectSomeVaule++;
         DicRdfDataMap.addNewRdfDataBean(rs, rp, ro, firstTripleIsp);
         anonymous--;
         DicRdfDataMap.addNewRdfDataBean(ro, typeEncode, class2);

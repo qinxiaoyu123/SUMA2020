@@ -77,9 +77,9 @@ public class JenaTest {
     }
 
     public static void main(String[] args) throws Exception {
-        String dataPath = "data/newThing_oubm1.nt";
-        String queryPath = "data/test.sparql";
-        jenaQuerySimple(dataPath, queryPath);
+        String dataPath = "data/newThing_oubm1_test.nt";
+        String queryPath = "data/test1.sparql";
+        jenaQuerySimple(dataPath, queryPath, "data/ans.txt");
     }
 
 }
